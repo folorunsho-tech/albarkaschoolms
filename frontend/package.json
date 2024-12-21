@@ -1,0 +1,38 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.13.5",
+    "@mantine/dates": "^7.13.5",
+    "@mantine/hooks": "^7.13.5",
+    "@mantine/modals": "^7.13.5",
+    "@mantine/notifications": "^7.13.5",
+    "@tabler/icons-react": "^3.21.0",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "moment": "^2.30.1",
+    "next": "15.0.3",
+    "next-client-cookies": "^2.0.0",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-hook-form": "^7.53.2",
+    "react-to-print": "^3.0.2",
+    "sfcookies": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/sfcookies": "^1.0.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
