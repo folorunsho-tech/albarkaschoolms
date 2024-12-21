@@ -36,7 +36,7 @@ router.post("/generate", async (req, res) => {
 				host: process.env.DB_HOST,
 				port: process.env.DB_PORT,
 				user: process.env.DB_USER,
-				password: process.env.DB_USER,
+				password: process.env.DB_PASS,
 				database: process.env.DB_NAME,
 				charset: "utf8",
 			},
@@ -47,7 +47,7 @@ router.post("/generate", async (req, res) => {
 					},
 				},
 			},
-			dumpToFile: "/db/backup/school-backup.sql",
+			dumpToFile: "./db/backup/school-backup.sql",
 		});
 		res.status(200).json({
 			message: "Database succesfully backed-up",
@@ -60,7 +60,7 @@ router.post("/restore", upload.any(), (req, res) => {
 	try {
 		const restore = spawn("cmd.exe", [
 			"mysql",
-			` -ualbarkaschool -ptacheyon5567 albarkaschool < /db/temp/restore.sql`,
+			` -ualbarkaschool -ptacheyon5567 albarkaschool < ./db/temp/restore.sql`,
 		]);
 		restore.stderr.on("data", function (data) {
 			console.log("Error: " + data);

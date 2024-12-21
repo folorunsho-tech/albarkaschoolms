@@ -1347,7 +1347,7 @@ VALUES
     'EMP2',
     '{\"backup\": true, \"staffs\": {\"edit\": true, \"view\": true, \"create\": true}, \"classes\": {\"edit\": true, \"view\": true}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": true, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"settings\": true, \"students\": {\"edit\": true, \"view\": true, \"create\": true}, \"statement\": true, \"staffPromotions\": false, \"studentPromotions\": true}',
     '2024-12-08 11:32:18.959',
-    '2024-12-08 11:32:35.877',
+    '2024-12-20 12:49:08.097',
     NULL,
     1
   );
@@ -1489,922 +1489,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm439blht00018dap93odubl1',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-11-29 21:29:55.598',
-    '2024-11-29 21:41:21.053'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm439qf760001ws26nc1w4yh3',
-    NULL,
-    'Logged-out',
-    '2024-11-29 21:41:27.274',
-    '2024-11-29 21:41:34.736'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm439qo590003ws26lf3zu6td',
-    '8uIPHRQ',
-    'Logged-in',
-    '2024-11-29 21:41:38.876',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm46s2pe1000174cx2emwtecq',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-02 08:38:11.970',
-    '2024-12-03 02:57:26.143'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47vdwom0001f2hkldd7vuj9',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 02:58:39.663',
-    '2024-12-03 02:58:44.551'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47vmbtk0001xak2y20ck1kh',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 03:05:12.533',
-    '2024-12-03 03:24:56.242'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47wbrkt0003xak2covw5yex',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 03:24:59.352',
-    '2024-12-03 04:14:20.829'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47y3bcm000112fvg7e1bjtt',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-03 04:14:24.308',
-    '2024-12-03 04:15:14.332'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47y4gyc000312fv9qhyaivi',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 04:15:18.227',
-    '2024-12-03 04:19:03.593'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47y9czs0001xd095tg0qa5h',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-03 04:19:06.375',
-    '2024-12-03 04:19:12.626'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm47y9lih0003xd09pnu36vfr',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 04:19:17.416',
-    '2024-12-03 09:22:14.145'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4893cqf0001k4q6bi2nxg84',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-03 09:22:21.866',
-    '2024-12-03 09:43:11.631'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm489ua1y0003k4q6gey9n5o3',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 09:43:18.116',
-    '2024-12-03 16:30:39.141'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48oilxv0001spdsilyc8djy',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 16:34:07.883',
-    '2024-12-03 16:34:40.583'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48ojeqp0003spdszemgjtg5',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 16:34:45.216',
-    '2024-12-03 16:37:26.145'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48omwaf0005spds4gops9j1',
-    NULL,
-    'Logged-out',
-    '2024-12-03 16:37:27.926',
-    '2024-12-03 16:37:46.743'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48ondkx0007spdsdjs4yclm',
-    NULL,
-    'Logged-out',
-    '2024-12-03 16:37:50.337',
-    '2024-12-03 16:38:53.707'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48oorpe0009spds0rmi0ers',
-    NULL,
-    'Logged-out',
-    '2024-12-03 16:38:55.298',
-    '2024-12-03 16:38:56.992'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48oov52000bspdsutvbgndu',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-03 16:38:59.749',
-    '2024-12-03 16:41:30.234'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm48os67h000dspdshne2xnqw',
-    '8uIPHRQ',
-    'Logged-in',
-    '2024-12-03 16:41:34.060',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm492ptnm0001t94k1tpji13a',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-03 23:11:39.098',
-    '2024-12-04 00:09:09.660'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm494s0bf0001cw61khovbone',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-04 00:09:20.277',
-    '2024-12-04 00:11:26.888'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm494ustv0003cw61nvoxbhkd',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-04 00:11:30.546',
-    '2024-12-04 01:25:38.282'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm497i9sg000111mmdbscl9tj',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-04 01:25:44.842',
-    '2024-12-05 00:38:12.470'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4alfhw30001nyvmx7tkjc6g',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-05 00:43:16.173',
-    '2024-12-05 02:10:28.311'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4aojq5400011pw7837ua6dw',
-    NULL,
-    'Logged-out',
-    '2024-12-05 02:10:32.336',
-    '2024-12-05 02:12:07.560'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4aolzgk00031pw7u6vs5lzj',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-05 02:12:17.731',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4aqo9l80001eqrwna93xmkb',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-05 03:10:03.394',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4aqpy2g0003eqrw73dzl3ny',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-05 03:11:21.783',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4aqrna10005eqrw3jmmdkh2',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-05 03:12:41.112',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4au0lhl0007eqrwnajf1iaj',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-05 04:43:37.541',
-    '2024-12-06 00:42:45.888'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c0usii0001141i9imjf415',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-06 00:42:50.195',
-    '2024-12-06 00:43:16.258'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c0vf2q0003141ilggqfox5',
-    NULL,
-    'Logged-out',
-    '2024-12-06 00:43:19.440',
-    '2024-12-06 01:00:26.416'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1hiub0005141igpehb7jj',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-06 01:00:30.748',
-    '2024-12-06 01:00:52.231'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1i1a90007141iz5jhjkx0',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-06 01:00:54.655',
-    '2024-12-06 01:02:15.436'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1jtrq0009141ixcvuksjf',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-06 01:02:18.228',
-    '2024-12-06 01:02:27.127'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1k2uu000b141iiryzqm6k',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-06 01:02:30.005',
-    '2024-12-06 01:03:30.135'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1le8e000d141isd9893xs',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-06 01:03:31.405',
-    '2024-12-06 01:03:41.096'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c1lsxl000f141ivww3kwe0',
-    NULL,
-    'Logged-out',
-    '2024-12-06 01:03:50.456',
-    '2024-12-06 02:39:29.149'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c51dbg00011598yi8hiook',
-    '8uIPHRQ',
-    'Logged-out',
-    '2024-12-06 02:39:55.557',
-    '2024-12-06 02:40:01.541'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4c51k1v000315980cjbewpo',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-06 02:40:04.289',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fe3g6f00011l9jy1i9kmyx',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-08 09:16:47.646',
-    '2024-12-08 09:17:23.807'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fe49qx00031l9jmmxj0y8r',
-    'pS2M79v',
-    'Logged-out',
-    '2024-12-08 09:17:25.973',
-    '2024-12-08 09:17:30.826'
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fe4ibk00051l9j85p1eppg',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 09:17:37.086',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4ffii6z00071l9jnj48sgls',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 09:56:29.722',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4ffubyh00091l9jdfb32qcp',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:05:41.513',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4ffujg8000b1l9j85mrf236',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:05:51.223',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4ffyb35000138k83tuff87a',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:08:47.000',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fg55q700016dcv8sm7c9qi',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:14:06.651',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fg8diy00036dcvp6n4175v',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:16:36.729',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgi5i100019fe896zvqk1c',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:24:12.885',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgr20100039fe84bhrzka9',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:31:08.256',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgrak700059fe8u26vd14g',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:31:19.349',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgrrch00079fe82vlv1v2n',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:31:41.104',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgt22100099fe8ovzngh21',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:32:41.640',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgtqkb000b9fe851a3d34d',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:33:13.401',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4fgveci000d9fe8i8jf17q4',
-    'pS2M79v',
-    'Logged-in',
-    '2024-12-08 10:34:30.880',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm4hgnzvv00037g1k5f4vmb97',
+    'cm4yneboe0001sucehoo08v7i',
     'f4RocSh',
     'Logged-in',
-    '2024-12-09 20:04:17.898',
+    '2024-12-21 20:44:48.922',
     NULL
   );
 INSERT INTO
@@ -2417,10 +1505,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4hgqsvo00057g1k7s1vbvrg',
+    'cm4ynf0v4000112k7rwsnr8yd',
     'f4RocSh',
     'Logged-in',
-    '2024-12-09 20:06:28.787',
+    '2024-12-21 20:45:21.566',
     NULL
   );
 INSERT INTO
@@ -2433,10 +1521,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4hgs82j00077g1kirp3nbe0',
+    'cm4ynfxb50001vfjft5zw2e3b',
     'f4RocSh',
     'Logged-in',
-    '2024-12-09 20:07:35.130',
+    '2024-12-21 20:46:03.616',
     NULL
   );
 INSERT INTO
@@ -2449,10 +1537,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4hgsrbv00097g1kz7cqa56g',
+    'cm4ynkt0j0003vfjf34y6ga5w',
     'f4RocSh',
     'Logged-in',
-    '2024-12-09 20:08:00.090',
+    '2024-12-21 20:49:51.329',
     NULL
   );
 INSERT INTO
@@ -2465,10 +1553,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4hgtqo3000b7g1ktl8qy05r',
+    'cm4ynnlwp0005vfjfvk3wbps5',
     'f4RocSh',
     'Logged-in',
-    '2024-12-09 20:08:45.890',
+    '2024-12-21 20:52:02.088',
     NULL
   );
 INSERT INTO
@@ -2481,10 +1569,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4i5ns0p0001jwt9p7c7dal3',
+    'cm4yno8ec0007vfjfm7k7rqvx',
     'f4RocSh',
     'Logged-in',
-    '2024-12-10 07:43:58.102',
+    '2024-12-21 20:52:31.235',
     NULL
   );
 INSERT INTO
@@ -2497,10 +1585,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4pwfukv0001rn4tatrlm4a0',
+    'cm4yntbko00019ujrcjjvzakw',
     'f4RocSh',
     'Logged-in',
-    '2024-12-15 17:48:01.036',
+    '2024-12-21 20:56:28.622',
     NULL
   );
 INSERT INTO
@@ -2513,10 +1601,10 @@ INSERT INTO
   )
 VALUES
   (
-    'cm4v97r840001cxp8g4v59uso',
+    'cm4ypbhio0001rp0smubi359k',
     'f4RocSh',
     'Logged-in',
-    '2024-12-19 11:44:29.326',
+    '2024-12-21 21:38:35.755',
     NULL
   );
 
@@ -3678,6 +2766,10 @@ VALUES
 # DATA DUMP FOR TABLE: feesgroup
 # ------------------------------------------------------------
 
+INSERT INTO
+  `feesgroup` (`id`, `name`, `amount`, `school_section`)
+VALUES
+  ('huZHxXf', 'testing', '111', 'All');
 INSERT INTO
   `feesgroup` (`id`, `name`, `amount`, `school_section`)
 VALUES

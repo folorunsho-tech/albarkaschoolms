@@ -16,7 +16,7 @@ const Backup = () => {
 	const [restoring, setRestoring] = React.useState(false);
 	const [file, setFile] = React.useState<File | null>(null);
 	const iconStyle = { width: rem(20), height: rem(20) };
-	const server = "http://localhost:5000";
+	const server = process.env.NEXT_PUBLIC_SERVER_API;
 	const showBackedUp = (status: number) => {
 		if (status == 200) {
 			notifications.show({
@@ -148,7 +148,7 @@ const Backup = () => {
 							name='restore'
 							onChange={setFile}
 						/>
-						<Button disabled={restoring} type='submit'>
+						<Button disabled={restoring || !file} type='submit'>
 							Restore backup
 						</Button>
 						{restoring && <Loader color='teal' size='md' type='dots' />}

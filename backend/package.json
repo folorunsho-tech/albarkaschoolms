@@ -17,7 +17,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "multer": "^1.4.5-lts.1",
-    "mysql": "github:mysqljs/mysql",
     "mysqldump": "^3.2.0",
     "nanoid": "^5.0.8",
     "nodemon": "^3.1.9"

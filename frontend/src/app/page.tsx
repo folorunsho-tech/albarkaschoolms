@@ -14,6 +14,7 @@ import { bake_cookie, read_cookie } from "sfcookies";
 import { useRouter } from "next/navigation";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconServerOff } from "@tabler/icons-react";
+import axios from "@/config/axios";
 import { userContext } from "@/context/User";
 import React from "react";
 export default function Login() {
@@ -32,7 +33,9 @@ export default function Login() {
 			});
 			const read = read_cookie("alabrkaschoolms");
 			setUser(read);
-
+			axios.post("/backup/generate").then((d) => {
+				console.log(d.status);
+			});
 			notifications.show({
 				id: "AuthLogin",
 				withCloseButton: false,
