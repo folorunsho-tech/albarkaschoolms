@@ -5,7 +5,7 @@ import { spawn } from "child_process";
 
 const router = express.Router();
 const storage = multer.diskStorage({
-	destination: "/temp/",
+	destination: "../temp/",
 	filename: function (req, file, cb) {
 		cb(null, "restore.sql");
 	},
@@ -15,7 +15,7 @@ const upload = multer({
 });
 
 router.get("/download", (req, res) => {
-	const filePath = "./db/backup/school-backup.sql";
+	const filePath = "../db/backup/school-backup.sql";
 	res.download(
 		filePath,
 		"school-backup.sql", // Remember to include file extension
@@ -47,7 +47,7 @@ router.post("/generate", async (req, res) => {
 					},
 				},
 			},
-			dumpToFile: "./db/backup/school-backup.sql",
+			dumpToFile: "../db/backup/school-backup.sql",
 		});
 		res.status(200).json({
 			message: "Database succesfully backed-up",
@@ -60,7 +60,7 @@ router.post("/restore", upload.any(), (req, res) => {
 	try {
 		const restore = spawn("cmd.exe", [
 			"mysql",
-			` -ualbarkaschool -ptacheyon5567 albarkaschool < ./db/temp/restore.sql`,
+			` -ualbarkaschool -ptacheyon5567 albarkaschool < ../db/temp/restore.sql`,
 		]);
 		restore.stderr.on("data", function (data) {
 			console.log("Error: " + data);

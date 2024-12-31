@@ -1,6 +1,7 @@
 const { createHash } = await import("node:crypto");
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
+import mysqldump from "mysqldump";
 const prisma = new PrismaClient();
 const router = Router();
 
@@ -110,6 +111,24 @@ router.post("/logout", async (req, res) => {
 			logged_out_at: new Date(),
 			auth_status: "Logged-out",
 		},
+	});
+	await mysqldump({
+		connection: {
+			host: process.env.DB_HOST,
+			port: process.env.DB_PORT,
+			user: process.env.DB_USER,
+			password: process.env.DB_PASS,
+			database: process.env.DB_NAME,
+			charset: "utf8",
+		},
+		dump: {
+			schema: {
+				table: {
+					dropIfExist: true,
+				},
+			},
+		},
+		dumpToFile: "../db/backup/school-backup.sql",
 	});
 	res.json({
 		message: "Logged out",

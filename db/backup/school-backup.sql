@@ -1607,6 +1607,70 @@ VALUES
     '2024-12-21 21:38:35.755',
     NULL
   );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm4zqmuzi00011uvp125m8bgw',
+    'f4RocSh',
+    'Logged-in',
+    '2024-12-22 15:03:12.219',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm4zxs7xa0001i1jy6jzmgnqa',
+    'pS2M79v',
+    'Logged-in',
+    '2024-12-22 18:23:19.572',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm500gb3h0001e19nop4j7day',
+    'f4RocSh',
+    'Logged-in',
+    '2024-12-22 19:38:02.665',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm50br60c0003e19n9fuhoh5s',
+    'f4RocSh',
+    'Logged-in',
+    '2024-12-23 00:54:25.064',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: classes
