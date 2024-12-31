@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 import { userContext } from "@/context/User";
 export default function AppLayout({ params, children }: any) {
 	const { setUser, user } = React.useContext(userContext);
-	const cookies: any = useCookies().get("alabrkaschoolms");
+	const cookies: any = useCookies().get("albarkaschoolms");
 	const router = useRouter();
 	const { username }: any = React.use(params);
 	const permisions = user?.permissions;

@@ -27,11 +27,11 @@ export default function Login() {
 			...values,
 		});
 		if (res?.status === 200) {
-			bake_cookie("alabrkaschoolms", {
+			bake_cookie("albarkaschoolms", {
 				...res?.data?.user,
 				authId: res?.data?.authId,
 			});
-			const read = read_cookie("alabrkaschoolms");
+			const read = read_cookie("albarkaschoolms");
 			setUser(read);
 			axios.post("/backup/generate").then((d) => {
 				console.log(d.status);

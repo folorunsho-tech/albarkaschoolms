@@ -9,7 +9,7 @@ const userContext = React.createContext<any>({
 const UserProvider = ({ children }: { children: ReactNode }) => {
 	const [user, setUser] = React.useState();
 	const logOut = () => {
-		delete_cookie("albarkschoolms");
+		delete_cookie("albarkaschoolms");
 		redirect("/");
 	};
 	return (
