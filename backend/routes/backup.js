@@ -1,21 +1,9 @@
 import mysqldump from "mysqldump";
 import express from "express";
-import multer from "multer";
-import { spawn } from "child_process";
 
 const router = express.Router();
-const storage = multer.diskStorage({
-	destination: "../temp/",
-	filename: function (req, file, cb) {
-		cb(null, "restore.sql");
-	},
-});
-const upload = multer({
-	storage,
-});
-
 router.get("/download", (req, res) => {
-	const filePath = "../db/backup/school-backup.sql";
+	const filePath = "../backup/school-backup.sql";
 	res.download(
 		filePath,
 		"school-backup.sql", // Remember to include file extension
@@ -47,26 +35,10 @@ router.post("/generate", async (req, res) => {
 					},
 				},
 			},
-			dumpToFile: "../db/backup/school-backup.sql",
+			dumpToFile: "../backup/school-backup.sql",
 		});
 		res.status(200).json({
 			message: "Database succesfully backed-up",
-		});
-	} catch (error) {
-		res.status(500).json(error);
-	}
-});
-router.post("/restore", upload.any(), (req, res) => {
-	try {
-		const restore = spawn("cmd.exe", [
-			"mysql",
-			` -ualbarkaschool -ptacheyon5567 albarkaschool < ../db/temp/restore.sql`,
-		]);
-		restore.stderr.on("data", function (data) {
-			console.log("Error: " + data);
-		});
-		res.status(200).json({
-			message: "Database succesfully restored",
 		});
 	} catch (error) {
 		res.status(500).json(error);
