@@ -74,7 +74,7 @@ const PaginatedTable = ({
 		);
 	};
 	useEffect(() => {
-		const paginated: any[] = chunk(data, 50);
+		const paginated: any[] = chunk(data, 100);
 		setSortedData(paginated[activePage - 1]);
 	}, [activePage]);
 	return (

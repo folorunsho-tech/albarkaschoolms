@@ -264,7 +264,7 @@ const Exam = () => {
 										(sel: any) => sel?.id != selId
 									);
 									const subject = subjectsList.find(
-										(sub: any) => sub?.value == selectedSubject
+										(sub: any) => sub?.id == selectedSubject
 									);
 
 									setSelectedStudents([
@@ -274,7 +274,7 @@ const Exam = () => {
 											admission_no: selectedStudent?.admission_no,
 											student_name: `${selectedStudent?.first_name} ${selectedStudent?.last_name}`,
 											subject_id: selectedSubject,
-											subject: subject?.label,
+											subject: subject?.name,
 											class_id: selectedClass,
 											score,
 										},

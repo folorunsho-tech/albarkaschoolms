@@ -13,7 +13,9 @@ const getCurrSession = () => {
 	const filteredSession = sessions.filter((sess) =>
 		sess.includes(String(currYr))
 	);
-	if (currMonth >= 8 && currMonth <= 7) {
+	if (currMonth > 7) {
+		return filteredSession[0];
+	} else if (currMonth >= 0 && currMonth <= 7) {
 		return filteredSession[0];
 	} else {
 		return filteredSession[1];
@@ -23,9 +25,9 @@ const getCurrTerm = () => {
 	const terms = ["1st term", "2nd term", "3rd term"];
 	if (currMonth >= 0 && currMonth <= 3) {
 		return terms[1];
-	} else if (currMonth >= 4 && currMonth <= 7) {
+	} else if (currMonth > 3 && currMonth <= 7) {
 		return terms[2];
-	} else if (currMonth > 7) {
+	} else if (currMonth > 7 && currMonth <= 11) {
 		return terms[0];
 	}
 };
