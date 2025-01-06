@@ -3,7 +3,7 @@ import chunk from "@/libs/chunk";
 import React, { useEffect, useState } from "react";
 import { IconX } from "@tabler/icons-react";
 import { ActionIcon, Button, ScrollArea, Select } from "@mantine/core";
-import { sessions } from "@/libs/sessions";
+import { currTerm, sessions } from "@/libs/sessions";
 
 const ResultsFilter = ({
 	setFilterCount,
@@ -35,9 +35,15 @@ const ResultsFilter = ({
 		"SSS 3",
 	];
 	const { fetch } = useFetch();
-	const [criteria, setCriteria] = useState<string | null>("");
-	const [value, setValue] = useState<string | null>("");
-	const [filters, setFilters] = useState<any[]>([]);
+	const [criteria, setCriteria] = useState<string | null>("Term");
+	const [value, setValue] = useState<string | null | undefined>(currTerm);
+	const [filters, setFilters] = useState<any[]>([
+		{
+			criteria,
+			value,
+			id: `Filt-${Math.round(Math.random() * 10000)}`,
+		},
+	]);
 	const [subjectsList, setSubjectsList] = useState([]);
 	const filterValue = (criteria: any) => {
 		if (criteria == "Term") {
