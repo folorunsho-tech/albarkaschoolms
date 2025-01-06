@@ -49,6 +49,31 @@ router.get("/", async (req, res) => {
 
 	res.json(payments);
 });
+router.get("/bysession", async (req, res) => {
+	const payments = await prisma.payments.findMany({
+		where: {
+			NOT: {
+				status: "Cancelled",
+			},
+
+			session: req.body.session,
+		},
+		include: {
+			student: {
+				select: {
+					first_name: true,
+					last_name: true,
+					admission_no: true,
+				},
+			},
+		},
+		orderBy: {
+			updatedAt: "desc",
+		},
+	});
+
+	res.json(payments);
+});
 router.get("/:paymentId", async (req, res) => {
 	const payment = await prisma.payments.findUnique({
 		where: {

@@ -17,6 +17,102 @@ router.get("/", async (req, res) => {
 	});
 	res.json(SCAResults);
 });
+router.post("/byId/:accId/bysession", async (req, res) => {
+	const { session } = req.body;
+	const user = await prisma.accounts.findUnique({
+		where: {
+			id: req.params.accId,
+		},
+		include: {
+			staff: {
+				select: {
+					curr_appointment: true,
+					school_section: true,
+				},
+			},
+		},
+	});
+	if (
+		user?.staff?.curr_appointment?.name.includes("Principal") ||
+		user?.staff?.curr_appointment?.name.includes("VP Academy") ||
+		user?.staff?.school_section == "All"
+	) {
+		const found = await prisma.sCAResults.findMany({
+			orderBy: {
+				updatedAt: "desc",
+			},
+			include: {
+				class: true,
+				subject: true,
+				student: true,
+			},
+			where: {
+				session,
+			},
+		});
+		res.status(200).json(found);
+	} else if (user?.staff?.curr_appointment?.name.includes("Head Master")) {
+		const found = await prisma.sCAResults.findMany({
+			orderBy: {
+				updatedAt: "desc",
+			},
+			where: {
+				class: {
+					OR: [
+						{
+							name: { contains: "Nursery" },
+						},
+						{
+							name: { contains: "nursery" },
+						},
+						{
+							name: { contains: "Primary" },
+						},
+					],
+				},
+				session,
+			},
+			include: {
+				class: true,
+				subject: true,
+				student: true,
+			},
+		});
+		res.status(200).json(found);
+	} else if (
+		user?.staff?.curr_appointment?.name == "Exam Officer" ||
+		user?.staff?.curr_appointment?.name == "Head teacher"
+	) {
+		const found = await prisma.sCAResults.findMany({
+			orderBy: {
+				updatedAt: "desc",
+			},
+			include: {
+				class: true,
+				subject: true,
+				student: true,
+			},
+			where: { session },
+		});
+		res.status(200).json(found);
+	} else {
+		const sCAResults = await prisma.sCAResults.findMany({
+			orderBy: {
+				updatedAt: "desc",
+			},
+			where: {
+				createdById: user?.id,
+				session,
+			},
+			include: {
+				class: true,
+				subject: true,
+				student: true,
+			},
+		});
+		res.json(sCAResults);
+	}
+});
 router.get("/byId/:accId", async (req, res) => {
 	const user = await prisma.accounts.findUnique({
 		where: {

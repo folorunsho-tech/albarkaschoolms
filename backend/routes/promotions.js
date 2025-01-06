@@ -91,6 +91,22 @@ router.get("/students", async (req, res) => {
 	});
 	res.json(promotions);
 });
+router.post("/students/bysession", async (req, res) => {
+	const { session } = req.body;
+	const promotions = await prisma.studentsPromotions.findMany({
+		where: {
+			session,
+		},
+		orderBy: {
+			promotedOn: "desc",
+		},
+		include: {
+			student: true,
+			to: true,
+		},
+	});
+	res.json(promotions);
+});
 router.get("/students/:student_id", async (req, res) => {
 	const promotions = await prisma.studentsPromotions.findMany({
 		where: {

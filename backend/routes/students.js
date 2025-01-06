@@ -21,6 +21,27 @@ router.get("/", async (req, res) => {
 	});
 	res.json(students);
 });
+router.post("/bysession", async (req, res) => {
+	const { session } = req.body;
+
+	const students = await prisma.students.findMany({
+		where: {
+			active: true,
+			admission_session: session,
+		},
+		include: {
+			curr_class: true,
+			Payments: true,
+			StudentsDemotions: true,
+			StudentsPromotions: true,
+			ClassHistory: true,
+		},
+		orderBy: {
+			updatedAt: "desc",
+		},
+	});
+	res.json(students);
+});
 router.get("/:studentId", async (req, res) => {
 	const student = await prisma.students.findUnique({
 		where: {
