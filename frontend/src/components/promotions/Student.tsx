@@ -1,7 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
-import { useFetch, usePost, useFetchSingle } from "@/hooks/useQueries";
+import {
+	useFetch,
+	usePost,
+	useFetchSingle,
+	usePostNormal,
+} from "@/hooks/useQueries";
 import {
 	Table,
 	Button,
@@ -18,14 +23,16 @@ import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";
 import { IconX } from "@tabler/icons-react";
 import { userContext } from "@/context/User";
+import DataLoader from "../DataLoader";
 
 const Student = () => {
 	const { user } = React.useContext(userContext);
 
 	const { handleSubmit } = useForm();
-	const { loading, data, fetch } = useFetch();
+	const { fetch } = useFetch();
 	const { fetch: fSingle } = useFetchSingle();
 	const { post } = usePost();
+	const { post: dPost, loading } = usePostNormal();
 	const headers = [
 		"Admission No.",
 		"Student name",
@@ -45,7 +52,7 @@ const Student = () => {
 	const [students, setStudents] = useState([]);
 	const [toClass, setToClass] = useState("");
 	const [checked, setChecked] = useState(false);
-	const [queryData, setQueryData] = useState(data);
+	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
 	const [searchedData, setSearchedData] = useState([]);
 	const rows = sortedData?.map((row: any, index: number) => (
@@ -85,7 +92,6 @@ const Student = () => {
 
 	useEffect(() => {
 		const getAll = async () => {
-			const { data } = await fetch("/promotions/students");
 			const { data: classes } = await fetch("/classes");
 			const sortedClass = classes.map((cl: any) => {
 				return {
@@ -96,9 +102,6 @@ const Student = () => {
 			setClassList(sortedClass);
 			setSession(currSession);
 			setTerm(currTerm);
-			setQueryData(data);
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
 		};
 		getAll();
 	}, []);
@@ -108,13 +111,9 @@ const Student = () => {
 		}
 	}, [checked]);
 	useEffect(() => {
-		async function getList() {
-			const { data: qData } = await fetch("/promotions/students");
-			const paginated: any[] = chunk(qData, 50);
-			setSortedData(paginated[0]);
-		}
-		getList();
-	}, [opened]);
+		const paginated = chunk(queryData, 50);
+		setSortedData(paginated[0]);
+	}, [queryData]);
 	const getStudents = async (id: string) => {
 		const { data } = await fSingle(`/students/byClass/${id}`);
 		setStudents(data);
@@ -147,7 +146,13 @@ const Student = () => {
 		<section className='flex flex-col gap-4 p-3 bg-white'>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Students Promotions</h2>
-				<div className='flex gap-3 items-center'>
+				<div className='flex gap-3 items-end '>
+					<DataLoader
+						link='/promotions/students/bysession'
+						setQueryData={setQueryData}
+						showReload={true}
+						post={dPost}
+					/>
 					<Button
 						disabled={!user?.permissions?.students?.create}
 						onClick={() => {

@@ -112,7 +112,6 @@ const AStudentsFilter = ({
 											className='w-36 pl-2'
 											data={classList}
 											searchable
-											clearable
 											allowDeselect={false}
 											value={filterAClass}
 											label='Admission class'
@@ -127,7 +126,6 @@ const AStudentsFilter = ({
 											className='w-36 pl-2'
 											data={classList}
 											searchable
-											clearable
 											allowDeselect={false}
 											value={filterClass}
 											label='Current class'

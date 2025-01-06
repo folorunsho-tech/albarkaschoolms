@@ -3,7 +3,6 @@ import chunk from "@/libs/chunk";
 import React, { useEffect, useState } from "react";
 import { IconX } from "@tabler/icons-react";
 import { ActionIcon, Button, ScrollArea, Select } from "@mantine/core";
-import { currTerm, sessions } from "@/libs/sessions";
 
 const ResultsFilter = ({
 	setFilterCount,
@@ -35,15 +34,9 @@ const ResultsFilter = ({
 		"SSS 3",
 	];
 	const { fetch } = useFetch();
-	const [criteria, setCriteria] = useState<string | null>("Term");
-	const [value, setValue] = useState<string | null | undefined>(currTerm);
-	const [filters, setFilters] = useState<any[]>([
-		{
-			criteria,
-			value,
-			id: `Filt-${Math.round(Math.random() * 10000)}`,
-		},
-	]);
+	const [criteria, setCriteria] = useState<string | null>("");
+	const [value, setValue] = useState<string | null>("");
+	const [filters, setFilters] = useState<any[]>([]);
 	const [subjectsList, setSubjectsList] = useState([]);
 	const filterValue = (criteria: any) => {
 		if (criteria == "Term") {
@@ -53,30 +46,11 @@ const ResultsFilter = ({
 					className=' pl-2'
 					data={["1st term", "2nd term", "3rd term"]}
 					searchable
-					clearable
 					allowDeselect={false}
 					value={value}
 					label='Term'
 					nothingFoundMessage='Nothing found...'
 					placeholder='Select a term'
-					onChange={(value: any) => {
-						setValue(value);
-					}}
-				/>
-			);
-		} else if (criteria == "Session") {
-			return (
-				<Select
-					checkIconPosition='right'
-					className=' pl-2'
-					data={sessions}
-					searchable
-					clearable
-					allowDeselect={false}
-					value={value}
-					label='Session'
-					nothingFoundMessage='Nothing found...'
-					placeholder='Select a session'
 					onChange={(value: any) => {
 						setValue(value);
 					}}
@@ -89,7 +63,6 @@ const ResultsFilter = ({
 					className=' pl-2'
 					data={classList}
 					searchable
-					clearable
 					allowDeselect={false}
 					value={value}
 					label='Class'
@@ -107,7 +80,6 @@ const ResultsFilter = ({
 					className=' pl-2'
 					data={subjectsList}
 					searchable
-					clearable
 					allowDeselect={false}
 					value={value}
 					label='Subject'
@@ -131,11 +103,6 @@ const ResultsFilter = ({
 				(fil: any) => fil?.subject?.name == value
 			);
 			return filteredSubs;
-		} else if (criteria == "Session") {
-			const filteredSession = sortedData?.filter(
-				(fil: any) => fil?.session == value
-			);
-			return filteredSession;
 		} else if (criteria == "Term") {
 			const filteredTerm = sortedData?.filter((fil: any) => fil?.term == value);
 			return filteredTerm;
@@ -181,9 +148,8 @@ const ResultsFilter = ({
 						<Select
 							checkIconPosition='right'
 							className='pl-2'
-							data={["Session", "Term", "Class", "Subject"]}
+							data={["Term", "Class", "Subject"]}
 							searchable
-							clearable
 							allowDeselect={false}
 							value={criteria}
 							label='Criteria'

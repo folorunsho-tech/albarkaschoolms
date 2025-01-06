@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
-import { useFetch } from "@/hooks/useQueries";
+import { usePostNormal } from "@/hooks/useQueries";
 import { Table, ActionIcon } from "@mantine/core";
 import { IconPencil } from "@tabler/icons-react";
 import chunk from "@/libs/chunk";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import ResultsFilter from "../filters/ResultsFilter";
 import { userContext } from "@/context/User";
 import { useDisclosure } from "@mantine/hooks";
+import DataLoader from "../DataLoader";
 const Fca = () => {
 	const { user } = React.useContext(userContext);
 	const headers = [
@@ -21,8 +22,8 @@ const Fca = () => {
 		"Score",
 		"Uploaded on",
 	];
-	const { loading, data, fetch } = useFetch();
-	const [queryData, setQueryData] = useState(data);
+	const { loading, post } = usePostNormal();
+	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
 	const [searchedData, setSearchedData] = useState([]);
 	const [filterCount, setFilterCount] = useState(0);
@@ -74,20 +75,14 @@ const Fca = () => {
 		</Table.Tr>
 	));
 	useEffect(() => {
-		async function getAll() {
-			const { data } = await fetch(`/sca/byid/${user?.id}`);
-			setQueryData(data);
-
-			const paginated = chunk(data, 50);
-			setSortedData(paginated[0]);
-		}
-		getAll();
-	}, []);
+		const paginated = chunk(queryData, 50);
+		setSortedData(paginated[0]);
+	}, [queryData]);
 	return (
 		<section className='p-3 bg-white space-y-6'>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>2nd C.A Results</h2>
-				<div className='flex w-1/3 justify-between  items-center'>
+				<div className='flex justify-between gap-6 items-end'>
 					<button
 						onClick={() => {
 							toggle();
@@ -99,6 +94,11 @@ const Fca = () => {
 							{filterCount == 0 ? "None" : filterCount}
 						</span>
 					</button>
+					<DataLoader
+						link={`/sca/byId/${user?.id}/bysession`}
+						post={post}
+						setQueryData={setQueryData}
+					/>
 					<Link
 						href={`results/sca`}
 						className='bg-teal-500 text-white hover:bg-teal-700 px-4 py-2 rounded-sm transition duration-200 ease-linear'
