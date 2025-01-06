@@ -41,7 +41,16 @@ const DataLoader = ({
 				/>
 				<Text className='italic'>Session</Text>
 			</div>
-			{showReload && <Button onClick={async () => {}}>Reload data</Button>}
+			{showReload && (
+				<Button
+					onClick={async () => {
+						const { data } = await post(link, { session });
+						setQueryData(data);
+					}}
+				>
+					Reload data
+				</Button>
+			)}
 		</section>
 	);
 };
