@@ -51,9 +51,11 @@ const Statement = () => {
 	const [term, setTerm] = React.useState<any>("");
 	const [perc, setPerc] = React.useState<any>("0");
 	const [statement, setStatement] = React.useState<any>("");
+	const [docName, setDocName] = React.useState<any>("");
 	const contentRef = React.useRef(null);
 	const reactToPrintFn: any = useReactToPrint({
 		contentRef,
+		documentTitle: docName,
 	});
 	React.useEffect(() => {
 		async function getData() {
@@ -72,6 +74,7 @@ const Statement = () => {
 		}
 		getData();
 	}, []);
+
 	React.useEffect(() => {
 		if (session !== "" && term !== "") {
 			setSelectedStudent(null);
@@ -127,6 +130,7 @@ const Statement = () => {
 					100
 				).toFixed(2);
 				setPerc(calculated);
+				setDocName(data?.admission_no);
 			}
 			getStudent();
 		}

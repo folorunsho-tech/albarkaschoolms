@@ -110,7 +110,7 @@ const Dashboard = () => {
 					<i className='font-semibold'>{new Date().toLocaleDateString()}</i>
 				</p>
 			</div>
-			<div className='self-start ml-10'>
+			{/* <div className='self-start ml-10'>
 				<h3 className='text-lg font-bold'>Quick Links</h3>
 				<div className='flex flex-wrap gap-2'>
 					{data?.map((nav: any, index: number) => (
@@ -128,7 +128,7 @@ const Dashboard = () => {
 						/>
 					))}
 				</div>
-			</div>
+			</div> */}
 		</section>
 	);
 };
