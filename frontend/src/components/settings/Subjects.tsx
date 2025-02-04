@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
 import { useFetch, usePost } from "@/hooks/useQueries";
 import { Table, Button, Drawer, TextInput } from "@mantine/core";
-import chunk from "@/libs/chunk";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";
 const Subjects = () => {
@@ -14,19 +13,9 @@ const Subjects = () => {
 	const headers = ["ID", "Subject name", "No of classes", "No of staffs"];
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const [opened, { open, close }] = useDisclosure(false);
 
 	const rows = sortedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.id}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.id}</Table.Td>
-			<Table.Td className='capitalize'>{row?.name}</Table.Td>
-			<Table.Td>{row?._count.Classes}</Table.Td>
-			<Table.Td>{row?._count.Staffs}</Table.Td>
-		</Table.Tr>
-	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.id}>
 			<Table.Td>{index + 1}</Table.Td>
 			<Table.Td>{row?.id}</Table.Td>
@@ -39,8 +28,6 @@ const Subjects = () => {
 		const getAll = async () => {
 			const { data } = await fetch("/subjects");
 			setQueryData(data);
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
 		};
 
 		getAll();
@@ -74,8 +61,7 @@ const Subjects = () => {
 						});
 						const { data } = await fetch("/subjects");
 						setQueryData(data);
-						const paginated: any[] = chunk(data, 50);
-						setSortedData(paginated[0]);
+
 						reset();
 					})}
 					className='flex flex-col gap-4'
@@ -105,14 +91,12 @@ const Subjects = () => {
 				showlast={false}
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
+				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by subject name'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData.length}
 			/>
 		</section>
 	);

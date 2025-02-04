@@ -4,12 +4,30 @@ import { IconLogout } from "@tabler/icons-react";
 import { Avatar } from "@mantine/core";
 import { userContext } from "@/context/User";
 import axios from "@/config/axios";
+import { IconSettings, IconDatabaseExport } from "@tabler/icons-react";
+import Link from "next/link";
 const TopBar = () => {
 	const { user, logOut } = React.useContext(userContext);
 	return (
 		<header className='p-3 py-2 border-b border-gray-300 bg-blue-500 flex justify-between items-center'>
 			<h2 className='font-semibold pb-2 text-white'>Albarka School Wawa</h2>
 			<Group className='' justify='space-between'>
+				{user?.role == "admin" && (
+					<Group justify='space-between' className='text-white'>
+						<Link
+							className='hover:text-teal-300 transition duration-200'
+							href={`/${user?.username}/settings`}
+						>
+							<IconSettings stroke={2} />
+						</Link>
+						<Link
+							className='hover:text-teal-300 transition duration-200'
+							href={`/${user?.username}/backup`}
+						>
+							<IconDatabaseExport stroke={2} />
+						</Link>
+					</Group>
+				)}
 				<Group className='bg-indigo-100 p-1 px-4 rounded-md'>
 					<Avatar
 						radius='xl'

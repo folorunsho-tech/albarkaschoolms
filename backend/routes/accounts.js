@@ -1,9 +1,8 @@
 import { nanoid } from "nanoid";
 import express from "express";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma.js";
 const { createHash } = await import("node:crypto");
 const router = express.Router();
-const prisma = new PrismaClient();
 const hashpass = (password) => {
 	return createHash("sha256").update(password).digest("hex");
 };
@@ -46,7 +45,7 @@ router.get("/:accountId", async (req, res) => {
 });
 router.post("/create", async (req, res) => {
 	try {
-		const { name, username, password, permissions, empid } = req.body;
+		const { name, username, password, permissions, empid, role } = req.body;
 		const passHash = hashpass(password);
 		const created = await prisma.accounts.create({
 			data: {
@@ -56,6 +55,7 @@ router.post("/create", async (req, res) => {
 				permissions,
 				passHash,
 				empid,
+				role,
 			},
 		});
 
@@ -66,7 +66,7 @@ router.post("/create", async (req, res) => {
 });
 
 router.post("/edit/:accountId", async (req, res) => {
-	const { name, username, password, permissions, empid, updatedById } =
+	const { name, username, password, permissions, empid, updatedById, role } =
 		req.body;
 	const passHash = hashpass(password);
 	const edited = await prisma.accounts.update({
@@ -80,6 +80,7 @@ router.post("/edit/:accountId", async (req, res) => {
 			passHash,
 			empid,
 			updatedById,
+			role,
 		},
 	});
 	res.json(edited);

@@ -1,10 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
 import { usePostNormal } from "@/hooks/useQueries";
 import { Table, ActionIcon } from "@mantine/core";
 import { IconPencil } from "@tabler/icons-react";
-import chunk from "@/libs/chunk";
 import moment from "moment";
 import Link from "next/link";
 import ResultsFilter from "../filters/ResultsFilter";
@@ -26,7 +25,6 @@ const Fca = () => {
 	const { loading, post } = usePostNormal();
 	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const [filterCount, setFilterCount] = useState(0);
 	const [opened, { toggle }] = useDisclosure();
 	const rows = sortedData?.map((row, index) => (
@@ -52,33 +50,6 @@ const Fca = () => {
 			</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row, index) => (
-		<Table.Tr key={row?.id + index}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.student?.admission_no}</Table.Td>
-			<Table.Td>
-				{row?.student?.first_name} {row?.student?.last_name}
-			</Table.Td>
-			<Table.Td>{row?.class?.name}</Table.Td>
-			<Table.Td>
-				{row?.term} - {row?.session}
-			</Table.Td>
-			<Table.Td>{row?.subject?.name}</Table.Td>
-			<Table.Td>{row?.score}</Table.Td>
-			<Table.Td>{moment(row?.updatedAt).format("MMMM Do YYYY")}</Table.Td>
-			<Table.Td className='flex items-center gap-3 '>
-				<Link href={`results/exam/edit?id=${row?.id}`}>
-					<ActionIcon variant='outline' color='green' aria-label='action menu'>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</ActionIcon>
-				</Link>
-			</Table.Td>
-		</Table.Tr>
-	));
-	useEffect(() => {
-		const paginated = chunk(queryData, 50);
-		setSortedData(paginated[0]);
-	}, [queryData]);
 	return (
 		<section className='p-3 bg-white space-y-6'>
 			<div className='flex items-end justify-between mt-2'>
@@ -98,7 +69,7 @@ const Fca = () => {
 						</span>
 					</button>
 					<DataLoader
-						link={`/exams/byId/${user?.id}/bysession`}
+						link={`/exams/byId/${user?.id}`}
 						post={post}
 						setQueryData={setQueryData}
 					/>
@@ -126,14 +97,12 @@ const Fca = () => {
 				showlast={false}
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
+				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by student name or admission no'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData?.length}
 			/>
 		</section>
 	);

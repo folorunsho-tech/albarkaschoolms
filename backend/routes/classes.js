@@ -2,8 +2,7 @@ import { nanoid } from "nanoid";
 
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 
 router.get("/", async (req, res) => {
 	const classes = await prisma.classes.findMany({
@@ -18,6 +17,7 @@ router.get("/", async (req, res) => {
 					subjects: true,
 				},
 			},
+
 			teacher: {
 				select: {
 					first_name: true,
@@ -27,12 +27,51 @@ router.get("/", async (req, res) => {
 			},
 			subjects: true,
 			Students: true,
+			fees: true,
 			ClassHistory: {
 				select: {
 					student: true,
 					session: true,
 				},
 			},
+		},
+
+		orderBy: {
+			name: "asc",
+		},
+	});
+
+	res.json(classes);
+});
+router.get("/list", async (req, res) => {
+	const classes = await prisma.classes.findMany({
+		orderBy: {
+			name: "asc",
+		},
+	});
+
+	res.json(classes);
+});
+router.get("/fees", async (req, res) => {
+	const classes = await prisma.classes.findMany({
+		include: {
+			fees: true,
+		},
+
+		orderBy: {
+			name: "asc",
+		},
+	});
+
+	res.json(classes);
+});
+router.get("/fees/:name", async (req, res) => {
+	const classes = await prisma.classes.findMany({
+		where: {
+			name: req.params.name,
+		},
+		include: {
+			fees: true,
 		},
 
 		orderBy: {

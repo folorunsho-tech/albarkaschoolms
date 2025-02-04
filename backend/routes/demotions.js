@@ -2,8 +2,7 @@ import { nanoid } from "nanoid";
 
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 
 router.get("/staffs", async (req, res) => {
 	const demotions = await prisma.demotions.findMany({
@@ -96,6 +95,23 @@ router.post("/students/bysession", async (req, res) => {
 	const demotions = await prisma.studentsDemotions.findMany({
 		where: {
 			session,
+		},
+		orderBy: {
+			demotedOn: "desc",
+		},
+		include: {
+			student: true,
+			to: true,
+		},
+	});
+	res.json(demotions);
+});
+router.post("/students/bysessionnterm", async (req, res) => {
+	const { session, term } = req.body;
+	const demotions = await prisma.studentsDemotions.findMany({
+		where: {
+			session,
+			term,
 		},
 		orderBy: {
 			demotedOn: "desc",

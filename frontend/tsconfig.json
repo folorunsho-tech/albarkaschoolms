@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx", ".next/types/**/*.ts", "src/components/filters/AStudentsFilter.tsx", "src/app/page.tsx", "src/hooks/useReciept.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx", ".next/types/**/*.ts", "src/components/filters/AStudentsFilter.tsx", "src/app/page.tsx", "src/hooks/useReciept.ts"],
   "exclude": ["node_modules"]
 }

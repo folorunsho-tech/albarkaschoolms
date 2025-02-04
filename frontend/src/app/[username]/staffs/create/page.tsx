@@ -126,16 +126,7 @@ const CreateStaff = () => {
 				<Select
 					checkIconPosition='right'
 					className='w-70'
-					data={[
-						"All",
-						"Pre-nursery",
-						"Nursery",
-						"Primary",
-						"Nursery and Primary",
-						"Secondary",
-						"JSS",
-						"SSS",
-					]}
+					data={["All", "Nursery and Primary", "Secondary"]}
 					searchable
 					allowDeselect={false}
 					value={section}

@@ -24,22 +24,18 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import PaginatedTable from "@/components/PaginatedTable";
 import moment from "moment";
-import chunk from "@/libs/chunk";
 import PrintHeader from "@/components/PrintHeader";
 import { sessions, currSession, currTerm } from "@/libs/sessions";
 import { useReactToPrint } from "react-to-print";
-import { DateInput } from "@mantine/dates";
 
 const ViewClass = () => {
 	const iconStyle = { width: rem(20), height: rem(20) };
 	const { loading, data, fetch }: any = useFetchSingle();
 	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const [session, setSession] = React.useState<any>("");
 	const [term, setTerm] = React.useState<any>("");
 	const [subject, setSubject] = React.useState<any>("");
-	const [date, setDate] = React.useState<any>("");
 	const searchParams = useSearchParams();
 	const id = searchParams.get("id");
 	const router = useRouter();
@@ -60,12 +56,10 @@ const ViewClass = () => {
 		async function getAll() {
 			const { data: curr_class } = await fetch(`/classes/${id}`);
 			setQueryData(curr_class?.Students || []);
-			const paginated: any[] = chunk(curr_class?.Students || [], 50);
-			setSortedData(paginated[0]);
+
 			setTerm(currTerm);
 			setSession(currSession);
 			setSubject(curr_class?.subjects[0]?.name);
-			setDate(new Date());
 		}
 		getAll();
 	}, []);
@@ -88,24 +82,7 @@ const ViewClass = () => {
 			<Table.Td>{row?.admission_status}</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.admission_no}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.admission_no}</Table.Td>
 
-			<Table.Td>
-				{moment(row?.date_of_admission).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td>
-				{row?.first_name} {row?.last_name}
-			</Table.Td>
-			<Table.Td>{row?.sex}</Table.Td>
-			<Table.Td>{row?.religion}</Table.Td>
-			<Table.Td>{row?.guardian_name}</Table.Td>
-			<Table.Td>{row?.guardian_telephone}</Table.Td>
-			<Table.Td>{row?.admission_status}</Table.Td>
-		</Table.Tr>
-	));
 	return (
 		<section className='relative flex flex-col '>
 			<div className='flex justify-between p-3'>
@@ -160,12 +137,6 @@ const ViewClass = () => {
 					>
 						Result sheet
 					</Tabs.Tab>
-					<Tabs.Tab
-						value='register'
-						leftSection={<IconClipboardText style={iconStyle} />}
-					>
-						Class register
-					</Tabs.Tab>
 				</Tabs.List>
 
 				<Tabs.Panel value='summary' className='bg-white p-3'>
@@ -219,14 +190,12 @@ const ViewClass = () => {
 						showlast={false}
 						showSearch
 						rows={rows}
-						searchedRows={searchedRows}
+						sortedData={sortedData}
 						data={queryData}
 						headers={headers}
 						placeholder='Search by student admission no'
 						setSortedData={setSortedData}
-						setSearchedData={setSearchedData}
 						loading={loading}
-						count={queryData.length}
 					/>
 				</Tabs.Panel>
 				<Tabs.Panel value='result-sheet' className='bg-white p-3'>
@@ -325,107 +294,6 @@ const ViewClass = () => {
 											{student?.first_name} {student?.last_name}
 										</td>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</section>
-				</Tabs.Panel>
-				<Tabs.Panel value='register' className='bg-white p-3'>
-					<div className='flex gap-4 items-end'>
-						<Select
-							checkIconPosition='right'
-							label='Session'
-							placeholder='Select session'
-							data={sessions}
-							allowDeselect={false}
-							searchable
-							value={session}
-							nothingFoundMessage='Nothing found...'
-							onChange={(value: any) => {
-								setSession(value);
-							}}
-						/>
-						<Select
-							checkIconPosition='right'
-							label='Term'
-							placeholder='Select term'
-							data={["1st term", "2nd term", "3rd term"]}
-							allowDeselect={false}
-							value={term}
-							nothingFoundMessage='Nothing found...'
-							onChange={(value: any) => {
-								setTerm(value);
-							}}
-						/>
-						<DateInput
-							label='Date'
-							allowDeselect={false}
-							value={date}
-							minDate={new Date("2010-09-01")}
-						/>
-						<Button
-							onClick={reactToPrintFn}
-							className='self-end w-max'
-							leftSection={<IconPrinter />}
-						>
-							Print register
-						</Button>
-					</div>
-					<section ref={contentRef} className='p-2 w-full'>
-						<header className='mb-2 w-full'>
-							<PrintHeader showDate={false} />
-							<h2 className='text-xl text-center font-semibold mb-2'>
-								Class Register
-							</h2>
-							<div className='flex items-center gap-6 w-full'>
-								<p>
-									Session:{" "}
-									<span className='font-semibold italic'>{session}</span>
-								</p>
-								<p>
-									Term: <span className='font-semibold italic'>{term}</span>
-								</p>
-								<p>
-									Class:{" "}
-									<span className='font-semibold italic'>{data?.name}</span>
-								</p>
-								<p className='justify-self-end'>
-									Date:{" "}
-									<span className='font-semibold italic'>
-										{new Date(date).toLocaleDateString()}
-									</span>
-								</p>
-								<p className='justify-self-end'>
-									Class teacher's signature:{" "}
-									<span className='font-semibold italic'>
-										__________________
-									</span>
-								</p>
-							</div>
-						</header>
-						<table className='printable'>
-							<thead>
-								<tr>
-									<th>S/N</th>
-									<th>Admission No</th>
-									<th>Name</th>
-									<th>Present</th>
-									<th>Absent</th>
-									<th>Absent Reason</th>
-								</tr>
-							</thead>
-							<tbody>
-								{queryData?.map((student: any, index: number) => (
-									<tr key={student?.admission_no}>
-										<td>{index + 1}</td>
-										<td>{student?.admission_no}</td>
-										<td>
-											{student?.first_name} {student?.last_name}
-										</td>
 										<td></td>
 										<td></td>
 										<td></td>

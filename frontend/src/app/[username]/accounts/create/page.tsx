@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
 	TextInput,
 	PasswordInput,
@@ -12,8 +12,9 @@ import { useRouter } from "next/navigation";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
 import { useFetch, usePost } from "@/hooks/useQueries";
-
+import { userContext } from "@/context/User";
 const Create = () => {
+	const { user } = useContext(userContext);
 	const { fetch } = useFetch();
 	const { post, loading } = usePost();
 	const [students, setStudents] = useState({
@@ -43,14 +44,13 @@ const Create = () => {
 	const [accounts, setAccounts] = useState(false);
 	const [staffPromotions, setStaffPromotions] = useState(false);
 	const [studentPromotions, setStudentPromotions] = useState(false);
-	const [settings, setSettings] = useState(false);
 	const [statement, setStatement] = useState(false);
-	const [backup, setBackup] = useState(false);
 	const [selectedStaff, setSelectedStaff] = useState(null);
 	const [staffList, setStaffList] = useState([]);
 	const [staffsData, setStaffsData] = useState([]);
 	const [empid, setEmpid] = useState("");
 	const [name, setName] = useState("");
+	const [role, setRole] = useState("user");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const { handleSubmit } = useForm();
@@ -61,13 +61,12 @@ const Create = () => {
 			username,
 			password,
 			empid,
+			role,
 			permissions: {
 				accounts,
-				settings,
 				statement,
 				studentPromotions,
 				staffPromotions,
-				backup,
 				classes,
 				students,
 				results,
@@ -77,11 +76,9 @@ const Create = () => {
 		});
 
 		setAccounts(false);
-		setSettings(false);
 		setStatement(false);
 		setStaffPromotions(false);
 		setStudentPromotions(false);
-		setBackup(false);
 		setClasses({
 			view: false,
 
@@ -109,6 +106,7 @@ const Create = () => {
 		});
 		setUsername("");
 		setPassword("");
+		setRole("user");
 	};
 	useEffect(() => {
 		const getAll = async () => {
@@ -177,6 +175,20 @@ const Create = () => {
 					/>
 					{selectedStaff !== null ? (
 						<section className='flex flex-col gap-6'>
+							{user?.role == "admin" && (
+								<Select
+									className='w-80'
+									checkIconPosition='right'
+									label='Select account role'
+									placeholder='Select a role'
+									data={["admin", "user"]}
+									value={role}
+									allowDeselect={false}
+									onChange={(value: any) => {
+										setRole(value);
+									}}
+								/>
+							)}
 							<TextInput
 								label='Name'
 								placeholder='name...'
@@ -218,15 +230,7 @@ const Create = () => {
 											<h3 className='text-sm font-semibold'>Accounts</h3>
 										</span>
 									</div>
-									<div className='space-y-2'>
-										<span className='flex gap-2'>
-											<Checkbox
-												checked={settings}
-												onChange={() => setSettings(!settings)}
-											/>
-											<h3 className='text-sm font-semibold'>Settings</h3>
-										</span>
-									</div>
+
 									<div className='space-y-2'>
 										<span className='flex gap-2'>
 											<Checkbox
@@ -260,15 +264,6 @@ const Create = () => {
 											<h3 className='text-sm font-semibold'>
 												Statement of results
 											</h3>
-										</span>
-									</div>
-									<div className='space-y-2'>
-										<span className='flex gap-2'>
-											<Checkbox
-												checked={backup}
-												onChange={() => setBackup(!backup)}
-											/>
-											<h3 className='text-sm font-semibold'>Backup</h3>
 										</span>
 									</div>
 
@@ -443,7 +438,7 @@ const Create = () => {
 											<h3 className='text-sm font-semibold'>Edit</h3>
 										</span>
 									</div>
-									{/* <div className='space-y-2'>
+									<div className='space-y-2'>
 										<span className='flex gap-2'>
 											<Checkbox
 												checked={
@@ -489,7 +484,7 @@ const Create = () => {
 											/>
 											<h3 className='text-sm font-semibold'>Edit</h3>
 										</span>
-									</div> */}
+									</div>
 								</div>
 							</section>
 						</section>

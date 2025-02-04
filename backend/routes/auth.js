@@ -1,8 +1,7 @@
 const { createHash } = await import("node:crypto");
 import { Router } from "express";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma.js";
 import mysqldump from "mysqldump";
-const prisma = new PrismaClient();
 const router = Router();
 
 const hashpass = (password) => {
@@ -25,6 +24,7 @@ router.post("/login", async (req, res) => {
 				empid: true,
 				name: true,
 				username: true,
+				role: true,
 				staff: {
 					select: {
 						curr_appointment: {

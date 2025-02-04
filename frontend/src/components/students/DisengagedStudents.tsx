@@ -61,7 +61,7 @@ const DisengagedStudents = () => {
 	const [checked, setChecked] = useState(false);
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
+
 	const { register, reset, handleSubmit } = useForm();
 	const rows = sortedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.student?.id + index}>
@@ -96,39 +96,7 @@ const DisengagedStudents = () => {
 			</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.student?.id + index}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.student?.admission_no}</Table.Td>
-			<Table.Td>
-				{row?.student?.first_name} {row?.student?.last_name}
-			</Table.Td>
-			<Table.Td>{row?.student?.sex}</Table.Td>
-			<Table.Td>
-				{moment(row?.student?.date_of_admission).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td>{row?.student?.admission_class}</Table.Td>
-			<Table.Td>{row?.student?.curr_class?.name}</Table.Td>
-			<Table.Td>{row?.session}</Table.Td>
-			<Table.Td>{row?.term}</Table.Td>
-			<Table.Td>{row?.method_of_disengagement}</Table.Td>
-			<Table.Td>{row?.reason}</Table.Td>
-			<Table.Td>{row?.comment}</Table.Td>
-			<Table.Td>
-				{moment(row?.date_of_disengagement).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td className='flex items-center gap-3 '>
-				<ActionIcon variant='outline' aria-label='action menu'>
-					<Link
-						href={`students/view?id=${row?.student?.id}`}
-						className='flex justify-center'
-					>
-						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-			</Table.Td>
-		</Table.Tr>
-	));
+
 	const contentRef = useRef<HTMLTableElement>(null);
 	const reactToPrintFn: any = useReactToPrint({ contentRef });
 	useEffect(() => {
@@ -145,8 +113,8 @@ const DisengagedStudents = () => {
 			setSession(currSession);
 			setTerm(currTerm);
 			setQueryData(data);
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
+
+			setSortedData(data);
 		};
 		getAll();
 	}, []);
@@ -177,8 +145,7 @@ const DisengagedStudents = () => {
 			});
 		});
 		const { data: qData } = await fetch("/disengagements/students");
-		const paginated: any[] = chunk(qData, 50);
-		setSortedData(paginated[0]);
+		setSortedData(qData);
 		setChecked(false);
 		setSelected([]);
 		setSelectedClass("");
@@ -304,6 +271,7 @@ const DisengagedStudents = () => {
 										);
 										setSelected([curr, ...filterd]);
 									}}
+									disabled={studentList.length == 0}
 									leftSection='+'
 									color='black'
 								>
@@ -398,17 +366,15 @@ const DisengagedStudents = () => {
 			</Drawer>
 			<PaginatedTable
 				depth='curr_class'
+				showlast={true}
 				showSearch
-				showlast={false}
 				rows={rows}
-				searchedRows={searchedRows}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by admission no or name or class'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData.length}
+				sortedData={sortedData}
 			/>
 			<Drawer
 				opened={pOpened}

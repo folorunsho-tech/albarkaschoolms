@@ -17,7 +17,6 @@ import {
 } from "@mantine/core";
 import moment from "moment";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
-import PaymentsHistory from "@/components/views/PaymentsHistory";
 import StudentsPromotions from "@/components/views/StudentsPromotions";
 import StudentsDemotion from "@/components/views/StudentsDemotion";
 
@@ -107,7 +106,7 @@ const ViewStudent = () => {
 				>
 					<Tabs.List justify='justify-betwenn'>
 						<Tabs.Tab value='info'>Personal info</Tabs.Tab>
-						<Tabs.Tab value='payments'>Payments history</Tabs.Tab>
+						{/* <Tabs.Tab value='payments'>Payments history</Tabs.Tab> */}
 						<Tabs.Tab value='promotions'>Promotion history</Tabs.Tab>
 						<Tabs.Tab value='demotions'>Demotion history</Tabs.Tab>
 					</Tabs.List>
@@ -263,9 +262,7 @@ const ViewStudent = () => {
 							</section>
 						</ScrollArea>
 					</Tabs.Panel>
-					<Tabs.Panel value='payments' className='bg-white p-2'>
-						<PaymentsHistory student={student} />
-					</Tabs.Panel>
+
 					<Tabs.Panel value='promotions' className='bg-white p-2'>
 						<StudentsPromotions id={id} />
 					</Tabs.Panel>

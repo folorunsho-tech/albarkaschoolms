@@ -14,7 +14,6 @@ import {
 	OptionsFilter,
 } from "@mantine/core";
 
-import chunk from "@/libs/chunk";
 import moment from "moment";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";
@@ -45,40 +44,9 @@ const Promotions = () => {
 	const [selectedApp, setSelectedApp] = useState<any>({});
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const [opened, { open, close }] = useDisclosure(false);
 	const [new_salary, setNewSalary] = useState("");
 	const rows = sortedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.id}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.empid}</Table.Td>
-			<Table.Td>
-				{row?.staff?.first_name} {row?.staff?.last_name}
-			</Table.Td>
-			<Table.Td>
-				{row?.from} - {row?.from_section}
-			</Table.Td>
-			<Table.Td>
-				<NumberFormatter
-					prefix='N '
-					value={row?.prev_salary}
-					thousandSeparator
-				/>
-			</Table.Td>
-			<Table.Td>
-				{row?.to?.name} - {row?.to?.school_section}
-			</Table.Td>
-			<Table.Td>
-				<NumberFormatter
-					prefix='N '
-					value={row?.curr_salary}
-					thousandSeparator
-				/>
-			</Table.Td>
-			<Table.Td>{moment(row?.promotedOn).format("MMMM Do YYYY")}</Table.Td>
-		</Table.Tr>
-	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.id}>
 			<Table.Td>{index + 1}</Table.Td>
 			<Table.Td>{row?.empid}</Table.Td>
@@ -131,8 +99,7 @@ const Promotions = () => {
 			setStaffsList(staffs);
 			setAppointments(appointmentsList);
 
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
+			setSortedData(data);
 		};
 
 		getAll();
@@ -192,8 +159,8 @@ const Promotions = () => {
 							to_id: selectedApp?.id,
 						});
 						const { data } = await fetch("/promotions/staffs");
-						const paginated: any[] = chunk(data, 50);
-						setSortedData(paginated[0]);
+
+						setSortedData(data);
 						setSelectedApp({});
 						setNewSalary("");
 						close();
@@ -293,14 +260,12 @@ const Promotions = () => {
 				showlast={false}
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
+				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
-				placeholder='Search by staff name or employment id'
+				placeholder='Search by staff name or empid'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData?.length}
 			/>
 		</section>
 	);

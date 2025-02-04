@@ -19,6 +19,7 @@ model Accounts {
   username     String?
   passHash     String?
   empid        String?       @unique
+  role         String        @default("user")
   permissions  Json?
   active       Boolean?      @default(true)
   createdAt    DateTime      @default(now())
@@ -27,7 +28,6 @@ model Accounts {
   staff        Staffs?       @relation(fields: [empid], references: [empid])
   auth_history AuthHistory[]
   Students     Students[]
-  Payments     Payments[]
   FCAResults   FCAResults[]
   SCAResults   SCAResults[]
   ExamResults  ExamResults[]
@@ -42,7 +42,9 @@ model Accounts {
 
   Disengagedstudent Disengagedstudent[]
 
-  Disengagemnets Disengagemnets[]
+  Disengagemnets     Disengagemnets[]
+  Transactions       Transactions[]
+  transactionHistory transactionHistory[]
 }
 
 model AuthHistory {
@@ -126,10 +128,10 @@ model Students {
   updatedById        String?
   updatedAt          DateTime  @updatedAt
 
-  Payments    Payments[]
-  FCAResults  FCAResults[]
-  SCAResults  SCAResults[]
-  ExamResults ExamResults[]
+  transactions Transactions[]
+  FCAResults   FCAResults[]
+  SCAResults   SCAResults[]
+  ExamResults  ExamResults[]
 
   StudentsPromotions StudentsPromotions[]
 
@@ -137,7 +139,8 @@ model Students {
 
   Disengagedstudent Disengagedstudent[]
 
-  ClassHistory ClassHistory[]
+  ClassHistory       ClassHistory[]
+  transactionHistory transactionHistory[]
 }
 
 model Disengagedstudent {
@@ -217,25 +220,59 @@ model ExamResults {
   updatedAt   DateTime  @updatedAt
 }
 
+model Transactions {
+  tnxId              Int                  @id @default(autoincrement())
+  student_id         String?
+  student            Students?            @relation(fields: [student_id], references: [id])
+  items              Payments[]
+  total              Int?
+  paid               Int?
+  status             String?
+  class              String?
+  term               String?
+  session            String?
+  createdById        String?
+  createdBy          Accounts?            @relation(fields: [createdById], references: [id])
+  updatedById        String?
+  createdAt          DateTime?            @default(now())
+  updatedAt          DateTime?            @updatedAt
+  transactionHistory transactionHistory[]
+}
+
+model transactionHistory {
+  id          String       @id @default(uuid())
+  tnxId       Int
+  transaction Transactions @relation(fields: [tnxId], references: [tnxId])
+  student_id  String?
+  student     Students?    @relation(fields: [student_id], references: [id])
+  items       Json?
+  total       Int?
+  paid        Int?
+  status      String?
+  class       String?
+  term        String?
+  session     String?
+  createdById String?
+  createdBy   Accounts?    @relation(fields: [createdById], references: [id])
+  createdAt   DateTime?    @default(now())
+  updatedAt   DateTime?    @updatedAt
+}
+
 model Payments {
-  payment_id     String    @id
-  student_id     String?
-  student        Students? @relation(fields: [student_id], references: [id])
-  item           String?
-  section        String?
-  class          String?
-  term           String?
-  session        String?
-  payment_method String?
-  teller_no      String?
-  total          Int?
+  payment_id     String        @id @default(cuid())
+  item_id        String?
+  item           FeesGroup?    @relation(fields: [item_id], references: [id])
+  amount         Int?
   paid           Int?
   status         String?
-  createdById    String?
-  createdBy      Accounts? @relation(fields: [createdById], references: [id])
-  updatedById    String?
-  createdAt      DateTime? @default(now())
-  updatedAt      DateTime? @updatedAt
+  term           String?
+  payment_method String?
+  teller_no      String?
+  session        String?
+  transactionId  Int?
+  transaction    Transactions? @relation(fields: [transactionId], references: [tnxId])
+  createdAt      DateTime?     @default(now())
+  updatedAt      DateTime?     @updatedAt
 }
 
 model Promotions {
@@ -297,17 +334,17 @@ model StudentsDemotions {
 }
 
 model Classes {
-  id             String        @id
-  name           String?
-  teacher_id     String?       @unique
-  teacher        Staffs?       @relation(fields: [teacher_id], references: [empid])
-  school_section String?
-  subjects       Subjects[]
-  Students       Students[]
-  FCAResults     FCAResults[]
-  SCAResults     SCAResults[]
-  ExamResults    ExamResults[]
-
+  id                 String               @id
+  name               String?
+  teacher_id         String?              @unique
+  teacher            Staffs?              @relation(fields: [teacher_id], references: [empid])
+  school_section     String?
+  subjects           Subjects[]
+  Students           Students[]
+  FCAResults         FCAResults[]
+  SCAResults         SCAResults[]
+  ExamResults        ExamResults[]
+  fees               FeesGroup[]
   StudentsPromotions StudentsPromotions[]
 
   StudentsDemotions StudentsDemotions[]
@@ -338,8 +375,9 @@ model Appointments {
 }
 
 model FeesGroup {
-  id             String  @id
-  name           String?
-  amount         String?
-  school_section String?
+  id       String     @id
+  name     String?
+  amount   String?
+  payments Payments[]
+  classes  Classes[]
 }

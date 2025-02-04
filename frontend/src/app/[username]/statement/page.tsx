@@ -12,31 +12,8 @@ import {
 import { IconArrowNarrowLeft, IconPrinter } from "@tabler/icons-react";
 import { useReactToPrint } from "react-to-print";
 import PrintHeader from "@/components/PrintHeader";
+import getGrade from "@/libs/getGrade";
 
-const getGrade = (total: number, curr_class: string) => {
-	if (curr_class.includes("SS")) {
-		if (total >= 75) {
-			return "Excellent-A1";
-		} else if (total >= 70 && total <= 74) {
-			return "V.Good-B2";
-		} else if (total >= 65 && total <= 69) {
-			return "Good-B3";
-		} else if (total >= 60 && total <= 64) {
-			return "Credit-C4";
-		} else if (total >= 55 && total <= 59) {
-			return "Credit-C5";
-		} else if (total >= 50 && total <= 54) {
-			return "Credit-C6";
-		} else if (total >= 45 && total <= 49) {
-			return "Pass-D7";
-		} else if (total >= 40 && total <= 44) {
-			return "Pass-E8";
-		} else {
-			return "Fail-F9";
-		}
-	}
-	return "";
-};
 const Statement = () => {
 	const router = useRouter();
 	const { post, loading } = usePost();
@@ -88,17 +65,20 @@ const Statement = () => {
 					{
 						session,
 						term,
+						classId: selectedClass?.id,
 					}
 				);
+				const subs = data?.subjects;
+				const results = data?.results;
 				const generated: any[] = [];
-				selectedClass?.subjects?.forEach((sub: any) => {
-					const fca = data?.FCAResults?.find(
+				subs?.forEach((sub: any) => {
+					const fca = results?.FCAResults?.find(
 						(result: any) => result?.subject?.name == sub?.name
 					);
-					const sca = data?.SCAResults?.find(
+					const sca = results?.SCAResults?.find(
 						(result: any) => result?.subject?.name == sub?.name
 					);
-					const exam = data?.ExamResults?.find(
+					const exam = results?.ExamResults?.find(
 						(result: any) => result?.subject?.name == sub?.name
 					);
 					generated.push({
@@ -114,10 +94,11 @@ const Statement = () => {
 						),
 					});
 				});
+
 				setStatement({
-					name: `${data?.first_name} ${data?.last_name}`,
-					class: data?.curr_class?.name,
-					admission_no: data?.admission_no,
+					name: `${results?.first_name} ${results?.last_name}`,
+					// class: results?.curr_class?.name,
+					admission_no: results?.admission_no,
 					generated: generated.sort((a, b) =>
 						a?.name?.toLowerCase() < b?.name?.toLowerCase() ? -1 : 1
 					),

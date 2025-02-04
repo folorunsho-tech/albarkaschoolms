@@ -6,13 +6,11 @@ import React, { useEffect } from "react";
 import {
 	IconUsers,
 	IconReportAnalytics,
-	IconSettings,
 	IconBuilding,
-	// IconCashRegister,
+	IconCashRegister,
 	IconSchool,
 	IconArrowsTransferUpDown,
 	IconUserCheck,
-	IconDatabaseExport,
 	IconFileInvoice,
 } from "@tabler/icons-react";
 import { useCookies } from "next-client-cookies";
@@ -49,12 +47,12 @@ export default function AppLayout({ params, children }: any) {
 			icon: IconFileInvoice,
 			shown: permisions?.statement,
 		},
-		// {
-		// 	link: "payments",
-		// 	label: "Payments",
-		// 	icon: IconCashRegister,
-		// 	shown: permisions?.payments?.view,
-		// },
+		{
+			link: "payments",
+			label: "Payments",
+			icon: IconCashRegister,
+			shown: permisions?.payments?.view,
+		},
 		{
 			link: "classes",
 			label: "Classes",
@@ -78,18 +76,6 @@ export default function AppLayout({ params, children }: any) {
 			label: "Accounts",
 			icon: IconUserCheck,
 			shown: permisions?.accounts,
-		},
-		{
-			link: "settings",
-			label: "Settings",
-			icon: IconSettings,
-			shown: permisions?.settings,
-		},
-		{
-			link: "backup",
-			label: "Backup",
-			icon: IconDatabaseExport,
-			shown: permisions?.backup,
 		},
 	];
 	useEffect(() => {

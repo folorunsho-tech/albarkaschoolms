@@ -1,8 +1,7 @@
 import { nanoid } from "nanoid";
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 
 router.get("/", async (req, res) => {
 	const appointments = await prisma.appointments.findMany({

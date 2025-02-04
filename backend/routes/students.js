@@ -1,7 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 import { nanoid } from "nanoid";
 router.get("/", async (req, res) => {
 	const students = await prisma.students.findMany({
@@ -10,10 +9,29 @@ router.get("/", async (req, res) => {
 		},
 		include: {
 			curr_class: true,
-			Payments: true,
+			transactions: true,
 			StudentsDemotions: true,
 			StudentsPromotions: true,
 			ClassHistory: true,
+		},
+		orderBy: {
+			updatedAt: "desc",
+		},
+	});
+	res.json(students);
+});
+router.get("/fees", async (req, res) => {
+	const students = await prisma.students.findMany({
+		where: {
+			active: true,
+		},
+		include: {
+			curr_class: {
+				include: {
+					fees: true,
+				},
+			},
+			transactions: true,
 		},
 		orderBy: {
 			updatedAt: "desc",
@@ -31,7 +49,27 @@ router.post("/bysession", async (req, res) => {
 		},
 		include: {
 			curr_class: true,
-			Payments: true,
+			StudentsDemotions: true,
+			StudentsPromotions: true,
+			ClassHistory: true,
+		},
+		orderBy: {
+			updatedAt: "desc",
+		},
+	});
+	res.json(students);
+});
+router.post("/bysessionnterm", async (req, res) => {
+	const { session, term } = req.body;
+
+	const students = await prisma.students.findMany({
+		where: {
+			active: true,
+			admission_session: session,
+			admission_term: term,
+		},
+		include: {
+			curr_class: true,
 			StudentsDemotions: true,
 			StudentsPromotions: true,
 			ClassHistory: true,
@@ -57,7 +95,7 @@ router.get("/:studentId", async (req, res) => {
 					school_section: true,
 				},
 			},
-			Payments: true,
+			transactions: true,
 			StudentsDemotions: true,
 			StudentsPromotions: true,
 			Disengagedstudent: true,
@@ -126,8 +164,8 @@ router.post("/edit/:studentId", async (req, res) => {
 	if (edited.curr_class_id !== curr_class_id) {
 		const connectHistory = await prisma.classHistory.create({
 			data: {
-				student_id: created?.id,
-				session: created?.admission_session,
+				student_id: edited?.id,
+				session: edited?.admission_session,
 				class_id: edited.curr_class_id,
 			},
 		});

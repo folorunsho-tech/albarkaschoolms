@@ -58,42 +58,6 @@ const Classes = () => {
 			</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.id}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.name}</Table.Td>
-			<Table.Td>{row?.school_section}</Table.Td>
-			<Table.Td>
-				{row?.teacher?.first_name} {row?.teacher?.last_name} -{" "}
-				{row?.teacher?.empid}
-			</Table.Td>
-			<Table.Td>{row?._count.subjects}</Table.Td>
-			<Table.Td>{row?._count.Students}</Table.Td>
-			<Table.Td className='flex items-center gap-3 '>
-				<ActionIcon variant='outline' aria-label='action menu'>
-					<Link
-						href={`classes/view?id=${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-				<ActionIcon
-					disabled={!user.permissions?.classes?.edit}
-					variant='outline'
-					color='teal'
-					aria-label='action menu'
-				>
-					<Link
-						href={`classes/edit?id=${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-			</Table.Td>
-		</Table.Tr>
-	));
 	useEffect(() => {
 		const getAll = async () => {
 			const { data } = await fetch("/classes");
@@ -124,14 +88,12 @@ const Classes = () => {
 				showlast
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by class name'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
+				sortedData={sortedData}
 				loading={loading}
-				count={queryData.length}
 			/>
 		</section>
 	);

@@ -2,132 +2,98 @@ import express from "express";
 const router = express.Router();
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { invoiceIdGen } from "../lib/idGenerator.js";
-router.get("/reversed", async (req, res) => {
-	const payments = await prisma.payments.findMany({
-		where: {
-			status: "Cancelled",
-		},
-		include: {
-			student: {
-				select: {
-					first_name: true,
-					last_name: true,
-					admission_no: true,
-				},
-			},
-		},
-		orderBy: {
-			updatedAt: "desc",
-		},
-	});
-
-	res.json(payments);
-});
+// import prisma from "../lib/prisma.js";
 router.get("/", async (req, res) => {
 	const payments = await prisma.payments.findMany({
-		where: {
-			NOT: [
-				{
-					status: "Cancelled",
-				},
-			],
-		},
 		include: {
-			student: {
-				select: {
-					first_name: true,
-					last_name: true,
-					admission_no: true,
+			item: true,
+			transaction: {
+				include: {
+					student: true,
 				},
 			},
 		},
 		orderBy: {
-			updatedAt: "desc",
+			createdAt: "desc",
 		},
 	});
 
 	res.json(payments);
 });
-router.get("/bysession", async (req, res) => {
-	const payments = await prisma.payments.findMany({
-		where: {
-			NOT: {
-				status: "Cancelled",
+router.post("/bydate", async (req, res) => {
+	const { from, to } = req.body;
+	try {
+		const found = await prisma.payments.findMany({
+			where: {
+				AND: [
+					{
+						createdAt: {
+							gte: new Date(new Date(from).setUTCHours(0, 0, 0, 0)),
+						},
+					},
+					{
+						createdAt: {
+							lte: new Date(new Date(to).setUTCHours(0, 0, 0, 0)),
+						},
+					},
+				],
 			},
-
-			session: req.body.session,
-		},
-		include: {
-			student: {
-				select: {
-					first_name: true,
-					last_name: true,
-					admission_no: true,
+			include: {
+				item: true,
+				transaction: {
+					include: {
+						student: true,
+					},
 				},
 			},
-		},
-		orderBy: {
-			updatedAt: "desc",
-		},
-	});
-
-	res.json(payments);
+		});
+		res.status(200).json(found);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
 });
-router.get("/:paymentId", async (req, res) => {
-	const payment = await prisma.payments.findUnique({
-		where: {
-			payment_id: req.params.paymentId,
-		},
-	});
-	res.json(payment);
-});
-router.get("/history/:student_id", async (req, res) => {
-	const payment = await prisma.payments.findMany({
-		where: {
-			student_id: req.params.student_id,
-		},
-		include: {
-			student: {
-				select: {
-					first_name: true,
-					last_name: true,
-					admission_no: true,
+router.post("/bysession", async (req, res) => {
+	const { session } = req.body;
+	try {
+		const found = await prisma.payments.findMany({
+			where: {
+				session,
+			},
+			include: {
+				item: true,
+				transaction: {
+					include: {
+						student: true,
+					},
 				},
 			},
-		},
-	});
-	res.json(payment);
+		});
+		res.status(200).json(found);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
-router.post("/create", async (req, res) => {
-	const created = await prisma.payments.create({
-		data: {
-			payment_id: await invoiceIdGen(),
-			...req.body,
-		},
-	});
-	res.json(created);
+router.post("/bysessionnterm", async (req, res) => {
+	const { session, term } = req.body;
+	try {
+		const found = await prisma.payments.findMany({
+			where: {
+				session,
+				term,
+			},
+			include: {
+				item: true,
+				transaction: {
+					include: {
+						student: true,
+					},
+				},
+			},
+		});
+		res.status(200).json(found);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
-
-router.post("/edit/:paymentId", async (req, res) => {
-	const edited = await prisma.payments.update({
-		where: {
-			payment_id: req.params.paymentId,
-		},
-		data: req.body,
-	});
-	res.json(edited);
-});
-router.post("/reverse/:paymentId", async (req, res) => {
-	const edited = await prisma.payments.update({
-		where: {
-			payment_id: req.params.paymentId,
-		},
-		data: {
-			status: "Cancelled",
-		},
-	});
-	res.json(edited);
-});
-
 export default router;

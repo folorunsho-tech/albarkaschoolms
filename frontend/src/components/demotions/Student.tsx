@@ -17,7 +17,6 @@ import {
 	ActionIcon,
 } from "@mantine/core";
 import { sessions, currSession, currTerm } from "@/libs/sessions";
-import chunk from "@/libs/chunk";
 import moment from "moment";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";
@@ -53,25 +52,7 @@ const Student = () => {
 	const [checked, setChecked] = useState(false);
 	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const rows = sortedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.id}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.student?.admission_no}</Table.Td>
-			<Table.Td>
-				{row?.student?.first_name} {row?.student?.last_name}
-			</Table.Td>
-			<Table.Td>
-				{row?.session} - {row?.term}
-			</Table.Td>
-			<Table.Td>{row?.from}</Table.Td>
-
-			<Table.Td>{row?.to?.name}</Table.Td>
-
-			<Table.Td>{moment(row?.demotedOn).format("MMMM Do YYYY")}</Table.Td>
-		</Table.Tr>
-	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.id}>
 			<Table.Td>{index + 1}</Table.Td>
 			<Table.Td>{row?.student?.admission_no}</Table.Td>
@@ -109,10 +90,7 @@ const Student = () => {
 			setSelected(students);
 		}
 	}, [checked]);
-	useEffect(() => {
-		const paginated = chunk(queryData, 50);
-		setSortedData(paginated[0]);
-	}, [queryData]);
+
 	const getStudents = async (id: string) => {
 		const { data } = await fSingle(`/students/byClass/${id}`);
 		setStudents(data);
@@ -147,7 +125,7 @@ const Student = () => {
 				<h2 className='font-bold text-xl text-blue-700'>Students Demotions</h2>
 				<div className='flex gap-3 items-end'>
 					<DataLoader
-						link='/demotions/students/bysession'
+						link='/demotions/students'
 						setQueryData={setQueryData}
 						showReload={true}
 						post={dPost}
@@ -336,14 +314,12 @@ const Student = () => {
 				showlast={false}
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
+				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by student name or admission no'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData?.length}
 			/>
 		</section>
 	);

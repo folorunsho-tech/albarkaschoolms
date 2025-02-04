@@ -1,12 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
-import { TextInput, PasswordInput, Button, Checkbox } from "@mantine/core";
+import { useContext, useEffect, useState } from "react";
+import {
+	TextInput,
+	PasswordInput,
+	Button,
+	Checkbox,
+	Select,
+} from "@mantine/core";
 import { LoadingOverlay } from "@mantine/core";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
 import { useEdit, useFetch } from "@/hooks/useQueries";
+import { userContext } from "@/context/User";
+
 const Edit = () => {
+	const { user } = useContext(userContext);
 	const searchParams = useSearchParams();
 	const id = searchParams.get("id");
 	const { fetch } = useFetch();
@@ -38,12 +47,11 @@ const Edit = () => {
 	const [accounts, setAccounts] = useState(false);
 	const [staffPromotions, setStaffPromotions] = useState(false);
 	const [studentPromotions, setStudentPromotions] = useState(false);
-	const [settings, setSettings] = useState(false);
-	const [backup, setBackup] = useState(false);
 	const [statement, setStatement] = useState(false);
 	const [name, setName] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [role, setRole] = useState("");
 	const { handleSubmit } = useForm();
 	const router = useRouter();
 	const onSubmit = async () => {
@@ -51,12 +59,11 @@ const Edit = () => {
 			name,
 			username,
 			password,
+			role,
 			permissions: {
 				accounts,
-				settings,
 				studentPromotions,
 				staffPromotions,
-				backup,
 				classes,
 				students,
 				results,
@@ -74,12 +81,11 @@ const Edit = () => {
 			setName(data?.name);
 			setUsername(data?.username);
 			setPassword(data?.password);
+			setRole(data?.role);
 			const permissions = data?.permissions;
 			setAccounts(permissions?.accounts);
-			setSettings(permissions?.settings);
 			setStaffPromotions(permissions?.staffPromotions);
 			setStudentPromotions(permissions?.studentPromotions);
-			setBackup(permissions?.backup);
 			setClasses(permissions?.classes);
 			setStudents(permissions?.students);
 			setResults(permissions?.results);
@@ -117,6 +123,20 @@ const Edit = () => {
 			<form onSubmit={handleSubmit(onSubmit)} className='relative'>
 				<div className=''>
 					<section className='flex flex-col gap-6'>
+						{user?.role == "admin" && (
+							<Select
+								className='w-80'
+								checkIconPosition='right'
+								label='Select account role'
+								placeholder='Select a role'
+								data={["admin", "user"]}
+								value={role}
+								allowDeselect={false}
+								onChange={(value: any) => {
+									setRole(value);
+								}}
+							/>
+						)}
 						<TextInput
 							label='Name'
 							placeholder='name...'
@@ -161,15 +181,6 @@ const Edit = () => {
 								<div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
-											checked={settings}
-											onChange={() => setSettings(!settings)}
-										/>
-										<h3 className='text-sm font-semibold'>Settings</h3>
-									</span>
-								</div>
-								<div className='space-y-2'>
-									<span className='flex gap-2'>
-										<Checkbox
 											checked={studentPromotions}
 											onChange={() => setStudentPromotions(!studentPromotions)}
 										/>
@@ -196,15 +207,6 @@ const Edit = () => {
 										<h3 className='text-sm font-semibold'>
 											Statement of results
 										</h3>
-									</span>
-								</div>
-								<div className='space-y-2'>
-									<span className='flex gap-2'>
-										<Checkbox
-											checked={backup}
-											onChange={() => setBackup(!backup)}
-										/>
-										<h3 className='text-sm font-semibold'>Backup</h3>
 									</span>
 								</div>
 								<div className='space-y-2'>
@@ -378,7 +380,7 @@ const Edit = () => {
 										<h3 className='text-sm font-semibold'>Edit</h3>
 									</span>
 								</div>
-								{/* <div className='space-y-2'>
+								<div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
 											checked={
@@ -424,7 +426,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Edit</h3>
 									</span>
-								</div> */}
+								</div>
 							</div>
 						</section>
 					</section>

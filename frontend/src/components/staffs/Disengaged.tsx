@@ -13,7 +13,6 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import moment from "moment";
-import chunk from "@/libs/chunk";
 import { useForm } from "react-hook-form";
 import { IconEye } from "@tabler/icons-react";
 import Link from "next/link";
@@ -46,7 +45,6 @@ const Disengaged = () => {
 
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const { register, reset, handleSubmit } = useForm();
 	const rows = sortedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.staff?.empid + index}>
@@ -80,39 +78,7 @@ const Disengaged = () => {
 			</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.staff?.empid + index}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.staff?.empid}</Table.Td>
 
-			<Table.Td>
-				{moment(row?.staff?.date_of_emp).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td>
-				{row?.staff?.first_name} {row?.staff?.last_name}
-			</Table.Td>
-			<Table.Td>{row?.staff?.sex}</Table.Td>
-			<Table.Td>{row?.staff?.curr_appointment?.name}</Table.Td>
-			<Table.Td>{row?.staff?.school_section}</Table.Td>
-			<Table.Td>{row?.staff?.telephone}</Table.Td>
-			<Table.Td>{row?.method_of_disengagement}</Table.Td>
-			<Table.Td>{row?.reason}</Table.Td>
-			<Table.Td>{row?.employer_comment}</Table.Td>
-			<Table.Td>
-				{moment(row?.date_of_disengagement).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td className='flex items-center gap-1 '>
-				<ActionIcon variant='outline' aria-label='action menu'>
-					<Link
-						href={`staffs/view?id=${row?.staff?.empid}`}
-						className='flex justify-center'
-					>
-						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-			</Table.Td>
-		</Table.Tr>
-	));
 	useEffect(() => {
 		const getAll = async () => {
 			const { data } = await fetch("/disengagements/staffs");
@@ -125,8 +91,6 @@ const Disengaged = () => {
 			});
 			setQueryData(data);
 			setStaffSelectData(sortedStaff);
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
 		};
 
 		getAll();
@@ -138,8 +102,8 @@ const Disengaged = () => {
 			staff_id: selected,
 		});
 		const { data: qData } = await fetch("/disengagements/staffs");
-		const paginated: any[] = chunk(qData, 50);
-		setSortedData(paginated[0]);
+
+		setSortedData(qData);
 
 		setSelected("");
 		reset();
@@ -244,18 +208,16 @@ const Disengaged = () => {
 				<LoadingOverlay visible={pLoading} />
 			</Drawer>
 			<PaginatedTable
-				depth='staff'
+				depth='curr_appointment'
 				showlast
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
+				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
-				placeholder='Search by name or empid or appointment or school section or method or reason'
+				placeholder='Search by name or empid or appointment or school section'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData.length}
 			/>
 		</section>
 	);

@@ -48,19 +48,6 @@ const Sca = () => {
 					user?.staff?.curr_appointment?.name !== "VP Academy"
 				) {
 					return cl?.school_section?.includes("SS");
-				} else if (
-					user?.staff?.curr_appointment?.name.includes("Principal") ||
-					user?.staff?.curr_appointment?.name == "VP Academy"
-				) {
-					return classes;
-				} else if (
-					user?.staff?.school_section == "Nursery" ||
-					user?.staff?.school_section == "Pre-nursery"
-				) {
-					return (
-						cl?.school_section?.includes("Nursery") ||
-						cl?.school_section?.includes("Pre-nursery")
-					);
 				} else {
 					return classes;
 				}

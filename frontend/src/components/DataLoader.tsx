@@ -1,5 +1,5 @@
 import React from "react";
-import { currSession, sessions } from "@/libs/sessions";
+import { currSession, currTerm, sessions } from "@/libs/sessions";
 import { Button, Select, Text } from "@mantine/core";
 
 const DataLoader = ({
@@ -7,45 +7,101 @@ const DataLoader = ({
 	setQueryData,
 	showReload = false,
 	post,
+	loadCriteria = "Session and Term",
 }: {
 	link: string;
 	setQueryData: any;
 	showReload?: Boolean;
 	post: any;
+	loadCriteria?: string;
 }) => {
 	const [session, setSession] = React.useState<string | null>(currSession);
-	React.useEffect(() => {
-		async function getAll() {
-			const { data } = await post(link, { session });
+	const [Asession, setASession] = React.useState<string | null>(currSession);
+	const [term, setTerm] = React.useState<string | null | undefined>(currTerm);
+	const [criteria, setCriteria] = React.useState<string | null>(loadCriteria);
+
+	const getData = async () => {
+		if (criteria == "Session and Term") {
+			const { data } = await post(link + "/bysessionnterm", {
+				session: Asession,
+				term,
+			});
+			setQueryData(data);
+		} else if (criteria == "Session") {
+			const { data } = await post(link + "/bysession", { session });
 			setQueryData(data);
 		}
-		getAll();
-	}, [session]);
+	};
+	React.useEffect(() => {
+		getData();
+	}, [Asession, term, session, criteria]);
 	return (
 		<section className='flex gap-6 items-end'>
-			<div className='flex items-end gap-2'>
+			<div className='flex items-center gap-2'>
 				<Text className='font-semibold'>Load data by:</Text>
 				<Select
 					checkIconPosition='right'
-					className=' pl-2'
-					data={sessions}
-					searchable
+					className='w-[11rem] pl-2'
+					data={["Session", "Session and Term"]}
 					allowDeselect={false}
-					value={session}
-					label='Session'
-					nothingFoundMessage='Nothing found...'
-					placeholder='Select a session'
+					value={criteria}
+					label='Criteria'
+					placeholder='Select a criteria'
 					onChange={(value: any) => {
-						setSession(value);
+						setCriteria(value);
 					}}
 				/>
-				<Text className='italic'>Session</Text>
+				{criteria == "Session" && (
+					<Select
+						checkIconPosition='right'
+						data={sessions}
+						className='w-32'
+						searchable
+						allowDeselect={false}
+						value={session}
+						label='Session'
+						nothingFoundMessage='Nothing found...'
+						placeholder='Select a session'
+						onChange={(value: any) => {
+							setSession(value);
+						}}
+					/>
+				)}
+				{criteria == "Session and Term" && (
+					<div className='flex gap-4'>
+						<Select
+							checkIconPosition='right'
+							className='w-32'
+							data={sessions}
+							searchable
+							allowDeselect={false}
+							value={Asession}
+							label='Session'
+							nothingFoundMessage='Nothing found...'
+							placeholder='Select a session'
+							onChange={(value: any) => {
+								setASession(value);
+							}}
+						/>
+						<Select
+							checkIconPosition='right'
+							className='w-32'
+							data={["1st term", "2nd term", "3rd term"]}
+							allowDeselect={false}
+							value={term}
+							label='Session'
+							placeholder='Select a term'
+							onChange={(value: any) => {
+								setTerm(value);
+							}}
+						/>
+					</div>
+				)}
 			</div>
 			{showReload && (
 				<Button
-					onClick={async () => {
-						const { data } = await post(link, { session });
-						setQueryData(data);
+					onClick={() => {
+						getData();
 					}}
 				>
 					Reload data

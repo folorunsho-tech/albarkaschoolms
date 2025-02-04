@@ -145,63 +145,6 @@ const Accounts = () => {
 			</Table.Td>
 		</Table.Tr>
 	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.id}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.staff?.empid}</Table.Td>
-			<Table.Td>{row?.name}</Table.Td>
-			<Table.Td>{row?.username}</Table.Td>
-			<Table.Td>{row?.staff?.curr_appointment?.name}</Table.Td>
-			<Table.Td>
-				{row?.active ? <IconCheck color='teal' /> : <IconX color='red' />}
-			</Table.Td>
-			<Table.Td>{moment(row?.createdAt).format("MMMM Do YYYY")}</Table.Td>
-			<Table.Td>{moment(row?.updatedAt).format("MMMM Do YYYY")}</Table.Td>
-			<Table.Td>
-				<Menu shadow='md' width={250}>
-					<Menu.Target>
-						<ActionIcon>
-							<IconGridDots style={{ width: rem(14), height: rem(14) }} />
-						</ActionIcon>
-					</Menu.Target>
-
-					<Menu.Dropdown>
-						<Menu.Item
-							href={`accounts/edit?id=${row?.id}`}
-							component={Link}
-							leftSection={
-								<IconPencil style={{ width: rem(14), height: rem(14) }} />
-							}
-						>
-							Edit Account
-						</Menu.Item>
-						<Menu.Item
-							onClick={() => {
-								openAModal(row);
-							}}
-							color='teal'
-							leftSection={
-								<IconKey style={{ width: rem(14), height: rem(14) }} />
-							}
-						>
-							Allow account's login access
-						</Menu.Item>
-						<Menu.Item
-							onClick={() => {
-								openRModal(row);
-							}}
-							color='red'
-							leftSection={
-								<IconKeyOff style={{ width: rem(14), height: rem(14) }} />
-							}
-						>
-							Revoke account's login access
-						</Menu.Item>
-					</Menu.Dropdown>
-				</Menu>
-			</Table.Td>
-		</Table.Tr>
-	));
 	useEffect(() => {
 		const getAll = async () => {
 			const { data } = await fetch("/accounts");
@@ -258,14 +201,12 @@ const Accounts = () => {
 				showlast
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by name or username'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData.length}
+				sortedData={sortedData}
 			/>
 		</section>
 	);

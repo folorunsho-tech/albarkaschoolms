@@ -159,16 +159,7 @@ const EditStaff = () => {
 				<Select
 					checkIconPosition='right'
 					className='w-70'
-					data={[
-						"All",
-						"Pre-nursery",
-						"Nursery",
-						"Primary",
-						"Primary and Secondary",
-						"Secondary",
-						"JSS",
-						"SSS",
-					]}
+					data={["All", "Nursery and Primary", "Secondary"]}
 					searchable
 					clearable
 					value={section}

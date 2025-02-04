@@ -22,28 +22,24 @@ const PaginatedTable = ({
 	data,
 	headers,
 	setSortedData,
-	setSearchedData,
 	rows,
-	searchedRows,
 	placeholder = "Search by any field",
 	loading,
-	count,
 	showSearch = true,
 	showlast = true,
 	depth = "",
+	sortedData,
 }: {
 	data: any[];
 	headers: string[];
 	setSortedData: any;
-	setSearchedData: any;
 	rows: any;
-	searchedRows: any;
 	placeholder: string;
 	loading: boolean;
-	count: number;
 	showSearch: boolean;
 	showlast: boolean;
 	depth: string;
+	sortedData: any;
 }) => {
 	const mappedData = data.map((mDtata) => {
 		return {
@@ -51,32 +47,30 @@ const PaginatedTable = ({
 			...mDtata[depth],
 		};
 	});
-	function sortData(
-		data: any[],
-		payload: { sortBy: keyof any | null; reversed: boolean; search: string }
-	) {
-		return filterData(mappedData, payload.search);
-	}
-	const [sortBy, setSortBy] = useState(null);
+	const chunkAmnt = 100;
+	const [total, setTotal] = useState(1);
 	const [search, setSearch] = useState("");
-	const [reverseSortDirection] = useState(false);
 	const [activePage, setPage] = useState(1);
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.currentTarget;
 		setSearch(value);
-		setSearchedData(
-			sortData(data, {
-				sortBy,
-				reversed: reverseSortDirection,
-				search: value,
-			})
-		);
+		const filtered = filterData(mappedData, value);
+		const chunked = chunk(filtered, chunkAmnt);
+		setPage(1);
+		setSortedData(chunked[activePage - 1]);
+		setTotal(chunked?.length);
 	};
 	useEffect(() => {
-		const paginated: any[] = chunk(data, 100);
-		setSortedData(paginated[activePage - 1]);
-	}, [activePage]);
+		const chunked = chunk(data, chunkAmnt);
+		setTotal(chunked?.length);
+		setSortedData(chunked[activePage - 1]);
+	}, [loading]);
+	useEffect(() => {
+		const chunked = chunk(sortedData, chunkAmnt);
+		setTotal(chunked?.length);
+		setSortedData(chunked[activePage - 1]);
+	}, []);
 	return (
 		<ScrollArea h={800}>
 			{showSearch && (
@@ -112,44 +106,30 @@ const PaginatedTable = ({
 						{showlast && <Table.Th></Table.Th>}
 					</Table.Tr>
 				</Table.Tbody>
-				{search === "" ? (
-					<Table.Tbody>
-						{rows?.length > 0 ? (
-							rows
-						) : (
-							<Table.Tr>
-								<Table.Td colSpan={headers.length + 1}>
-									<Text fw={500} ta='center'>
-										Nothing found
-									</Text>
-								</Table.Td>
-							</Table.Tr>
-						)}
-					</Table.Tbody>
-				) : (
-					<Table.Tbody>
-						{searchedRows?.length > 0 ? (
-							searchedRows
-						) : (
-							<Table.Tr>
-								<Table.Td colSpan={headers.length + 1}>
-									<Text fw={500} ta='center'>
-										Nothing found
-									</Text>
-								</Table.Td>
-							</Table.Tr>
-						)}
-					</Table.Tbody>
-				)}
+				<Table.Tbody>
+					{rows?.length > 0 ? (
+						rows
+					) : (
+						<Table.Tr>
+							<Table.Td colSpan={headers.length + 1}>
+								<Text fw={500} ta='center'>
+									Nothing found
+								</Text>
+							</Table.Td>
+						</Table.Tr>
+					)}
+				</Table.Tbody>
 			</Table>
 			<LoadingOverlay visible={loading} />
 			<div className='flex w-full justify-end'>
 				<Pagination
 					mt={20}
-					total={count < 50 ? 1 : count / 50 + 1}
+					total={total}
 					value={activePage}
-					onChange={(page) => {
-						setPage(page);
+					onChange={(value: number) => {
+						setPage(value);
+						const chunked = chunk(data, chunkAmnt);
+						setSortedData(chunked[value - 1]);
 					}}
 				/>
 			</div>

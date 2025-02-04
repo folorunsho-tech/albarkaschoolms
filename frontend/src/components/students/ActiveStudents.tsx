@@ -34,56 +34,10 @@ const ActiveStudents = () => {
 
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 	const [opened, { open, close }] = useDisclosure(false);
 	const contentRef = useRef<HTMLTableElement>(null);
 	const reactToPrintFn: any = useReactToPrint({ contentRef });
 	const rows = sortedData?.map((row: any, index: number) => (
-		<Table.Tr key={row?.admission_no}>
-			<Table.Td>{index + 1}</Table.Td>
-			<Table.Td>{row?.admission_no}</Table.Td>
-			<Table.Td>
-				{moment(row?.date_of_admission).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td>{row?.admission_session}</Table.Td>
-			<Table.Td>{row?.admission_term}</Table.Td>
-			<Table.Td>{row?.admission_class}</Table.Td>
-			<Table.Td>
-				{row?.first_name} {row?.last_name}
-			</Table.Td>
-			<Table.Td>{row?.sex}</Table.Td>
-
-			<Table.Td>{row?.religion}</Table.Td>
-			<Table.Td>{row?.guardian_name}</Table.Td>
-			<Table.Td>{row?.guardian_telephone}</Table.Td>
-			<Table.Td>{row?.curr_class?.name}</Table.Td>
-
-			<Table.Td className='flex items-center gap-3 '>
-				<ActionIcon variant='outline' aria-label='action menu'>
-					<Link
-						href={`students/view?id=${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-				<ActionIcon
-					disabled={!permission?.edit}
-					variant='outline'
-					color='teal'
-					aria-label='action menu'
-				>
-					<Link
-						href={`students/edit?id=${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
-			</Table.Td>
-		</Table.Tr>
-	));
-	const searchedRows = searchedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.admission_no}>
 			<Table.Td>{index + 1}</Table.Td>
 			<Table.Td>{row?.admission_no}</Table.Td>
@@ -133,15 +87,13 @@ const ActiveStudents = () => {
 		const getAll = async () => {
 			const { data } = await fetch("/students");
 			setQueryData(data);
-			const paginated: any[] = chunk(data, 50);
-			setSortedData(paginated[0]);
 		};
 
 		getAll();
 	}, []);
 
 	return (
-		<section className='flex flex-col gap-1 bg-white p-4 h-[70vh]'>
+		<section className='flex flex-col gap-1 bg-white p-4 '>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Students</h2>
 				<div className='flex gap-3 items-center'>
@@ -173,17 +125,15 @@ const ActiveStudents = () => {
 			/>
 			<PaginatedTable
 				depth='curr_class'
-				showlast
+				showlast={true}
 				showSearch
 				rows={rows}
-				searchedRows={searchedRows}
 				data={queryData}
 				headers={headers}
 				placeholder='Search by admission no or name or class'
 				setSortedData={setSortedData}
-				setSearchedData={setSearchedData}
 				loading={loading}
-				count={queryData.length}
+				sortedData={sortedData}
 			/>
 			<Drawer
 				opened={opened}

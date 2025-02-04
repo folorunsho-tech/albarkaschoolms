@@ -1,10 +1,26 @@
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
+import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.post("/byStudent/:student_id", async (req, res) => {
-	const { session, term } = req.body;
+	const { session, term, classId } = req.body;
+	const subjects = await prisma.subjects.groupBy({
+		by: ["name"],
+		where: {
+			FCAResults: {
+				some: {
+					session,
+					term,
+					student_id: req.params.student_id,
+					class_id: classId,
+					score: {
+						not: null,
+					},
+				},
+			},
+		},
+	});
 	const results = await prisma.students.findUnique({
 		where: {
 			id: req.params.student_id,
@@ -15,6 +31,7 @@ router.post("/byStudent/:student_id", async (req, res) => {
 				where: {
 					session,
 					term,
+					class_id: classId,
 				},
 
 				select: {
@@ -36,6 +53,7 @@ router.post("/byStudent/:student_id", async (req, res) => {
 				where: {
 					session,
 					term,
+					class_id: classId,
 				},
 				select: {
 					id: true,
@@ -56,6 +74,7 @@ router.post("/byStudent/:student_id", async (req, res) => {
 				where: {
 					session,
 					term,
+					class_id: classId,
 				},
 				select: {
 					id: true,
@@ -74,7 +93,7 @@ router.post("/byStudent/:student_id", async (req, res) => {
 			},
 		},
 	});
-	res.json(results);
+	res.json({ results, subjects });
 });
 router.post("/byClass/:classId", async (req, res) => {
 	const { session, term } = req.body;
