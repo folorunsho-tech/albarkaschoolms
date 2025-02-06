@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-// import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 router.get("/", async (req, res) => {
 	const payments = await prisma.payments.findMany({
 		include: {

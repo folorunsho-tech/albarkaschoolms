@@ -26,8 +26,8 @@ const CurrentTnx = ({ id }: { id: string | null }) => {
 	return (
 		<main className='h-screen'>
 			<section className='flex gap-2 justify-between p-2'>
-				<section className='w-full'>
-					<div className='border border-black max-w-[80rem] p-2 m-2'>
+				<section className=''>
+					<section className='border border-black max-w-[80rem] p-2 m-2'>
 						<div>
 							<PrintHeader />
 							<h2 className='text-center font-semibold'>
@@ -158,10 +158,10 @@ const CurrentTnx = ({ id }: { id: string | null }) => {
 								</i>
 							</Text>
 						</div>
-					</div>
+					</section>
 				</section>
 
-				<Reciept queryData={queryData?.tnx} showAmnt={false} />
+				<Reciept queryData={queryData} showAmnt={false} />
 			</section>
 			<LoadingOverlay visible={loading} />
 		</main>

@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
-// import prisma from "../lib/prisma.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.get("/:tnxId", async (req, res) => {
 	try {
 		const found = await prisma.transactions.findUnique({

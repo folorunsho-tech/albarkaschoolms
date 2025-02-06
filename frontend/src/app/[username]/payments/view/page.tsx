@@ -64,7 +64,7 @@ const View = () => {
 					Viewing tnxId: <b>{id}</b>
 				</h3>
 			</section>
-			<section className='p-3 bg-white'>
+			<section className='bg-white'>
 				<Tabs defaultValue='current' keepMounted={false}>
 					<Tabs.List>
 						<Tabs.Tab value='current' leftSection={<IconArrowDown />}>

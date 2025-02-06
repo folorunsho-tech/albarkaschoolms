@@ -7,6 +7,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 # ------------------------------------------------------------
+# SCHEMA DUMP FOR TABLE: _classestofeesgroup
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `_classestofeesgroup`;
+CREATE TABLE `_classestofeesgroup` (
+  `A` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `B` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  UNIQUE KEY `_ClassesToFeesGroup_AB_unique` (`A`, `B`),
+  KEY `_ClassesToFeesGroup_B_index` (`B`),
+  CONSTRAINT `_ClassesToFeesGroup_A_fkey` FOREIGN KEY (`A`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `_ClassesToFeesGroup_B_fkey` FOREIGN KEY (`B`) REFERENCES `feesgroup` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+# ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: _classestosubjects
 # ------------------------------------------------------------
 
@@ -304,7 +318,6 @@ CREATE TABLE `feesgroup` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `school_section` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
@@ -321,6 +334,10 @@ CREATE TABLE `payments` (
   `amount` int DEFAULT NULL,
   `item_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transactionId` int DEFAULT NULL,
+  `paid` int DEFAULT NULL,
+  `payment_method` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `teller_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `Payments_item_id_fkey` (`item_id`),
   KEY `Payments_transactionId_fkey` (`transactionId`),
@@ -543,14 +560,44 @@ CREATE TABLE `subjects` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 # ------------------------------------------------------------
+# SCHEMA DUMP FOR TABLE: transactionhistory
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `transactionhistory`;
+CREATE TABLE `transactionhistory` (
+  `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tnxId` int NOT NULL,
+  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `items` json DEFAULT NULL,
+  `total` int DEFAULT NULL,
+  `paid` int DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `term` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `session` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `createdById` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `createdAt` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
+  `updatedAt` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `transactionHistory_tnxId_fkey` (`tnxId`),
+  KEY `transactionHistory_student_id_fkey` (`student_id`),
+  KEY `transactionHistory_createdById_fkey` (`createdById`),
+  CONSTRAINT `transactionHistory_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `accounts` (`id`) ON DELETE
+  SET
+  NULL ON UPDATE CASCADE,
+  CONSTRAINT `transactionHistory_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE
+  SET
+  NULL ON UPDATE CASCADE,
+  CONSTRAINT `transactionHistory_tnxId_fkey` FOREIGN KEY (`tnxId`) REFERENCES `transactions` (`tnxId`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+# ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: transactions
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE `transactions` (
   `student_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_method` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `teller_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` int DEFAULT NULL,
   `paid` int DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -571,7 +618,40 @@ CREATE TABLE `transactions` (
   CONSTRAINT `Transactions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE
   SET
   NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+# ------------------------------------------------------------
+# DATA DUMP FOR TABLE: _classestofeesgroup
+# ------------------------------------------------------------
+
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('2_fPzDw', '0jcBxk5');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('Ifq45cL', '0jcBxk5');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('OMVKFac', '0jcBxk5');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('2_fPzDw', 'Exo4omu');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('Ifq45cL', 'Exo4omu');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('QA1juMZ', 'Exo4omu');
+INSERT INTO
+  `_classestofeesgroup` (`A`, `B`)
+VALUES
+  ('Ifq45cL', 'qXJJvNo');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: _classestosubjects
@@ -1128,6 +1208,72 @@ VALUES
     '2024-12-03 20:02:54.299',
     1
   );
+INSERT INTO
+  `_prisma_migrations` (
+    `id`,
+    `checksum`,
+    `finished_at`,
+    `migration_name`,
+    `logs`,
+    `rolled_back_at`,
+    `started_at`,
+    `applied_steps_count`
+  )
+VALUES
+  (
+    'e63f4e16-bf73-42dc-a95a-c00cb9ba6558',
+    'c9c1cf5666ec29a39ef35ab0415fecc808cbcc717a56502986ca752c594eec79',
+    '2025-01-29 17:49:56.368',
+    '20250129174955_transactionhist',
+    NULL,
+    NULL,
+    '2025-01-29 17:49:55.597',
+    1
+  );
+INSERT INTO
+  `_prisma_migrations` (
+    `id`,
+    `checksum`,
+    `finished_at`,
+    `migration_name`,
+    `logs`,
+    `rolled_back_at`,
+    `started_at`,
+    `applied_steps_count`
+  )
+VALUES
+  (
+    'f735d3c5-cce8-4305-9ea1-215aa8fdeda2',
+    '9b338c8898f0ef68f459a589e63a2ca35c394b7bb57ffbd9bb0d0358a5381baa',
+    '2025-02-01 07:06:44.931',
+    '20250201070644_fees',
+    NULL,
+    NULL,
+    '2025-02-01 07:06:44.812',
+    1
+  );
+INSERT INTO
+  `_prisma_migrations` (
+    `id`,
+    `checksum`,
+    `finished_at`,
+    `migration_name`,
+    `logs`,
+    `rolled_back_at`,
+    `started_at`,
+    `applied_steps_count`
+  )
+VALUES
+  (
+    'fa8090b9-5985-4ad6-a29f-b44d1fdb8822',
+    'feadb5ff78adfdf71f417e93aa1bd4651db401b4c2c08161e50ea6a86032e690',
+    '2025-01-29 10:10:23.774',
+    '20250129101023_bettertnx',
+    NULL,
+    NULL,
+    '2025-01-29 10:10:23.184',
+    1
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: _staffstosubjects
@@ -1140,47 +1286,7 @@ VALUES
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP0001', '18mZBlZ');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', '1oHZ6vY');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', '3c9EWTV');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'aVninf3');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'bDliUQN');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'bDliUQN');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'Bo69IyB');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'bT759gG');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'bT759gG');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'CfPv-dn');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'DvclqC0');
+  ('EMP3', '18mZBlZ');
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
@@ -1188,91 +1294,7 @@ VALUES
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP0001', 'E7JETdx');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
   ('EMP3', 'E7JETdx');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'eIi5HQm');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'eIi5HQm');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'ElqqBT7');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'FnMLAER');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'g9NIUEF');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'g9NIUEF');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'GQjbl0E');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'IC1gVq9');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'IC1gVq9');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'JFhxsq5');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'l95dKX8');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'l95dKX8');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'lqUtsDB');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'lRKKmoa');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'M5Vv1pi');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'MjrnCzB');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'nGFxkVf');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'nMFpFkZ');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'nmkGlgl');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'nTKfuNC');
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
@@ -1280,51 +1302,11 @@ VALUES
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP0001', 'pFZPf3T');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'pFZPf3T');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'PyejTsh');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'qnPwjEd');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'TFlldgc');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'TJSQ_-v');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'uis6FkF');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
   ('EMP0000', 'Vx7JKMR');
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP0001', 'Vx7JKMR');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'x9oVrQ9');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'x9oVrQ9');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP0001', 'YOb8XbD');
+  ('EMP3', 'Vx7JKMR');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: accounts
@@ -1924,6 +1906,38 @@ VALUES
     '2025-01-25 19:38:24.109',
     NULL
   );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6tngf0b0001ym93hm9y3lv9',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-06 18:07:00.345',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6tnqwli0003ym93l7oisk8k',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-06 18:15:09.701',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: classes
@@ -2308,6 +2322,34 @@ VALUES
     '8uIPHRQ',
     '2024-11-30 22:15:59.760',
     '2024-11-30 22:17:13.686',
+    NULL
+  );
+INSERT INTO
+  `examresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'gx8-tO4',
+    'AJ3njGo',
+    'Ifq45cL',
+    'o9bUcgF',
+    56,
+    '2024/2025',
+    '1st term',
+    'pS2M79v',
+    '2025-01-29 16:23:01.914',
+    '2025-01-29 16:23:01.914',
     NULL
   );
 INSERT INTO
@@ -2751,6 +2793,34 @@ INSERT INTO
   )
 VALUES
   (
+    'agliA_f',
+    'AJ3njGo',
+    'Ifq45cL',
+    'o9bUcgF',
+    18,
+    '2024/2025',
+    '1st term',
+    'pS2M79v',
+    '2025-01-29 16:25:51.914',
+    '2025-01-29 16:25:51.914',
+    NULL
+  );
+INSERT INTO
+  `fcaresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
     'BEQnTJS',
     'AJ3njGo',
     'Ifq45cL',
@@ -3105,13 +3175,17 @@ VALUES
 # ------------------------------------------------------------
 
 INSERT INTO
-  `feesgroup` (`id`, `name`, `amount`, `school_section`)
+  `feesgroup` (`id`, `name`, `amount`)
 VALUES
-  ('0jcBxk5', 'PTA', '3500', 'SSS');
+  ('0jcBxk5', 'PTA', '3500');
 INSERT INTO
-  `feesgroup` (`id`, `name`, `amount`, `school_section`)
+  `feesgroup` (`id`, `name`, `amount`)
 VALUES
-  ('Exo4omu', 'School fee', '12000', 'SSS');
+  ('Exo4omu', 'School fee', '12000');
+INSERT INTO
+  `feesgroup` (`id`, `name`, `amount`)
+VALUES
+  ('qXJJvNo', 'First Term', '12000');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: payments
@@ -3125,7 +3199,11 @@ INSERT INTO
     `createdAt`,
     `amount`,
     `item_id`,
-    `transactionId`
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
   )
 VALUES
   (
@@ -3135,7 +3213,11 @@ VALUES
     '2025-01-23 00:00:00.000',
     12000,
     'Exo4omu',
-    1
+    1,
+    12000,
+    'Cash',
+    'Paid',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3145,7 +3227,11 @@ INSERT INTO
     `createdAt`,
     `amount`,
     `item_id`,
-    `transactionId`
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
   )
 VALUES
   (
@@ -3155,7 +3241,11 @@ VALUES
     '2025-01-23 00:00:00.000',
     3500,
     '0jcBxk5',
-    1
+    1,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
   );
 INSERT INTO
   `payments` (
@@ -3165,7 +3255,11 @@ INSERT INTO
     `createdAt`,
     `amount`,
     `item_id`,
-    `transactionId`
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
   )
 VALUES
   (
@@ -3175,7 +3269,347 @@ VALUES
     '2025-01-23 00:00:00.000',
     3500,
     '0jcBxk5',
-    2
+    2,
+    3500,
+    'Cash',
+    'Paid',
+    NULL
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6ev387n000010vlind2627m',
+    '2nd term',
+    '2024/2025',
+    '2025-01-27 00:00:00.000',
+    3500,
+    '0jcBxk5',
+    3,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6ev5nd9000110vl168fswhm',
+    '2nd term',
+    '2024/2025',
+    '2025-01-27 00:00:00.000',
+    12000,
+    'Exo4omu',
+    4,
+    12000,
+    'Cash',
+    'Paid',
+    NULL
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6iguk5r00007ocw64am0vlj',
+    '2nd term',
+    '2024/2025',
+    '2025-01-29 00:00:00.000',
+    12000,
+    'Exo4omu',
+    5,
+    12000,
+    'Cash',
+    'Paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6iguk5v00017ocw8nvzhpg7',
+    '2nd term',
+    '2024/2025',
+    '2025-01-29 00:00:00.000',
+    3500,
+    '0jcBxk5',
+    5,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6jn0ezj00003t2uq19o9lxv',
+    '2nd term',
+    '2024/2025',
+    '2025-01-30 00:00:00.000',
+    12000,
+    'Exo4omu',
+    6,
+    12000,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6jn0ezn00013t2ujaokmnka',
+    '2nd term',
+    '2024/2025',
+    '2025-01-30 00:00:00.000',
+    3500,
+    '0jcBxk5',
+    6,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6m0f0y50000i4t8wb1hj4mh',
+    '2nd term',
+    '2024/2025',
+    '2025-02-01 00:00:00.000',
+    12000,
+    'qXJJvNo',
+    7,
+    12000,
+    'Cash',
+    'Paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6m0f0y70001i4t80km3heo1',
+    '2nd term',
+    '2024/2025',
+    '2025-02-01 00:00:00.000',
+    12000,
+    'Exo4omu',
+    7,
+    12000,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6m0f0y70002i4t8fj5zlkrn',
+    '2nd term',
+    '2024/2025',
+    '2025-02-01 00:00:00.000',
+    3500,
+    '0jcBxk5',
+    7,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6m0lqgo0003i4t8kuexb1o1',
+    '2nd term',
+    '2024/2025',
+    '2025-02-01 00:00:00.000',
+    12000,
+    'qXJJvNo',
+    8,
+    12000,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6myilz40000k5ms1z1v4o86',
+    '2nd term',
+    '2024/2025',
+    '2025-02-02 00:00:00.000',
+    12000,
+    'qXJJvNo',
+    9,
+    11000,
+    'Cash',
+    'Partly paid',
+    ''
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`
+  )
+VALUES
+  (
+    'cm6myilz80001k5msejsw5e6n',
+    '2nd term',
+    '2024/2025',
+    '2025-02-02 00:00:00.000',
+    3500,
+    '0jcBxk5',
+    9,
+    3500,
+    'Cash',
+    'Partly paid',
+    ''
   );
 
 # ------------------------------------------------------------
@@ -3269,6 +3703,34 @@ VALUES
     '8uIPHRQ',
     '2024-11-30 22:14:31.030',
     '2024-11-30 22:14:31.030',
+    NULL
+  );
+INSERT INTO
+  `scaresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'b-FMUP-',
+    'AJ3njGo',
+    'Ifq45cL',
+    'o9bUcgF',
+    18,
+    '2024/2025',
+    '1st term',
+    'pS2M79v',
+    '2025-01-29 16:24:15.093',
+    '2025-01-29 16:24:15.093',
     NULL
   );
 INSERT INTO
@@ -3703,7 +4165,7 @@ VALUES
     'Bsc. Computer science',
     2,
     '0',
-    'SSS',
+    'All',
     'Ibrahim',
     'Folorunsho',
     '2001-10-25 00:00:00.000',
@@ -3714,7 +4176,7 @@ VALUES
     'xRyGm5N',
     '2024-10-01 00:00:00.000',
     1,
-    '2024-12-03 03:24:53.504',
+    '2025-01-29 16:19:41.119',
     NULL,
     '8uIPHRQ'
   );
@@ -4322,14 +4784,817 @@ VALUES
   ('YOb8XbD', 'Civic Education');
 
 # ------------------------------------------------------------
+# DATA DUMP FOR TABLE: transactionhistory
+# ------------------------------------------------------------
+
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '12be2b5e-1e98-4f1e-8178-6ee899b5a6be',
+    7,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y70002i4t8fj5zlkrn\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
+    27500,
+    25500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-01 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '14b99dd7-1000-4d9b-a7d1-4658b6a5b5c0',
+    1,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
+    15500,
+    14500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '1f03e8a9-4a87-444c-92c9-dcde14ba350f',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":300,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11700,\\\"paidToday\\\":300}]\"',
+    15500,
+    15400,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '28c475fa-bacc-413c-8c85-2e38197d8a35',
+    8,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6m0lqgo0003i4t8kuexb1o1\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":10000,\\\"paidToday\\\":2000}]\"',
+    12000,
+    12000,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-01 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '30b796aa-406b-4c18-8584-d765f0c5459d',
+    9,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6myilz40000k5ms1z1v4o86\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":9,\\\"createdAt\\\":\\\"2025-02-02T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6myilz80001k5msejsw5e6n\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":3000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":9,\\\"createdAt\\\":\\\"2025-02-02T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"}}]\"',
+    15500,
+    13000,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-02 00:00:00.000',
+    '2025-02-02 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '31a3f762-c122-427d-adfc-c4f28004a86b',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
+    15500,
+    13500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '38e44ae7-23a0-40d3-a807-8a172c6c0ee2',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11500,\\\"paidToday\\\":500}]\"',
+    15500,
+    15000,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '57512d9c-c97d-4dcd-a04d-c5e0a26f13cd',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":6,\\\"createdAt\\\":\\\"2025-01-30T00:00:00.000Z\\\"},{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2500,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":6,\\\"createdAt\\\":\\\"2025-01-30T00:00:00.000Z\\\"}]\"',
+    15500,
+    NULL,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '64d75b5c-2575-4929-8079-cf27d67484d5',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":20,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11980,\\\"paidToday\\\":20}]\"',
+    15500,
+    15470,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '70d3b7e1-04cb-4e81-8160-8083b04eaf8e',
+    8,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6m0lqgo0003i4t8kuexb1o1\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":8,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}}]\"',
+    12000,
+    NULL,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-01 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '742db500-ce1c-4896-b203-aec170f37534',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":100,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11900,\\\"paidToday\\\":100}]\"',
+    15500,
+    15100,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '8a3e0dfe-57e3-4214-9e42-146818819759',
+    5,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
+    15500,
+    15500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '92632a0c-26f0-441d-bbd5-fea613c20a77',
+    1,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
+    15500,
+    15000,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    '92ad68ba-3bfd-4da5-9fd1-d13b0b58f069',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11500,\\\"paidToday\\\":500}]\"',
+    15500,
+    15000,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'a2711007-68ed-4c66-94fe-6040401af83c',
+    9,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6myilz80001k5msejsw5e6n\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500}]\"',
+    15500,
+    13500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-02 00:00:00.000',
+    '2025-02-02 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'a548ee42-673c-4dea-af91-4f602b6fd576',
+    5,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":12000,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\"},{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\"}]\"',
+    15500,
+    NULL,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-29 00:00:00.000',
+    '2025-01-29 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'bc3e6722-ffb5-4ebe-9709-e00feea3d869',
+    1,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
+    15500,
+    15500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'bdc6fdfa-a3ce-4e0e-a6d1-6da04c25f2c3',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":50,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11950,\\\"paidToday\\\":50}]\"',
+    15500,
+    15450,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'c0edc517-1d2b-4ccd-952c-1fe5bfe41fe3',
+    9,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6myilz40000k5ms1z1v4o86\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11000,\\\"paidToday\\\":1000}]\"',
+    15500,
+    14500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-02 00:00:00.000',
+    '2025-02-02 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'c52a8428-9b54-4467-b057-1d05295a275c',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11000,\\\"paidToday\\\":1000},{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
+    15500,
+    14500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'cb1488b2-f079-427f-9e1f-4821ef2cb05f',
+    7,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y50000i4t8wb1hj4mh\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":12000,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6m0f0y70001i4t80km3heo1\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6m0f0y70002i4t8fj5zlkrn\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2500,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"}}]\"',
+    27500,
+    NULL,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-01 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'cc29216b-e669-4174-86d9-f86bf2fba7c9',
+    7,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y70001i4t80km3heo1\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":10000,\\\"paidToday\\\":2000}]\"',
+    27500,
+    27500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-02 00:00:00.000',
+    '2025-02-02 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'e2fe1556-337f-4a12-9926-4976927da9b1',
+    3,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6ev387n000010vlind2627m\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":3000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":500,\\\"paidToday\\\":3000}]\"',
+    3500,
+    3500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-02-02 08:12:58.282',
+    '2025-02-02 08:12:58.282'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'f02f8bb2-7257-4411-aa28-d3f3c3b8bf1b',
+    5,
+    'FWpZizc',
+    '\"[{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000},{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
+    15500,
+    15000,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    NULL,
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+INSERT INTO
+  `transactionhistory` (
+    `id`,
+    `tnxId`,
+    `student_id`,
+    `items`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'fc87c1e9-68be-4120-8ea6-0bc68ae66457',
+    6,
+    'AJ3njGo',
+    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":30,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11970,\\\"paidToday\\\":30}]\"',
+    15500,
+    15500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000'
+  );
+
+# ------------------------------------------------------------
 # DATA DUMP FOR TABLE: transactions
 # ------------------------------------------------------------
 
 INSERT INTO
   `transactions` (
     `student_id`,
-    `payment_method`,
-    `teller_no`,
     `total`,
     `paid`,
     `status`,
@@ -4345,25 +5610,21 @@ INSERT INTO
 VALUES
   (
     'FWpZizc',
-    'Cash',
-    '',
     15500,
-    10000,
-    'Partly paid',
+    15500,
+    'Paid',
     'SSS 1',
     '2nd term',
     '2024/2025',
     'MwA8gDw',
-    NULL,
+    'pS2M79v',
     '2025-01-23 00:00:00.000',
-    '2025-01-23 00:00:00.000',
+    '2025-01-30 00:00:00.000',
     1
   );
 INSERT INTO
   `transactions` (
     `student_id`,
-    `payment_method`,
-    `teller_no`,
     `total`,
     `paid`,
     `status`,
@@ -4379,19 +5640,227 @@ INSERT INTO
 VALUES
   (
     'AJ3njGo',
-    'Cash',
-    '',
+    3500,
+    3500,
+    'Cancelled',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'MwA8gDw',
+    'pS2M79v',
+    '2025-01-23 00:00:00.000',
+    '2025-02-02 01:47:52.051',
+    2
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'FWpZizc',
     3500,
     3500,
     'Paid',
     'SSS 1',
     '2nd term',
     '2024/2025',
-    'MwA8gDw',
-    NULL,
-    '2025-01-23 00:00:00.000',
-    '2025-01-23 00:00:00.000',
-    2
+    'pS2M79v',
+    'pS2M79v',
+    '2025-01-27 00:00:00.000',
+    '2025-02-02 08:12:58.091',
+    3
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'FWpZizc',
+    12000,
+    12000,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-01-27 00:00:00.000',
+    '2025-02-02 01:47:46.073',
+    4
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'FWpZizc',
+    15500,
+    15500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-01-29 00:00:00.000',
+    '2025-02-02 01:47:46.073',
+    5
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'AJ3njGo',
+    15500,
+    15500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-01-30 00:00:00.000',
+    '2025-01-30 00:00:00.000',
+    6
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'FWpZizc',
+    27500,
+    27500,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-02 00:00:00.000',
+    7
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'AJ3njGo',
+    12000,
+    12000,
+    'Paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-02-01 00:00:00.000',
+    '2025-02-01 00:00:00.000',
+    8
+  );
+INSERT INTO
+  `transactions` (
+    `student_id`,
+    `total`,
+    `paid`,
+    `status`,
+    `class`,
+    `term`,
+    `session`,
+    `createdById`,
+    `updatedById`,
+    `createdAt`,
+    `updatedAt`,
+    `tnxId`
+  )
+VALUES
+  (
+    'AJ3njGo',
+    15500,
+    14500,
+    'Partly paid',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'pS2M79v',
+    'pS2M79v',
+    '2025-02-02 00:00:00.000',
+    '2025-02-02 00:00:00.000',
+    9
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

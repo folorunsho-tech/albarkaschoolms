@@ -25,6 +25,7 @@ const Reciept = ({
 	const totalPaid = queryData?.items?.reduce((prev: any, curr: any) => {
 		return Number(prev) + Number(curr?.paid);
 	}, 0);
+	// console.log(queryData);
 	return (
 		<>
 			<Button
@@ -32,7 +33,7 @@ const Reciept = ({
 				onClick={reactToPrintFn}
 				leftSection={<IconPrinter />}
 			>
-				Print reciept
+				Print
 			</Button>
 			<section style={{ display: "none" }}>
 				<div

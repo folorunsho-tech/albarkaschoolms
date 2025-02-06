@@ -10,9 +10,9 @@ import { useFetch } from "@/hooks/useQueries";
 import { IconPrinter } from "@tabler/icons-react";
 import PrintHeader from "../PrintHeader";
 import { useReactToPrint } from "react-to-print";
-const PaymentsFilter = ({
+const DeptorsFilter = ({
 	data,
-	filterCriteria = "Status",
+	filterCriteria = "",
 	loading,
 }: {
 	data: any[];
@@ -24,7 +24,7 @@ const PaymentsFilter = ({
 	const [feeList, setFeeList] = React.useState<any[]>([]);
 	const [classList, setClassList] = React.useState<any[]>([]);
 	const [criteria, setCriteria] = React.useState<string>(filterCriteria);
-	const [value, setValue] = React.useState<string>("Active");
+	const [value, setValue] = React.useState<string>("");
 	const contentRef = React.useRef(null);
 	const reactToPrintFn: any = useReactToPrint({
 		contentRef,
@@ -46,23 +46,21 @@ const PaymentsFilter = ({
 	const totalPaid = sortedData?.reduce((prev, curr) => {
 		return Number(prev) + Number(curr?.paid);
 	}, 0);
+	const totalBalance = sortedData?.reduce((prev, curr) => {
+		return Number(prev) + Number(curr?.balance);
+	}, 0);
 	const filter = () => {
-		const mapped = data?.map((d) => {
+		const mappedD = data?.map((d) => {
 			return {
 				...d,
 				status: getStatus(d?.paid, d?.amount),
+				balance: Number(d?.amount) - Number(d?.paid),
 			};
 		});
-		if (criteria == "Status") {
-			const filterd: any = mapped?.filter((d) => {
-				if (value == "Active") {
-					return d?.status !== "Cancelled";
-				} else {
-					return d?.status == value;
-				}
-			});
-			return filterd;
-		} else if (criteria == "Class") {
+		const mapped = mappedD.filter((d) => {
+			return d?.balance > 0;
+		});
+		if (criteria == "Class") {
 			const filterd: any = mapped?.filter((d) => {
 				return d?.transaction?.class == value;
 			});
@@ -72,6 +70,8 @@ const PaymentsFilter = ({
 				return d?.item?.id == value;
 			});
 			return filterd;
+		} else {
+			return mapped;
 		}
 	};
 
@@ -106,7 +106,7 @@ const PaymentsFilter = ({
 					<Select
 						checkIconPosition='right'
 						className='w-[11rem] pl-2'
-						data={["Status", "Class", "Fee"]}
+						data={["Class", "Fee"]}
 						allowDeselect={false}
 						value={criteria}
 						label='Criteria'
@@ -115,21 +115,7 @@ const PaymentsFilter = ({
 							setCriteria(value);
 						}}
 					/>
-					{criteria == "Status" && (
-						<Select
-							checkIconPosition='right'
-							data={["Active", "Paid", "Partly paid"]}
-							className='w-52'
-							allowDeselect={false}
-							defaultValue='Active'
-							label='Payment Status'
-							nothingFoundMessage='Nothing found...'
-							placeholder='Select a status'
-							onChange={(value: any) => {
-								setValue(value);
-							}}
-						/>
-					)}
+
 					{criteria == "Class" && (
 						<div className='flex gap-4'>
 							<Select
@@ -164,17 +150,6 @@ const PaymentsFilter = ({
 							/>
 						</div>
 					)}
-
-					{/* <Button
-						onClick={() => {
-							const returned = filter();
-							setSortedData(returned);
-							// console.log(returned);
-						}}
-						leftSection={<IconFilter />}
-					>
-						Filter
-					</Button> */}
 				</div>
 				<Button
 					disabled={sortedData?.length < 1}
@@ -196,11 +171,11 @@ const PaymentsFilter = ({
 							<th>Adm No.</th>
 							<th>Name</th>
 							<th>Class</th>
-							<th>method</th>
+
 							<th>Fee</th>
 							<th>amount</th>
 							<th>paid</th>
-							{/* <th>balance</th> */}
+							<th>balance</th>
 						</tr>
 					</thead>
 					{sortedData?.length > 0 && (
@@ -217,7 +192,7 @@ const PaymentsFilter = ({
 										{data?.transaction?.student?.first_name}
 									</td>
 									<td>{data?.transaction?.class}</td>
-									<td>{data?.payment_method}</td>
+
 									<td>{data?.item?.name}</td>
 									<td>
 										<NumberFormatter
@@ -233,13 +208,13 @@ const PaymentsFilter = ({
 											thousandSeparator
 										/>
 									</td>
-									{/* <td>
+									<td>
 										<NumberFormatter
 											prefix='NGN '
 											value={Number(data?.amount) - Number(data?.paid)}
 											thousandSeparator
 										/>
-									</td> */}
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -249,7 +224,7 @@ const PaymentsFilter = ({
 							<td></td>
 							<td></td>
 							<td></td>
-							<td></td>
+
 							<td></td>
 							<td></td>
 							<td></td>
@@ -268,6 +243,13 @@ const PaymentsFilter = ({
 									thousandSeparator
 								/>
 							</td>
+							<td className='font-bold'>
+								<NumberFormatter
+									prefix='NGN '
+									value={totalBalance}
+									thousandSeparator
+								/>
+							</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -277,4 +259,4 @@ const PaymentsFilter = ({
 	);
 };
 
-export default PaymentsFilter;
+export default DeptorsFilter;
