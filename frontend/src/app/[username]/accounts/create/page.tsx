@@ -42,7 +42,7 @@ const Create = () => {
 		edit: false,
 	});
 	const [accounts, setAccounts] = useState(false);
-	const [staffPromotions, setStaffPromotions] = useState(false);
+	// const [staffPromotions, setStaffPromotions] = useState(false);
 	const [studentPromotions, setStudentPromotions] = useState(false);
 	const [statement, setStatement] = useState(false);
 	const [selectedStaff, setSelectedStaff] = useState(null);
@@ -66,7 +66,7 @@ const Create = () => {
 				accounts,
 				statement,
 				studentPromotions,
-				staffPromotions,
+				// staffPromotions,
 				classes,
 				students,
 				results,
@@ -77,7 +77,7 @@ const Create = () => {
 
 		setAccounts(false);
 		setStatement(false);
-		setStaffPromotions(false);
+		// setStaffPromotions(false);
 		setStudentPromotions(false);
 		setClasses({
 			view: false,
@@ -110,7 +110,7 @@ const Create = () => {
 	};
 	useEffect(() => {
 		const getAll = async () => {
-			const { data: staffs } = await fetch("/staffs");
+			const { data: staffs } = await fetch("/staffs/acct");
 			const sortedStaff: any = staffs.map((staff: any) => {
 				return {
 					value: staff.empid,
@@ -244,7 +244,7 @@ const Create = () => {
 											</h3>
 										</span>
 									</div>
-									<div className='space-y-2'>
+									{/* <div className='space-y-2'>
 										<span className='flex gap-2'>
 											<Checkbox
 												checked={staffPromotions}
@@ -254,7 +254,7 @@ const Create = () => {
 												Staffs Promotions
 											</h3>
 										</span>
-									</div>
+									</div> */}
 									<div className='space-y-2'>
 										<span className='flex gap-2'>
 											<Checkbox
@@ -281,7 +281,7 @@ const Create = () => {
 											/>
 											<h3 className='text-sm font-semibold'>Classes</h3>
 										</span>
-										<span className='flex gap-2 ml-4'>
+										{/* <span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={classes.view}
 												onChange={() =>
@@ -289,7 +289,7 @@ const Create = () => {
 												}
 											/>
 											<h3 className='text-sm font-semibold'>View</h3>
-										</span>
+										</span> */}
 
 										<span className='flex gap-2 ml-4'>
 											<Checkbox
@@ -317,7 +317,7 @@ const Create = () => {
 											/>
 											<h3 className='text-sm font-semibold'>Students</h3>
 										</span>
-										<span className='flex gap-2 ml-4'>
+										{/* <span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={students.view}
 												onChange={() =>
@@ -325,7 +325,7 @@ const Create = () => {
 												}
 											/>
 											<h3 className='text-sm font-semibold'>View</h3>
-										</span>
+										</span> */}
 										<span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={students.create}
@@ -362,7 +362,7 @@ const Create = () => {
 											/>
 											<h3 className='text-sm font-semibold'>Results</h3>
 										</span>
-										<span className='flex gap-2 ml-4'>
+										{/* <span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={results.view}
 												onChange={() =>
@@ -370,7 +370,7 @@ const Create = () => {
 												}
 											/>
 											<h3 className='text-sm font-semibold'>View</h3>
-										</span>
+										</span> */}
 										<span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={results.create}
@@ -454,7 +454,7 @@ const Create = () => {
 											/>
 											<h3 className='text-sm font-semibold'>Payments</h3>
 										</span>
-										<span className='flex gap-2 ml-4'>
+										{/* <span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={payments.view}
 												onChange={() =>
@@ -462,7 +462,7 @@ const Create = () => {
 												}
 											/>
 											<h3 className='text-sm font-semibold'>View</h3>
-										</span>
+										</span> */}
 										<span className='flex gap-2 ml-4'>
 											<Checkbox
 												checked={payments.create}

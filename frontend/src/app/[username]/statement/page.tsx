@@ -68,7 +68,8 @@ const Statement = () => {
 						classId: selectedClass?.id,
 					}
 				);
-				const subs = data?.subjects;
+				// console.log(data);
+				const subs: any[] = data?.subjects;
 				const results = data?.results;
 				const generated: any[] = [];
 				subs?.forEach((sub: any) => {
@@ -106,16 +107,14 @@ const Statement = () => {
 				const total = generated?.reduce((prev: any, curr: any) => {
 					return Number(prev) + Number(curr?.total);
 				}, 0);
-				const calculated = (
-					(total / (selectedClass?.subjects?.length * 100)) *
-					100
-				).toFixed(2);
+				const calculated = ((total / (subs.length * 100)) * 100).toFixed(2);
 				setPerc(calculated);
 				setDocName(data?.admission_no);
 			}
 			getStudent();
 		}
 	}, [selectedStudent]);
+	// console.log(statement);
 	return (
 		<section className='space-y-1 py-1 px-2'>
 			<div className='flex gap-10 items-end'>
@@ -268,7 +267,7 @@ const Statement = () => {
 								</thead>
 								<tbody>
 									{statement?.generated?.map((state: any, index: number) => (
-										<tr key={state?.id}>
+										<tr key={state?.name + index + 1}>
 											<td>{index + 1}</td>
 											<td>{state?.name}</td>
 											<td>{state?.fca}</td>

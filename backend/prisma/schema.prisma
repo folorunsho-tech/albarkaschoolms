@@ -307,13 +307,13 @@ model Demotions {
 
 model StudentsPromotions {
   id          String    @id
-  student_id  String?
-  student     Students? @relation(fields: [student_id], references: [id])
+  student_id  String
+  student     Students  @relation(fields: [student_id], references: [id])
   from        String?
   term        String?
   session     String?
-  to_id       String?
-  to          Classes?  @relation(fields: [to_id], references: [id])
+  to_id       String
+  to          Classes   @relation(fields: [to_id], references: [id])
   createdById String?
   createdBy   Accounts? @relation(fields: [createdById], references: [id])
   promotedOn  DateTime? @default(now())
@@ -321,13 +321,13 @@ model StudentsPromotions {
 
 model StudentsDemotions {
   id          String    @id
-  student_id  String?
-  student     Students? @relation(fields: [student_id], references: [id])
+  student_id  String
+  student     Students  @relation(fields: [student_id], references: [id])
   from        String?
   term        String?
   session     String?
-  to_id       String?
-  to          Classes?  @relation(fields: [to_id], references: [id])
+  to_id       String
+  to          Classes   @relation(fields: [to_id], references: [id])
   createdById String?
   createdBy   Accounts? @relation(fields: [createdById], references: [id])
   demotedOn   DateTime? @default(now())

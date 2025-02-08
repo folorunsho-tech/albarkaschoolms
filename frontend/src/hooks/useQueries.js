@@ -65,7 +65,7 @@ export const usePost = () => {
 		const postquery = await axios.post(url, {
 			...postData,
 			createdById: user?.id,
-			updatedById: user?.id,
+			// updatedById: user?.id,
 		});
 		setData(postquery.data);
 		setLoading(false);

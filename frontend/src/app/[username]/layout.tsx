@@ -59,12 +59,12 @@ export default function AppLayout({ params, children }: any) {
 			icon: IconBuilding,
 			shown: permisions?.classes?.view,
 		},
-		{
-			link: "staffspromotions",
-			label: "Staffs Promotions",
-			icon: IconArrowsTransferUpDown,
-			shown: permisions?.staffPromotions,
-		},
+		// {
+		// 	link: "staffspromotions",
+		// 	label: "Staffs Promotions",
+		// 	icon: IconArrowsTransferUpDown,
+		// 	shown: permisions?.staffPromotions,
+		// },
 		{
 			link: "studentspromotions",
 			label: "Students Promotions",

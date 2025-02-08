@@ -338,6 +338,7 @@ CREATE TABLE `payments` (
   `payment_method` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `teller_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updatedAt` datetime(3) DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `Payments_item_id_fkey` (`item_id`),
   KEY `Payments_transactionId_fkey` (`transactionId`),
@@ -497,11 +498,11 @@ CREATE TABLE `students` (
 DROP TABLE IF EXISTS `studentsdemotions`;
 CREATE TABLE `studentsdemotions` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `from` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `to_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `to_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `demotedOn` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
@@ -511,12 +512,8 @@ CREATE TABLE `studentsdemotions` (
   CONSTRAINT `StudentsDemotions_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `accounts` (`id`) ON DELETE
   SET
   NULL ON UPDATE CASCADE,
-  CONSTRAINT `StudentsDemotions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE
-  SET
-  NULL ON UPDATE CASCADE,
-  CONSTRAINT `StudentsDemotions_to_id_fkey` FOREIGN KEY (`to_id`) REFERENCES `classes` (`id`) ON DELETE
-  SET
-  NULL ON UPDATE CASCADE
+  CONSTRAINT `StudentsDemotions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `StudentsDemotions_to_id_fkey` FOREIGN KEY (`to_id`) REFERENCES `classes` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 # ------------------------------------------------------------
@@ -526,11 +523,11 @@ CREATE TABLE `studentsdemotions` (
 DROP TABLE IF EXISTS `studentspromotions`;
 CREATE TABLE `studentspromotions` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `from` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `to_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `to_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `promotedOn` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
@@ -540,12 +537,8 @@ CREATE TABLE `studentspromotions` (
   CONSTRAINT `StudentsPromotions_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `accounts` (`id`) ON DELETE
   SET
   NULL ON UPDATE CASCADE,
-  CONSTRAINT `StudentsPromotions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE
-  SET
-  NULL ON UPDATE CASCADE,
-  CONSTRAINT `StudentsPromotions_to_id_fkey` FOREIGN KEY (`to_id`) REFERENCES `classes` (`id`) ON DELETE
-  SET
-  NULL ON UPDATE CASCADE
+  CONSTRAINT `StudentsPromotions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `StudentsPromotions_to_id_fkey` FOREIGN KEY (`to_id`) REFERENCES `classes` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 # ------------------------------------------------------------
@@ -1199,6 +1192,50 @@ INSERT INTO
   )
 VALUES
   (
+    'd423b8aa-4ead-456f-8fe4-2140993e52d3',
+    '395757ae3a1b38a1619b18e4aa27b4ea7fc6282a75e50cc379fa6ceea4be890e',
+    '2025-02-08 09:39:27.928',
+    '20250208093927_updates',
+    NULL,
+    NULL,
+    '2025-02-08 09:39:27.849',
+    1
+  );
+INSERT INTO
+  `_prisma_migrations` (
+    `id`,
+    `checksum`,
+    `finished_at`,
+    `migration_name`,
+    `logs`,
+    `rolled_back_at`,
+    `started_at`,
+    `applied_steps_count`
+  )
+VALUES
+  (
+    'dbe55f3e-a53e-47ab-89c5-6b2769ac8f67',
+    '3f681dc94e34e6a2f5f1a87ab3a6f90a0cd1ae6568c4e505caa60c13f8c2b320',
+    '2025-02-08 09:58:13.503',
+    '20250208095812_hmm',
+    NULL,
+    NULL,
+    '2025-02-08 09:58:12.256',
+    1
+  );
+INSERT INTO
+  `_prisma_migrations` (
+    `id`,
+    `checksum`,
+    `finished_at`,
+    `migration_name`,
+    `logs`,
+    `rolled_back_at`,
+    `started_at`,
+    `applied_steps_count`
+  )
+VALUES
+  (
     'e48007b2-2354-4bc7-b1b6-f8e816ed70e0',
     '617cf1fcb3496fae5c068d2af0ebf11a9f924ae1aecfdca6817dd367bcac4b66',
     '2024-12-03 20:02:54.718',
@@ -1290,6 +1327,10 @@ VALUES
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
+  ('EMP4', 'bDliUQN');
+INSERT INTO
+  `_staffstosubjects` (`A`, `B`)
+VALUES
   ('EMP0000', 'E7JETdx');
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
@@ -1333,10 +1374,10 @@ VALUES
     'tacheyon',
     '00a49fa200fb624f879f26b296fa89f0f3676f1f2ba10de2b5f39b800b34fcb4',
     'EMP0000',
-    '{\"backup\": false, \"staffs\": {\"edit\": false, \"view\": false, \"create\": false}, \"classes\": {\"edit\": false, \"view\": false}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": false, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"settings\": false, \"students\": {\"edit\": false, \"view\": false, \"create\": false}, \"statement\": true, \"staffPromotions\": false, \"studentPromotions\": false}',
+    '{\"staffs\": {\"edit\": true, \"view\": true, \"create\": true}, \"classes\": {\"edit\": true, \"view\": true}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": true, \"payments\": {\"edit\": true, \"view\": true, \"create\": true}, \"students\": {\"edit\": true, \"view\": true, \"create\": true}, \"statement\": true, \"studentPromotions\": true}',
     '2024-11-29 11:11:24.098',
-    '2025-01-23 11:54:49.349',
-    '8uIPHRQ',
+    '2025-02-08 10:56:51.717',
+    'pS2M79v',
     1,
     'admin'
   );
@@ -1389,12 +1430,40 @@ VALUES
     'Ibrahim',
     '2c8cf0b74fac368f6c58c87f32e4e04accfc54da5fe0b43b2b4941517cda3cf0',
     'EMP3',
-    '{\"staffs\": {\"edit\": true, \"view\": true, \"create\": true}, \"classes\": {\"edit\": true, \"view\": true}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": true, \"payments\": {\"edit\": true, \"view\": true, \"create\": true}, \"students\": {\"edit\": true, \"view\": true, \"create\": true}, \"statement\": true, \"staffPromotions\": true, \"studentPromotions\": true}',
+    '{\"staffs\": {\"edit\": true, \"view\": true, \"create\": true}, \"classes\": {\"edit\": true, \"view\": true}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": true, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"students\": {\"edit\": true, \"view\": true, \"create\": true}, \"statement\": true, \"studentPromotions\": true}',
     '2025-01-05 18:19:32.441',
-    '2025-01-23 13:12:00.066',
+    '2025-02-08 10:31:36.865',
     'pS2M79v',
-    1,
+    0,
     'admin'
+  );
+INSERT INTO
+  `accounts` (
+    `id`,
+    `name`,
+    `username`,
+    `passHash`,
+    `empid`,
+    `permissions`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`,
+    `active`,
+    `role`
+  )
+VALUES
+  (
+    'oVUonwk',
+    'Folorunsho Ibrahim',
+    'Ibrahim',
+    'af9d5f1717a38326fff01512ad46f5dd55b013428b7d53456d6b65538fd959f7',
+    'EMP4',
+    '{\"staffs\": {\"edit\": false, \"view\": false, \"create\": false}, \"classes\": {\"edit\": false, \"view\": false}, \"results\": {\"edit\": false, \"view\": true, \"create\": true}, \"accounts\": false, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"students\": {\"edit\": false, \"view\": false, \"create\": false}, \"statement\": true, \"studentPromotions\": false}',
+    '2025-02-08 10:44:11.100',
+    '2025-02-08 10:53:55.154',
+    'pS2M79v',
+    0,
+    'user'
   );
 INSERT INTO
   `accounts` (
@@ -1938,6 +2007,118 @@ VALUES
     '2025-02-06 18:15:09.701',
     NULL
   );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6vyw7qw0001qz7hq2t5y6us',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-08 09:02:45.553',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2sreb0001gdfzfojfdebs',
+    'oVUonwk',
+    'Logged-in',
+    '2025-02-08 10:52:02.858',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2uk8e0003gdfzvme5ry2p',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-08 10:53:26.892',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2w9ut0007gdfztrxqlaax',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-08 10:54:46.755',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2wz6h0009gdfz8jch6vue',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-08 10:55:19.575',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2xcy7000bgdfzyv8i6bra',
+    'pS2M79v',
+    'Logged-in',
+    '2025-02-08 10:55:37.421',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm6w2zpn50001el6bzyuqkrpb',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-08 10:57:27.182',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: classes
@@ -2044,6 +2225,15 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
+    '3b597354-20a0-4e6f-8460-a9c0ded220c2',
+    'AJ3njGo',
+    'QA1juMZ',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
     '457bdfc7-428f-4596-920f-032509c122b7',
     'FWpZizc',
     '2_fPzDw',
@@ -2098,6 +2288,24 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
+    'd9ad3dcb-79f5-4711-80da-2117740107bc',
+    'AJ3njGo',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'e5b29ded-6b34-4e28-b2b6-4d98594716d4',
+    'RZ2jHBA',
+    'OMVKFac',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
     'e6a8658d-e1b5-4ba4-bf29-1d0ebd05395d',
     'AJ3njGo',
     'Ifq45cL',
@@ -2146,11 +2354,55 @@ VALUES
     '',
     'f4RocSh'
   );
+INSERT INTO
+  `disengagedstudent` (
+    `id`,
+    `student_id`,
+    `session`,
+    `term`,
+    `date_of_disengagement`,
+    `method_of_disengagement`,
+    `reason`,
+    `comment`,
+    `createdById`
+  )
+VALUES
+  (
+    'cm6w28a6j0001ap6bquxefo17',
+    'RZ2jHBA',
+    '2024/2025',
+    '2nd term',
+    '2025-02-08 10:36:07.430',
+    'Relocation',
+    NULL,
+    'tacheyonRedmi',
+    'pS2M79v'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: disengagemnets
 # ------------------------------------------------------------
 
+INSERT INTO
+  `disengagemnets` (
+    `id`,
+    `staff_id`,
+    `date_of_disengagement`,
+    `method_of_disengagement`,
+    `reason`,
+    `employer_comment`,
+    `createdById`
+  )
+VALUES
+  (
+    'cm6w2v5zv0005gdfziwuzlibq',
+    'EMP4',
+    '2025-02-08 10:53:55.100',
+    'Sacked',
+    '',
+    '',
+    'pS2M79v'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: examresults
@@ -2620,6 +2872,34 @@ INSERT INTO
   )
 VALUES
   (
+    'zG88X4v',
+    'AJ3njGo',
+    'QA1juMZ',
+    'bDliUQN',
+    50,
+    '2024/2025',
+    '2nd term',
+    'pS2M79v',
+    '2025-02-08 10:29:53.670',
+    '2025-02-08 10:29:53.670',
+    NULL
+  );
+INSERT INTO
+  `examresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
     'ZYE2vh1',
     'AJ3njGo',
     'Ifq45cL',
@@ -2793,17 +3073,45 @@ INSERT INTO
   )
 VALUES
   (
+    '95WOZAA',
+    'RZ2jHBA',
+    'OMVKFac',
+    'bDliUQN',
+    1,
+    '2024/2025',
+    '2nd term',
+    'oVUonwk',
+    '2025-02-08 10:52:48.863',
+    '2025-02-08 10:52:48.863',
+    NULL
+  );
+INSERT INTO
+  `fcaresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
     'agliA_f',
     'AJ3njGo',
     'Ifq45cL',
     'o9bUcgF',
-    18,
+    19,
     '2024/2025',
     '1st term',
     'pS2M79v',
     '2025-01-29 16:25:51.914',
-    '2025-01-29 16:25:51.914',
-    NULL
+    '2025-02-08 10:28:09.426',
+    'pS2M79v'
   );
 INSERT INTO
   `fcaresults` (
@@ -3017,6 +3325,34 @@ INSERT INTO
   )
 VALUES
   (
+    'kPVK0Mt',
+    'AJ3njGo',
+    'QA1juMZ',
+    'bDliUQN',
+    12,
+    '2024/2025',
+    '2nd term',
+    'pS2M79v',
+    '2025-02-08 10:28:50.819',
+    '2025-02-08 10:28:50.819',
+    NULL
+  );
+INSERT INTO
+  `fcaresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
     'mWvZoad',
     'AJ3njGo',
     'Ifq45cL',
@@ -3203,7 +3539,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3217,6 +3554,7 @@ VALUES
     12000,
     'Cash',
     'Paid',
+    NULL,
     NULL
   );
 INSERT INTO
@@ -3231,7 +3569,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3245,7 +3584,8 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3259,7 +3599,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3273,6 +3614,7 @@ VALUES
     3500,
     'Cash',
     'Paid',
+    NULL,
     NULL
   );
 INSERT INTO
@@ -3287,7 +3629,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3301,34 +3644,7 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`
-  )
-VALUES
-  (
-    'cm6ev5nd9000110vl168fswhm',
-    '2nd term',
-    '2024/2025',
-    '2025-01-27 00:00:00.000',
-    12000,
-    'Exo4omu',
-    4,
-    12000,
-    'Cash',
-    'Paid',
+    '',
     NULL
   );
 INSERT INTO
@@ -3343,7 +3659,38 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
+  )
+VALUES
+  (
+    'cm6ev5nd9000110vl168fswhm',
+    '2nd term',
+    '2024/2025',
+    '2025-01-27 00:00:00.000',
+    12000,
+    'Exo4omu',
+    4,
+    12000,
+    'Cash',
+    'Paid',
+    NULL,
+    NULL
+  );
+INSERT INTO
+  `payments` (
+    `payment_id`,
+    `term`,
+    `session`,
+    `createdAt`,
+    `amount`,
+    `item_id`,
+    `transactionId`,
+    `paid`,
+    `payment_method`,
+    `status`,
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3357,7 +3704,8 @@ VALUES
     12000,
     'Cash',
     'Paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3371,7 +3719,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3385,7 +3734,8 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3399,7 +3749,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3413,7 +3764,8 @@ VALUES
     12000,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3427,7 +3779,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3441,7 +3794,8 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3455,7 +3809,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3469,7 +3824,8 @@ VALUES
     12000,
     'Cash',
     'Paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3483,7 +3839,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3497,7 +3854,8 @@ VALUES
     12000,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3511,7 +3869,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3525,7 +3884,8 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3539,7 +3899,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3553,7 +3914,8 @@ VALUES
     12000,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3567,7 +3929,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3581,7 +3944,8 @@ VALUES
     11000,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 INSERT INTO
   `payments` (
@@ -3595,7 +3959,8 @@ INSERT INTO
     `paid`,
     `payment_method`,
     `status`,
-    `teller_no`
+    `teller_no`,
+    `updatedAt`
   )
 VALUES
   (
@@ -3609,7 +3974,8 @@ VALUES
     3500,
     'Cash',
     'Partly paid',
-    ''
+    '',
+    NULL
   );
 
 # ------------------------------------------------------------
@@ -3731,6 +4097,34 @@ VALUES
     'pS2M79v',
     '2025-01-29 16:24:15.093',
     '2025-01-29 16:24:15.093',
+    NULL
+  );
+INSERT INTO
+  `scaresults` (
+    `id`,
+    `student_id`,
+    `class_id`,
+    `subject_id`,
+    `score`,
+    `session`,
+    `term`,
+    `createdById`,
+    `createdAt`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'BFd8PBX',
+    'AJ3njGo',
+    'QA1juMZ',
+    'bDliUQN',
+    12,
+    '2024/2025',
+    '2nd term',
+    'pS2M79v',
+    '2025-02-08 10:29:19.327',
+    '2025-02-08 10:29:19.327',
     NULL
   );
 INSERT INTO
@@ -4330,6 +4724,56 @@ VALUES
     'f4RocSh',
     'MwA8gDw'
   );
+INSERT INTO
+  `staffs` (
+    `empid`,
+    `address`,
+    `telephone`,
+    `state_of_origin`,
+    `lga`,
+    `qualification`,
+    `grade_level`,
+    `salary`,
+    `school_section`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `religion`,
+    `marital_status`,
+    `appointed_as`,
+    `curr_appointment_id`,
+    `date_of_emp`,
+    `active`,
+    `updatedAt`,
+    `createdById`,
+    `updatedById`
+  )
+VALUES
+  (
+    'EMP4',
+    'Alon Malale Road',
+    '',
+    'Niger',
+    '',
+    '',
+    0,
+    '',
+    'Secondary',
+    'Folorunsho',
+    'Ibrahim',
+    NULL,
+    'Male',
+    'Islam',
+    'Single',
+    '',
+    NULL,
+    '2025-02-08 10:42:09.129',
+    0,
+    '2025-02-08 10:53:55.122',
+    'pS2M79v',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: students
@@ -4380,9 +4824,9 @@ VALUES
     1,
     'Folorunsho Razaq',
     '08119513281',
-    'Ifq45cL',
+    '2_fPzDw',
     '8uIPHRQ',
-    '2025-01-05 17:04:28.440',
+    '2025-02-08 10:04:25.456',
     NULL
   );
 INSERT INTO
@@ -4535,6 +4979,56 @@ VALUES
     '2024-12-05 01:11:47.055',
     'pS2M79v'
   );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'RZ2jHBA',
+    'ASW/2021/106',
+    'Ibrahima',
+    'Folorunshoz',
+    '1970-01-01 00:00:00.000',
+    'Male',
+    'Al barka hospital Wawax',
+    'Niger',
+    'JSS',
+    'Borgu',
+    'Islam',
+    '2025-02-06 00:00:00.000',
+    '2024/2025',
+    '2nd term',
+    'JSS 1',
+    0,
+    'Folorunsho Razaq',
+    '08119513281',
+    'OMVKFac',
+    'pS2M79v',
+    '2025-02-08 10:36:07.458',
+    'pS2M79v'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: studentsdemotions
@@ -4575,6 +5069,28 @@ INSERT INTO
   )
 VALUES
   (
+    'jO6BWXf',
+    'AJ3njGo',
+    'SSS 3',
+    '2nd term',
+    '2024/2025',
+    '2_fPzDw',
+    'pS2M79v',
+    '2025-02-08 10:04:25.437'
+  );
+INSERT INTO
+  `studentsdemotions` (
+    `id`,
+    `student_id`,
+    `from`,
+    `term`,
+    `session`,
+    `to_id`,
+    `createdById`,
+    `demotedOn`
+  )
+VALUES
+  (
     'lYGpXJ6',
     'FWpZizc',
     'SSS 2',
@@ -4589,6 +5105,28 @@ VALUES
 # DATA DUMP FOR TABLE: studentspromotions
 # ------------------------------------------------------------
 
+INSERT INTO
+  `studentspromotions` (
+    `id`,
+    `student_id`,
+    `from`,
+    `term`,
+    `session`,
+    `to_id`,
+    `createdById`,
+    `promotedOn`
+  )
+VALUES
+  (
+    'Mb2gR2I',
+    'AJ3njGo',
+    'SSS 1',
+    '2nd term',
+    '2024/2025',
+    'QA1juMZ',
+    'pS2M79v',
+    '2025-02-08 10:03:21.728'
+  );
 INSERT INTO
   `studentspromotions` (
     `id`,

@@ -1,12 +1,36 @@
 import express from "express";
 const router = express.Router();
-import prisma from "../lib/prisma.js";
-
+// import prisma from "../lib/prisma.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 router.get("/", async (req, res) => {
 	const staffs = await prisma.staffs.findMany({
 		where: {
 			active: true,
 
+			NOT: [{ empid: "EMP0000" }, { empid: "EMP0001" }],
+		},
+		include: {
+			curr_appointment: {
+				select: {
+					name: true,
+					school_section: true,
+				},
+			},
+		},
+		orderBy: {
+			empid: "asc",
+		},
+	});
+	res.json(staffs);
+});
+router.get("/acct", async (req, res) => {
+	const staffs = await prisma.staffs.findMany({
+		where: {
+			active: true,
+			account: {
+				is: null,
+			},
 			NOT: [{ empid: "EMP0000" }, { empid: "EMP0001" }],
 		},
 		include: {

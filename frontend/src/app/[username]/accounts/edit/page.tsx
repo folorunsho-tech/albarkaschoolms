@@ -45,7 +45,7 @@ const Edit = () => {
 		edit: false,
 	});
 	const [accounts, setAccounts] = useState(false);
-	const [staffPromotions, setStaffPromotions] = useState(false);
+	// const [staffPromotions, setStaffPromotions] = useState(false);
 	const [studentPromotions, setStudentPromotions] = useState(false);
 	const [statement, setStatement] = useState(false);
 	const [name, setName] = useState("");
@@ -63,7 +63,7 @@ const Edit = () => {
 			permissions: {
 				accounts,
 				studentPromotions,
-				staffPromotions,
+				// staffPromotions,
 				classes,
 				students,
 				results,
@@ -84,7 +84,7 @@ const Edit = () => {
 			setRole(data?.role);
 			const permissions = data?.permissions;
 			setAccounts(permissions?.accounts);
-			setStaffPromotions(permissions?.staffPromotions);
+			// setStaffPromotions(permissions?.staffPromotions);
 			setStudentPromotions(permissions?.studentPromotions);
 			setClasses(permissions?.classes);
 			setStudents(permissions?.students);
@@ -189,7 +189,7 @@ const Edit = () => {
 										</h3>
 									</span>
 								</div>
-								<div className='space-y-2'>
+								{/* <div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
 											checked={staffPromotions}
@@ -197,7 +197,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Staffs Promotions</h3>
 									</span>
-								</div>
+								</div> */}
 								<div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
@@ -223,7 +223,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Classes</h3>
 									</span>
-									<span className='flex gap-2 ml-4'>
+									{/* <span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={classes.view}
 											onChange={() =>
@@ -231,7 +231,7 @@ const Edit = () => {
 											}
 										/>
 										<h3 className='text-sm font-semibold'>View</h3>
-									</span>
+									</span> */}
 
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
@@ -259,7 +259,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Students</h3>
 									</span>
-									<span className='flex gap-2 ml-4'>
+									{/* <span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={students.view}
 											onChange={() =>
@@ -267,7 +267,7 @@ const Edit = () => {
 											}
 										/>
 										<h3 className='text-sm font-semibold'>View</h3>
-									</span>
+									</span> */}
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={students.create}
@@ -304,7 +304,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Results</h3>
 									</span>
-									<span className='flex gap-2 ml-4'>
+									{/* <span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={results.view}
 											onChange={() =>
@@ -312,7 +312,7 @@ const Edit = () => {
 											}
 										/>
 										<h3 className='text-sm font-semibold'>View</h3>
-									</span>
+									</span> */}
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={results.create}
@@ -349,7 +349,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Staffs</h3>
 									</span>
-									<span className='flex gap-2 ml-4'>
+									{/* <span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={staffs.view}
 											onChange={() =>
@@ -357,7 +357,7 @@ const Edit = () => {
 											}
 										/>
 										<h3 className='text-sm font-semibold'>View</h3>
-									</span>
+									</span> */}
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={staffs.create}
@@ -396,7 +396,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Payments</h3>
 									</span>
-									<span className='flex gap-2 ml-4'>
+									{/* <span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={payments.view}
 											onChange={() =>
@@ -404,7 +404,7 @@ const Edit = () => {
 											}
 										/>
 										<h3 className='text-sm font-semibold'>View</h3>
-									</span>
+									</span> */}
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
 											checked={payments.create}

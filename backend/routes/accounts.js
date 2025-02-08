@@ -62,6 +62,7 @@ router.post("/create", async (req, res) => {
 		res.status(200).json(created);
 	} catch (error) {
 		res.status(500).json({ error: "Registration failed" });
+		// console.log(error);
 	}
 });
 

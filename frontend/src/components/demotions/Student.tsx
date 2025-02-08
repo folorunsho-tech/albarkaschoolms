@@ -35,9 +35,9 @@ const Student = () => {
 		"Admission No.",
 		"Student name",
 		"Session-Term",
-		"promotion from",
-		"promotion to",
-		"promoted On",
+		"demotion from",
+		"demotion to",
+		"demotion On",
 	];
 	const [opened, { open, close }] = useDisclosure(false);
 	const [selected, setSelected] = useState<any[]>([]);

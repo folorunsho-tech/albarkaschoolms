@@ -317,7 +317,6 @@ const MakePayments = () => {
 											thousandSeparator
 											value={price}
 											min={0}
-											disabled
 											hideControls
 											allowDecimal={false}
 											allowNegative={false}

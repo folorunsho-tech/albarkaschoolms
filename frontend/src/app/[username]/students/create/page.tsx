@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import React, { useState } from "react";
-import { DateInput, DatePickerInput } from "@mantine/dates";
+import { DateInput } from "@mantine/dates";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useFetch, usePost } from "@/hooks/useQueries";
@@ -275,7 +275,7 @@ const CreateStudent = () => {
 						>
 							Cancel
 						</Button>
-						<Button color='teal' type='submit'>
+						<Button disabled={admission_class == ""} color='teal' type='submit'>
 							Add student
 						</Button>
 					</Group>
