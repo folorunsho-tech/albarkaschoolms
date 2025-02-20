@@ -14,9 +14,9 @@ router.get("/", async (req, res) => {
 			StudentsPromotions: true,
 			ClassHistory: true,
 		},
-		orderBy: {
-			updatedAt: "desc",
-		},
+		// orderBy: {
+		// 	updatedAt: "desc",
+		// },
 	});
 	res.json(students);
 });
@@ -137,21 +137,34 @@ router.post("/byClassHistory", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-	const created = await prisma.students.create({
-		data: {
-			id: nanoid(7),
-			...req.body,
-		},
-	});
+	try {
+		const found = await prisma.students.findUnique({
+			where: {
+				admission_no: req.body.admission_no,
+			},
+		});
+		if (found) {
+			res.status(400).json("already exist");
+		} else {
+			const created = await prisma.students.create({
+				data: {
+					id: nanoid(7),
+					...req.body,
+				},
+			});
 
-	const connectHistory = await prisma.classHistory.create({
-		data: {
-			student_id: created?.id,
-			class_id: created?.curr_class_id,
-			session: created?.admission_session,
-		},
-	});
-	res.json({ created, connectHistory });
+			const connectHistory = await prisma.classHistory.create({
+				data: {
+					student_id: created?.id,
+					class_id: created?.curr_class_id,
+					session: created?.admission_session,
+				},
+			});
+			res.json({ created, connectHistory });
+		}
+	} catch (error) {
+		res.json(error);
+	}
 });
 router.post("/edit/:studentId", async (req, res) => {
 	const { curr_class_id } = req.body;

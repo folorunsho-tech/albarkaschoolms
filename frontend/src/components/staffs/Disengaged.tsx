@@ -215,7 +215,7 @@ const Disengaged = () => {
 				sortedData={sortedData}
 				data={queryData}
 				headers={headers}
-				placeholder='Search by name or empid or appointment or school section'
+				placeholder='Search by name or empid '
 				setSortedData={setSortedData}
 				loading={loading}
 			/>

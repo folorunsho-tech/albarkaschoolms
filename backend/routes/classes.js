@@ -5,43 +5,47 @@ const router = express.Router();
 import prisma from "../lib/prisma.js";
 
 router.get("/", async (req, res) => {
-	const classes = await prisma.classes.findMany({
-		include: {
-			_count: {
-				select: {
-					Students: {
-						where: {
-							active: true,
+	try {
+		const classes = await prisma.classes.findMany({
+			include: {
+				_count: {
+					select: {
+						Students: {
+							where: {
+								active: true,
+							},
 						},
+						subjects: true,
 					},
-					subjects: true,
+				},
+
+				teacher: {
+					select: {
+						first_name: true,
+						last_name: true,
+						empid: true,
+					},
+				},
+				subjects: true,
+				Students: true,
+				fees: true,
+				ClassHistory: {
+					select: {
+						student: true,
+						session: true,
+					},
 				},
 			},
 
-			teacher: {
-				select: {
-					first_name: true,
-					last_name: true,
-					empid: true,
-				},
+			orderBy: {
+				name: "asc",
 			},
-			subjects: true,
-			Students: true,
-			fees: true,
-			ClassHistory: {
-				select: {
-					student: true,
-					session: true,
-				},
-			},
-		},
+		});
 
-		orderBy: {
-			name: "asc",
-		},
-	});
-
-	res.json(classes);
+		res.status(200).json(classes);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/list", async (req, res) => {
 	const classes = await prisma.classes.findMany({
@@ -53,105 +57,121 @@ router.get("/list", async (req, res) => {
 	res.json(classes);
 });
 router.get("/fees", async (req, res) => {
-	const classes = await prisma.classes.findMany({
-		include: {
-			fees: true,
-		},
+	try {
+		const classes = await prisma.classes.findMany({
+			include: {
+				fees: true,
+			},
 
-		orderBy: {
-			name: "asc",
-		},
-	});
+			orderBy: {
+				name: "asc",
+			},
+		});
 
-	res.json(classes);
+		res.status(200).json(classes);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/fees/:name", async (req, res) => {
-	const classes = await prisma.classes.findMany({
-		where: {
-			name: req.params.name,
-		},
-		include: {
-			fees: true,
-		},
+	try {
+		const classes = await prisma.classes.findMany({
+			where: {
+				name: req.params.name,
+			},
+			include: {
+				fees: true,
+			},
 
-		orderBy: {
-			name: "asc",
-		},
-	});
+			orderBy: {
+				name: "asc",
+			},
+		});
 
-	res.json(classes);
+		res.status(200).json(classes);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/byStatement", async (req, res) => {
-	const classes = await prisma.classes.findMany({
-		include: {
-			subjects: true,
-			Students: true,
-			ClassHistory: {
-				select: {
-					student: true,
+	try {
+		const classes = await prisma.classes.findMany({
+			include: {
+				subjects: true,
+				Students: true,
+				ClassHistory: {
+					select: {
+						student: true,
+					},
 				},
 			},
-		},
 
-		orderBy: {
-			name: "asc",
-		},
-	});
+			orderBy: {
+				name: "asc",
+			},
+		});
 
-	res.json(classes);
+		res.status(200).json(classes);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/:classId", async (req, res) => {
-	const currClass = await prisma.classes.findUnique({
-		where: {
-			id: req.params.classId,
-		},
-		include: {
-			subjects: {
-				select: {
-					name: true,
-					id: true,
+	try {
+		const currClass = await prisma.classes.findUnique({
+			where: {
+				id: req.params.classId,
+			},
+			include: {
+				subjects: {
+					select: {
+						name: true,
+						id: true,
+					},
+					orderBy: {
+						name: "asc",
+					},
 				},
-				orderBy: {
-					name: "asc",
+				teacher: {
+					select: {
+						first_name: true,
+						last_name: true,
+						empid: true,
+					},
+				},
+				Students: {
+					where: {
+						active: true,
+					},
+					select: {
+						first_name: true,
+						last_name: true,
+						admission_no: true,
+						sex: true,
+						religion: true,
+						guardian_name: true,
+						guardian_telephone: true,
+					},
+				},
+				ClassHistory: {
+					select: {
+						student: true,
+						session: true,
+					},
+				},
+				_count: {
+					select: {
+						subjects: true,
+						Students: true,
+					},
 				},
 			},
-			teacher: {
-				select: {
-					first_name: true,
-					last_name: true,
-					empid: true,
-				},
-			},
-			Students: {
-				where: {
-					active: true,
-				},
-				select: {
-					first_name: true,
-					last_name: true,
-					admission_no: true,
-					sex: true,
-					religion: true,
-					guardian_name: true,
-					guardian_telephone: true,
-				},
-			},
-			ClassHistory: {
-				select: {
-					student: true,
-					session: true,
-				},
-			},
-			_count: {
-				select: {
-					subjects: true,
-					Students: true,
-				},
-			},
-		},
-	});
+		});
 
-	res.json(currClass);
+		res.json(currClass);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/subjects/:classId", async (req, res) => {
 	const currClass = await prisma.classes.findUnique({

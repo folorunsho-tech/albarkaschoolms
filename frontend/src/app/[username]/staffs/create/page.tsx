@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import React, { useState } from "react";
-import { DateInput, DatePickerInput } from "@mantine/dates";
+import { DateInput } from "@mantine/dates";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useFetch, usePost } from "@/hooks/useQueries";
@@ -18,7 +18,7 @@ import { useDisclosure } from "@mantine/hooks";
 
 const CreateStaff = () => {
 	const [date_of_birth, setDOB] = useState<Date | null>(null);
-	const [date_of_emp, setDOE] = useState<Date | null>(null);
+	const [date_of_emp, setDOE] = useState<Date | null>(new Date());
 	const [visible, { open, close }] = useDisclosure(false);
 	const { post } = usePost();
 	const [section, setSection] = useState("");
@@ -37,34 +37,34 @@ const CreateStaff = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const { fetch } = useFetch();
 	const router = useRouter();
+	const getAll = async () => {
+		const { data: subs } = await fetch("/subjects");
+		const { data: apps } = await fetch("/appointments");
+		const { data: empno } = await fetch("/staffs/empid");
+		const sortedApp: any = apps.map((app: any) => {
+			return {
+				value: app.id,
+				label: `${app.name} - ${app.school_section}`,
+			};
+		});
+		const sortedFApp: any = apps.map((app: any) => {
+			return `${app.name} - ${app.school_section}`;
+		});
+		const sortedSubject: any = subs.map((sub: any) => {
+			return {
+				value: sub.id,
+				label: sub.name,
+			};
+		});
+		const added = empno.substring(3);
+		setEmpId(`EMP${Number(added) + 1}`);
+		setSubjectList(sortedSubject);
+		setAppList(sortedApp);
+		setAppFList(sortedApp);
+		setFAppList(sortedFApp);
+		setDOE(new Date());
+	};
 	React.useEffect(() => {
-		const getAll = async () => {
-			const { data: subs } = await fetch("/subjects");
-			const { data: apps } = await fetch("/appointments");
-			const { data: empno } = await fetch("/staffs/empid");
-			const sortedApp: any = apps.map((app: any) => {
-				return {
-					value: app.id,
-					label: `${app.name} - ${app.school_section}`,
-				};
-			});
-			const sortedFApp: any = apps.map((app: any) => {
-				return `${app.name} - ${app.school_section}`;
-			});
-			const sortedSubject: any = subs.map((sub: any) => {
-				return {
-					value: sub.id,
-					label: sub.name,
-				};
-			});
-			const added = empno.substring(3);
-			setEmpId(`EMP${Number(added) + 1}`);
-			setSubjectList(sortedSubject);
-			setAppList(sortedApp);
-			setAppFList(sortedApp);
-			setFAppList(sortedFApp);
-			setDOE(new Date());
-		};
 		getAll();
 	}, []);
 
@@ -103,6 +103,7 @@ const CreateStaff = () => {
 		setMarital_status("");
 		setSubjects([]);
 		reset();
+		getAll();
 		close();
 	};
 	return (
@@ -127,7 +128,6 @@ const CreateStaff = () => {
 					checkIconPosition='right'
 					className='w-70'
 					data={["All", "Nursery and Primary", "Secondary"]}
-					searchable
 					allowDeselect={false}
 					value={section}
 					label='School section'
@@ -141,7 +141,7 @@ const CreateStaff = () => {
 			</div>
 
 			<form onSubmit={handleSubmit(onSubmit)} className='space-y-10'>
-				{section !== "" ? (
+				{section ? (
 					<div className='flex gap-6 flex-wrap relative'>
 						<TextInput
 							className='w-32'
@@ -188,7 +188,6 @@ const CreateStaff = () => {
 							data={["Male", "Female"]}
 							nothingFoundMessage='Nothing found...'
 							className='w-32'
-							withAsterisk
 							value={sex}
 							onChange={(value: any) => {
 								setSex(value);
@@ -199,7 +198,6 @@ const CreateStaff = () => {
 							label='Religion'
 							placeholder='Select religion'
 							data={["Islam", "Christianity", "Others"]}
-							withAsterisk
 							value={religion}
 							nothingFoundMessage='Nothing found...'
 							className='w-36'
@@ -212,7 +210,6 @@ const CreateStaff = () => {
 							label='Marital Status'
 							placeholder='Select marital status'
 							data={["Single", "Married"]}
-							withAsterisk
 							value={marital_status}
 							nothingFoundMessage='Nothing found...'
 							className='w-38'

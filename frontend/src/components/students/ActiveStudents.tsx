@@ -130,7 +130,7 @@ const ActiveStudents = () => {
 				rows={rows}
 				data={queryData}
 				headers={headers}
-				placeholder='Search by admission no or name or class'
+				placeholder='Search by admission no or name'
 				setSortedData={setSortedData}
 				loading={loading}
 				sortedData={sortedData}

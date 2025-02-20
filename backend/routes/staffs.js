@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
-// import prisma from "../lib/prisma.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.get("/", async (req, res) => {
 	const staffs = await prisma.staffs.findMany({
 		where: {
@@ -48,15 +48,19 @@ router.get("/acct", async (req, res) => {
 	res.json(staffs);
 });
 router.get("/empid", async (req, res) => {
-	const list = await prisma.staffs.findMany({
-		select: {
-			empid: true,
-		},
-		orderBy: {
-			empid: "asc",
-		},
-	});
-	res.json(list[list.length - 1].empid);
+	try {
+		const list = await prisma.staffs.findMany({
+			select: {
+				empid: true,
+			},
+			orderBy: {
+				empid: "asc",
+			},
+		});
+		res.json(list[list.length - 1].empid);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/:staffId", async (req, res) => {
 	const staff = await prisma.staffs.findUnique({
@@ -119,34 +123,49 @@ router.post("/create", async (req, res) => {
 		grade_level,
 		createdById,
 	} = req.body;
-	const created = await prisma.staffs.create({
-		data: {
-			empid,
-			address,
-			appointed_as,
-			curr_appointment_id,
-			date_of_birth,
-			date_of_emp,
-			empid,
-			first_name,
-			last_name,
-			lga,
-			marital_status,
-			qualification,
-			religion,
-			salary,
-			school_section,
-			sex,
-			state_of_origin,
-			telephone,
-			grade_level,
-			createdById,
-			subjects: {
-				connect: subjects,
+
+	try {
+		const found = await prisma.staffs.findUnique({
+			where: {
+				empid,
 			},
-		},
-	});
-	res.json(created);
+		});
+		if (found) {
+			res.status(400).json("already exist");
+		} else {
+			const created = await prisma.staffs.create({
+				data: {
+					empid,
+					address,
+					appointed_as,
+					curr_appointment_id,
+					date_of_birth,
+					date_of_emp,
+					empid,
+					first_name,
+					last_name,
+					lga,
+					marital_status,
+					qualification,
+					religion,
+					salary,
+					school_section,
+					sex,
+					state_of_origin,
+					telephone,
+					grade_level,
+					createdById,
+					subjects: {
+						connect: subjects,
+					},
+				},
+			});
+			res.json(created);
+		}
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
 });
 router.post("/edit/:staffId", async (req, res) => {
 	const {

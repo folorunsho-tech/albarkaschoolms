@@ -12,8 +12,8 @@
 
 DROP TABLE IF EXISTS `_classestofeesgroup`;
 CREATE TABLE `_classestofeesgroup` (
-  `A` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `B` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `A` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `B` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   UNIQUE KEY `_ClassesToFeesGroup_AB_unique` (`A`, `B`),
   KEY `_ClassesToFeesGroup_B_index` (`B`),
   CONSTRAINT `_ClassesToFeesGroup_A_fkey` FOREIGN KEY (`A`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -81,7 +81,7 @@ CREATE TABLE `accounts` (
   `updatedAt` datetime(3) NOT NULL,
   `updatedById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) DEFAULT '1',
-  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `role` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Accounts_empid_key` (`empid`),
   CONSTRAINT `Accounts_empid_fkey` FOREIGN KEY (`empid`) REFERENCES `staffs` (`empid`) ON DELETE
@@ -332,12 +332,12 @@ CREATE TABLE `payments` (
   `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   `amount` int DEFAULT NULL,
-  `item_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `item_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transactionId` int DEFAULT NULL,
   `paid` int DEFAULT NULL,
-  `payment_method` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `teller_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_method` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `teller_no` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updatedAt` datetime(3) DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `Payments_item_id_fkey` (`item_id`),
@@ -498,11 +498,11 @@ CREATE TABLE `students` (
 DROP TABLE IF EXISTS `studentsdemotions`;
 CREATE TABLE `studentsdemotions` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `from` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `to_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `to_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `demotedOn` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
@@ -523,11 +523,11 @@ CREATE TABLE `studentsdemotions` (
 DROP TABLE IF EXISTS `studentspromotions`;
 CREATE TABLE `studentspromotions` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `from` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `to_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `to_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `promotedOn` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   PRIMARY KEY (`id`),
@@ -558,17 +558,17 @@ CREATE TABLE `subjects` (
 
 DROP TABLE IF EXISTS `transactionhistory`;
 CREATE TABLE `transactionhistory` (
-  `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tnxId` int NOT NULL,
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `items` json DEFAULT NULL,
   `total` int DEFAULT NULL,
   `paid` int DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `term` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `session` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `createdById` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -590,15 +590,15 @@ CREATE TABLE `transactionhistory` (
 
 DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE `transactions` (
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` int DEFAULT NULL,
   `paid` int DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `term` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `session` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `createdById` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `updatedById` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `term` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `session` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `createdById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updatedById` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime(3) DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) DEFAULT NULL,
   `tnxId` int NOT NULL AUTO_INCREMENT,
@@ -2117,6 +2117,70 @@ VALUES
     '8uIPHRQ',
     'Logged-in',
     '2025-02-08 10:57:27.182',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7d05ih50005f2ncabjgytew',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-20 07:10:03.976',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7d0et81000173n0jyg0uivc',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-20 07:17:17.803',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7d0l1ye0001atdrjib15ts3',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-20 07:22:09.060',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7d0nxxz0001s85bjr1ggtzf',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-20 07:24:23.829',
     NULL
   );
 

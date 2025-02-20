@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useFetch, usePost } from "@/hooks/useQueries";
+import { useFetch, usePostNormal } from "@/hooks/useQueries";
 import { sessions, currTerm, currSession } from "@/libs/sessions";
 import { useRouter } from "next/navigation";
 import {
@@ -16,7 +16,7 @@ import getGrade from "@/libs/getGrade";
 
 const Statement = () => {
 	const router = useRouter();
-	const { post, loading } = usePost();
+	const { post, loading } = usePostNormal();
 	const { fetch } = useFetch();
 	const [selectedClass, setSelectedClass] = React.useState<any | null>(null);
 	const [selectedStudent, setSelectedStudent] = React.useState<string | null>(

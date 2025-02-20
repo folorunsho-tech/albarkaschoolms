@@ -2,7 +2,34 @@ import { useState } from "react";
 import axios from "@/config/axios";
 import { userContext } from "@/context/User";
 import React from "react";
-
+import { notifications } from "@mantine/notifications";
+const showNotification = (status) => {
+	if (status == 200) {
+		notifications.show({
+			title: "Success !!!",
+			message: "Sucessfull",
+			color: "green",
+		});
+	} else if (status == 400) {
+		notifications.show({
+			title: "Error !!!",
+			message: "Data alredy exist",
+			color: "orange",
+		});
+	} else if (status == 404) {
+		notifications.show({
+			title: "Error !!!",
+			message: "Error encountered",
+			color: "red",
+		});
+	} else {
+		notifications.show({
+			title: "Server Error !!!",
+			message: "Seems the server is having issues",
+			color: "red",
+		});
+	}
+};
 export const useFetch = () => {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState([]);
@@ -69,6 +96,7 @@ export const usePost = () => {
 		});
 		setData(postquery.data);
 		setLoading(false);
+		showNotification(postquery.status);
 		return {
 			data: postquery.data,
 			headers: postquery.headers,
@@ -89,6 +117,7 @@ export const useEdit = () => {
 		});
 		setData(postquery.data);
 		setLoading(false);
+		showNotification(postquery.status);
 		return {
 			data: postquery.data,
 			headers: postquery.headers,
@@ -97,46 +126,3 @@ export const useEdit = () => {
 	};
 	return { loading, post, data };
 };
-
-// export const useDelete = () => {
-// 	const [loading, setLoading] = useState(false);
-// 	const [data, setData] = useState([]);
-// 	const deleteData = async (url) => {
-// 		setLoading(true);
-// 		const deletequery = await axios.delete(url);
-// 		setData(deletequery.data);
-// 		setLoading(false);
-// 		return {
-// 			data: deletequery.data,
-// 			headers: deletequery.headers,
-// 			status: deletequery.status,
-// 		};
-// 	};
-// 	return { loading, deleteData, data };
-// };
-
-// export const useUpload = () => {
-// 	const [loading, setLoading] = useState(false);
-// 	const [data, setData] = useState([]);
-// 	const upload = async (url, uploadData) => {
-// 		// setLoading(true);
-// 		const formData = new FormData();
-// 		for (let i = 0; i < uploadData.length; i++) {
-// 			console.log(uploadData[i]);
-// 		}
-// 		// console.log(formData);
-// 		// const uploads = await axios.post(url, uploadData, {
-// 		// 	headers: {
-// 		// 		"Content-Type": "multipart/form-data",
-// 		// 	},
-// 		// });
-// 		// setData(uploads.data);
-// 		// setLoading(false);
-// 		// return {
-// 		// 	data: uploads.data,
-// 		// 	headers: uploads.headers,
-// 		// 	status: uploads.status,
-// 		// };
-// 	};
-// 	return { loading, upload, data };
-// };

@@ -26,7 +26,7 @@ export default function RootLayout({
 			<body suppressHydrationWarning={true} className='bg-gray-200'>
 				<CookiesProvider>
 					<MantineProvider>
-						<Notifications autoClose={3000} />
+						<Notifications autoClose={3000} className='absolute top-0 left-1' />
 						<ModalsProvider>
 							<DatesProvider
 								settings={{ consistentWeeks: true, timezone: "UTC" }}

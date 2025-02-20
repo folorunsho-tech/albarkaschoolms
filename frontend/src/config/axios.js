@@ -4,7 +4,7 @@ const instance = axios.create({
 	responseType: "json",
 
 	validateStatus: function (status) {
-		return status < 500; // Resolve only if the status code is less than 500
+		return status;
 	},
 });
 export default instance;

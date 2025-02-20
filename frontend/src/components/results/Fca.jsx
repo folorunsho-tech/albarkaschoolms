@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
 import { usePostNormal } from "@/hooks/useQueries";
 import { Table, ActionIcon } from "@mantine/core";

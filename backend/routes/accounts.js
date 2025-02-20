@@ -7,29 +7,33 @@ const hashpass = (password) => {
 	return createHash("sha256").update(password).digest("hex");
 };
 router.get("/", async (req, res) => {
-	const accounts = await prisma.accounts.findMany({
-		where: {
-			NOT: [{ empid: "EMP0000" }, { empid: "EMP0001" }],
-		},
-		include: {
-			staff: {
-				select: {
-					curr_appointment: {
-						select: {
-							name: true,
+	try {
+		const accounts = await prisma.accounts.findMany({
+			where: {
+				NOT: [{ empid: "EMP0000" }, { empid: "EMP0001" }],
+			},
+			include: {
+				staff: {
+					select: {
+						curr_appointment: {
+							select: {
+								name: true,
+							},
 						},
+						empid: true,
 					},
-					empid: true,
 				},
 			},
-		},
 
-		orderBy: {
-			empid: "asc",
-		},
-	});
+			orderBy: {
+				empid: "asc",
+			},
+		});
 
-	res.json(accounts);
+		res.status(200).json(accounts);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 router.get("/:accountId", async (req, res) => {
 	try {
@@ -40,7 +44,7 @@ router.get("/:accountId", async (req, res) => {
 		});
 		res.status(200).json(account);
 	} catch (error) {
-		res.status(500).json({ error: "Query error" });
+		res.status(500).json(error);
 	}
 });
 router.post("/create", async (req, res) => {
@@ -61,30 +65,34 @@ router.post("/create", async (req, res) => {
 
 		res.status(200).json(created);
 	} catch (error) {
-		res.status(500).json({ error: "Registration failed" });
+		res.status(500).json(error);
 		// console.log(error);
 	}
 });
 
 router.post("/edit/:accountId", async (req, res) => {
-	const { name, username, password, permissions, empid, updatedById, role } =
-		req.body;
-	const passHash = hashpass(password);
-	const edited = await prisma.accounts.update({
-		where: {
-			id: req.params.accountId,
-		},
-		data: {
-			name,
-			username,
-			permissions,
-			passHash,
-			empid,
-			updatedById,
-			role,
-		},
-	});
-	res.json(edited);
+	try {
+		const { name, username, password, permissions, empid, updatedById, role } =
+			req.body;
+		const passHash = hashpass(password);
+		const edited = await prisma.accounts.update({
+			where: {
+				id: req.params.accountId,
+			},
+			data: {
+				name,
+				username,
+				permissions,
+				passHash,
+				empid,
+				updatedById,
+				role,
+			},
+		});
+		res.json(edited);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 
 export default router;

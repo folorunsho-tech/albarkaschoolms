@@ -9,7 +9,7 @@ import {
 	LoadingOverlay,
 } from "@mantine/core";
 import { useForm } from "react-hook-form";
-import { usePost } from "@/hooks/useQueries";
+import { usePostNormal } from "@/hooks/useQueries";
 import { bake_cookie, read_cookie } from "sfcookies";
 import { useRouter } from "next/navigation";
 import { notifications } from "@mantine/notifications";
@@ -21,7 +21,7 @@ export default function Login() {
 	const { setUser } = React.useContext(userContext);
 	const router = useRouter();
 	const { handleSubmit, register } = useForm();
-	const { post, loading } = usePost();
+	const { post, loading } = usePostNormal();
 	const onSubmit = async (values: any) => {
 		const res = await post("/auth/login", {
 			...values,
