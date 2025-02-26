@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { sessions, currTerm, currSession } from "@/libs/sessions";
-import { useFetch, usePost } from "@/hooks/useQueries";
+import { useFetch, usePostMany } from "@/hooks/useQueries";
 import { useRouter } from "next/navigation";
 import {
 	Select,
@@ -19,7 +19,7 @@ import { userContext } from "@/context/User";
 const Fca = () => {
 	const { user } = React.useContext(userContext);
 	const { fetch } = useFetch();
-	const { post, loading } = usePost();
+	const { post, loading } = usePostMany();
 	const router = useRouter();
 	const [selectedClass, setSelectedClass] = React.useState<any>(null);
 	const [selectedStudent, setSelectedStudent] = React.useState<any>(null);
@@ -99,7 +99,7 @@ const Fca = () => {
 				className='flex flex-col gap-4'
 				onSubmit={async (e) => {
 					e.preventDefault();
-					const toUpload = selectedStudents.map((std: any) => {
+					const uploads = selectedStudents.map((std: any) => {
 						return {
 							student_id: std?.student_id,
 							class_id: std?.class_id,
@@ -109,13 +109,8 @@ const Fca = () => {
 							term,
 						};
 					});
-					toUpload.forEach(async (upload: any) => {
-						await post("fca/create", upload);
-					});
-
-					setScore(0);
+					await post("fca/create", uploads);
 					setSelectedStudents([]);
-					setSelectedSubject(null);
 				}}
 			>
 				<div>
@@ -192,7 +187,7 @@ const Fca = () => {
 								data={studentsList?.map(({ student }, index) => {
 									return {
 										value: `${student?.admission_no}-${index}`,
-										label: `${student?.first_name} ${student?.last_name} - ${student?.admission_no}`,
+										label: `${student?.last_name} ${student?.first_name} - ${student?.admission_no}`,
 									};
 								})}
 								searchable
@@ -254,7 +249,7 @@ const Fca = () => {
 											id: selId,
 											student_id: selectedStudent?.id,
 											admission_no: selectedStudent?.admission_no,
-											student_name: `${selectedStudent?.first_name} ${selectedStudent?.last_name}`,
+											student_name: `${selectedStudent?.last_name} ${selectedStudent?.first_name}`,
 											subject_id: selectedSubject,
 											subject: subject?.name,
 											class_id: selectedClass,

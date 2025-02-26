@@ -75,7 +75,7 @@ CREATE TABLE `Students` (
     `first_name` VARCHAR(191) NULL,
     `last_name` VARCHAR(191) NULL,
     `date_of_birth` DATETIME(3) NULL,
-    `sex` VARCHAR(191) NOT NULL,
+    `sex` VARCHAR(191) NULL,
     `address` VARCHAR(191) NULL,
     `state_of_origin` VARCHAR(191) NULL,
     `school_section` VARCHAR(191) NULL,

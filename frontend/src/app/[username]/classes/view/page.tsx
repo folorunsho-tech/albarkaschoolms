@@ -73,7 +73,7 @@ const ViewClass = () => {
 				{moment(row?.date_of_admission).format("MMMM Do YYYY")}
 			</Table.Td>
 			<Table.Td>
-				{row?.first_name} {row?.last_name}
+				{row?.last_name} {row?.first_name}
 			</Table.Td>
 			<Table.Td>{row?.sex}</Table.Td>
 			<Table.Td>{row?.religion}</Table.Td>
@@ -291,7 +291,7 @@ const ViewClass = () => {
 										<td>{index + 1}</td>
 										<td>{student?.admission_no}</td>
 										<td>
-											{student?.first_name} {student?.last_name}
+											{student?.last_name} {student?.first_name}
 										</td>
 										<td></td>
 										<td></td>

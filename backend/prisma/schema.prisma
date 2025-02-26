@@ -108,7 +108,7 @@ model Students {
   first_name         String?
   last_name          String?
   date_of_birth      DateTime?
-  sex                String
+  sex                String?
   address            String?
   state_of_origin    String?
   school_section     String?

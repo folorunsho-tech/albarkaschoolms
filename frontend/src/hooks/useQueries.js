@@ -105,6 +105,29 @@ export const usePost = () => {
 	};
 	return { loading, post, data };
 };
+export const usePostMany = () => {
+	const { user } = React.useContext(userContext);
+	const [loading, setLoading] = useState(false);
+	const [data, setData] = useState([]);
+	const post = async (url, postData) => {
+		setLoading(true);
+
+		const postquery = await axios.post(url, {
+			uploads: postData,
+			createdById: user?.id,
+			// updatedById: user?.id,
+		});
+		setData(postquery.data);
+		setLoading(false);
+		showNotification(postquery.status);
+		return {
+			data: postquery.data,
+			headers: postquery.headers,
+			status: postquery.status,
+		};
+	};
+	return { loading, post, data };
+};
 export const useEdit = () => {
 	const { user } = React.useContext(userContext);
 	const [loading, setLoading] = useState(false);

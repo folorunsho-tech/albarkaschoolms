@@ -1323,31 +1323,11 @@ VALUES
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP3', '18mZBlZ');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP4', 'bDliUQN');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
   ('EMP0000', 'E7JETdx');
 INSERT INTO
   `_staffstosubjects` (`A`, `B`)
 VALUES
-  ('EMP3', 'E7JETdx');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'o9bUcgF');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
   ('EMP0000', 'Vx7JKMR');
-INSERT INTO
-  `_staffstosubjects` (`A`, `B`)
-VALUES
-  ('EMP3', 'Vx7JKMR');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: accounts
@@ -1407,62 +1387,6 @@ VALUES
     '2025-01-22 22:11:20.613',
     'pS2M79v',
     1,
-    'user'
-  );
-INSERT INTO
-  `accounts` (
-    `id`,
-    `name`,
-    `username`,
-    `passHash`,
-    `empid`,
-    `permissions`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`,
-    `active`,
-    `role`
-  )
-VALUES
-  (
-    'MwA8gDw',
-    'Ibrahim Folorunsho',
-    'Ibrahim',
-    '2c8cf0b74fac368f6c58c87f32e4e04accfc54da5fe0b43b2b4941517cda3cf0',
-    'EMP3',
-    '{\"staffs\": {\"edit\": true, \"view\": true, \"create\": true}, \"classes\": {\"edit\": true, \"view\": true}, \"results\": {\"edit\": true, \"view\": true, \"create\": true}, \"accounts\": true, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"students\": {\"edit\": true, \"view\": true, \"create\": true}, \"statement\": true, \"studentPromotions\": true}',
-    '2025-01-05 18:19:32.441',
-    '2025-02-08 10:31:36.865',
-    'pS2M79v',
-    0,
-    'admin'
-  );
-INSERT INTO
-  `accounts` (
-    `id`,
-    `name`,
-    `username`,
-    `passHash`,
-    `empid`,
-    `permissions`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`,
-    `active`,
-    `role`
-  )
-VALUES
-  (
-    'oVUonwk',
-    'Folorunsho Ibrahim',
-    'Ibrahim',
-    'af9d5f1717a38326fff01512ad46f5dd55b013428b7d53456d6b65538fd959f7',
-    'EMP4',
-    '{\"staffs\": {\"edit\": false, \"view\": false, \"create\": false}, \"classes\": {\"edit\": false, \"view\": false}, \"results\": {\"edit\": false, \"view\": true, \"create\": true}, \"accounts\": false, \"payments\": {\"edit\": false, \"view\": false, \"create\": false}, \"students\": {\"edit\": false, \"view\": false, \"create\": false}, \"statement\": true, \"studentPromotions\": false}',
-    '2025-02-08 10:44:11.100',
-    '2025-02-08 10:53:55.154',
-    'pS2M79v',
-    0,
     'user'
   );
 INSERT INTO
@@ -1591,598 +1515,6 @@ VALUES
 # DATA DUMP FOR TABLE: authhistory
 # ------------------------------------------------------------
 
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jux6gn000110b3l4rzvs8w',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-05 16:58:35.634',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jvacdg0001ldlla2dxiqvg',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-05 17:08:49.826',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jxtpd70003dbszqzlgaq6l',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-05 18:19:52.361',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jxu29v0005dbszf9t0vf5r',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-05 18:20:09.090',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jxxtds0007dbszed3l5chg',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-05 18:23:04.190',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jxy3u40009dbszz2l0ps6l',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-05 18:23:17.739',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5jy2m83000bdbszu5k9fyk5',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-05 18:26:48.194',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5laci2i0001ro2h8nn4lk49',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-06 16:58:10.932',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5ld8alo0001y1gntm7b6u3l',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-06 18:18:53.478',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5ld8jbc0003y1gnd0du52jc',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-06 18:19:04.775',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm5msb4it0001hv3s48gcfzj0',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-07 18:08:45.984',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm68clrfl000111uewj44dtur',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-22 20:20:04.252',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm68g6vng0001rwkgh2wcnh26',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-01-22 22:00:28.340',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm68g7kjg0003rwkgysux24y0',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-22 22:01:00.602',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm68gl6fo0005rwkgqg9c6eig',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-22 22:11:35.506',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm697617m0001sqdnpd5zcwsb',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-23 10:35:38.524',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm69a03qr0001ap7nl68oghaf',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-23 11:55:00.715',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm69a3slh000112t8hm14kt3e',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-23 11:57:52.899',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm69cn1e50001xjptquius94c',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-23 13:08:49.987',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm69cqueg0001xjdczg8tmjyx',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-23 13:11:47.557',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm69cr7d40003xjdc9n7d6ywq',
-    'MwA8gDw',
-    'Logged-in',
-    '2025-01-23 13:12:04.357',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6akanzz000484ez8din2m5d',
-    'f4RocSh',
-    'Logged-in',
-    '2025-01-24 09:30:55.866',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6clflw60001fcv51f81oyl1',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-25 19:38:18.366',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6clfqb30003fcv5usmhq3l8',
-    'pS2M79v',
-    'Logged-in',
-    '2025-01-25 19:38:24.109',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6tngf0b0001ym93hm9y3lv9',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-06 18:07:00.345',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6tnqwli0003ym93l7oisk8k',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-06 18:15:09.701',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6vyw7qw0001qz7hq2t5y6us',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-08 09:02:45.553',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2sreb0001gdfzfojfdebs',
-    'oVUonwk',
-    'Logged-in',
-    '2025-02-08 10:52:02.858',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2uk8e0003gdfzvme5ry2p',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-08 10:53:26.892',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2w9ut0007gdfztrxqlaax',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-08 10:54:46.755',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2wz6h0009gdfz8jch6vue',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-08 10:55:19.575',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2xcy7000bgdfzyv8i6bra',
-    'pS2M79v',
-    'Logged-in',
-    '2025-02-08 10:55:37.421',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm6w2zpn50001el6bzyuqkrpb',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-08 10:57:27.182',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm7d05ih50005f2ncabjgytew',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-20 07:10:03.976',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm7d0et81000173n0jyg0uivc',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-20 07:17:17.803',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm7d0l1ye0001atdrjib15ts3',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-20 07:22:09.060',
-    NULL
-  );
-INSERT INTO
-  `authhistory` (
-    `id`,
-    `account_id`,
-    `auth_status`,
-    `logged_in_at`,
-    `logged_out_at`
-  )
-VALUES
-  (
-    'cm7d0nxxz0001s85bjr1ggtzf',
-    '8uIPHRQ',
-    'Logged-in',
-    '2025-02-20 07:24:23.829',
-    NULL
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: classes
@@ -2235,7 +1567,7 @@ VALUES
 INSERT INTO
   `classes` (`id`, `name`, `teacher_id`, `school_section`)
 VALUES
-  ('OMVKFac', 'JSS 1', 'EMP3', 'JSS');
+  ('OMVKFac', 'JSS 1', NULL, 'JSS');
 INSERT INTO
   `classes` (`id`, `name`, `teacher_id`, `school_section`)
 VALUES
@@ -2253,8 +1585,8 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    '14e2d575-f1bb-4469-ba6d-02a7968eac04',
-    'AJ3njGo',
+    '00e482a3-2aa5-4cd8-bb90-50e87afcedb5',
+    's7OprJI',
     'Ifq45cL',
     '2024/2025'
   );
@@ -2262,89 +1594,53 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    '16198cfe-4865-4a63-911b-7899ee7111c9',
-    'AJ3njGo',
-    'Ifq45cL',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '21a3ddb5-489a-4eca-9116-32f5ad7f911d',
-    'AJ3njGo',
-    '2_fPzDw',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '27b08bf5-1f2b-45bd-b3a6-56d81d0bb711',
-    'AJ3njGo',
-    '2_fPzDw',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '3b597354-20a0-4e6f-8460-a9c0ded220c2',
-    'AJ3njGo',
-    'QA1juMZ',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '457bdfc7-428f-4596-920f-032509c122b7',
-    'FWpZizc',
-    '2_fPzDw',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '93e99ba1-6336-46b1-a3c9-dfff414ec4ab',
-    'FWpZizc',
-    'Ifq45cL',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    '946e3753-3e45-439c-a53a-5d454ac0a021',
-    'FWpZizc',
-    '2_fPzDw',
-    '2024/2025'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    'c46153c8-4eee-4814-86f2-6e4bfa8635b8',
-    'RAN1AcR',
-    'OMVKFac',
-    '2023/2024'
-  );
-INSERT INTO
-  `classhistory` (`id`, `student_id`, `class_id`, `session`)
-VALUES
-  (
-    'c6f3f874-2220-4d4e-8a1a-3fc333656008',
-    'RAN1AcR',
+    '01100736-d4bc-4236-8b57-ecee07902549',
+    'hze8AHg',
     'T9Bo3Ne',
-    '2023/2024'
+    '2024/2025'
   );
 INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    'ca4120a5-5632-41ec-8952-a04fbb2fab02',
-    'FWpZizc',
+    '023205e3-bd94-468d-91d3-d2e0bb5a67c5',
+    '_2-r5MV',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '0260bb1a-d486-4409-93a5-24f0a075a568',
+    'L3A7LAe',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '03c2f1b7-6f4f-4965-b069-037521ad1ae6',
+    'JAK4Ph7',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '0475a2c9-f86c-4fc5-b1c5-fd922409d91e',
+    'JOQG0hx',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '064d939f-52d5-4c4d-b3c2-4d496af32224',
+    'zZszPtu',
     'Ifq45cL',
     '2024/2025'
   );
@@ -2352,8 +1648,8 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    'd9ad3dcb-79f5-4711-80da-2117740107bc',
-    'AJ3njGo',
+    '075b4a00-64b9-4f38-b62f-92fc72cf3fbe',
+    'RcvAZak',
     '2_fPzDw',
     '2024/2025'
   );
@@ -2361,17 +1657,116 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    'e5b29ded-6b34-4e28-b2b6-4d98594716d4',
-    'RZ2jHBA',
-    'OMVKFac',
+    '07a8c557-5cca-4bd8-87a4-dbede80746fe',
+    'xIXqRvq',
+    '1HN7a2S',
     '2024/2025'
   );
 INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    'e6a8658d-e1b5-4ba4-bf29-1d0ebd05395d',
-    'AJ3njGo',
+    '0fbd7e3a-3ac7-47c3-8265-a6f3b9826f3f',
+    'ixm8OxF',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '0fca41fa-7734-4ec8-b078-c74c8f83bc0d',
+    'LF4VphQ',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '0fe77b9c-6662-4ae8-bb3f-902e97451550',
+    'blQ3H8f',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '1000e6d3-00bd-4f2d-a594-d04a59f13a8d',
+    'SJj5gNt',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '10ee9f2d-836d-415a-9b25-0d6cc69a0216',
+    'w9LRsUe',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '124cc218-1d79-49db-842e-87ead0a98998',
+    'y0lWnRZ',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '138ecb13-e580-4f20-9cde-88a9aa1f1edb',
+    'J4IyWc9',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '143583b0-3d72-420c-83be-5abeae3176be',
+    'ZyXUMwr',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '1678d899-9ef7-4804-a89c-64fdf1ff0960',
+    'U74z55T',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '18dbd265-48e6-4787-a957-f3364e38a51b',
+    '4c1wUN0',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '1a46aa13-1fab-4a2d-ad60-138cc9a2af0c',
+    'lgyn_68',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '1b4e1302-9f78-4284-b659-df0ba2c0a484',
+    'V_h15eL',
     'Ifq45cL',
     '2024/2025'
   );
@@ -2379,9 +1774,990 @@ INSERT INTO
   `classhistory` (`id`, `student_id`, `class_id`, `session`)
 VALUES
   (
-    'f44f1bcf-566c-43a8-b4ea-52115b520bec',
-    'JfjwfqB',
+    '1b7bc570-e828-4d51-ae76-4ef9810a3621',
+    'f1kac6R',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '1c1d3a1e-8462-4538-9f7d-52f9e892132e',
+    'PQxjmvI',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2418a00a-1ca3-484b-b16f-62ac0e5a55f8',
+    'jYAfwdy',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '26fdeb95-a029-446f-a98e-20900e456ce2',
+    'SdzqVdO',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '29380865-6ebe-4b0c-ac7a-4d9549678519',
+    'NNemuPa',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2a2e3959-0ce1-490a-9608-fbef8503e630',
+    'SELc4Mi',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2a76c994-7186-461e-8d88-05e610c2e837',
+    'WtLwgSo',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2e4e65d5-1a82-4157-b74e-26ff3aee3333',
+    'OOGQwL-',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2e931b3b-95f1-4887-a595-ee94ed5373bb',
+    'ns_z6MX',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '2e96ed8c-da56-4473-902d-d2fb4a52db69',
+    'O15ns2-',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '30caef63-4653-4313-afcb-bcae993b5cdf',
+    'T9n-LDr',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '31a8b0bb-4a45-46c5-a76f-9497cb628857',
+    '62EmXiv',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '322a47bb-9136-44bc-9edb-496a81a16b52',
+    'BdgSX6c',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '343d483d-43da-4bc4-914e-256cb5894f8f',
+    '0lO3mFy',
     'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '36e5d126-0e56-4e8d-b07f-ce617f851b08',
+    'psaw364',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '3e168995-4b13-4bc4-95ab-545730a88b64',
+    'NeO9xAc',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '3e54f1b6-da7f-4070-bc65-70200dd43066',
+    'H7N8FSO',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '47179732-614b-49e5-8900-413dd6bc8b8a',
+    'CBDSKk5',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '4aa7e3d2-8b0a-47ec-8b94-792bdbe311ae',
+    '9SqurkF',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '4be3f755-7c75-4323-b14c-47ca86d0a912',
+    'wgK4IPv',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '4d0b871a-3cc3-489e-a3e3-0788b63f2480',
+    '-2mqYIs',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '4d0d5f30-0b83-4a56-ad91-93d9970d7bfc',
+    'qR6Ub0E',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '4ef22198-123a-4042-90f6-9745e6f6c6e1',
+    'CdlKQfx',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '54530e46-665e-47db-b84e-95526978066c',
+    'L0jNDG4',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '57c5e402-b7cd-45f1-87f1-240ffd1a58d7',
+    'tuEBdwJ',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '5a2db61f-680d-4a35-8b2c-62ea61b0beef',
+    'COqnp45',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '5a7dea3c-7fdd-4663-b384-ef91ce600de2',
+    'uMVDUg7',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '5eb48292-5641-4c99-95ef-d43d25cffc04',
+    'DE8vnQe',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '5f34c518-3167-41a6-a439-403dec2a5909',
+    '0RiufTC',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '5f5e5748-070f-42af-8b36-1090d1245c3d',
+    'micHP4u',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '6235796c-b946-4f1f-88cd-8e472c93af2b',
+    'f7mrWyk',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '62de8aa9-743f-4950-955e-468298c492b2',
+    'o881JSI',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '6571851f-412c-4a74-99d0-61355b1184b4',
+    'LK7nyUB',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '6ba4fd4c-82c0-4f9a-b78b-7c104c8dfe3d',
+    'MLv8o22',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '6c67c838-fa5d-47f8-94cd-669689b5b044',
+    '96FpJJy',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '708dd5ff-4f32-4f38-b3e1-108cdb2cbeaf',
+    'P6qBoAh',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '71af97d3-f6ec-4cc7-b527-0ff22af834e7',
+    'TkO95R9',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '71cb9b39-c4a3-4992-adc1-e311c8ce5e14',
+    'HtphcSz',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7728cbb1-57f6-4928-9e74-ffd4d1f614eb',
+    'jgti7uM',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '791ec8da-e1c2-4665-adf3-2d8bf6e7bfc0',
+    'N4hOJra',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7a6625c4-7646-44c3-b957-1aa53094632c',
+    'XsSuiaH',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7b2236f8-e428-4b00-82cd-0de241e61d36',
+    '0tA7Xmw',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7d45d6dc-0181-492f-9275-15926785c3d1',
+    '4vF7HEJ',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7dff4dfc-7fde-46ee-bb81-6f552e5694ce',
+    '7Iv7ITI',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '7fe57d96-4bb8-47b1-9532-1a41ff700e07',
+    'Af5m1tY',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '8389dca3-8ea4-4002-8b97-62619f8276ea',
+    'AtZbxUH',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '84d7361a-92ac-427f-a76d-8f67efde2c50',
+    'IZLZmvX',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '86c431e3-dc20-4902-80cb-521a22def995',
+    'IBXYAyl',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '872f0447-b535-4a64-815a-8fc5efd55361',
+    'ff2Pxul',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '885f8ecf-a9bf-491c-80a3-bccffa0bcf2f',
+    'B_qCZdp',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '8c1c51df-ce38-4832-bc4f-6e8fbc15c2f7',
+    '8_3m4i_',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '8f4c88fd-0b74-49b2-98ba-620e26e94e6d',
+    '4JV3VON',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '90d0d949-3f7f-4abb-b906-66c95b13471f',
+    'Djn2Z3A',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '94f93cd4-adf0-4a41-a65a-020c942e7d7b',
+    '9Lcq4HW',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9527b3a5-34dc-4432-9ed5-8c7da1ef1a52',
+    'QX2FFWp',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9709f04d-c73e-4d34-960d-ef54f0abfcdb',
+    'K2FSd5x',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '970ea127-8d21-42f3-84bb-126a945b3be7',
+    'LJsNhfD',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '979859c6-2cd0-4376-862b-c62e26395150',
+    'XgX0SLT',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '98a35374-6dc9-4123-a37b-449647ee22d9',
+    'tsCo2WO',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '992f545a-2f46-458b-9c22-6fceab0bca40',
+    '3Uyzn-m',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9955f673-4474-43db-b00f-57ca8cd3b538',
+    'EDs5MIG',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9a216c15-ca0b-4fe3-ab33-b32c0b9f25d7',
+    'oMI6jUe',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9ae7e932-fea3-4a77-83ec-2aa55938d711',
+    'rG-DPr8',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9e3ad2f2-b2cc-4d26-adcd-c18c9b016db6',
+    'Mn65hyE',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    '9f488ebe-89c5-4158-9e94-2a81f101d939',
+    'oauk4T1',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'a10b9a2f-79dd-4a47-9b45-beba18451d51',
+    '6W-onAA',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'a27e3d44-df3c-4a7d-9681-c91132808654',
+    '-JQwcha',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'a29611d0-2993-496a-842a-2b923e2efb16',
+    'f2_0WSF',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'a9ed3ac6-cf59-48a3-a00b-f0dd6f4a6997',
+    'KX0TwZY',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'ac9f55dd-5231-487b-b412-15b8cc2819ac',
+    '95jbmaw',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'aef9ed2e-63db-45dc-b4d1-2c7b6f742b9e',
+    'Jt_Q90a',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'b0cb4144-d4fa-4d29-893c-8843f7b13d84',
+    'SOAcmZ4',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'b636d85d-d42f-4fd9-9003-11db82bf2730',
+    'R_Husjl',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'b7822294-ef63-42b6-bbc8-bb2afcb27dc4',
+    'WKsvCkr',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'b82b5c23-e7c1-495b-bb43-3998eed94d89',
+    'pgZy6yw',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'ba976e13-b646-40e2-b76d-2f3689373f55',
+    'NDkLpKR',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'bbd68063-b989-4c1c-a461-a14479d005f8',
+    'rvPPvPC',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'bc615972-b92e-4007-aa9d-279da285df65',
+    'Vi-OKCL',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'bc8c8a09-10f3-421e-98b3-79e85def3cb5',
+    'IDTpiSG',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'bd73c633-10da-41c2-a1a4-fc33ba8f0b30',
+    'Dc_zxkz',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'be4a11b5-386e-4ae2-abee-88ae82a15ffb',
+    'pBVJwu8',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'bffe7db7-ea32-4162-87f7-b8f0f3631587',
+    'UZP7Ncn',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'c0293aa4-1586-4040-809a-7eb996e8e813',
+    'SlBf-AI',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'c5125eef-d3bd-4303-95b6-2097b83d7fa1',
+    'Ywk2cwU',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'c5bd5102-1155-460f-ba16-d8db439d7d9c',
+    'LYJMecJ',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'c622f136-1f86-4e14-b16a-b13721b445e8',
+    'APlIC-X',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'cd577782-30c9-4d83-ab50-87957e2b60a3',
+    'POIf-pI',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'cdec6646-1424-420c-942f-21fd2e13b2f3',
+    '1ezAINA',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'cebb6476-cd3d-4e90-9656-dbe0be00872f',
+    '_kSz0S-',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'd33d5f2c-21b9-435d-ac57-43ce0f304d58',
+    'U-NDL-v',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'd744cb4a-f4f3-4acd-baac-07f92351a70f',
+    '0QgVX_N',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'd9bd2b31-bdae-45a7-ba4d-e6395fb567d1',
+    'zqQgQhz',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'dc661268-2f7d-4cd2-a606-5bd1c786235c',
+    'YPwiiEU',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'dce60da1-45bf-4c39-be6f-8a33971cbc68',
+    'MZrHMGR',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'dd771e3b-09e6-4240-8117-97ebc49b7257',
+    '0eDmbaO',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'e0090ec5-6089-491d-95d2-eac48bc93008',
+    'UQTKUlN',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'e039e132-ddae-49ce-888d-b5715ae42663',
+    'Eksm-85',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'e144b0a9-6993-426e-89c8-60207f89aded',
+    'OqJp15B',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'e8283729-a6cb-4f54-9a85-ffc5df547d48',
+    'YGuvyyD',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'ea95de36-ae24-44fa-ba18-1d7bcc36fe8d',
+    'M4GiywA',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'ed1468e8-ef80-48fb-8f6b-1134ee939fb0',
+    'aoyLERW',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'f06dbdb3-30d5-4e65-8016-24febb045092',
+    'Rb_ZJuX',
+    '2_fPzDw',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'f0fb487f-63d2-4444-ad1e-0ce96853d73b',
+    'G3akcBs',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'f838f34a-5fbf-475a-8d92-34352a4d4614',
+    '9xOxJou',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'f913eed6-17c8-42be-a74b-4ebb151c3bbc',
+    'bZ_O1wu',
+    '1HN7a2S',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'f9a2b4c6-4d84-4983-8bad-ec3b2ab5bde0',
+    'SMbOytY',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'facd797b-f3da-4a07-a017-37cbc685afc8',
+    'V5FMjD2',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'fbf9fcd5-643b-4c61-818e-917e7e55dc49',
+    'GsIWqNL',
+    'Ifq45cL',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'fd1936e6-ea35-4941-8cba-3dcbb7eafff8',
+    '3_GATxc',
+    'T9Bo3Ne',
+    '2024/2025'
+  );
+INSERT INTO
+  `classhistory` (`id`, `student_id`, `class_id`, `session`)
+VALUES
+  (
+    'ff91ce5d-3cea-4d38-8af6-034a6069bed2',
+    'kYUuCpo',
+    'T9Bo3Ne',
     '2024/2025'
   );
 
@@ -2394,1181 +2770,21 @@ VALUES
 # DATA DUMP FOR TABLE: disengagedstudent
 # ------------------------------------------------------------
 
-INSERT INTO
-  `disengagedstudent` (
-    `id`,
-    `student_id`,
-    `session`,
-    `term`,
-    `date_of_disengagement`,
-    `method_of_disengagement`,
-    `reason`,
-    `comment`,
-    `createdById`
-  )
-VALUES
-  (
-    'cm5jxr36g0001dbsz5arcpbvx',
-    'JfjwfqB',
-    '2024/2025',
-    '2nd term',
-    '2025-01-05 18:17:50.292',
-    'Relocation',
-    NULL,
-    '',
-    'f4RocSh'
-  );
-INSERT INTO
-  `disengagedstudent` (
-    `id`,
-    `student_id`,
-    `session`,
-    `term`,
-    `date_of_disengagement`,
-    `method_of_disengagement`,
-    `reason`,
-    `comment`,
-    `createdById`
-  )
-VALUES
-  (
-    'cm6w28a6j0001ap6bquxefo17',
-    'RZ2jHBA',
-    '2024/2025',
-    '2nd term',
-    '2025-02-08 10:36:07.430',
-    'Relocation',
-    NULL,
-    'tacheyonRedmi',
-    'pS2M79v'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: disengagemnets
 # ------------------------------------------------------------
 
-INSERT INTO
-  `disengagemnets` (
-    `id`,
-    `staff_id`,
-    `date_of_disengagement`,
-    `method_of_disengagement`,
-    `reason`,
-    `employer_comment`,
-    `createdById`
-  )
-VALUES
-  (
-    'cm6w2v5zv0005gdfziwuzlibq',
-    'EMP4',
-    '2025-02-08 10:53:55.100',
-    'Sacked',
-    '',
-    '',
-    'pS2M79v'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: examresults
 # ------------------------------------------------------------
 
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '_pVrFC6',
-    'AJ3njGo',
-    'Ifq45cL',
-    'lRKKmoa',
-    36,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.645',
-    '2024-11-30 22:17:13.645',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '_qWjTeD',
-    'AJ3njGo',
-    'Ifq45cL',
-    'l95dKX8',
-    30,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.663',
-    '2024-11-30 22:17:13.663',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '19UoFPB',
-    'RAN1AcR',
-    'OMVKFac',
-    '18mZBlZ',
-    35,
-    '2023/2024',
-    '1st term',
-    'pS2M79v',
-    '2024-12-08 16:32:18.035',
-    '2024-12-08 16:41:11.481',
-    'pS2M79v'
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '46hJGke',
-    'AJ3njGo',
-    'Ifq45cL',
-    '18mZBlZ',
-    40,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:15:59.780',
-    '2024-11-30 22:17:13.686',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '5GpPDvH',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nMFpFkZ',
-    36,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.627',
-    '2024-11-30 22:17:13.627',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'AvRx8Mi',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bDliUQN',
-    40,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:15:59.760',
-    '2024-11-30 22:17:13.686',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'gx8-tO4',
-    'AJ3njGo',
-    'Ifq45cL',
-    'o9bUcgF',
-    56,
-    '2024/2025',
-    '1st term',
-    'pS2M79v',
-    '2025-01-29 16:23:01.914',
-    '2025-01-29 16:23:01.914',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'H7Ih8Ps',
-    'AJ3njGo',
-    'Ifq45cL',
-    'eIi5HQm',
-    38,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.678',
-    '2024-11-30 22:17:13.678',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'hGpYWGh',
-    'AJ3njGo',
-    'Ifq45cL',
-    'pFZPf3T',
-    36,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.626',
-    '2024-11-30 22:17:13.626',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'k-Uxoth',
-    'AJ3njGo',
-    'Ifq45cL',
-    'x9oVrQ9',
-    34,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.646',
-    '2024-11-30 22:17:13.646',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'NnQJxyi',
-    'AJ3njGo',
-    'Ifq45cL',
-    'g9NIUEF',
-    30,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.665',
-    '2024-11-30 22:17:13.665',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'ogcHkex',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bT759gG',
-    40,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.681',
-    '2024-11-30 22:17:13.681',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'rTF_0SR',
-    'AJ3njGo',
-    'Ifq45cL',
-    'YOb8XbD',
-    34,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.645',
-    '2024-11-30 22:17:13.645',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'VrV5LV_',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nGFxkVf',
-    36,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.628',
-    '2024-11-30 22:17:13.628',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'WV-uKv_',
-    'AJ3njGo',
-    'Ifq45cL',
-    'Vx7JKMR',
-    34,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.627',
-    '2024-11-30 22:17:13.627',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'Xe53eOU',
-    'AJ3njGo',
-    'Ifq45cL',
-    'IC1gVq9',
-    30,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.674',
-    '2024-11-30 22:17:13.674',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'zG88X4v',
-    'AJ3njGo',
-    'QA1juMZ',
-    'bDliUQN',
-    50,
-    '2024/2025',
-    '2nd term',
-    'pS2M79v',
-    '2025-02-08 10:29:53.670',
-    '2025-02-08 10:29:53.670',
-    NULL
-  );
-INSERT INTO
-  `examresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'ZYE2vh1',
-    'AJ3njGo',
-    'Ifq45cL',
-    'E7JETdx',
-    50,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:17:13.679',
-    '2024-11-30 22:17:13.679',
-    NULL
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: fcaresults
 # ------------------------------------------------------------
 
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '_cjL5Zx',
-    'AJ3njGo',
-    'Ifq45cL',
-    'l95dKX8',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.113',
-    '2024-11-30 22:09:39.670',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '1nny7vz',
-    'RAN1AcR',
-    'OMVKFac',
-    '18mZBlZ',
-    6,
-    '2023/2024',
-    '1st term',
-    'pS2M79v',
-    '2024-12-08 16:27:34.702',
-    '2025-01-05 17:02:16.528',
-    'f4RocSh'
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '4lc20jM',
-    'AJ3njGo',
-    'Ifq45cL',
-    '18mZBlZ',
-    20,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.144',
-    '2024-12-03 10:13:16.439',
-    '8uIPHRQ'
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '4qTcj7q',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bDliUQN',
-    18,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.142',
-    '2024-11-30 22:09:39.708',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '6R_sCkk',
-    'AJ3njGo',
-    'Ifq45cL',
-    'eIi5HQm',
-    18,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.124',
-    '2024-11-30 22:09:39.697',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '95WOZAA',
-    'RZ2jHBA',
-    'OMVKFac',
-    'bDliUQN',
-    1,
-    '2024/2025',
-    '2nd term',
-    'oVUonwk',
-    '2025-02-08 10:52:48.863',
-    '2025-02-08 10:52:48.863',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'agliA_f',
-    'AJ3njGo',
-    'Ifq45cL',
-    'o9bUcgF',
-    19,
-    '2024/2025',
-    '1st term',
-    'pS2M79v',
-    '2025-01-29 16:25:51.914',
-    '2025-02-08 10:28:09.426',
-    'pS2M79v'
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'BEQnTJS',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bT759gG',
-    18,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.129',
-    '2024-11-30 22:09:39.699',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'bY0hJUm',
-    'AJ3njGo',
-    'Ifq45cL',
-    'YOb8XbD',
-    19,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.981',
-    '2024-11-30 22:09:39.668',
-    '8uIPHRQ'
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'dAbS7Ng',
-    'AJ3njGo',
-    'Ifq45cL',
-    'IC1gVq9',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.117',
-    '2024-11-30 22:09:39.691',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'fd3B0JT',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nGFxkVf',
-    9,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.993',
-    '2024-11-30 22:08:14.508',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'GxiHTaE',
-    'AJ3njGo',
-    'Ifq45cL',
-    'pFZPf3T',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.984',
-    '2024-11-30 22:09:39.669',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'hh5Q0sW',
-    'AJ3njGo',
-    'Ifq45cL',
-    'E7JETdx',
-    20,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.126',
-    '2024-11-30 22:09:39.697',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'j9MG_G2',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nMFpFkZ',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.989',
-    '2024-11-30 22:09:39.669',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'kPVK0Mt',
-    'AJ3njGo',
-    'QA1juMZ',
-    'bDliUQN',
-    12,
-    '2024/2025',
-    '2nd term',
-    'pS2M79v',
-    '2025-02-08 10:28:50.819',
-    '2025-02-08 10:28:50.819',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'mWvZoad',
-    'AJ3njGo',
-    'Ifq45cL',
-    'g9NIUEF',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.121',
-    '2024-11-30 22:09:39.695',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'PcUKdL5',
-    'FWpZizc',
-    'Ifq45cL',
-    '18mZBlZ',
-    2,
-    '2023/2024',
-    '1st term',
-    '8uIPHRQ',
-    '2024-12-03 16:44:12.541',
-    '2024-12-03 16:44:12.541',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'Q-vJ2YW',
-    'AJ3njGo',
-    'Ifq45cL',
-    'lRKKmoa',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.995',
-    '2024-11-30 22:09:39.671',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'vFkTTkQ',
-    'AJ3njGo',
-    'Ifq45cL',
-    'x9oVrQ9',
-    15,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:11.987',
-    '2024-11-30 22:09:39.672',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'vTnzYfx',
-    'AJ3njGo',
-    'Ifq45cL',
-    '18mZBlZ',
-    1,
-    '2021/2022',
-    '1st term',
-    '8uIPHRQ',
-    '2024-12-03 21:40:24.608',
-    '2024-12-03 21:40:24.608',
-    NULL
-  );
-INSERT INTO
-  `fcaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'zgqy0Tb',
-    'AJ3njGo',
-    'Ifq45cL',
-    'Vx7JKMR',
-    20,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-29 23:51:12.146',
-    '2024-11-30 22:09:39.697',
-    NULL
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: feesgroup
@@ -3591,456 +2807,6 @@ VALUES
 # DATA DUMP FOR TABLE: payments
 # ------------------------------------------------------------
 
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm69ktqei000084ezjtomalln',
-    '2nd term',
-    '2024/2025',
-    '2025-01-23 00:00:00.000',
-    12000,
-    'Exo4omu',
-    1,
-    12000,
-    'Cash',
-    'Paid',
-    NULL,
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm69ktqek000184ezfj7mos7b',
-    '2nd term',
-    '2024/2025',
-    '2025-01-23 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    1,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm69kubt7000284ezg2snu81z',
-    '2nd term',
-    '2024/2025',
-    '2025-01-23 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    2,
-    3500,
-    'Cash',
-    'Paid',
-    NULL,
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6ev387n000010vlind2627m',
-    '2nd term',
-    '2024/2025',
-    '2025-01-27 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    3,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6ev5nd9000110vl168fswhm',
-    '2nd term',
-    '2024/2025',
-    '2025-01-27 00:00:00.000',
-    12000,
-    'Exo4omu',
-    4,
-    12000,
-    'Cash',
-    'Paid',
-    NULL,
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6iguk5r00007ocw64am0vlj',
-    '2nd term',
-    '2024/2025',
-    '2025-01-29 00:00:00.000',
-    12000,
-    'Exo4omu',
-    5,
-    12000,
-    'Cash',
-    'Paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6iguk5v00017ocw8nvzhpg7',
-    '2nd term',
-    '2024/2025',
-    '2025-01-29 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    5,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6jn0ezj00003t2uq19o9lxv',
-    '2nd term',
-    '2024/2025',
-    '2025-01-30 00:00:00.000',
-    12000,
-    'Exo4omu',
-    6,
-    12000,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6jn0ezn00013t2ujaokmnka',
-    '2nd term',
-    '2024/2025',
-    '2025-01-30 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    6,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6m0f0y50000i4t8wb1hj4mh',
-    '2nd term',
-    '2024/2025',
-    '2025-02-01 00:00:00.000',
-    12000,
-    'qXJJvNo',
-    7,
-    12000,
-    'Cash',
-    'Paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6m0f0y70001i4t80km3heo1',
-    '2nd term',
-    '2024/2025',
-    '2025-02-01 00:00:00.000',
-    12000,
-    'Exo4omu',
-    7,
-    12000,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6m0f0y70002i4t8fj5zlkrn',
-    '2nd term',
-    '2024/2025',
-    '2025-02-01 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    7,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6m0lqgo0003i4t8kuexb1o1',
-    '2nd term',
-    '2024/2025',
-    '2025-02-01 00:00:00.000',
-    12000,
-    'qXJJvNo',
-    8,
-    12000,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6myilz40000k5ms1z1v4o86',
-    '2nd term',
-    '2024/2025',
-    '2025-02-02 00:00:00.000',
-    12000,
-    'qXJJvNo',
-    9,
-    11000,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
-INSERT INTO
-  `payments` (
-    `payment_id`,
-    `term`,
-    `session`,
-    `createdAt`,
-    `amount`,
-    `item_id`,
-    `transactionId`,
-    `paid`,
-    `payment_method`,
-    `status`,
-    `teller_no`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cm6myilz80001k5msejsw5e6n',
-    '2nd term',
-    '2024/2025',
-    '2025-02-02 00:00:00.000',
-    3500,
-    '0jcBxk5',
-    9,
-    3500,
-    'Cash',
-    'Partly paid',
-    '',
-    NULL
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: promotions
@@ -4051,538 +2817,6 @@ VALUES
 # DATA DUMP FOR TABLE: scaresults
 # ------------------------------------------------------------
 
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '08rWeOH',
-    'AJ3njGo',
-    'Ifq45cL',
-    'IC1gVq9',
-    11,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.981',
-    '2024-11-30 22:14:30.981',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '0tmodQg',
-    'AJ3njGo',
-    'Ifq45cL',
-    'x9oVrQ9',
-    11,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.030',
-    '2024-11-30 22:14:31.030',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    '4raoHq8',
-    'AJ3njGo',
-    'Ifq45cL',
-    'E7JETdx',
-    18,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.030',
-    '2024-11-30 22:14:31.030',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'b-FMUP-',
-    'AJ3njGo',
-    'Ifq45cL',
-    'o9bUcgF',
-    18,
-    '2024/2025',
-    '1st term',
-    'pS2M79v',
-    '2025-01-29 16:24:15.093',
-    '2025-01-29 16:24:15.093',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'BFd8PBX',
-    'AJ3njGo',
-    'QA1juMZ',
-    'bDliUQN',
-    12,
-    '2024/2025',
-    '2nd term',
-    'pS2M79v',
-    '2025-02-08 10:29:19.327',
-    '2025-02-08 10:29:19.327',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'ctaCXEn',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bT759gG',
-    14,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.031',
-    '2024-11-30 22:14:31.031',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'E3vF_GE',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nMFpFkZ',
-    11,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.031',
-    '2024-11-30 22:14:31.031',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'fqECakE',
-    'AJ3njGo',
-    'Ifq45cL',
-    'pFZPf3T',
-    11,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.050',
-    '2024-11-30 22:14:31.050',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'gpPQlGT',
-    'AJ3njGo',
-    'Ifq45cL',
-    'Vx7JKMR',
-    11,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.981',
-    '2024-11-30 22:14:30.981',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'MDhij73',
-    'AJ3njGo',
-    'Ifq45cL',
-    'eIi5HQm',
-    14,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.030',
-    '2024-11-30 22:14:31.030',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'MYVhTrQ',
-    'AJ3njGo',
-    'Ifq45cL',
-    'bDliUQN',
-    12,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.048',
-    '2024-11-30 22:14:31.048',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'OJgbiT4',
-    'AJ3njGo',
-    'Ifq45cL',
-    'eIi5HQm',
-    11,
-    '2024/2025',
-    '2nd term',
-    'f4RocSh',
-    '2025-01-05 18:14:45.368',
-    '2025-01-06 18:16:12.609',
-    'MwA8gDw'
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'q9JG9UC',
-    'AJ3njGo',
-    'Ifq45cL',
-    'l95dKX8',
-    8,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.988',
-    '2024-11-30 22:14:30.988',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'qnvdaHP',
-    'AJ3njGo',
-    'Ifq45cL',
-    'lRKKmoa',
-    10,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.982',
-    '2024-11-30 22:14:30.982',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    's-ETnMr',
-    'AJ3njGo',
-    'Ifq45cL',
-    '18mZBlZ',
-    12,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.048',
-    '2024-11-30 22:14:31.048',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'T5XzU06',
-    'AJ3njGo',
-    'Ifq45cL',
-    'g9NIUEF',
-    8,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:31.030',
-    '2024-11-30 22:14:31.030',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'UJ2TA9H',
-    'AJ3njGo',
-    'Ifq45cL',
-    'YOb8XbD',
-    18,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.980',
-    '2024-11-30 22:14:30.980',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'VPnMUOa',
-    'AJ3njGo',
-    'Ifq45cL',
-    'nGFxkVf',
-    8,
-    '2024/2025',
-    '1st term',
-    '8uIPHRQ',
-    '2024-11-30 22:14:30.984',
-    '2024-11-30 22:14:30.984',
-    NULL
-  );
-INSERT INTO
-  `scaresults` (
-    `id`,
-    `student_id`,
-    `class_id`,
-    `subject_id`,
-    `score`,
-    `session`,
-    `term`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'Z149YA1',
-    'RAN1AcR',
-    'OMVKFac',
-    '1oHZ6vY',
-    7,
-    '2023/2024',
-    '1st term',
-    'pS2M79v',
-    '2024-12-08 16:31:48.148',
-    '2024-12-08 16:40:23.141',
-    'pS2M79v'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: staffs
@@ -4738,106 +2972,6 @@ VALUES
     'pS2M79v',
     'f4RocSh'
   );
-INSERT INTO
-  `staffs` (
-    `empid`,
-    `address`,
-    `telephone`,
-    `state_of_origin`,
-    `lga`,
-    `qualification`,
-    `grade_level`,
-    `salary`,
-    `school_section`,
-    `first_name`,
-    `last_name`,
-    `date_of_birth`,
-    `sex`,
-    `religion`,
-    `marital_status`,
-    `appointed_as`,
-    `curr_appointment_id`,
-    `date_of_emp`,
-    `active`,
-    `updatedAt`,
-    `createdById`,
-    `updatedById`
-  )
-VALUES
-  (
-    'EMP3',
-    'Al barka hospital Wawa',
-    '08119513281',
-    'Niger',
-    '',
-    '',
-    0,
-    '',
-    'All',
-    'Ibrahim',
-    'Folorunsho',
-    '1970-01-01 00:00:00.000',
-    '',
-    '',
-    '',
-    'Proprietor - All',
-    'xRyGm5N',
-    '2025-01-05 18:18:21.997',
-    1,
-    '2025-01-05 18:22:48.497',
-    'f4RocSh',
-    'MwA8gDw'
-  );
-INSERT INTO
-  `staffs` (
-    `empid`,
-    `address`,
-    `telephone`,
-    `state_of_origin`,
-    `lga`,
-    `qualification`,
-    `grade_level`,
-    `salary`,
-    `school_section`,
-    `first_name`,
-    `last_name`,
-    `date_of_birth`,
-    `sex`,
-    `religion`,
-    `marital_status`,
-    `appointed_as`,
-    `curr_appointment_id`,
-    `date_of_emp`,
-    `active`,
-    `updatedAt`,
-    `createdById`,
-    `updatedById`
-  )
-VALUES
-  (
-    'EMP4',
-    'Alon Malale Road',
-    '',
-    'Niger',
-    '',
-    '',
-    0,
-    '',
-    'Secondary',
-    'Folorunsho',
-    'Ibrahim',
-    NULL,
-    'Male',
-    'Islam',
-    'Single',
-    '',
-    NULL,
-    '2025-02-08 10:42:09.129',
-    0,
-    '2025-02-08 10:53:55.122',
-    'pS2M79v',
-    NULL
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: students
@@ -4870,27 +3004,227 @@ INSERT INTO
   )
 VALUES
   (
-    'AJ3njGo',
-    'ASW/2024/500',
-    'Ibrahim',
-    'Folorunsho',
-    '2008-10-25 00:00:00.000',
-    'Male',
-    'Al barka hospital Wawa',
-    'Niger',
-    'SSS',
-    'Borgu',
-    'Islam',
-    '2022-09-05 00:00:00.000',
+    '_2-r5MV',
+    'AJ/23/222',
+    'Hamza',
+    'Usman',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
     '2024/2025',
     '1st term',
-    'SSS 1',
+    '',
     1,
-    'Folorunsho Razaq',
-    '08119513281',
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '_kSz0S-',
+    'AJ/21/193',
+    'Ahmed',
+    'Ismail',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.673',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '-2mqYIs',
+    'AJ/23/239',
+    'Naja\'atu Kidebe',
+    'Ibrahim',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '-JQwcha',
+    'AJ/22/211',
+    'Marwan',
+    'Bashir',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '0eDmbaO',
+    'AS/23/067',
+    'Kidebe',
+    'Yusuf Habibah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
     '2_fPzDw',
     '8uIPHRQ',
-    '2025-02-08 10:04:25.456',
+    '2025-02-25 13:33:29.772',
     NULL
   );
 INSERT INTO
@@ -4920,321 +3254,6289 @@ INSERT INTO
   )
 VALUES
   (
-    'FWpZizc',
-    'ASW/2024/501',
-    'Ibrahim',
-    'Folorunsho',
-    '2010-10-25 00:00:00.000',
-    'Male',
-    'Al barka hospital Wawa',
-    'Niger',
+    '0lO3mFy',
+    'AJ/21/185',
+    'Hamza S/fawa',
+    'Abdullahi',
+    NULL,
+    '',
+    NULL,
+    NULL,
     'SSS',
-    'Oyun',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.671',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '0QgVX_N',
+    'AJ/23/236',
+    'Abdul-Semiu',
+    'Issah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '0RiufTC',
+    'AJ/21/152',
+    'Salim',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.763',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '0tA7Xmw',
+    'AJ/23/219',
+    'Hassan Garba',
+    'Issah',
+    NULL,
+    'Male',
+    '',
+    '',
+    'JSS',
+    '',
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '1ezAINA',
+    'AJ/23/238',
+    'Maryam',
+    'Abdulrasheed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '3_GATxc',
+    'AJ/24/278',
+    'Fatimah',
+    'Muhammed Awwal',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.118',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '3Uyzn-m',
+    'AJ/23/255',
+    'Muhammad',
+    'Muhammad-Bello',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '4c1wUN0',
+    'AS/23/064',
+    'Maryam',
+    'Aliyu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.769',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '4JV3VON',
+    'AS/23/063',
+    'Mubarak',
+    'Adamu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.765',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '4vF7HEJ',
+    'AJ/23/230',
+    'Mustapha',
+    'Lukman',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.378',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '62EmXiv',
+    'AS/25/090',
+    'Nurudeen',
+    'Aminu',
+    NULL,
+    'Male',
+    '',
+    '',
+    'SSS',
+    '',
     'Islam',
-    '2020-09-07 00:00:00.000',
+    '2025-01-06 00:00:00.000',
+    '2024/2025',
+    '2nd term',
+    NULL,
+    1,
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:28:55.004',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '6W-onAA',
+    'AJ/21/196',
+    'Aishat',
+    'Ibrahim',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.674',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '7Iv7ITI',
+    'AS/24/073',
+    'Gadafi',
+    'Mohmmed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.765',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '8_3m4i_',
+    'AJ/23/270',
+    'Rahimat',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.116',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '95jbmaw',
+    'AJ/23/227',
+    'Bashir S/Fawa',
+    'Bashir',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.375',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '96FpJJy',
+    'AJ/23/244',
+    'Sherifat',
+    'Ibrahim',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '9Lcq4HW',
+    'AS/24/081',
+    'Hauwa',
+    'Lawal',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.676',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '9SqurkF',
+    'AJ/21/155',
+    'Nazir Tanko',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.762',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    '9xOxJou',
+    'AS/24/086',
+    'Maryam',
+    'Ahmed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.678',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Af5m1tY',
+    'AJ/23/252',
+    'Yerima Dihiyat',
+    'Shehu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'aoyLERW',
+    'AJ/21/195',
+    'Sumaiyyah',
+    'Habib',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'APlIC-X',
+    'AJ/21/144',
+    'Serah',
+    'Bamidele',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.766',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'AtZbxUH',
+    'AS/24/078',
+    'Sherif',
+    'Ibrahim Moh\'d',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.673',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'B_qCZdp',
+    'AJ/21/190',
+    'Zainab Ayoka',
+    'Mustapha',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.676',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'BdgSX6c',
+    'AJ/24/279',
+    'Barnabas',
+    'Nuhu Lafia',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.121',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'blQ3H8f',
+    'AJ/23/254',
+    'Muhammad Abba',
+    'Ayuba',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'bZ_O1wu',
+    'AJ/23/210',
+    'Mercy',
+    'Yahaya',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'CBDSKk5',
+    'AJ/23/237',
+    'Faith',
+    'Bamidele',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'CdlKQfx',
+    'AJ/23/240',
+    'Kikwashi Maryam',
+    'Abdullahi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'COqnp45',
+    'AJ/22/208',
+    'Joy',
+    'Onah',
+    NULL,
+    'Female',
+    '',
+    '',
+    'SSS',
+    '',
+    'Christianity',
+    '2023-09-04 11:06:32.330',
+    '2024/2025',
+    '2nd term',
+    NULL,
+    1,
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:28:55.004',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Dc_zxkz',
+    'AJ/23/243',
+    'Aishat Humairat',
+    'Attahiru',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'DE8vnQe',
+    'AJ/23/264',
+    'Silas Isreal',
+    'Ayuba',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.114',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Djn2Z3A',
+    'AS/24/082',
+    'Mardiyat',
+    'Sanusi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.676',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'EDs5MIG',
+    'AJ/23/263',
+    'Hassanat',
+    'Abdullahi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.114',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Eksm-85',
+    'AJ/21/153',
+    'Fatima',
+    'Salihu',
+    '2009-07-02 00:00:00.000',
+    'Female',
+    '',
+    '',
+    'SSS',
+    '',
+    'Islam',
+    '2023-09-04 11:06:32.330',
+    '2024/2025',
+    '2nd term',
+    'SSS 1',
+    1,
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:14:00.885',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'f1kac6R',
+    'AJ/21/149',
+    'Jabir',
+    'Bashir',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.764',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'f2_0WSF',
+    'AJ/23/268',
+    'Aminat',
+    'Abdulrasaq',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.116',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'f7mrWyk',
+    'AJ/23/218',
+    'Husseini Lashi',
+    'Issah',
+    NULL,
+    'Male',
+    '',
+    '',
+    'JSS',
+    '',
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'ff2Pxul',
+    'AJ/21/187',
+    'Abdul Jelil',
+    'Mohammed Nasir',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.673',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'G3akcBs',
+    'AJ/23/248',
+    'Asihat',
+    'Muhammad-Jamiu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'GsIWqNL',
+    'AS/24/085',
+    'Balkisu',
+    'Aliyu B.',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'H7N8FSO',
+    'AJ/23/249',
+    'Hassanat',
+    'Salihu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'HtphcSz',
+    'AJ/23/267',
+    'Mohammed',
+    'Usman',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.115',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'hze8AHg',
+    'AJ/23/229',
+    'Sadikat Morenikeji',
+    'Folorunsho',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.378',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'IBXYAyl',
+    'AS/23/066',
+    'Galadima',
+    'Alhassan Unaisah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.771',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'IDTpiSG',
+    'AS/24/079',
+    'Abdulrahman',
+    'Musa',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.673',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'ixm8OxF',
+    'AJ/24/280',
+    'Precious',
+    'Yisa Sunday',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.121',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'IZLZmvX',
+    'AJ/21/182',
+    'Saratu',
+    'Aliyu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'J4IyWc9',
+    'AJ/23/232',
+    'Maimunat',
+    'Ibrahim',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.379',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'JAK4Ph7',
+    'AJ/23/233',
+    'Joy',
+    'Abiodun',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.379',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'jgti7uM',
+    'AJ/23/260',
+    'Mahmud',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.112',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'JOQG0hx',
+    'AJ/23/242',
+    'Abubakar',
+    'Ahmadu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Jt_Q90a',
+    'AJ/24/284',
+    'Hauwa',
+    'Mohammed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.122',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'jYAfwdy',
+    'AJ/23/258',
+    'Ummi-Aishat',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'K2FSd5x',
+    'AJ/21/194',
+    'Hauwa',
+    'Mshelia Danladi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'KX0TwZY',
+    'AJ/21/150',
+    'Blessing',
+    'Yakubu Luka',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.770',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'kYUuCpo',
+    'AJ/23/257',
+    'Yusuf',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'L0jNDG4',
+    'AJ/23/262',
+    'Hussainat',
+    'Abdullahi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.113',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'L3A7LAe',
+    'AJ/23/228',
+    'Hauwa\'u',
+    'Abass Adamu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.378',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'LF4VphQ',
+    'AJ/21/136',
+    'Ahmed',
+    'Muhammad',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.763',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'lgyn_68',
+    'AJ/23/251',
+    'Yerima Faisal',
+    'Shehu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'LJsNhfD',
+    'AJ/21/191',
+    'Munirat',
+    'Usman',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'LK7nyUB',
+    'AS/24/077',
+    'Abdulgafar',
+    'Habib',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.673',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'LYJMecJ',
+    'AJ/21/156',
+    'Nana Hauwa',
+    'Yusuf',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.771',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'M4GiywA',
+    'AJ/21/134',
+    'Muhammad Jamiu',
+    'Folorunsho',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.761',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'micHP4u',
+    'AJ/21/184',
+    'Sagirat',
+    'Usman',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'MLv8o22',
+    'AJ/22/200',
+    'Balirat',
+    'Issah',
+    NULL,
+    'Female',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Mn65hyE',
+    'AJ/25/332',
+    'Favour Chisom',
+    'Igwe',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.380',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'MZrHMGR',
+    'AJ/23/245',
+    'Abdullah Sadoroki',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'N4hOJra',
+    'AJ/21/148',
+    'Mufidah',
+    'Alhassan',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.770',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'NDkLpKR',
+    'AJ/23/253',
+    'Abubakar',
+    'Hamidu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'NeO9xAc',
+    'AJ/22/206',
+    'Usman',
+    'Abdullahi',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.672',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'NNemuPa',
+    'AJ/21/141',
+    'Habibu',
+    'Zakari Baba',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.764',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'ns_z6MX',
+    'AJ/24/283',
+    'Angela',
+    'Tsado',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.121',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'O15ns2-',
+    'AJ/23/259',
+    'Isah',
+    'Mohammed Buhari',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.111',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'o881JSI',
+    'AJ/23/272',
+    'Abdulmalik',
+    'Issah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.116',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'oauk4T1',
+    'AS/24/088',
+    'Sadiyat Halimat',
+    'Ahmed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.678',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'oMI6jUe',
+    'AJ/23/221',
+    'Faith',
+    'Godwin',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'OOGQwL-',
+    'AJ/21/162',
+    'Bagado',
+    'Umar Yakubu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.764',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'OqJp15B',
+    'AJ/22/212',
+    'Salim',
+    'Yusuf',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'P6qBoAh',
+    'AJ/23/261',
+    'Garba',
+    'Suleiman Muhammed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.113',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'pBVJwu8',
+    'AJ/21/163',
+    'Danladi',
+    'Yunusa',
+    NULL,
+    'Male',
+    '',
+    '',
+    'SSS',
+    '',
+    'Islam',
+    '2021-09-06 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    NULL,
+    1,
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:28:55.004',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'pgZy6yw',
+    'AJ/21/138',
+    'Hauwa',
+    'Dauda',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.767',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'POIf-pI',
+    'AJ/23/246',
+    'Mohammed',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'PQxjmvI',
+    'AJ/21/143',
+    'Sagir',
+    'Zakari',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.765',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'psaw364',
+    'AJ/22/207',
+    'Hauwa',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.772',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'qR6Ub0E',
+    'AJ/24/281',
+    'Enock',
+    'Samaila',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.122',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'QX2FFWp',
+    'AJ/21/175',
+    'Aishat',
+    'Abdullateef',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.674',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'R_Husjl',
+    'AJ/24/277',
+    'Grace',
+    'Ibrahim',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.118',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Rb_ZJuX',
+    'AJ/21/151',
+    'Jibril',
+    'Haruna',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.764',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'RcvAZak',
+    'AS/23/069',
+    'Zaid Dio',
+    'Salish',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.764',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'rG-DPr8',
+    'AJ/21/192',
+    'Sharhabila',
+    'Salihu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.676',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'rvPPvPC',
+    'AS/23/070',
+    'Zainab',
+    'Abass',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.770',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    's7OprJI',
+    'AS/24/084',
+    'Rahmat',
+    'Mohammed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SdzqVdO',
+    'AJ/23/223',
+    'Christopher',
+    'Samuel',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SELc4Mi',
+    'AJ/23/265',
+    'Abubakar',
+    'Saheed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.115',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SJj5gNt',
+    'AJ/22/201',
+    'Aishat',
+    'Bashir',
+    NULL,
+    'Female',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SlBf-AI',
+    'AJ/23/231',
+    'Nana Suhairat',
+    'Haliru',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.379',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SMbOytY',
+    'AS/24/083',
+    'Maria',
+    'Musa',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.677',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'SOAcmZ4',
+    'AJ/22/209',
+    'Blessing',
+    'N Somto',
+    NULL,
+    'Female',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'T9n-LDr',
+    'AJ/23/271',
+    'Kamaldeen',
+    'Iliyasu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.116',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'TkO95R9',
+    'AS/24/076',
+    'Sale',
+    'Musa',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.766',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'tsCo2WO',
+    'AJ/23/250',
+    'Hussainat',
+    'Salihu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.381',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'tuEBdwJ',
+    'AJ/25/330',
+    'Abdullahi Dabo',
+    'Usman',
+    NULL,
+    '',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:53:29.557',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'U-NDL-v',
+    'AJ/23/234',
+    'Shafiu Babangida',
+    'Aliyu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.379',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'U74z55T',
+    'AS/24/089',
+    'Blessing',
+    'John',
+    NULL,
+    'Female',
+    '',
+    '',
+    'SSS',
+    '',
+    'Christianity',
+    '2023-09-04 11:06:32.330',
+    '2024/2025',
+    '2nd term',
+    NULL,
+    1,
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:31:51.957',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'uMVDUg7',
+    'AJ/21/154',
+    'Dallau',
+    'Musa Ruqayat',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.770',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'UQTKUlN',
+    'AS/24/075',
+    'Abdul Rahaman',
+    'Ahmad Ibn',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.766',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'UZP7Ncn',
+    'AJ/21/139',
+    'Abdulrauf',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.763',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'V_h15eL',
+    'AS/24/087',
+    'Nana Alshat',
+    'Issa',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.678',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'V5FMjD2',
+    'AJ/23/247',
+    'Muhammed',
+    'Abubakar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Vi-OKCL',
+    'AJ/23/266',
+    'Abubakar',
+    'Usman',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.115',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'w9LRsUe',
+    'AJ/21/164',
+    'Anas',
+    'Umar',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.762',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'wgK4IPv',
+    'AS/24/080',
+    'Hashimu',
+    'Garba',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'Ifq45cL',
+    '8uIPHRQ',
+    '2025-02-25 13:03:42.674',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'WKsvCkr',
+    'AJ/24/275',
+    'Meshack',
+    'Yohannah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.117',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'WtLwgSo',
+    'AS/23/065',
+    'Galadima',
+    'Alhassan Anisah',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.771',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'XgX0SLT',
+    'AJ/23/256',
+    'Mohammed Sadisu',
+    'Ahmed',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.382',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'xIXqRvq',
+    'AJ/22/214',
+    'Maryam',
+    'Bashir',
+    NULL,
+    'Female',
+    '',
+    '',
+    'JSS',
+    '',
+    '',
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    '1st term',
+    '',
+    1,
+    '',
+    '',
+    '1HN7a2S',
+    '8uIPHRQ',
+    '2025-02-25 10:54:09.848',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'XsSuiaH',
+    'AJ/21/135',
+    'Esther',
+    'Siyabola',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.772',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'y0lWnRZ',
+    'AJ/24/276',
+    'Godwin',
+    'Silas',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.117',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'YGuvyyD',
+    'AS/23/068',
+    'Precious Nnenna',
+    'Ifeanyi',
+    '2009-06-26 00:00:00.000',
+    'Female',
+    '',
+    '',
+    'SSS',
+    '',
+    'Christianity',
+    '2023-09-04 11:06:32.330',
     '2024/2025',
     '1st term',
     'SSS 1',
     1,
-    'Folorunsho razaq',
-    '08119513281',
+    '',
+    '',
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 11:11:46.564',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'YPwiiEU',
+    'AJ/24/282',
+    'Maryam',
+    'Adamu',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 12:39:12.122',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'Ywk2cwU',
+    'AS/24/074',
+    'Favour',
+    'Aderinre',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.766',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'zqQgQhz',
+    'AJ/23/235',
+    'Samson',
+    'Samuel E.',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'JSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    '2024/2025',
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    'T9Bo3Ne',
+    '8uIPHRQ',
+    '2025-02-25 10:55:44.379',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'ZyXUMwr',
+    'AJ/21/165',
+    'Stephen',
+    'James',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
+    '2_fPzDw',
+    '8uIPHRQ',
+    '2025-02-25 13:33:29.765',
+    NULL
+  );
+INSERT INTO
+  `students` (
+    `id`,
+    `admission_no`,
+    `first_name`,
+    `last_name`,
+    `date_of_birth`,
+    `sex`,
+    `address`,
+    `state_of_origin`,
+    `school_section`,
+    `lga`,
+    `religion`,
+    `date_of_admission`,
+    `admission_session`,
+    `admission_term`,
+    `admission_class`,
+    `active`,
+    `guardian_name`,
+    `guardian_telephone`,
+    `curr_class_id`,
+    `createdById`,
+    `updatedAt`,
+    `updatedById`
+  )
+VALUES
+  (
+    'zZszPtu',
+    'AJ/21/174',
+    'Khalilat Ayomide',
+    'Murtala',
+    NULL,
+    '',
+    NULL,
+    NULL,
+    'SSS',
+    NULL,
+    NULL,
+    '2025-02-25 00:00:00.000',
+    NULL,
+    NULL,
+    NULL,
+    1,
+    NULL,
+    NULL,
     'Ifq45cL',
     '8uIPHRQ',
-    '2025-01-05 17:04:28.444',
+    '2025-02-25 13:03:42.676',
     NULL
-  );
-INSERT INTO
-  `students` (
-    `id`,
-    `admission_no`,
-    `first_name`,
-    `last_name`,
-    `date_of_birth`,
-    `sex`,
-    `address`,
-    `state_of_origin`,
-    `school_section`,
-    `lga`,
-    `religion`,
-    `date_of_admission`,
-    `admission_session`,
-    `admission_term`,
-    `admission_class`,
-    `active`,
-    `guardian_name`,
-    `guardian_telephone`,
-    `curr_class_id`,
-    `createdById`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'JfjwfqB',
-    'ASW/2021/110',
-    'Folorunsho',
-    'Ibrahim',
-    '2025-01-09 00:00:00.000',
-    'Male',
-    'Alon Malale Road',
-    'Niger',
-    'SSS',
-    'Borgu',
-    'Islam',
-    '2024-09-09 00:00:00.000',
-    '2024/2025',
-    '1st term',
-    'SSS 1',
-    0,
-    'Folorunsho razaq',
-    '',
-    'Ifq45cL',
-    'f4RocSh',
-    '2025-01-05 18:17:50.309',
-    NULL
-  );
-INSERT INTO
-  `students` (
-    `id`,
-    `admission_no`,
-    `first_name`,
-    `last_name`,
-    `date_of_birth`,
-    `sex`,
-    `address`,
-    `state_of_origin`,
-    `school_section`,
-    `lga`,
-    `religion`,
-    `date_of_admission`,
-    `admission_session`,
-    `admission_term`,
-    `admission_class`,
-    `active`,
-    `guardian_name`,
-    `guardian_telephone`,
-    `curr_class_id`,
-    `createdById`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'RAN1AcR',
-    'ASW/2021/105',
-    'Folorunshocc',
-    'Ibrahimcxc',
-    '2024-12-03 00:00:00.000',
-    'Male',
-    'Alon Malale Road',
-    'Niger',
-    'JSS',
-    'Borgu',
-    'Islam',
-    '2024-12-03 00:00:00.000',
-    '2023/2024',
-    '1st term',
-    'JSS 2',
-    0,
-    'Folorunsho razaq',
-    '08119513281',
-    'T9Bo3Ne',
-    'pS2M79v',
-    '2024-12-05 01:11:47.055',
-    'pS2M79v'
-  );
-INSERT INTO
-  `students` (
-    `id`,
-    `admission_no`,
-    `first_name`,
-    `last_name`,
-    `date_of_birth`,
-    `sex`,
-    `address`,
-    `state_of_origin`,
-    `school_section`,
-    `lga`,
-    `religion`,
-    `date_of_admission`,
-    `admission_session`,
-    `admission_term`,
-    `admission_class`,
-    `active`,
-    `guardian_name`,
-    `guardian_telephone`,
-    `curr_class_id`,
-    `createdById`,
-    `updatedAt`,
-    `updatedById`
-  )
-VALUES
-  (
-    'RZ2jHBA',
-    'ASW/2021/106',
-    'Ibrahima',
-    'Folorunshoz',
-    '1970-01-01 00:00:00.000',
-    'Male',
-    'Al barka hospital Wawax',
-    'Niger',
-    'JSS',
-    'Borgu',
-    'Islam',
-    '2025-02-06 00:00:00.000',
-    '2024/2025',
-    '2nd term',
-    'JSS 1',
-    0,
-    'Folorunsho Razaq',
-    '08119513281',
-    'OMVKFac',
-    'pS2M79v',
-    '2025-02-08 10:36:07.458',
-    'pS2M79v'
   );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: studentsdemotions
 # ------------------------------------------------------------
 
-INSERT INTO
-  `studentsdemotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `demotedOn`
-  )
-VALUES
-  (
-    'AfZHOnm',
-    'AJ3njGo',
-    'SSS 2',
-    '2nd term',
-    '2024/2025',
-    'Ifq45cL',
-    'f4RocSh',
-    '2025-01-05 17:04:28.428'
-  );
-INSERT INTO
-  `studentsdemotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `demotedOn`
-  )
-VALUES
-  (
-    'jO6BWXf',
-    'AJ3njGo',
-    'SSS 3',
-    '2nd term',
-    '2024/2025',
-    '2_fPzDw',
-    'pS2M79v',
-    '2025-02-08 10:04:25.437'
-  );
-INSERT INTO
-  `studentsdemotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `demotedOn`
-  )
-VALUES
-  (
-    'lYGpXJ6',
-    'FWpZizc',
-    'SSS 2',
-    '2nd term',
-    '2024/2025',
-    'Ifq45cL',
-    'f4RocSh',
-    '2025-01-05 17:04:28.429'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: studentspromotions
 # ------------------------------------------------------------
 
-INSERT INTO
-  `studentspromotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `promotedOn`
-  )
-VALUES
-  (
-    'Mb2gR2I',
-    'AJ3njGo',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'QA1juMZ',
-    'pS2M79v',
-    '2025-02-08 10:03:21.728'
-  );
-INSERT INTO
-  `studentspromotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `promotedOn`
-  )
-VALUES
-  (
-    'NHkpFpZ',
-    'AJ3njGo',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    '2_fPzDw',
-    'f4RocSh',
-    '2025-01-05 17:04:05.763'
-  );
-INSERT INTO
-  `studentspromotions` (
-    `id`,
-    `student_id`,
-    `from`,
-    `term`,
-    `session`,
-    `to_id`,
-    `createdById`,
-    `promotedOn`
-  )
-VALUES
-  (
-    'yG-LnYm',
-    'FWpZizc',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    '2_fPzDw',
-    'f4RocSh',
-    '2025-01-05 17:04:05.765'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: subjects
@@ -5389,1081 +9691,11 @@ VALUES
 # DATA DUMP FOR TABLE: transactionhistory
 # ------------------------------------------------------------
 
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '12be2b5e-1e98-4f1e-8178-6ee899b5a6be',
-    7,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y70002i4t8fj5zlkrn\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
-    27500,
-    25500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-01 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '14b99dd7-1000-4d9b-a7d1-4658b6a5b5c0',
-    1,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
-    15500,
-    14500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '1f03e8a9-4a87-444c-92c9-dcde14ba350f',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":300,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11700,\\\"paidToday\\\":300}]\"',
-    15500,
-    15400,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '28c475fa-bacc-413c-8c85-2e38197d8a35',
-    8,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6m0lqgo0003i4t8kuexb1o1\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":10000,\\\"paidToday\\\":2000}]\"',
-    12000,
-    12000,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-01 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '30b796aa-406b-4c18-8584-d765f0c5459d',
-    9,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6myilz40000k5ms1z1v4o86\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":9,\\\"createdAt\\\":\\\"2025-02-02T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6myilz80001k5msejsw5e6n\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":3000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":9,\\\"createdAt\\\":\\\"2025-02-02T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"}}]\"',
-    15500,
-    13000,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-02 00:00:00.000',
-    '2025-02-02 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '31a3f762-c122-427d-adfc-c4f28004a86b',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
-    15500,
-    13500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '38e44ae7-23a0-40d3-a807-8a172c6c0ee2',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11500,\\\"paidToday\\\":500}]\"',
-    15500,
-    15000,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '57512d9c-c97d-4dcd-a04d-c5e0a26f13cd',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":6,\\\"createdAt\\\":\\\"2025-01-30T00:00:00.000Z\\\"},{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2500,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":6,\\\"createdAt\\\":\\\"2025-01-30T00:00:00.000Z\\\"}]\"',
-    15500,
-    NULL,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '64d75b5c-2575-4929-8079-cf27d67484d5',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":20,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11980,\\\"paidToday\\\":20}]\"',
-    15500,
-    15470,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '70d3b7e1-04cb-4e81-8160-8083b04eaf8e',
-    8,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6m0lqgo0003i4t8kuexb1o1\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":8,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}}]\"',
-    12000,
-    NULL,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-01 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '742db500-ce1c-4896-b203-aec170f37534',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":100,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11900,\\\"paidToday\\\":100}]\"',
-    15500,
-    15100,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '8a3e0dfe-57e3-4214-9e42-146818819759',
-    5,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
-    15500,
-    15500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '92632a0c-26f0-441d-bbd5-fea613c20a77',
-    1,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
-    15500,
-    15000,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    '92ad68ba-3bfd-4da5-9fd1-d13b0b58f069',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11500,\\\"paidToday\\\":500}]\"',
-    15500,
-    15000,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'a2711007-68ed-4c66-94fe-6040401af83c',
-    9,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6myilz80001k5msejsw5e6n\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500}]\"',
-    15500,
-    13500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-02 00:00:00.000',
-    '2025-02-02 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'a548ee42-673c-4dea-af91-4f602b6fd576',
-    5,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":12000,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\"},{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\"}]\"',
-    15500,
-    NULL,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-29 00:00:00.000',
-    '2025-01-29 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'bc3e6722-ffb5-4ebe-9709-e00feea3d869',
-    1,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm69ktqek000184ezfj7mos7b\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":500,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":3000,\\\"paidToday\\\":500},{\\\"payment_id\\\":\\\"cm69ktqei000084ezjtomalln\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":null,\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":1,\\\"createdAt\\\":\\\"2025-01-23T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
-    15500,
-    15500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'bdc6fdfa-a3ce-4e0e-a6d1-6da04c25f2c3',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":50,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11950,\\\"paidToday\\\":50}]\"',
-    15500,
-    15450,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'c0edc517-1d2b-4ccd-952c-1fe5bfe41fe3',
-    9,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6myilz40000k5ms1z1v4o86\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11000,\\\"paidToday\\\":1000}]\"',
-    15500,
-    14500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-02 00:00:00.000',
-    '2025-02-02 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'c52a8428-9b54-4467-b057-1d05295a275c',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11000,\\\"paidToday\\\":1000},{\\\"payment_id\\\":\\\"cm6jn0ezn00013t2ujaokmnka\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000}]\"',
-    15500,
-    14500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cb1488b2-f079-427f-9e1f-4821ef2cb05f',
-    7,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y50000i4t8wb1hj4mh\\\",\\\"item_id\\\":\\\"qXJJvNo\\\",\\\"amount\\\":12000,\\\"paid\\\":12000,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"qXJJvNo\\\",\\\"name\\\":\\\"First Term\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6m0f0y70001i4t80km3heo1\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":10000,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\"}},{\\\"payment_id\\\":\\\"cm6m0f0y70002i4t8fj5zlkrn\\\",\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"amount\\\":3500,\\\"paid\\\":2500,\\\"status\\\":\\\"Partly paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":7,\\\"createdAt\\\":\\\"2025-02-01T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"}}]\"',
-    27500,
-    NULL,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-01 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'cc29216b-e669-4174-86d9-f86bf2fba7c9',
-    7,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6m0f0y70001i4t80km3heo1\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":2000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":10000,\\\"paidToday\\\":2000}]\"',
-    27500,
-    27500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-02 00:00:00.000',
-    '2025-02-02 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'e2fe1556-337f-4a12-9926-4976927da9b1',
-    3,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6ev387n000010vlind2627m\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"item\\\":{\\\"id\\\":\\\"0jcBxk5\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":\\\"3500\\\"},\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":3000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":500,\\\"paidToday\\\":3000}]\"',
-    3500,
-    3500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-02-02 08:12:58.282',
-    '2025-02-02 08:12:58.282'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'f02f8bb2-7257-4411-aa28-d3f3c3b8bf1b',
-    5,
-    'FWpZizc',
-    '\"[{\\\"payment_id\\\":\\\"cm6iguk5v00017ocw8nvzhpg7\\\",\\\"name\\\":\\\"PTA\\\",\\\"amount\\\":3500,\\\"item_id\\\":\\\"0jcBxk5\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":1000,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":2500,\\\"paidToday\\\":1000},{\\\"payment_id\\\":\\\"cm6iguk5r00007ocw64am0vlj\\\",\\\"item_id\\\":\\\"Exo4omu\\\",\\\"amount\\\":12000,\\\"paid\\\":0,\\\"status\\\":\\\"Paid\\\",\\\"term\\\":\\\"2nd term\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"transactionId\\\":5,\\\"createdAt\\\":\\\"2025-01-29T00:00:00.000Z\\\",\\\"item\\\":{\\\"id\\\":\\\"Exo4omu\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":\\\"12000\\\",\\\"school_section\\\":\\\"SSS\\\"},\\\"name\\\":\\\"School fee\\\",\\\"paidToday\\\":0}]\"',
-    15500,
-    15000,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    NULL,
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
-INSERT INTO
-  `transactionhistory` (
-    `id`,
-    `tnxId`,
-    `student_id`,
-    `items`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `createdAt`,
-    `updatedAt`
-  )
-VALUES
-  (
-    'fc87c1e9-68be-4120-8ea6-0bc68ae66457',
-    6,
-    'AJ3njGo',
-    '\"[{\\\"payment_id\\\":\\\"cm6jn0ezj00003t2uq19o9lxv\\\",\\\"name\\\":\\\"School fee\\\",\\\"amount\\\":12000,\\\"item_id\\\":\\\"Exo4omu\\\",\\\"session\\\":\\\"2024/2025\\\",\\\"term\\\":\\\"2nd term\\\",\\\"paid\\\":30,\\\"status\\\":\\\"Partly paid\\\",\\\"payment_method\\\":\\\"Cash\\\",\\\"teller_no\\\":\\\"\\\",\\\"balance\\\":11970,\\\"paidToday\\\":30}]\"',
-    15500,
-    15500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: transactions
 # ------------------------------------------------------------
 
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'FWpZizc',
-    15500,
-    15500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'MwA8gDw',
-    'pS2M79v',
-    '2025-01-23 00:00:00.000',
-    '2025-01-30 00:00:00.000',
-    1
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'AJ3njGo',
-    3500,
-    3500,
-    'Cancelled',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'MwA8gDw',
-    'pS2M79v',
-    '2025-01-23 00:00:00.000',
-    '2025-02-02 01:47:52.051',
-    2
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'FWpZizc',
-    3500,
-    3500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-01-27 00:00:00.000',
-    '2025-02-02 08:12:58.091',
-    3
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'FWpZizc',
-    12000,
-    12000,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-01-27 00:00:00.000',
-    '2025-02-02 01:47:46.073',
-    4
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'FWpZizc',
-    15500,
-    15500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-01-29 00:00:00.000',
-    '2025-02-02 01:47:46.073',
-    5
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'AJ3njGo',
-    15500,
-    15500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-01-30 00:00:00.000',
-    '2025-01-30 00:00:00.000',
-    6
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'FWpZizc',
-    27500,
-    27500,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-02 00:00:00.000',
-    7
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'AJ3njGo',
-    12000,
-    12000,
-    'Paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-02-01 00:00:00.000',
-    '2025-02-01 00:00:00.000',
-    8
-  );
-INSERT INTO
-  `transactions` (
-    `student_id`,
-    `total`,
-    `paid`,
-    `status`,
-    `class`,
-    `term`,
-    `session`,
-    `createdById`,
-    `updatedById`,
-    `createdAt`,
-    `updatedAt`,
-    `tnxId`
-  )
-VALUES
-  (
-    'AJ3njGo',
-    15500,
-    14500,
-    'Partly paid',
-    'SSS 1',
-    '2nd term',
-    '2024/2025',
-    'pS2M79v',
-    'pS2M79v',
-    '2025-02-02 00:00:00.000',
-    '2025-02-02 00:00:00.000',
-    9
-  );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -1,6 +1,8 @@
 import express from "express";
 const router = express.Router();
-import prisma from "../lib/prisma.js";
+// import prisma from "../lib/prisma.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 import { nanoid } from "nanoid";
 router.get("/", async (req, res) => {
 	const students = await prisma.students.findMany({
@@ -137,6 +139,26 @@ router.post("/byClassHistory", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
+	const {
+		date_of_birth,
+		date_of_admission,
+		sex,
+		religion,
+		admission_term,
+		admission_session,
+		admission_class,
+		curr_class_id,
+		school_section,
+		admission_no,
+		first_name,
+		last_name,
+		address,
+		state_of_origin,
+		lga,
+		guardian_name,
+		guardian_telephone,
+		curr_session,
+	} = req.body;
 	try {
 		const found = await prisma.students.findUnique({
 			where: {
@@ -149,7 +171,23 @@ router.post("/create", async (req, res) => {
 			const created = await prisma.students.create({
 				data: {
 					id: nanoid(7),
-					...req.body,
+					date_of_admission,
+					sex,
+					religion,
+					admission_term,
+					admission_session,
+					admission_class,
+					curr_class_id,
+					school_section,
+					admission_no,
+					first_name,
+					last_name,
+					address,
+					state_of_origin,
+					lga,
+					guardian_name,
+					guardian_telephone,
+					date_of_birth,
 				},
 			});
 
@@ -157,15 +195,48 @@ router.post("/create", async (req, res) => {
 				data: {
 					student_id: created?.id,
 					class_id: created?.curr_class_id,
-					session: created?.admission_session,
+					session: curr_session,
 				},
 			});
 			res.json({ created, connectHistory });
 		}
 	} catch (error) {
-		res.json(error);
+		res.status(500).json(error);
+		console.log(error);
 	}
 });
+// router.post("/many", async (req, res) => {
+// 	try {
+// 		req.body.forEach(async (d) => {
+// 			const created = await prisma.students.create({
+// 				data: {
+// 					id: nanoid(7),
+// 					first_name: d?.first_name,
+// 					last_name: d?.last_name,
+// 					admission_no: d?.admission_no,
+// 					date_of_admission: new Date(new Date().setUTCHours(0, 0, 0, 0)),
+// 					curr_class_id: "2_fPzDw",
+// 					createdById: "8uIPHRQ",
+// 					updatedAt: new Date(),
+// 					sex: "",
+// 					school_section: "SSS",
+// 				},
+// 			});
+
+// 			await prisma.classHistory.create({
+// 				data: {
+// 					student_id: created?.id,
+// 					class_id: created?.curr_class_id,
+// 					session: created?.admission_session,
+// 				},
+// 			});
+// 		});
+// 		res.json("ok");
+// 	} catch (error) {
+// 		res.status(500).json(error);
+// 		console.log(error);
+// 	}
+// });
 router.post("/edit/:studentId", async (req, res) => {
 	const { curr_class_id } = req.body;
 	const edited = await prisma.students.update({
@@ -186,5 +257,16 @@ router.post("/edit/:studentId", async (req, res) => {
 	}
 	res.json(edited);
 });
+// router.post("/edits/many", async (req, res) => {
+// 	const updated = await prisma.classHistory.updateMany({
+// 		where: {
+// 			class_id: "2_fPzDw",
+// 		},
+// 		data: {
+// 			session: "2024/2025",
+// 		},
+// 	});
+// 	res.json(updated);
+// });
 
 export default router;

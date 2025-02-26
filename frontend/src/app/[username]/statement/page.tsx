@@ -97,7 +97,7 @@ const Statement = () => {
 				});
 
 				setStatement({
-					name: `${results?.first_name} ${results?.last_name}`,
+					name: `${results?.last_name} ${results?.first_name}`,
 					// class: results?.curr_class?.name,
 					admission_no: results?.admission_no,
 					generated: generated.sort((a, b) =>

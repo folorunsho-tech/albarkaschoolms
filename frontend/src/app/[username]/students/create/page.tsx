@@ -17,14 +17,17 @@ import { sessions, currSession, currTerm } from "@/libs/sessions";
 
 const CreateStudent = () => {
 	const [date_of_birth, setDOB] = useState<Date | null>(null);
-	const [date_of_admission, setDOA] = useState<Date | null>(null);
+	const [date_of_admission, setDOA] = useState<Date | null>(new Date());
 	const [visible, { open, close }] = useDisclosure(false);
 	const { post } = usePost();
 	const [sex, setSex] = useState<string | null>("");
 	const [religion, setReligion] = useState<string | null>("");
 	const [admission_term, setadmission_term] = useState<any>("");
 	const [admission_session, setadmission_session] = useState<string | null>("");
-	const [admission_class, setAdmission_class] = useState<string | null>("");
+	const [curr_session, setCurr_session] = useState<string | null>(currSession);
+	const [admission_class, setAdmission_class] = useState<string | null>(
+		currSession
+	);
 	const [curr_class_id, setcurr_class_id] = useState<string | null>("");
 	const [classList, setClassList] = useState([]);
 	const [AclassList, setAClassList] = useState([]);
@@ -64,9 +67,10 @@ const CreateStudent = () => {
 			admission_class,
 			curr_class_id,
 			school_section: section,
+			curr_session,
 		});
 		close();
-		reset();
+		// reset();
 	};
 
 	return (
@@ -87,20 +91,36 @@ const CreateStudent = () => {
 				>
 					Go back
 				</Button>
-				<Select
-					checkIconPosition='right'
-					className='w-70'
-					data={["Pre-nursery", "Nursery", "Primary", "JSS", "SSS"]}
-					searchable
-					allowDeselect={false}
-					value={section}
-					label='School section'
-					nothingFoundMessage='Nothing found...'
-					placeholder='Pick a school section'
-					onChange={(value: any) => {
-						setSection(value);
-					}}
-				/>
+				<div className='flex items-end gap-5'>
+					<Select
+						checkIconPosition='right'
+						className='w-74'
+						data={sessions}
+						searchable
+						allowDeselect={false}
+						value={curr_session}
+						label='Current session'
+						nothingFoundMessage='Nothing found...'
+						placeholder='Pick a session'
+						onChange={(value: any) => {
+							setCurr_session(value);
+						}}
+					/>
+					<Select
+						checkIconPosition='right'
+						className='w-70'
+						data={["Pre-nursery", "Nursery", "Primary", "JSS", "SSS"]}
+						searchable
+						allowDeselect={false}
+						value={section}
+						label='School section'
+						nothingFoundMessage='Nothing found...'
+						placeholder='Pick a school section'
+						onChange={(value: any) => {
+							setSection(value);
+						}}
+					/>
+				</div>
 			</div>
 			{section !== "" ? (
 				<form onSubmit={handleSubmit(onSubmit)} className='space-y-10'>
@@ -151,7 +171,6 @@ const CreateStudent = () => {
 							clearable
 							nothingFoundMessage='Nothing found...'
 							className='w-32'
-							withAsterisk
 							value={sex}
 							onChange={(value: any) => {
 								setSex(value);
@@ -163,7 +182,6 @@ const CreateStudent = () => {
 							placeholder='Select religion'
 							data={["Islam", "Christianity", "Others"]}
 							clearable
-							withAsterisk
 							value={religion}
 							nothingFoundMessage='Nothing found...'
 							className='w-36'
@@ -195,8 +213,7 @@ const CreateStudent = () => {
 							className='w-52'
 							label='Guardian name'
 							placeholder='Input guardian name'
-							required
-							{...register("guardian_name", { required: true })}
+							{...register("guardian_name")}
 						/>
 
 						<TextInput
@@ -212,7 +229,7 @@ const CreateStudent = () => {
 							data={AclassList}
 							searchable
 							value={admission_class}
-							allowDeselect={false}
+							// allowDeselect={false}
 							label='Admission class'
 							nothingFoundMessage='Nothing found...'
 							placeholder='Pick a class'
@@ -256,9 +273,11 @@ const CreateStudent = () => {
 							className='w-74'
 							data={classList}
 							searchable
-							clearable
+							required
+							withAsterisk
 							allowDeselect={false}
 							value={curr_class_id}
+							// clearable
 							label='Current class'
 							nothingFoundMessage='Nothing found...'
 							placeholder='Pick a class'
@@ -275,7 +294,7 @@ const CreateStudent = () => {
 						>
 							Cancel
 						</Button>
-						<Button disabled={admission_class == ""} color='teal' type='submit'>
+						<Button disabled={!curr_class_id} color='teal' type='submit'>
 							Add student
 						</Button>
 					</Group>

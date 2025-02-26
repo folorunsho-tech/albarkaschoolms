@@ -315,34 +315,43 @@ router.get("/:caId", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-	const { student_id, class_id, subject_id, term, session, score } = req.body;
-	const found = await prisma.sCAResults.findFirst({
-		where: {
-			student_id,
-			class_id,
-			subject_id,
-			term,
-			session,
-		},
-	});
-	if (found) {
-		const updated = await prisma.sCAResults.update({
-			where: {
-				id: found?.id,
-			},
-			data: {
-				score,
-			},
+	const uploads = req.body.uploads;
+	const createdById = req.body.createdById;
+	try {
+		uploads.forEach(async (upload) => {
+			const { student_id, class_id, subject_id, term, session, score } = upload;
+			const found = await prisma.sCAResults.findFirst({
+				where: {
+					student_id,
+					class_id,
+					subject_id,
+					term,
+					session,
+				},
+			});
+			if (found) {
+				await prisma.sCAResults.update({
+					where: {
+						id: found?.id,
+					},
+					data: {
+						score,
+					},
+				});
+			} else {
+				await prisma.sCAResults.create({
+					data: {
+						id: nanoid(7),
+						...upload,
+						createdById,
+					},
+				});
+			}
 		});
-		res.json(updated);
-	} else {
-		const created = await prisma.sCAResults.create({
-			data: {
-				id: nanoid(7),
-				...req.body,
-			},
-		});
-		res.json(created);
+		res.json("done");
+	} catch (error) {
+		res.status(500).json(error);
+		// console.log(error);
 	}
 });
 router.post("/edit/:caId", async (req, res) => {
