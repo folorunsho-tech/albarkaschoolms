@@ -101,6 +101,7 @@ const EditStudent = () => {
 			admission_class,
 			school_section: section,
 			curr_class_id,
+			admission_no,
 		});
 		close();
 		router.back();
@@ -146,8 +147,10 @@ const EditStudent = () => {
 						className='w-42'
 						label='Admission No'
 						placeholder='Input admission no'
-						disabled
-						defaultValue={admission_no}
+						value={admission_no}
+						onChange={(e) => {
+							setadmission_no(e.currentTarget.value);
+						}}
 					/>
 					<DatePickerInput
 						label='Date of admission'

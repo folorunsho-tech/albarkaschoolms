@@ -215,11 +215,12 @@ router.post("/create", async (req, res) => {
 // 					last_name: d?.last_name,
 // 					admission_no: d?.admission_no,
 // 					date_of_admission: new Date(new Date().setUTCHours(0, 0, 0, 0)),
-// 					curr_class_id: "2_fPzDw",
+// 					curr_class_id: "OMVKFac",
 // 					createdById: "8uIPHRQ",
 // 					updatedAt: new Date(),
 // 					sex: "",
-// 					school_section: "SSS",
+// 					school_section: "JSS",
+// 					admission_session: "2024/2025",
 // 				},
 // 			});
 
