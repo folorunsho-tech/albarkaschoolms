@@ -95,7 +95,6 @@ const CreateStaff = () => {
 		});
 		setDOB(null);
 		setDOE(null);
-		setSection("");
 		setSex("");
 		setGradeLevel(0);
 		setApp({});
@@ -130,6 +129,8 @@ const CreateStaff = () => {
 					data={["All", "Nursery and Primary", "Secondary"]}
 					allowDeselect={false}
 					value={section}
+					withAsterisk
+					searchable
 					label='School section'
 					nothingFoundMessage='Nothing found...'
 					placeholder='Pick a school section'

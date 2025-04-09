@@ -1547,6 +1547,278 @@ VALUES
     '2025-02-27 17:45:45.716',
     NULL
   );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7no6v500001uq6s8h1jwbgl',
+    '8uIPHRQ',
+    'Logged-in',
+    '2025-02-27 18:20:39.586',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm7wbu9lx0001uq5gduna3xdu',
+    'pS2M79v',
+    'Logged-in',
+    '2025-03-05 19:44:51.997',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986cu5y0001uqykbanj23qz',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:24:17.202',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986i5bn0001uqjchtzgi2x5',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:28:24.945',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986kz8j0001uq20fwi31278',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:30:37.028',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986ldda0003uq20pedtzlvr',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:30:55.344',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986u2220005uq200ofspx0l',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:37:40.585',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm986ukjr0007uq201isqvpj5',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:38:04.552',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm9873bfl0009uq20wa4kjnqx',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:44:52.642',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm987fk9y000buq2075wpsyal',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:54:23.973',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm987mngp000duq20zsy498kq',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 07:59:54.692',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm988ws4c0001uqqocecx2kpv',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 08:35:46.902',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm9892rmf0001uqp8u2o4pkkz',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-08 08:40:26.197',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm99k67o70001uqa08s3jz5ge',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-09 06:38:48.915',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm99keqte0003uqa0bkkag0ji',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-09 06:45:26.977',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm99kg3r00005uqa03r8glxjc',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-09 06:46:30.394',
+    NULL
+  );
+INSERT INTO
+  `authhistory` (
+    `id`,
+    `account_id`,
+    `auth_status`,
+    `logged_in_at`,
+    `logged_out_at`
+  )
+VALUES
+  (
+    'cm99kivko0007uqa01oouthma',
+    'pS2M79v',
+    'Logged-in',
+    '2025-04-09 06:48:39.767',
+    NULL
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: classes

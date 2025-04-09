@@ -14,19 +14,19 @@ import {
 	LoadingOverlay,
 } from "@mantine/core";
 import { IconArrowNarrowLeft, IconX } from "@tabler/icons-react";
-import axios from "@/config/axios";
 import { userContext } from "@/context/User";
-const Fca = () => {
+import axios from "@/config/axios";
+const Sca = () => {
 	const { user } = React.useContext(userContext);
 	const { fetch } = useFetch();
 	const { post, loading } = usePostMany();
 	const router = useRouter();
 	const [selectedClass, setSelectedClass] = React.useState<any>(null);
 	const [selectedStudent, setSelectedStudent] = React.useState<any>(null);
-	const [selectedSubject, setSelectedSubject] = React.useState<any>("");
 	const [selectedStudentId, setSelectedStudentId] = React.useState<any>(null);
-	const [session, setSession] = React.useState<any>("");
-	const [term, setTerm] = React.useState<any>("");
+	const [selectedSubject, setSelectedSubject] = React.useState<any>("");
+	const [session, setSession] = React.useState<any>(null);
+	const [term, setTerm] = React.useState<any>(null);
 	const [classList, setClassList] = React.useState<any[]>([]);
 	const [studentsList, setStudentsList] = React.useState<any[]>([]);
 	const [subjectsList, setSubjectsList] = React.useState<any[]>([]);
@@ -59,8 +59,6 @@ const Fca = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setSession(currSession);
-			setTerm(currTerm);
 		}
 		getAll();
 	}, []);
@@ -73,6 +71,7 @@ const Fca = () => {
 				const { data: staffSubs } = await fetch(
 					`/staffs/${user?.empid}/subjects`
 				);
+
 				if (staffSubs?.subjects?.length !== 0) {
 					setSubjectsList(staffSubs?.subjects);
 				} else {
@@ -109,7 +108,8 @@ const Fca = () => {
 							term,
 						};
 					});
-					await post("fca/create", uploads);
+					await post("sca/create", uploads);
+
 					setSelectedStudents([]);
 				}}
 			>
@@ -139,6 +139,7 @@ const Fca = () => {
 							data={sessions}
 							allowDeselect={false}
 							searchable
+							required
 							value={session}
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
@@ -152,6 +153,8 @@ const Fca = () => {
 							data={["1st term", "2nd term", "3rd term"]}
 							allowDeselect={false}
 							value={term}
+							searchable
+							required
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
 								setTerm(value);
@@ -177,7 +180,7 @@ const Fca = () => {
 					</div>
 				</section>
 
-				{selectedClass !== null ? (
+				{selectedClass && session && term ? (
 					<section className='w-4/5'>
 						<div className='flex items-center gap-3'>
 							<Select
@@ -192,8 +195,8 @@ const Fca = () => {
 								})}
 								searchable
 								nothingFoundMessage='Nothing found...'
-								value={selectedStudentId}
 								className='w-[24rem]'
+								value={selectedStudentId}
 								onChange={(value: any) => {
 									setSelectedStudentId(value);
 									const splited: any = value?.split("-")[0];
@@ -319,7 +322,9 @@ const Fca = () => {
 					</section>
 				) : (
 					<div className='flex items-center justify-center text-xl font-semibold mt-8'>
-						<h2>Select student's class to add result</h2>
+						<h2>
+							Select current session and term and student's class to add result
+						</h2>
 					</div>
 				)}
 			</form>
@@ -327,4 +332,4 @@ const Fca = () => {
 		</section>
 	);
 };
-export default Fca;
+export default Sca;

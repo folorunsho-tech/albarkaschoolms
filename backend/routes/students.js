@@ -11,10 +11,6 @@ router.get("/", async (req, res) => {
 		},
 		include: {
 			curr_class: true,
-			transactions: true,
-			StudentsDemotions: true,
-			StudentsPromotions: true,
-			ClassHistory: true,
 		},
 		// orderBy: {
 		// 	updatedAt: "desc",

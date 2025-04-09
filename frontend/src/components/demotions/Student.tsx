@@ -41,14 +41,14 @@ const Student = () => {
 	];
 	const [opened, { open, close }] = useDisclosure(false);
 	const [selected, setSelected] = useState<any[]>([]);
-	const [curr, setCurr] = useState<any>({});
-	const [selectedClass, setSelectedClass] = useState("");
-	const [session, setSession] = useState("");
-	const [term, setTerm] = useState<any>("");
+	const [curr, setCurr] = useState<any>(null);
+	const [selectedClass, setSelectedClass] = useState(null);
+	const [session, setSession] = useState(null);
+	const [term, setTerm] = useState<any>(null);
 	const [classList, setClassList] = useState([]);
 	const [studentList, setStudentList] = useState([]);
 	const [students, setStudents] = useState([]);
-	const [toClass, setToClass] = useState("");
+	const [toClass, setToClass] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
@@ -80,8 +80,6 @@ const Student = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setSession(currSession);
-			setTerm(currTerm);
 		};
 		getAll();
 	}, []);
@@ -115,8 +113,8 @@ const Student = () => {
 
 		setChecked(false);
 		setSelected([]);
-		setSelectedClass("");
-		setToClass("");
+		setSelectedClass(null);
+		setToClass(null);
 		close();
 	};
 	return (
@@ -146,8 +144,8 @@ const Student = () => {
 				onClose={() => {
 					close();
 					setSelected([]);
-					setSelectedClass("");
-					setToClass("");
+					setSelectedClass(null);
+					setToClass(null);
 
 					setChecked(false);
 				}}
@@ -161,6 +159,7 @@ const Student = () => {
 							placeholder='Select session'
 							data={sessions}
 							allowDeselect={false}
+							required
 							searchable
 							value={session}
 							nothingFoundMessage='Nothing found...'
@@ -174,6 +173,8 @@ const Student = () => {
 							placeholder='Select term'
 							data={["1st term", "2nd term", "3rd term"]}
 							allowDeselect={false}
+							required
+							searchable
 							value={term}
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
@@ -291,8 +292,8 @@ const Student = () => {
 							onClick={() => {
 								close();
 								setSelected([]);
-								setSelectedClass("");
-								setToClass("");
+								setSelectedClass(null);
+								setToClass(null);
 								setChecked(false);
 							}}
 							color='black'
@@ -300,7 +301,7 @@ const Student = () => {
 							Cancel
 						</Button>
 						<Button
-							disabled={!(toClass !== "" && selected.length !== 0)}
+							disabled={!(selected.length !== 0)}
 							type='submit'
 							color='red'
 						>

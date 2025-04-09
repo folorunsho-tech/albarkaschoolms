@@ -1,8 +1,11 @@
 const { createHash } = await import("node:crypto");
 import { Router } from "express";
 import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 import mysqldump from "mysqldump";
 const router = Router();
+import jwt from "jsonwebtoken";
 
 const hashpass = (password) => {
 	return createHash("sha256").update(password).digest("hex");
@@ -17,44 +20,18 @@ router.post("/login", async (req, res) => {
 				username,
 				passHash: hashedPass,
 			},
-			select: {
-				permissions: true,
-				id: true,
-				active: true,
-				empid: true,
-				name: true,
-				username: true,
-				role: true,
-				staff: {
-					select: {
-						curr_appointment: {
-							select: {
-								name: true,
-							},
-						},
-						school_section: true,
-					},
-				},
-			},
 		});
 		if (user?.active === true) {
+			const token = jwt.sign({ userId: user.id }, process.env.SECRET);
 			const authUserHis = await prisma.authHistory.create({
 				data: {
 					account_id: user.id,
 					logged_in_at: new Date(),
 				},
 			});
-			res.status(200).json({
-				user,
-				message: {
-					success: "Login successful",
-					error: "",
-				},
-				authId: authUserHis.id,
-			});
+			res.status(200).json({ token, authId: authUserHis?.id, userId: user.id });
 		} else if (!user) {
 			res.status(404).json({
-				user: null,
 				message: {
 					success: "",
 					error: "Invalid credentials",
@@ -62,7 +39,6 @@ router.post("/login", async (req, res) => {
 			});
 		} else if (user?.active === false) {
 			res.status(401).json({
-				user: null,
 				message: {
 					success: "",
 					error: "Unauthorized",
@@ -133,6 +109,38 @@ router.post("/logout", async (req, res) => {
 	res.json({
 		message: "Logged out",
 	});
+});
+
+router.get("/:account_id/basic", async (req, res) => {
+	try {
+		const found = await prisma.accounts.findUnique({
+			where: {
+				id: req.params.account_id,
+			},
+			select: {
+				permissions: true,
+				id: true,
+				active: true,
+				empid: true,
+				name: true,
+				username: true,
+				role: true,
+				staff: {
+					select: {
+						curr_appointment: {
+							select: {
+								name: true,
+							},
+						},
+						school_section: true,
+					},
+				},
+			},
+		});
+		res.status(200).json(found);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
 
 export default router;

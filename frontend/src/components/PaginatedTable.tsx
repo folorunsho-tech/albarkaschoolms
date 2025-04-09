@@ -41,7 +41,7 @@ const PaginatedTable = ({
 	depth: string;
 	sortedData: any;
 }) => {
-	const mappedData = data.map((mDtata) => {
+	const mappedData = data?.map((mDtata) => {
 		return {
 			...mDtata,
 			...mDtata[depth],

@@ -15,7 +15,6 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import moment from "moment";
-import chunk from "@/libs/chunk";
 import { useForm } from "react-hook-form";
 import { sessions, currSession, currTerm } from "@/libs/sessions";
 import { IconEye, IconPrinter, IconX } from "@tabler/icons-react";
@@ -26,9 +25,9 @@ import PrintHeader from "../PrintHeader";
 
 import { userContext } from "@/context/User";
 const DisengagedStudents = () => {
-	const { user } = React.useContext(userContext);
+	const { permissions } = React.useContext(userContext);
 
-	const permission = user?.permissions?.students;
+	const permission = permissions?.students;
 
 	const { loading, data, fetch } = useFetch();
 	const { fetch: fSingle } = useFetchSingle();
@@ -39,8 +38,8 @@ const DisengagedStudents = () => {
 	const [curr, setCurr] = useState<any>({});
 	const [selectedClass, setSelectedClass] = useState("");
 	const [method, setMethod] = useState("");
-	const [session, setSession] = useState("");
-	const [term, setTerm] = useState<any>("");
+	const [session, setSession] = useState(null);
+	const [term, setTerm] = useState<any>(null);
 	const [classList, setClassList] = useState([]);
 	const [studentList, setStudentList] = useState([]);
 	const [students, setStudents] = useState([]);
@@ -110,8 +109,6 @@ const DisengagedStudents = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setSession(currSession);
-			setTerm(currTerm);
 			setQueryData(data);
 
 			setSortedData(data);
@@ -198,10 +195,12 @@ const DisengagedStudents = () => {
 					<div className='flex gap-6'>
 						<Select
 							checkIconPosition='right'
-							label='Session'
+							label='Current Session'
 							placeholder='Select session'
 							data={sessions}
 							allowDeselect={false}
+							required
+							withAsterisk
 							searchable
 							value={session}
 							nothingFoundMessage='Nothing found...'
@@ -211,7 +210,10 @@ const DisengagedStudents = () => {
 						/>
 						<Select
 							checkIconPosition='right'
-							label='Term'
+							label='Current Term'
+							required
+							withAsterisk
+							searchable
 							placeholder='Select term'
 							data={["1st term", "2nd term", "3rd term"]}
 							allowDeselect={false}

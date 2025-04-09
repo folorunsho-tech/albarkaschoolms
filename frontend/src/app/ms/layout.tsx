@@ -13,83 +13,72 @@ import {
 	IconUserCheck,
 	IconFileInvoice,
 } from "@tabler/icons-react";
-import { useCookies } from "next-client-cookies";
-import { useRouter } from "next/navigation";
 import { userContext } from "@/context/User";
 export default function AppLayout({ params, children }: any) {
-	const { setUser, user } = React.useContext(userContext);
-	const cookies: any = useCookies().get("albarkaschoolms");
-	const router = useRouter();
+	const { permissions } = React.useContext(userContext);
 	const { username }: any = React.use(params);
-	const permisions = user?.permissions;
 	const data = [
 		{
 			link: "students",
 			label: "Students",
 			icon: IconSchool,
-			shown: permisions?.students?.view,
+			shown: permissions?.students?.view,
 		},
 		{
 			link: "staffs",
 			label: "Staffs",
 			icon: IconUsers,
-			shown: permisions?.staffs?.view,
+			shown: permissions?.staffs?.view,
 		},
 		{
 			link: "results",
 			label: "Results",
 			icon: IconReportAnalytics,
-			shown: permisions?.results?.view,
+			shown: permissions?.results?.view,
 		},
 		{
 			link: "statement",
 			label: "Statement of results",
 			icon: IconFileInvoice,
-			shown: permisions?.statement,
+			shown: permissions?.statement,
 		},
 		{
 			link: "payments",
 			label: "Payments",
 			icon: IconCashRegister,
-			shown: permisions?.payments?.view,
+			shown: permissions?.payments?.view,
 		},
 		{
 			link: "classes",
 			label: "Classes",
 			icon: IconBuilding,
-			shown: permisions?.classes?.view,
+			shown: permissions?.classes?.view,
 		},
 		// {
 		// 	link: "staffspromotions",
 		// 	label: "Staffs Promotions",
 		// 	icon: IconArrowsTransferUpDown,
-		// 	shown: permisions?.staffPromotions,
+		// 	shown: permissions?.staffPromotions,
 		// },
 		{
 			link: "studentspromotions",
 			label: "Students Promotions",
 			icon: IconArrowsTransferUpDown,
-			shown: permisions?.studentPromotions,
+			shown: permissions?.studentPromotions,
 		},
 		{
 			link: "accounts",
 			label: "Accounts",
 			icon: IconUserCheck,
-			shown: permisions?.accounts,
+			shown: permissions?.accounts,
 		},
 	];
-	useEffect(() => {
-		if (cookies == undefined) {
-			router.push("/");
-		} else {
-			setUser(JSON.parse(cookies));
-		}
-	}, []);
+
 	return (
 		<section className='h-full'>
 			<div className='w-full'>
 				<TopBar />
-				<NavMenu menu={data} username={username} />
+				<NavMenu menu={data} />
 			</div>
 			<main className=' py-2 h-screen'>{children}</main>
 		</section>

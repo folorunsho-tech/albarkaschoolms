@@ -14,8 +14,9 @@ const PrintHeader = ({ showDate = true }) => {
 				<Image
 					src='/logo.png'
 					alt='alabrkaschool-logo'
-					width={80}
-					height={80}
+					width={100}
+					height={100}
+					loading='eager'
 				/>
 				<div className='flex flex-col gap-1'>
 					<div>

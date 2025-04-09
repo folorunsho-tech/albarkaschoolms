@@ -13,25 +13,25 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useFetch, usePost } from "@/hooks/useQueries";
 import { useDisclosure } from "@mantine/hooks";
-import { sessions, currSession, currTerm } from "@/libs/sessions";
+import { sessions } from "@/libs/sessions";
 
 const CreateStudent = () => {
+	const { post } = usePost();
 	const [date_of_birth, setDOB] = useState<Date | null>(null);
 	const [date_of_admission, setDOA] = useState<Date | null>(new Date());
 	const [visible, { open, close }] = useDisclosure(false);
-	const { post } = usePost();
-	const [sex, setSex] = useState<string | null>("");
-	const [religion, setReligion] = useState<string | null>("");
-	const [admission_term, setadmission_term] = useState<any>("");
-	const [admission_session, setadmission_session] = useState<string | null>("");
-	const [curr_session, setCurr_session] = useState<string | null>(currSession);
-	const [admission_class, setAdmission_class] = useState<string | null>(
-		currSession
+	const [sex, setSex] = useState<string | null>(null);
+	const [religion, setReligion] = useState<string | null>(null);
+	const [admission_term, setadmission_term] = useState<string | null>(null);
+	const [admission_session, setadmission_session] = useState<string | null>(
+		null
 	);
-	const [curr_class_id, setcurr_class_id] = useState<string | null>("");
+	const [curr_session, setCurr_session] = useState<string | null>(null);
+	const [admission_class, setAdmission_class] = useState<string | null>(null);
+	const [curr_class_id, setcurr_class_id] = useState<string | null>(null);
 	const [classList, setClassList] = useState([]);
 	const [AclassList, setAClassList] = useState([]);
-	const [section, setSection] = useState("");
+	const [section, setSection] = useState(null);
 	const { register, handleSubmit, reset } = useForm();
 	const { fetch } = useFetch();
 	const router = useRouter();
@@ -47,8 +47,6 @@ const CreateStudent = () => {
 			const sortedAClass: any = classes.map((cl: any) => {
 				return cl.name;
 			});
-			setadmission_session(currSession);
-			setadmission_term(currTerm);
 			setClassList(sortedClass);
 			setAClassList(sortedAClass);
 		};
@@ -69,8 +67,8 @@ const CreateStudent = () => {
 			school_section: section,
 			curr_session,
 		});
+		reset();
 		close();
-		// reset();
 	};
 
 	return (
@@ -97,6 +95,8 @@ const CreateStudent = () => {
 						className='w-74'
 						data={sessions}
 						searchable
+						required
+						withAsterisk
 						allowDeselect={false}
 						value={curr_session}
 						label='Current session'
@@ -111,6 +111,8 @@ const CreateStudent = () => {
 						className='w-70'
 						data={["Pre-nursery", "Nursery", "Primary", "JSS", "SSS"]}
 						searchable
+						required
+						withAsterisk
 						allowDeselect={false}
 						value={section}
 						label='School section'
@@ -122,7 +124,7 @@ const CreateStudent = () => {
 					/>
 				</div>
 			</div>
-			{section !== "" ? (
+			{section && curr_session ? (
 				<form onSubmit={handleSubmit(onSubmit)} className='space-y-10'>
 					<div className='flex gap-6 flex-wrap relative'>
 						<TextInput
@@ -168,7 +170,9 @@ const CreateStudent = () => {
 							label='Sex'
 							placeholder='Select sex'
 							data={["Male", "Female"]}
-							clearable
+							required
+							withAsterisk
+							searchable
 							nothingFoundMessage='Nothing found...'
 							className='w-32'
 							value={sex}
@@ -183,6 +187,7 @@ const CreateStudent = () => {
 							data={["Islam", "Christianity", "Others"]}
 							clearable
 							value={religion}
+							searchable
 							nothingFoundMessage='Nothing found...'
 							className='w-36'
 							onChange={(value: any) => {
@@ -248,6 +253,7 @@ const CreateStudent = () => {
 							searchable
 							allowDeselect={false}
 							value={admission_session}
+							required
 							label='Admission session'
 							nothingFoundMessage='Nothing found...'
 							placeholder='Pick a session'
@@ -262,6 +268,9 @@ const CreateStudent = () => {
 							allowDeselect={false}
 							value={admission_term}
 							label='Admission term'
+							required
+							searchable
+							withAsterisk
 							nothingFoundMessage='Nothing found...'
 							placeholder='Pick a term'
 							onChange={(value: any) => {
@@ -294,7 +303,7 @@ const CreateStudent = () => {
 						>
 							Cancel
 						</Button>
-						<Button disabled={!curr_class_id} color='teal' type='submit'>
+						<Button color='teal' type='submit'>
 							Add student
 						</Button>
 					</Group>
@@ -306,7 +315,7 @@ const CreateStudent = () => {
 				</form>
 			) : (
 				<div className='flex justify-center items-center h-52 font-bold text-xl'>
-					<h2>Choose a school section to add student to</h2>
+					<h2>Choose current session and a school section to add student to</h2>
 				</div>
 			)}
 		</section>

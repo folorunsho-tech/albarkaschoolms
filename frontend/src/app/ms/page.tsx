@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
-import { useParams } from "next/navigation";
 import { userContext } from "@/context/User";
 const Dashboard = () => {
 	const { user } = React.useContext(userContext);
-	const params = useParams<{ username: string }>();
+
 	return (
 		<section className='bg-white p-3 rounded-md flex flex-col items-center h-2/3 gap-6'>
 			<h2 className='text-5xl text-center'>
-				Welcome back {params?.username} !!!
+				Welcome back {user?.username} !!!
 			</h2>
 			<div className='flex gap-10 '>
 				<p>

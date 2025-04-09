@@ -43,10 +43,10 @@ const Student = () => {
 	];
 	const [opened, { open, close }] = useDisclosure(false);
 	const [selected, setSelected] = useState<any[]>([]);
-	const [curr, setCurr] = useState<any>({});
-	const [selectedClass, setSelectedClass] = useState("");
-	const [session, setSession] = useState("");
-	const [term, setTerm] = useState<any>("");
+	const [curr, setCurr] = useState<any>(null);
+	const [selectedClass, setSelectedClass] = useState(null);
+	const [session, setSession] = useState(null);
+	const [term, setTerm] = useState<any>(null);
 	const [classList, setClassList] = useState([]);
 	const [studentList, setStudentList] = useState([]);
 	const [students, setStudents] = useState([]);
@@ -82,8 +82,6 @@ const Student = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setSession(currSession);
-			setTerm(currTerm);
 		};
 		getAll();
 	}, []);
@@ -117,7 +115,7 @@ const Student = () => {
 
 		setChecked(false);
 		setSelected([]);
-		setSelectedClass("");
+		setSelectedClass(null);
 		setToClass("");
 		close();
 	};
@@ -147,7 +145,7 @@ const Student = () => {
 				opened={opened}
 				onClose={() => {
 					setSelected([]);
-					setSelectedClass("");
+					setSelectedClass(null);
 					setToClass("");
 					setChecked(false);
 					close();
@@ -163,6 +161,7 @@ const Student = () => {
 							data={sessions}
 							allowDeselect={false}
 							searchable
+							required
 							value={session}
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
@@ -175,6 +174,8 @@ const Student = () => {
 							placeholder='Select term'
 							data={["1st term", "2nd term", "3rd term"]}
 							allowDeselect={false}
+							required
+							searchable
 							value={term}
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
@@ -291,7 +292,7 @@ const Student = () => {
 						<Button
 							onClick={() => {
 								setSelected([]);
-								setSelectedClass("");
+								setSelectedClass(null);
 								setToClass("");
 								setChecked(false);
 								close();
@@ -301,7 +302,7 @@ const Student = () => {
 							Cancel
 						</Button>
 						<Button
-							disabled={!(toClass !== "" && selected.length !== 0)}
+							disabled={!(selected.length !== 0)}
 							type='submit'
 							color='teal'
 						>

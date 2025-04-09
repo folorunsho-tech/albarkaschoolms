@@ -207,7 +207,6 @@ const EditStudent = () => {
 						placeholder='Select religion'
 						data={["Islam", "Christianity", "Others"]}
 						clearable
-						withAsterisk
 						value={religion}
 						nothingFoundMessage='Nothing found...'
 						className='w-36'

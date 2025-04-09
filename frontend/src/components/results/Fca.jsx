@@ -74,7 +74,7 @@ const Fca = () => {
 					/>
 					<Link
 						href={`results/fca`}
-						className='bg-teal-500 text-gray-200 hover:bg-teal-700 px-4 py-2 rounded-sm transition duration-200 ease-linear'
+						className='bg-teal-500 text-white hover:bg-teal-700 px-2 py-2 rounded-sm transition duration-200 ease-linear'
 					>
 						Add a new 1st C.A result
 					</Link>

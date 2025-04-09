@@ -20,7 +20,6 @@ const Classes = () => {
 	];
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
-	const [searchedData, setSearchedData] = useState([]);
 
 	const rows = sortedData?.map((row: any, index: number) => (
 		<Table.Tr key={row?.id}>

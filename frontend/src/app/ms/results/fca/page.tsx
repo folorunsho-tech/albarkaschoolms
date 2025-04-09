@@ -14,23 +14,17 @@ import {
 	LoadingOverlay,
 } from "@mantine/core";
 import { IconArrowNarrowLeft, IconX } from "@tabler/icons-react";
-import { userContext } from "@/context/User";
 import axios from "@/config/axios";
-
-const Exam = () => {
+import { userContext } from "@/context/User";
+const Fca = () => {
 	const { user } = React.useContext(userContext);
-
 	const { fetch } = useFetch();
 	const { post, loading } = usePostMany();
 	const router = useRouter();
-	const [selectedClass, setSelectedClass] = React.useState<any | null>(null);
-	const [selectedStudent, setSelectedStudent] = React.useState<any | null>(
-		null
-	);
+	const [selectedClass, setSelectedClass] = React.useState<any>(null);
+	const [selectedStudent, setSelectedStudent] = React.useState<any>(null);
 	const [selectedSubject, setSelectedSubject] = React.useState<any>("");
-	const [selectedStudentId, setSelectedStudentId] = React.useState<any | null>(
-		null
-	);
+	const [selectedStudentId, setSelectedStudentId] = React.useState<any>(null);
 	const [session, setSession] = React.useState<any>("");
 	const [term, setTerm] = React.useState<any>("");
 	const [classList, setClassList] = React.useState<any[]>([]);
@@ -65,8 +59,6 @@ const Exam = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setSession(currSession);
-			setTerm(currTerm);
 		}
 		getAll();
 	}, []);
@@ -98,6 +90,7 @@ const Exam = () => {
 		};
 		getStudentsList();
 	}, [session, selectedClass]);
+
 	return (
 		<section className='p-3 bg-white min-h-72'>
 			<form
@@ -114,8 +107,7 @@ const Exam = () => {
 							term,
 						};
 					});
-					await post("exams/create", uploads);
-
+					await post("fca/create", uploads);
 					setSelectedStudents([]);
 				}}
 			>
@@ -144,6 +136,7 @@ const Exam = () => {
 							placeholder='Select session'
 							data={sessions}
 							allowDeselect={false}
+							required
 							searchable
 							value={session}
 							nothingFoundMessage='Nothing found...'
@@ -157,6 +150,8 @@ const Exam = () => {
 							placeholder='Select term'
 							data={["1st term", "2nd term", "3rd term"]}
 							allowDeselect={false}
+							required
+							searchable
 							value={term}
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
@@ -177,21 +172,20 @@ const Exam = () => {
 							nothingFoundMessage='Nothing found...'
 							onChange={(value: any) => {
 								setSelectedClass(value);
-
 								setSelectedStudentId(null);
 							}}
 						/>
 					</div>
 				</section>
 
-				{selectedClass !== null ? (
+				{selectedClass && session && term ? (
 					<section className='w-4/5'>
 						<div className='flex items-center gap-3'>
 							<Select
 								checkIconPosition='right'
 								label='Add result for student'
 								placeholder='Select student to add'
-								data={studentsList.map(({ student }, index: number) => {
+								data={studentsList?.map(({ student }, index) => {
 									return {
 										value: `${student?.admission_no}-${index}`,
 										label: `${student?.last_name} ${student?.first_name} - ${student?.admission_no}`,
@@ -207,6 +201,7 @@ const Exam = () => {
 									const found: any = studentsList.find(
 										({ student }: any) => student?.admission_no == splited
 									)?.student;
+
 									setSelectedStudent(found);
 								}}
 							/>
@@ -230,7 +225,7 @@ const Exam = () => {
 							<NumberInput
 								label='Score'
 								min={0}
-								max={70}
+								max={20}
 								value={score}
 								className='w-[5rem]'
 								onChange={(value: any) => {
@@ -325,7 +320,9 @@ const Exam = () => {
 					</section>
 				) : (
 					<div className='flex items-center justify-center text-xl font-semibold mt-8'>
-						<h2>Select student's class to add result</h2>
+						<h2>
+							Select current session and term and student's class to add result
+						</h2>
 					</div>
 				)}
 			</form>
@@ -333,4 +330,4 @@ const Exam = () => {
 		</section>
 	);
 };
-export default Exam;
+export default Fca;

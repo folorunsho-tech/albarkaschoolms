@@ -7,13 +7,12 @@ import { Table, ActionIcon, Button, ScrollArea, Drawer } from "@mantine/core";
 import { useReactToPrint } from "react-to-print";
 import { IconEye, IconPencil, IconPrinter } from "@tabler/icons-react";
 import moment from "moment";
-import chunk from "@/libs/chunk";
 import { useDisclosure } from "@mantine/hooks";
 import AStudentsFilter from "../filters/AStudentsFilter";
 import PrintHeader from "../PrintHeader";
 import { userContext } from "@/context/User";
 const ActiveStudents = () => {
-	const { user } = React.useContext(userContext);
+	const { permissions } = React.useContext(userContext);
 
 	const headers = [
 		"admission no",
@@ -29,7 +28,7 @@ const ActiveStudents = () => {
 		"class",
 	];
 
-	const permission = user?.permissions?.students;
+	const permission = permissions?.students;
 	const { loading, data, fetch } = useFetch();
 
 	const [queryData, setQueryData] = useState(data);

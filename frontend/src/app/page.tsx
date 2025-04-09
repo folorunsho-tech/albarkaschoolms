@@ -18,7 +18,7 @@ import axios from "@/config/axios";
 import { userContext } from "@/context/User";
 import React from "react";
 export default function Login() {
-	const { setUser } = React.useContext(userContext);
+	const { setAuthId, setToken, user } = React.useContext(userContext);
 	const router = useRouter();
 	const { handleSubmit, register } = useForm();
 	const { post, loading } = usePostNormal();
@@ -27,12 +27,12 @@ export default function Login() {
 			...values,
 		});
 		if (res?.status === 200) {
-			bake_cookie("albarkaschoolms", {
-				...res?.data?.user,
-				authId: res?.data?.authId,
-			});
-			const read = read_cookie("albarkaschoolms");
-			setUser(read);
+			bake_cookie("albarkaschoolms", res.data);
+			const read: any = read_cookie("albarkaschoolms");
+
+			setToken(read?.token);
+			setAuthId(read?.authId);
+
 			axios.post("/backup/generate").then((d) => {
 				console.log(d.status);
 			});
@@ -41,7 +41,7 @@ export default function Login() {
 				withCloseButton: false,
 				position: "top-left",
 				onClose: () => {
-					router.push(`/${res?.data?.user?.username}/`);
+					router.push(`/ms/`);
 				},
 				autoClose: 500,
 				withBorder: true,

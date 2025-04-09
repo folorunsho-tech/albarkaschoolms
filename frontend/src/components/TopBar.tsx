@@ -7,7 +7,7 @@ import axios from "@/config/axios";
 import { IconSettings, IconDatabaseExport } from "@tabler/icons-react";
 import Link from "next/link";
 const TopBar = () => {
-	const { user, logOut } = React.useContext(userContext);
+	const { user, logOut, authId } = React.useContext(userContext);
 	return (
 		<header className='p-3 py-2 border-b border-gray-300 bg-blue-500 flex justify-between items-center'>
 			<h2 className='font-semibold pb-2 text-white'>Albarka School Wawa</h2>
@@ -16,13 +16,13 @@ const TopBar = () => {
 					<Group justify='space-between' className='text-white'>
 						<Link
 							className='hover:text-teal-300 transition duration-200'
-							href={`/${user?.username}/settings`}
+							href={`/ms/settings`}
 						>
 							<IconSettings stroke={2} />
 						</Link>
 						<Link
 							className='hover:text-teal-300 transition duration-200'
-							href={`/${user?.username}/backup`}
+							href={`/ms/backup`}
 						>
 							<IconDatabaseExport stroke={2} />
 						</Link>
@@ -52,7 +52,7 @@ const TopBar = () => {
 					className='flex gap-3 items-center transition duration-300 ease-in-out text-sm bg-red-500 text-white p-2 py-1 rounded-sm font-medium hover:bg-red-200 hover:text-red-700'
 					onClick={async () => {
 						logOut();
-						await axios.post("/auth/logout", { id: user?.authId });
+						await axios.post("/auth/logout", { id: authId });
 					}}
 				>
 					<IconLogout className='' stroke={1.5} />

@@ -1,12 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-	Button,
-	LoadingOverlay,
-	NumberFormatter,
-	Tabs,
-	Text,
-} from "@mantine/core";
+import { Button, LoadingOverlay, Tabs, Text } from "@mantine/core";
 import {
 	IconArrowDown,
 	IconArrowNarrowLeft,
@@ -15,8 +9,6 @@ import {
 } from "@tabler/icons-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useFetchSingle } from "@/hooks/useQueries";
-import PrintHeader from "@/components/PrintHeader";
-import convert from "@/libs/numberConvert";
 import { useReactToPrint } from "react-to-print";
 import TransactionHistory from "@/components/payments/TransactionHistory";
 import CurrentTnx from "@/components/payments/CurrentTnx";
