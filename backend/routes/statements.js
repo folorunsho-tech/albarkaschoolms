@@ -1,99 +1,110 @@
 import express from "express";
 const router = express.Router();
-import prisma from "../lib/prisma.js";
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
+// import prisma from "../lib/prisma.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 router.post("/byStudent/:student_id", async (req, res) => {
 	const { session, term, classId } = req.body;
-	const subjects = await prisma.subjects.groupBy({
-		by: ["name"],
-		where: {
-			FCAResults: {
-				some: {
-					session,
-					term,
-					student_id: req.params.student_id,
-					class_id: classId,
-					score: {
-						not: null,
+	try {
+		// const isPaid = await prisma.transactions.findMany({
+		// 	where:{
+		// 		student_id:req.params.student_id,
+		// 		session,term,items
+		// 		}
+		// 	}
+		// })
+		const subjects = await prisma.subjects.groupBy({
+			by: ["name"],
+			where: {
+				FCAResults: {
+					some: {
+						session,
+						term,
+						student_id: req.params.student_id,
+						class_id: classId,
+						score: {
+							not: null,
+						},
 					},
 				},
 			},
-		},
-	});
-	const results = await prisma.students.findUnique({
-		where: {
-			id: req.params.student_id,
-		},
+		});
+		const results = await prisma.students.findUnique({
+			where: {
+				id: req.params.student_id,
+			},
 
-		include: {
-			FCAResults: {
-				where: {
-					session,
-					term,
-					class_id: classId,
-				},
+			include: {
+				FCAResults: {
+					where: {
+						session,
+						term,
+						class_id: classId,
+					},
 
-				select: {
-					id: true,
-					subject: {
-						select: {
-							name: true,
+					select: {
+						id: true,
+						subject: {
+							select: {
+								name: true,
+							},
+						},
+						score: true,
+					},
+					orderBy: {
+						subject: {
+							name: "asc",
 						},
 					},
-					score: true,
 				},
-				orderBy: {
-					subject: {
-						name: "asc",
+				SCAResults: {
+					where: {
+						session,
+						term,
+						class_id: classId,
+					},
+					select: {
+						id: true,
+						subject: {
+							select: {
+								name: true,
+							},
+						},
+						score: true,
+					},
+					orderBy: {
+						subject: {
+							name: "asc",
+						},
+					},
+				},
+				ExamResults: {
+					where: {
+						session,
+						term,
+						class_id: classId,
+					},
+					select: {
+						id: true,
+						subject: {
+							select: {
+								name: true,
+							},
+						},
+						score: true,
+					},
+					orderBy: {
+						subject: {
+							name: "asc",
+						},
 					},
 				},
 			},
-			SCAResults: {
-				where: {
-					session,
-					term,
-					class_id: classId,
-				},
-				select: {
-					id: true,
-					subject: {
-						select: {
-							name: true,
-						},
-					},
-					score: true,
-				},
-				orderBy: {
-					subject: {
-						name: "asc",
-					},
-				},
-			},
-			ExamResults: {
-				where: {
-					session,
-					term,
-					class_id: classId,
-				},
-				select: {
-					id: true,
-					subject: {
-						select: {
-							name: true,
-						},
-					},
-					score: true,
-				},
-				orderBy: {
-					subject: {
-						name: "asc",
-					},
-				},
-			},
-		},
-	});
-	res.json({ results, subjects });
+		});
+		res.json({ results, subjects });
+	} catch (error) {
+		console.log(error);
+	}
 });
 router.post("/byClass/:classId", async (req, res) => {
 	const { session, term } = req.body;

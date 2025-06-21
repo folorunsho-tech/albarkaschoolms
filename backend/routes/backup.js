@@ -35,7 +35,7 @@ router.post("/generate", async (req, res) => {
 					},
 				},
 			},
-			dumpToFile: "../backup/school-backup.sql",
+			dumpToFile: "/albarka_backup/school-backuptest123.sql",
 		});
 		res.status(200).json({
 			message: "Database succesfully backed-up",

@@ -5,8 +5,11 @@ import React from "react";
 import Reciept from "../Reciept";
 import PrintHeader from "../PrintHeader";
 import convert from "@/libs/numberConvert";
+import { useSearchParams } from "next/navigation";
 
-const CurrentTnx = ({ id }: { id: string | null }) => {
+const CurrentTnx = () => {
+	const searchParams = useSearchParams();
+	const id = searchParams.get("id");
 	const { loading, fetch } = useFetchSingle();
 	const [queryData, setQueryData] = React.useState<any>({});
 	React.useEffect(() => {
@@ -25,7 +28,7 @@ const CurrentTnx = ({ id }: { id: string | null }) => {
 	}, 0);
 	return (
 		<main className='h-screen'>
-			<section className='flex gap-2 justify-between p-2'>
+			<section className='flex gap-2 justify-between p-2 relative'>
 				<section className=''>
 					<section className='border border-black max-w-[80rem] p-2 m-2'>
 						<div>
@@ -42,12 +45,7 @@ const CurrentTnx = ({ id }: { id: string | null }) => {
 									{queryData?.student?.first_name}
 								</i>
 							</Text>
-							<Text fw={600}>
-								GUARDIAN NAME:
-								<i className='text-sm font-normal pl-2'>
-									{queryData?.student?.guardian_name}
-								</i>
-							</Text>
+
 							<Text fw={600}>
 								ADMISSION NO:
 								<i className='text-sm font-normal pl-2'>

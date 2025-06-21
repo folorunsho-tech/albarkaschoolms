@@ -15,6 +15,7 @@ router.get("/:tnxId", async (req, res) => {
 						curr_class: true,
 					},
 				},
+
 				items: {
 					include: {
 						item: true,
@@ -28,6 +29,7 @@ router.get("/:tnxId", async (req, res) => {
 				},
 			},
 		});
+		console.log(found);
 		const updatedBy = await prisma.accounts.findUnique({
 			where: {
 				id: found.updatedById,
@@ -113,7 +115,7 @@ router.post("/bydate", async (req, res) => {
 				AND: [
 					{
 						updatedAt: {
-							gte: new Date(new Date(from).setUTCHours(0, 0, 0, 0)),
+							gte: new Date(new Date(from).setUTCHours(23, 0, 0, 0)),
 						},
 					},
 					{

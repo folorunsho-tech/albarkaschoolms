@@ -16,8 +16,8 @@ const Edit = () => {
 	const [classList, setClassList] = React.useState([]);
 	const [classes, setClasses] = React.useState([]);
 	const getFee = async () => {
-		// console.log(id);
 		const { data } = await fetch("/feesgroup/" + id);
+
 		const { data: classes } = await fetch("/classes/list");
 		const sortedClasses = classes?.map((cl: any) => {
 			return {
@@ -25,19 +25,18 @@ const Edit = () => {
 				label: cl?.name,
 			};
 		});
+		const cls = data?.classes?.map((cl: any) => {
+			return cl?.id;
+		});
 		setClassList(sortedClasses);
 		setAmount(data?.amount);
 		setName(data?.name);
-		setClasses(
-			data?.classes?.map((cl: any) => {
-				return cl?.id;
-			})
-		);
+		setClasses(cls);
 	};
 
 	React.useEffect(() => {
 		getFee();
-	}, []);
+	}, [id]);
 	return (
 		<section className='w-full p-3 space-y-4 bg-white'>
 			<div className='flex justify-between pr-12'>
@@ -95,7 +94,7 @@ const Edit = () => {
 					label='Classes'
 					placeholder='Pick one or more class'
 					checkIconPosition='right'
-					defaultValue={classes}
+					value={classes}
 					data={classList}
 					clearable
 					searchable

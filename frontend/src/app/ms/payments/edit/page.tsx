@@ -138,7 +138,7 @@ const Edit = () => {
 						/>
 					}
 					onClick={() => {
-						router.back();
+						router.push("/ms/payments");
 					}}
 				>
 					Go back

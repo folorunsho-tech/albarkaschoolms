@@ -34,7 +34,7 @@ const Student = () => {
 	const headers = [
 		"Admission No.",
 		"Student name",
-		"Session-Term",
+		"Demoted to Session",
 		"demotion from",
 		"demotion to",
 		"demotion On",
@@ -107,7 +107,6 @@ const Student = () => {
 				to_id: toClass,
 				student_id: sel?.id,
 				session,
-				term,
 			});
 		});
 
@@ -149,13 +148,13 @@ const Student = () => {
 
 					setChecked(false);
 				}}
-				title='Disengage student(s)'
+				title='Demote student(s)'
 			>
 				<form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}>
 					<div className='flex gap-6'>
 						<Select
 							checkIconPosition='right'
-							label='Session'
+							label='Demoted to Session'
 							placeholder='Select session'
 							data={sessions}
 							allowDeselect={false}
@@ -167,7 +166,7 @@ const Student = () => {
 								setSession(value);
 							}}
 						/>
-						<Select
+						{/* <Select
 							checkIconPosition='right'
 							label='Term'
 							placeholder='Select term'
@@ -180,7 +179,7 @@ const Student = () => {
 							onChange={(value: any) => {
 								setTerm(value);
 							}}
-						/>
+						/> */}
 					</div>
 					<div className='flex gap-3 items-center'>
 						<Select

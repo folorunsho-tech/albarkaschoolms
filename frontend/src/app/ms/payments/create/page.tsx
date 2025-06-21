@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
 	Button,
 	TextInput,
@@ -23,8 +23,10 @@ import {
 import { useFetch, usePost } from "@/hooks/useQueries";
 import { sessions, currSession, currTerm } from "@/libs/sessions";
 import Reciept from "@/components/Reciept";
+import { userContext } from "@/context/User";
 
 const MakePayments = () => {
+	const { user } = useContext(userContext);
 	const { fetch } = useFetch();
 	const { post, loading } = usePost();
 	const router = useRouter();
@@ -51,32 +53,35 @@ const MakePayments = () => {
 	const [price, setPrice] = useState(0);
 	const [enablePrint, setEnablePrint] = useState(false);
 	const [queryData, setQueryData] = useState<any>(null);
+	const getAll = async () => {
+		const { data: classes } = await fetch("/classes/fees");
 
+		const sortedClasses = classes?.map((cl: any) => {
+			return {
+				value: cl?.id,
+				label: cl?.name,
+			};
+		});
+		setClasses(classes);
+		setClassList(sortedClasses);
+	};
 	useEffect(() => {
-		const getAll = async () => {
-			const { data } = await fetch("/students");
-			const { data: classes } = await fetch("/classes/fees");
-			const sortedStudents = data?.map((s: any) => {
-				return {
-					value: s.admission_no,
-					label: `${s.admission_no} - ${s.first_name} ${s.last_name}`,
-				};
-			});
-			const sortedClasses = classes?.map((cl: any) => {
-				return {
-					value: cl?.id,
-					label: cl?.name,
-				};
-			});
-			setClasses(classes);
-			setClassList(sortedClasses);
-			setStudents(data);
-			setStudentsList(sortedStudents);
-			setSession(currSession);
-			setTerm(currTerm);
-		};
 		getAll();
 	}, []);
+	const getStudents = async () => {
+		const { data } = await fetch(`/students/byClass/${classId}`);
+		const sortedStudents = data?.map((s: any) => {
+			return {
+				value: s.admission_no,
+				label: `${s.admission_no} - ${s.first_name} ${s.last_name}`,
+			};
+		});
+		setStudents(data);
+		setStudentsList(sortedStudents);
+	};
+	useEffect(() => {
+		if (classId !== "") getStudents();
+	}, [classId]);
 	useEffect(() => {
 		const found = classes?.find((cl: any) => classId == cl?.id);
 		const sorted = found?.fees?.map((fee: any) => {
@@ -141,9 +146,10 @@ const MakePayments = () => {
 					status: item?.status,
 					payment_method: item?.payment_method,
 					teller_no: item?.teller_no,
-					createdAt: new Date(new Date().setUTCHours(0, 0, 0, 0)),
+					createdAt: new Date(),
 				};
 			}),
+			updatedById: user?.id,
 		});
 
 		setPaid(0);
@@ -164,7 +170,7 @@ const MakePayments = () => {
 						/>
 					}
 					onClick={() => {
-						router.back();
+						router.push("/ms/payments");
 					}}
 				>
 					Go back
@@ -175,23 +181,25 @@ const MakePayments = () => {
 				<div className='flex items-center gap-1 w-full'>
 					<Select
 						checkIconPosition='right'
+						label="Select student's class"
+						placeholder='Search by name'
+						value={classId}
+						data={classList}
+						searchable
+						allowDeselect={false}
+						nothingFoundMessage='Nothing found...'
+						onChange={(value: any) => {
+							const found = classes?.find((cl: any) => value == cl?.id);
+							setClass(found);
+							setClassId(value);
+						}}
+						className='w-[16rem]'
+					/>
+					<Select
+						checkIconPosition='right'
 						label='Select a student'
 						placeholder='Search by admission no'
 						data={studentsList}
-						onDropdownOpen={async () => {
-							const { data } = await fetch("/students/fees");
-
-							const sortedStudents = data?.map((s: any) => {
-								return {
-									value: s.admission_no,
-									label: `${s.admission_no} - ${s.first_name} ${s.last_name}`,
-								};
-							});
-
-							setStudents(data);
-
-							setStudentsList(sortedStudents);
-						}}
 						searchable
 						allowDeselect={false}
 						nothingFoundMessage='Nothing found...'
@@ -206,22 +214,7 @@ const MakePayments = () => {
 							setClassId(found?.curr_class_id);
 						}}
 					/>
-					<Select
-						checkIconPosition='right'
-						label='Student class'
-						placeholder='Search by name'
-						value={classId}
-						data={classList}
-						searchable
-						allowDeselect={false}
-						nothingFoundMessage='Nothing found...'
-						onChange={(value: any) => {
-							const found = classes?.find((cl: any) => value == cl?.id);
-							setClass(found);
-							setClassId(value);
-						}}
-						className='w-[16rem]'
-					/>
+
 					<div className='flex gap-2 w-full flex-wrap justify-end'>
 						<Text size='sm'>
 							Guardian / Parent name: <b>{student?.guardian_name}</b>

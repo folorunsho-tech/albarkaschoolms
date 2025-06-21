@@ -97,7 +97,7 @@ const PaginatedTable = ({
 				withColumnBorders
 				withRowBorders
 			>
-				<Table.Tbody className='border-b'>
+				<Table.Tbody className='border-b '>
 					<Table.Tr>
 						<Table.Th>S/N</Table.Th>
 						{headers.map((header, index) => (
@@ -106,7 +106,7 @@ const PaginatedTable = ({
 						{showlast && <Table.Th></Table.Th>}
 					</Table.Tr>
 				</Table.Tbody>
-				<Table.Tbody>
+				<Table.Tbody className=''>
 					{rows?.length > 0 ? (
 						rows
 					) : (

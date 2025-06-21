@@ -17,7 +17,6 @@ import {
 	ActionIcon,
 } from "@mantine/core";
 import { sessions, currSession, currTerm } from "@/libs/sessions";
-import chunk from "@/libs/chunk";
 import moment from "moment";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";
@@ -36,7 +35,7 @@ const Student = () => {
 	const headers = [
 		"Admission No.",
 		"Student name",
-		"Session-Term",
+		"Promoted to Session",
 		"promotion from",
 		"promotion to",
 		"promoted On",
@@ -46,7 +45,6 @@ const Student = () => {
 	const [curr, setCurr] = useState<any>(null);
 	const [selectedClass, setSelectedClass] = useState(null);
 	const [session, setSession] = useState(null);
-	const [term, setTerm] = useState<any>(null);
 	const [classList, setClassList] = useState([]);
 	const [studentList, setStudentList] = useState([]);
 	const [students, setStudents] = useState([]);
@@ -109,7 +107,6 @@ const Student = () => {
 				to_id: toClass,
 				student_id: sel?.id,
 				session,
-				term,
 			});
 		});
 
@@ -150,13 +147,13 @@ const Student = () => {
 					setChecked(false);
 					close();
 				}}
-				title='Disengage student(s)'
+				title='Promote student(s)'
 			>
 				<form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}>
 					<div className='flex gap-6'>
 						<Select
 							checkIconPosition='right'
-							label='Session'
+							label='Promoted To Session'
 							placeholder='Select session'
 							data={sessions}
 							allowDeselect={false}
@@ -168,7 +165,7 @@ const Student = () => {
 								setSession(value);
 							}}
 						/>
-						<Select
+						{/* <Select
 							checkIconPosition='right'
 							label='Term'
 							placeholder='Select term'
@@ -181,7 +178,7 @@ const Student = () => {
 							onChange={(value: any) => {
 								setTerm(value);
 							}}
-						/>
+						/> */}
 					</div>
 					<div className='flex gap-3 items-center'>
 						<Select

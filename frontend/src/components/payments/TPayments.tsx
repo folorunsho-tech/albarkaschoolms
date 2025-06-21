@@ -70,16 +70,6 @@ const TPayments = () => {
 			<Table.Td>{moment(row?.createdAt).format("MMMM Do YYYY")}</Table.Td>
 			<Table.Td>{moment(row?.updatedAt).format("MMMM Do YYYY")}</Table.Td>
 			<Table.Td className='flex items-center gap-3 '>
-				<Link href={`payments/edit?id=${row?.tnxId}`}>
-					<ActionIcon
-						variant='outline'
-						color='teal'
-						disabled={row?.status === "Cancelled" || !permission?.edit}
-						aria-label='action menu'
-					>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</ActionIcon>
-				</Link>
 				<Link href={`payments/view?id=${row?.tnxId}`}>
 					<ActionIcon variant='outline' color='orange' aria-label='action menu'>
 						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
