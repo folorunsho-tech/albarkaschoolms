@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid";
 import express from "express";
 import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 const { createHash } = await import("node:crypto");
 const router = express.Router();
 const hashpass = (password) => {
@@ -69,7 +71,18 @@ router.post("/create", async (req, res) => {
 		// console.log(error);
 	}
 });
-
+router.get("/:account_id/basic", async (req, res) => {
+	try {
+		const found = await prisma.accounts.findUnique({
+			where: {
+				id: req.params.account_id,
+			},
+		});
+		res.status(200).json(found);
+	} catch (error) {
+		res.status(500).json(error);
+	}
+});
 router.post("/edit/:accountId", async (req, res) => {
 	try {
 		const { name, username, password, permissions, empid, updatedById, role } =
@@ -94,5 +107,10 @@ router.post("/edit/:accountId", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
+router.post("/many", async (req, res) => {
+	const created = await prisma.accounts.createMany({
+		data: [...req.body],
+	});
+	res.json(created);
+});
 export default router;

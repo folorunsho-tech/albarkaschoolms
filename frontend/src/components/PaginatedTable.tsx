@@ -29,17 +29,19 @@ const PaginatedTable = ({
 	showlast = true,
 	depth = "",
 	sortedData,
+	showPagination = true,
 }: {
 	data: any[];
 	headers: string[];
-	setSortedData: any;
+	setSortedData?: any;
 	rows: any;
 	placeholder: string;
 	loading: boolean;
-	showSearch: boolean;
-	showlast: boolean;
+	showSearch?: boolean;
+	showlast?: boolean;
 	depth: string;
 	sortedData: any;
+	showPagination?: boolean;
 }) => {
 	const mappedData = data?.map((mDtata) => {
 		return {
@@ -72,7 +74,7 @@ const PaginatedTable = ({
 		setSortedData(chunked[activePage - 1]);
 	}, []);
 	return (
-		<ScrollArea h={800}>
+		<ScrollArea h={800} className='relative'>
 			{showSearch && (
 				<TextInput
 					placeholder={placeholder}
@@ -93,13 +95,13 @@ const PaginatedTable = ({
 				layout='auto'
 				withTableBorder
 				striped
-				className='relative '
+				// className='relative '
 				withColumnBorders
 				withRowBorders
 			>
 				<Table.Tbody className='border-b '>
 					<Table.Tr>
-						<Table.Th>S/N</Table.Th>
+						{!headers.includes("S/N") && <Table.Th>S/N</Table.Th>}
 						{headers.map((header, index) => (
 							<Table.Th key={header + index}>{header}</Table.Th>
 						))}
@@ -122,16 +124,18 @@ const PaginatedTable = ({
 			</Table>
 			<LoadingOverlay visible={loading} />
 			<div className='flex w-full justify-end'>
-				<Pagination
-					mt={20}
-					total={total}
-					value={activePage}
-					onChange={(value: number) => {
-						setPage(value);
-						const chunked = chunk(data, chunkAmnt);
-						setSortedData(chunked[value - 1]);
-					}}
-				/>
+				{showPagination && (
+					<Pagination
+						mt={20}
+						total={total}
+						value={activePage}
+						onChange={(value: number) => {
+							setPage(value);
+							const chunked = chunk(data, chunkAmnt);
+							setSortedData(chunked[value - 1]);
+						}}
+					/>
+				)}
 			</div>
 		</ScrollArea>
 	);

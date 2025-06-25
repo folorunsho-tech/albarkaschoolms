@@ -43,7 +43,7 @@ export default function AppLayout({ params, children }: any) {
 			shown: permissions?.statement,
 		},
 		{
-			link: "payments",
+			link: "transactions",
 			label: "Payments",
 			icon: IconCashRegister,
 			shown: permissions?.payments?.view,
@@ -80,7 +80,7 @@ export default function AppLayout({ params, children }: any) {
 				<TopBar />
 				<NavMenu menu={data} />
 			</div>
-			<main className=' py-2 h-screen'>{children}</main>
+			<main className=' py-2 h-screen '>{children}</main>
 		</section>
 	);
 }

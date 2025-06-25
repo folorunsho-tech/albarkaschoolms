@@ -1,0 +1,14 @@
+-- AlterTable
+ALTER TABLE `payment` ADD COLUMN `class` VARCHAR(191) NULL,
+    ADD COLUMN `session` VARCHAR(191) NULL,
+    ADD COLUMN `term` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `tnxitem` ADD COLUMN `class` VARCHAR(191) NULL,
+    ADD COLUMN `session` VARCHAR(191) NULL,
+    ADD COLUMN `term` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `transaction` ADD COLUMN `class` VARCHAR(191) NULL,
+    ADD COLUMN `session` VARCHAR(191) NULL,
+    ADD COLUMN `term` VARCHAR(191) NULL;

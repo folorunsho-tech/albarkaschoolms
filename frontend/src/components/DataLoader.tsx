@@ -8,12 +8,14 @@ const DataLoader = ({
 	showReload = false,
 	post,
 	loadCriteria = "Session and Term",
+	setLoaded,
 }: {
 	link: string;
 	setQueryData: any;
 	showReload?: Boolean;
 	post: any;
 	loadCriteria?: string;
+	setLoaded?: any;
 }) => {
 	const [session, setSession] = React.useState<string | null>(currSession);
 	const [Asession, setASession] = React.useState<string | null>(currSession);
@@ -34,6 +36,15 @@ const DataLoader = ({
 	};
 	React.useEffect(() => {
 		getData();
+	}, [Asession, term, session, criteria]);
+	React.useEffect(() => {
+		if (setLoaded) {
+			if (criteria == "Session and Term") {
+				setLoaded(`${Asession} Session -  ${term}`);
+			} else if (criteria == "Session") {
+				setLoaded(`Session ${session}`);
+			}
+		}
 	}, [Asession, term, session, criteria]);
 	return (
 		<section className='flex gap-6 items-end'>

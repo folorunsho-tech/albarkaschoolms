@@ -1,18 +1,11 @@
 import express from "express";
 const router = express.Router();
-// import prisma from "../lib/prisma.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.post("/byStudent/:student_id", async (req, res) => {
 	const { session, term, classId } = req.body;
 	try {
-		// const isPaid = await prisma.transactions.findMany({
-		// 	where:{
-		// 		student_id:req.params.student_id,
-		// 		session,term,items
-		// 		}
-		// 	}
-		// })
 		const subjects = await prisma.subjects.groupBy({
 			by: ["name"],
 			where: {

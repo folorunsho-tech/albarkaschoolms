@@ -4,6 +4,7 @@ const router = express.Router();
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import { nanoid } from "nanoid";
+
 router.get("/", async (req, res) => {
 	const students = await prisma.students.findMany({
 		where: {
@@ -201,39 +202,27 @@ router.post("/create", async (req, res) => {
 		console.log(error);
 	}
 });
-// router.post("/many", async (req, res) => {
-// 	try {
-// 		req.body.forEach(async (d) => {
-// 			const created = await prisma.students.create({
-// 				data: {
-// 					id: nanoid(7),
-// 					first_name: d?.first_name,
-// 					last_name: d?.last_name,
-// 					admission_no: d?.admission_no,
-// 					date_of_admission: new Date(new Date().setUTCHours(0, 0, 0, 0)),
-// 					curr_class_id: "OMVKFac",
-// 					createdById: "8uIPHRQ",
-// 					updatedAt: new Date(),
-// 					sex: "",
-// 					school_section: "JSS",
-// 					admission_session: "2024/2025",
-// 				},
-// 			});
+router.post("/many", async (req, res) => {
+	try {
+		req.body.forEach(async (d) => {
+			const created = await prisma.students.create({
+				data: d,
+			});
 
-// 			await prisma.classHistory.create({
-// 				data: {
-// 					student_id: created?.id,
-// 					class_id: created?.curr_class_id,
-// 					session: created?.admission_session,
-// 				},
-// 			});
-// 		});
-// 		res.json("ok");
-// 	} catch (error) {
-// 		res.status(500).json(error);
-// 		console.log(error);
-// 	}
-// });
+			await prisma.classHistory.create({
+				data: {
+					student_id: created?.id,
+					class_id: created?.curr_class_id,
+					session: created?.admission_session,
+				},
+			});
+		});
+		res.json("ok");
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
+});
 router.post("/edit/:studentId", async (req, res) => {
 	const { curr_class_id } = req.body;
 	const edited = await prisma.students.update({
@@ -266,4 +255,48 @@ router.post("/edit/:studentId", async (req, res) => {
 // 	res.json(updated);
 // });
 
+router.post("/search", async (req, res) => {
+	const { value } = req.body;
+
+	try {
+		if (value !== "") {
+			const found = await prisma.students.findMany({
+				where: {
+					OR: [
+						{
+							admission_no: {
+								contains: value,
+							},
+						},
+						{
+							first_name: {
+								contains: value,
+							},
+						},
+						{
+							last_name: {
+								contains: value,
+							},
+						},
+					],
+				},
+				take: 100,
+				include: {
+					curr_class: {
+						select: {
+							id: true,
+							name: true,
+							fees: true,
+						},
+					},
+				},
+			});
+			res.status(200).json(found);
+		} else {
+			res.status(200).json([]);
+		}
+	} catch (error) {
+		res.status(500).json(error);
+	}
+});
 export default router;

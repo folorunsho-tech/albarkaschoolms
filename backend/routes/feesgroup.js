@@ -32,6 +32,12 @@ router.post("/create", async (req, res) => {
 	});
 	res.json(created);
 });
+router.post("/many", async (req, res) => {
+	const created = await prisma.feesGroup.createMany({
+		data: [...req.body],
+	});
+	res.json(created);
+});
 router.post("/edit/:feesId", async (req, res) => {
 	const { amount, classes } = req.body;
 	const edited = await prisma.feesGroup.update({

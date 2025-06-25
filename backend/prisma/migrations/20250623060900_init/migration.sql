@@ -174,58 +174,70 @@ CREATE TABLE `ExamResults` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Transactions` (
-    `tnxId` INTEGER NOT NULL AUTO_INCREMENT,
-    `student_id` VARCHAR(191) NULL,
-    `total` INTEGER NULL,
-    `paid` INTEGER NULL,
-    `status` VARCHAR(191) NULL,
-    `class` VARCHAR(191) NULL,
-    `term` VARCHAR(191) NULL,
-    `session` VARCHAR(191) NULL,
+CREATE TABLE `Transaction` (
+    `id` VARCHAR(191) NOT NULL,
+    `total` INTEGER NOT NULL,
+    `balance` INTEGER NOT NULL,
+    `year` INTEGER NOT NULL,
+    `month` VARCHAR(191) NOT NULL,
+    `status` VARCHAR(191) NOT NULL,
     `createdById` VARCHAR(191) NULL,
     `updatedById` VARCHAR(191) NULL,
-    `createdAt` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NULL,
-
-    PRIMARY KEY (`tnxId`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `transactionHistory` (
-    `id` VARCHAR(191) NOT NULL,
-    `tnxId` INTEGER NOT NULL,
-    `student_id` VARCHAR(191) NULL,
-    `items` JSON NULL,
-    `total` INTEGER NULL,
-    `paid` INTEGER NULL,
-    `status` VARCHAR(191) NULL,
-    `class` VARCHAR(191) NULL,
-    `term` VARCHAR(191) NULL,
-    `session` VARCHAR(191) NULL,
-    `createdById` VARCHAR(191) NULL,
-    `createdAt` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+    `studentId` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Payments` (
-    `payment_id` VARCHAR(191) NOT NULL,
-    `item_id` VARCHAR(191) NULL,
-    `amount` INTEGER NULL,
-    `paid` INTEGER NULL,
-    `status` VARCHAR(191) NULL,
-    `term` VARCHAR(191) NULL,
-    `payment_method` VARCHAR(191) NULL,
-    `teller_no` VARCHAR(191) NULL,
-    `session` VARCHAR(191) NULL,
-    `transactionId` INTEGER NULL,
-    `createdAt` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NULL,
+CREATE TABLE `TnxItem` (
+    `id` VARCHAR(191) NOT NULL,
+    `transactionId` VARCHAR(191) NOT NULL,
+    `feeId` VARCHAR(191) NOT NULL,
+    `price` INTEGER NOT NULL,
+    `paid` INTEGER NOT NULL,
+    `balance` INTEGER NOT NULL,
+    `active` BOOLEAN NOT NULL DEFAULT true,
+    `year` INTEGER NULL,
+    `month` VARCHAR(191) NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
 
-    PRIMARY KEY (`payment_id`)
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Payment` (
+    `id` VARCHAR(191) NOT NULL,
+    `tnxId` VARCHAR(191) NULL,
+    `itemId` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
+    `paid` INTEGER NOT NULL,
+    `method` VARCHAR(191) NULL,
+    `createdById` VARCHAR(191) NULL,
+    `type` VARCHAR(191) NOT NULL DEFAULT 'payment',
+    `year` INTEGER NULL,
+    `month` VARCHAR(191) NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Reciept` (
+    `id` VARCHAR(191) NOT NULL,
+    `items` JSON NOT NULL,
+    `tnxId` VARCHAR(191) NOT NULL,
+    `year` INTEGER NOT NULL,
+    `month` VARCHAR(191) NOT NULL,
+    `status` VARCHAR(191) NOT NULL,
+    `createdById` VARCHAR(191) NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -420,25 +432,31 @@ ALTER TABLE `ExamResults` ADD CONSTRAINT `ExamResults_subject_id_fkey` FOREIGN K
 ALTER TABLE `ExamResults` ADD CONSTRAINT `ExamResults_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Transactions` ADD CONSTRAINT `Transactions_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `Students`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Transaction` ADD CONSTRAINT `Transaction_updatedById_fkey` FOREIGN KEY (`updatedById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Transactions` ADD CONSTRAINT `Transactions_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Transaction` ADD CONSTRAINT `Transaction_studentId_fkey` FOREIGN KEY (`studentId`) REFERENCES `Students`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `transactionHistory` ADD CONSTRAINT `transactionHistory_tnxId_fkey` FOREIGN KEY (`tnxId`) REFERENCES `Transactions`(`tnxId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `TnxItem` ADD CONSTRAINT `TnxItem_transactionId_fkey` FOREIGN KEY (`transactionId`) REFERENCES `Transaction`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `transactionHistory` ADD CONSTRAINT `transactionHistory_student_id_fkey` FOREIGN KEY (`student_id`) REFERENCES `Students`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `TnxItem` ADD CONSTRAINT `TnxItem_feeId_fkey` FOREIGN KEY (`feeId`) REFERENCES `FeesGroup`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `transactionHistory` ADD CONSTRAINT `transactionHistory_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Payment` ADD CONSTRAINT `Payment_tnxId_fkey` FOREIGN KEY (`tnxId`) REFERENCES `Transaction`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Payments` ADD CONSTRAINT `Payments_item_id_fkey` FOREIGN KEY (`item_id`) REFERENCES `FeesGroup`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Payment` ADD CONSTRAINT `Payment_itemId_fkey` FOREIGN KEY (`itemId`) REFERENCES `TnxItem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Payments` ADD CONSTRAINT `Payments_transactionId_fkey` FOREIGN KEY (`transactionId`) REFERENCES `Transactions`(`tnxId`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Payment` ADD CONSTRAINT `Payment_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reciept` ADD CONSTRAINT `Reciept_tnxId_fkey` FOREIGN KEY (`tnxId`) REFERENCES `Transaction`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reciept` ADD CONSTRAINT `Reciept_createdById_fkey` FOREIGN KEY (`createdById`) REFERENCES `Accounts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Promotions` ADD CONSTRAINT `Promotions_staff_id_fkey` FOREIGN KEY (`staff_id`) REFERENCES `Staffs`(`empid`) ON DELETE SET NULL ON UPDATE CASCADE;

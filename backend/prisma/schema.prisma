@@ -42,9 +42,11 @@ model Accounts {
 
   Disengagedstudent Disengagedstudent[]
 
-  Disengagemnets     Disengagemnets[]
-  Transactions       Transactions[]
-  transactionHistory transactionHistory[]
+  Disengagemnets Disengagemnets[]
+  Transactions   Transaction[]
+
+  Reciepts Reciept[]
+  Payments Payment[]
 }
 
 model AuthHistory {
@@ -128,7 +130,7 @@ model Students {
   updatedById        String?
   updatedAt          DateTime  @updatedAt
 
-  transactions Transactions[]
+  transactions Transaction[]
   FCAResults   FCAResults[]
   SCAResults   SCAResults[]
   ExamResults  ExamResults[]
@@ -139,8 +141,7 @@ model Students {
 
   Disengagedstudent Disengagedstudent[]
 
-  ClassHistory       ClassHistory[]
-  transactionHistory transactionHistory[]
+  ClassHistory ClassHistory[]
 }
 
 model Disengagedstudent {
@@ -220,59 +221,81 @@ model ExamResults {
   updatedAt   DateTime  @updatedAt
 }
 
-model Transactions {
-  tnxId              Int                  @id @default(autoincrement())
-  student_id         String?
-  student            Students?            @relation(fields: [student_id], references: [id])
-  items              Payments[]
-  total              Int?
-  paid               Int?
-  status             String?
-  class              String?
-  term               String?
-  session            String?
-  createdById        String?
-  createdBy          Accounts?            @relation(fields: [createdById], references: [id])
-  updatedById        String?
-  createdAt          DateTime?            @default(now())
-  updatedAt          DateTime?            @updatedAt
-  transactionHistory transactionHistory[]
+model Transaction {
+  id          String    @id
+  items       TnxItem[]
+  total       Int
+  balance     Int
+  year        Int
+  month       String
+  class       String?
+  session     String?
+  term        String?
+  status      String
+  createdById String?
+  updatedById String?
+  updatedBy   Accounts? @relation(fields: [updatedById], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  studentId   String?
+  student     Students? @relation(fields: [studentId], references: [id])
+  reciepts    Reciept[]
+  payments    Payment[]
 }
 
-model transactionHistory {
+model TnxItem {
+  id            String      @id @default(uuid())
+  transactionId String
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  feeId         String
+  fee           FeesGroup   @relation(fields: [feeId], references: [id])
+  price         Int
+  paid          Int
+  balance       Int
+  class         String?
+  session       String?
+  term          String?
+  active        Boolean     @default(true)
+  year          Int?
+  month         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  payments      Payment[]
+}
+
+model Payment {
   id          String       @id @default(uuid())
-  tnxId       Int
-  transaction Transactions @relation(fields: [tnxId], references: [tnxId])
-  student_id  String?
-  student     Students?    @relation(fields: [student_id], references: [id])
-  items       Json?
-  total       Int?
-  paid        Int?
-  status      String?
+  tnxId       String?
+  transaction Transaction? @relation(fields: [tnxId], references: [id])
+  itemId      String
+  tnxItem     TnxItem      @relation(fields: [itemId], references: [id])
+  name        String
+  paid        Int
+  method      String?
   class       String?
-  term        String?
   session     String?
+  term        String?
   createdById String?
   createdBy   Accounts?    @relation(fields: [createdById], references: [id])
-  createdAt   DateTime?    @default(now())
-  updatedAt   DateTime?    @updatedAt
+  type        String       @default("payment")
+  year        Int?
+  month       String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
-model Payments {
-  payment_id     String        @id @default(cuid())
-  item_id        String?
-  item           FeesGroup?    @relation(fields: [item_id], references: [id])
-  amount         Int?
-  paid           Int?
-  status         String?
-  term           String?
-  payment_method String?
-  teller_no      String?
-  session        String?
-  transactionId  Int?
-  transaction    Transactions? @relation(fields: [transactionId], references: [tnxId])
-  createdAt      DateTime?     @default(now())
-  updatedAt      DateTime?     @updatedAt
+model Reciept {
+  id          String      @id
+  items       Json
+  tnxId       String
+  transaction Transaction @relation(fields: [tnxId], references: [id])
+  year        Int
+  month       String
+  status      String
+  createdById String?
+  createdBy   Accounts?   @relation(fields: [createdById], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
 model Promotions {
@@ -375,9 +398,9 @@ model Appointments {
 }
 
 model FeesGroup {
-  id       String     @id
-  name     String?
-  amount   String?
-  payments Payments[]
-  classes  Classes[]
+  id      String    @id
+  name    String?
+  amount  String?
+  classes Classes[]
+  tnxItem TnxItem[]
 }

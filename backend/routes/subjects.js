@@ -38,6 +38,12 @@ router.post("/create", async (req, res) => {
 	});
 	res.json(created);
 });
+router.post("/many", async (req, res) => {
+	const created = await prisma.subjects.createMany({
+		data: [...req.body],
+	});
+	res.json(created);
+});
 router.post("/edit/:subjectId", async (req, res) => {
 	const { name } = req.body;
 	const edited = await prisma.subjects.update({

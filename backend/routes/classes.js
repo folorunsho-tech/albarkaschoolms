@@ -253,5 +253,10 @@ router.post("/edit/:classId", async (req, res) => {
 
 	res.json(edited);
 });
-
+router.post("/many", async (req, res) => {
+	const created = await prisma.classes.createMany({
+		data: [...req.body],
+	});
+	res.json(created);
+});
 export default router;
