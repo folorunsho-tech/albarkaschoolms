@@ -21,6 +21,24 @@ router.post("/login", async (req, res) => {
 				passHash: hashedPass,
 			},
 		});
+		await mysqldump({
+			connection: {
+				host: process.env.DB_HOST,
+				port: process.env.DB_PORT,
+				user: process.env.DB_USER,
+				password: process.env.DB_PASS,
+				database: process.env.DB_NAME,
+				charset: "utf8",
+			},
+			dump: {
+				schema: {
+					table: {
+						dropIfExist: true,
+					},
+				},
+			},
+			dumpToFile: "/albarka_backup/school-backup.sql",
+		});
 		if (user?.active === true) {
 			const token = jwt.sign({ userId: user.id }, process.env.SECRET);
 			const authUserHis = await prisma.authHistory.create({
@@ -104,7 +122,7 @@ router.post("/logout", async (req, res) => {
 				},
 			},
 		},
-		dumpToFile: "../db/backup/school-backup.sql",
+		dumpToFile: "/albarka_backup/school-backup.sql",
 	});
 	res.json({
 		message: "Logged out",

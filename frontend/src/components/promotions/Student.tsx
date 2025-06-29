@@ -16,7 +16,7 @@ import {
 	ScrollArea,
 	ActionIcon,
 } from "@mantine/core";
-import { sessions, currSession, currTerm } from "@/libs/sessions";
+import { sessions } from "@/libs/sessions";
 import moment from "moment";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "react-hook-form";

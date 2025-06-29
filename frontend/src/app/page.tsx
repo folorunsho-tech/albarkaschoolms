@@ -14,11 +14,10 @@ import { bake_cookie, read_cookie } from "sfcookies";
 import { useRouter } from "next/navigation";
 import { notifications } from "@mantine/notifications";
 import { IconX, IconServerOff } from "@tabler/icons-react";
-import axios from "@/config/axios";
 import { userContext } from "@/context/User";
 import React from "react";
 export default function Login() {
-	const { setAuthId, setToken, user } = React.useContext(userContext);
+	const { setAuthId, setToken } = React.useContext(userContext);
 	const router = useRouter();
 	const { handleSubmit, register } = useForm();
 	const { post, loading } = usePostNormal();
@@ -32,10 +31,6 @@ export default function Login() {
 
 			setToken(read?.token);
 			setAuthId(read?.authId);
-
-			axios.post("/backup/generate").then((d) => {
-				console.log(d.status);
-			});
 			notifications.show({
 				id: "AuthLogin",
 				withCloseButton: false,

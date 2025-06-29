@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
 import Link from "next/link";
-import { useFetch } from "@/hooks/useQueries";
+import { useFetch, usePostNormal } from "@/hooks/useQueries";
 import { Table, ActionIcon, Button, ScrollArea, Drawer } from "@mantine/core";
 import { useReactToPrint } from "react-to-print";
 import { IconEye, IconPencil, IconPrinter } from "@tabler/icons-react";
@@ -11,6 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import AStudentsFilter from "../filters/AStudentsFilter";
 import PrintHeader from "../PrintHeader";
 import { userContext } from "@/context/User";
+import DataLoader from "../DataLoader";
 const ActiveStudents = () => {
 	const { permissions } = React.useContext(userContext);
 
@@ -29,9 +30,9 @@ const ActiveStudents = () => {
 	];
 
 	const permission = permissions?.students;
-	const { loading, data, fetch } = useFetch();
+	const { post: dPost, loading } = usePostNormal();
 
-	const [queryData, setQueryData] = useState(data);
+	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
 	const [opened, { open, close }] = useDisclosure(false);
 	const contentRef = useRef<HTMLTableElement>(null);
@@ -82,20 +83,18 @@ const ActiveStudents = () => {
 		</Table.Tr>
 	));
 
-	useEffect(() => {
-		const getAll = async () => {
-			const { data } = await fetch("/students");
-			setQueryData(data);
-		};
-
-		getAll();
-	}, []);
-
 	return (
 		<section className='flex flex-col gap-1 bg-white p-4 '>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Students</h2>
 				<div className='flex gap-3 items-center'>
+					<DataLoader
+						link='/students'
+						setQueryData={setQueryData}
+						showReload={false}
+						loadCriteria='Session'
+						post={dPost}
+					/>
 					<Button
 						leftSection={<IconPrinter />}
 						onClick={() => {

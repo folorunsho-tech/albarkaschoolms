@@ -1,7 +1,12 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import PaginatedTable from "@/components/PaginatedTable";
-import { useFetch, useFetchSingle, usePost } from "@/hooks/useQueries";
+import {
+	usePostNormal,
+	useFetch,
+	useFetchSingle,
+	usePost,
+} from "@/hooks/useQueries";
 import {
 	Table,
 	Button,
@@ -16,7 +21,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import moment from "moment";
 import { useForm } from "react-hook-form";
-import { sessions, currSession, currTerm } from "@/libs/sessions";
+import { sessions } from "@/libs/sessions";
 import { IconEye, IconPrinter, IconX } from "@tabler/icons-react";
 import { useReactToPrint } from "react-to-print";
 import DStudentsFilter from "../filters/DStudentsFilter";
@@ -24,12 +29,14 @@ import Link from "next/link";
 import PrintHeader from "../PrintHeader";
 
 import { userContext } from "@/context/User";
+import DataLoader from "../DataLoader";
 const DisengagedStudents = () => {
 	const { permissions } = React.useContext(userContext);
 
 	const permission = permissions?.students;
+	const { fetch } = useFetch();
+	const { post: dPost, loading } = usePostNormal();
 
-	const { loading, data, fetch } = useFetch();
 	const { fetch: fSingle } = useFetchSingle();
 	const { loading: pLoading, post } = usePost();
 	const [opened, { open, close }] = useDisclosure(false);
@@ -58,7 +65,7 @@ const DisengagedStudents = () => {
 		"disengagement date",
 	];
 	const [checked, setChecked] = useState(false);
-	const [queryData, setQueryData] = useState(data);
+	const [queryData, setQueryData] = useState([]);
 	const [sortedData, setSortedData] = useState([]);
 
 	const { register, reset, handleSubmit } = useForm();
@@ -100,7 +107,6 @@ const DisengagedStudents = () => {
 	const reactToPrintFn: any = useReactToPrint({ contentRef });
 	useEffect(() => {
 		const getAll = async () => {
-			const { data } = await fetch("/disengagements/students");
 			const { data: classes } = await fetch("/classes");
 			const sortedClass = classes.map((cl: any) => {
 				return {
@@ -109,9 +115,6 @@ const DisengagedStudents = () => {
 				};
 			});
 			setClassList(sortedClass);
-			setQueryData(data);
-
-			setSortedData(data);
 		};
 		getAll();
 	}, []);
@@ -141,8 +144,6 @@ const DisengagedStudents = () => {
 				term,
 			});
 		});
-		const { data: qData } = await fetch("/disengagements/students");
-		setSortedData(qData);
 		setChecked(false);
 		setSelected([]);
 		setSelectedClass("");
@@ -153,6 +154,13 @@ const DisengagedStudents = () => {
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Disengaged Students</h2>
 				<div className='flex gap-3 items-center'>
+					<DataLoader
+						link='/disengagements/students'
+						setQueryData={setQueryData}
+						showReload={true}
+						loadCriteria='Session'
+						post={dPost}
+					/>
 					<Button
 						leftSection={<IconPrinter />}
 						onClick={() => {

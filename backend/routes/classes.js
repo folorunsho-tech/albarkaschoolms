@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 import express from "express";
 const router = express.Router();
 import prisma from "../lib/prisma.js";
@@ -114,6 +115,32 @@ router.get("/byStatement", async (req, res) => {
 		res.status(200).json(classes);
 	} catch (error) {
 		res.status(500).json(error);
+	}
+});
+router.post("/:classId/history", async (req, res) => {
+	const { session } = req.body;
+	try {
+		const history = await prisma.classHistory.findMany({
+			where: {
+				class_id: req.params.classId,
+				session,
+			},
+			include: {
+				student: {
+					select: {
+						id: true,
+						first_name: true,
+						last_name: true,
+						admission_no: true,
+					},
+				},
+			},
+		});
+
+		res.json(history);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
 	}
 });
 router.get("/:classId", async (req, res) => {

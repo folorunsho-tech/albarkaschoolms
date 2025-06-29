@@ -35,13 +35,6 @@ const AStudentsFilter = ({
 	const [filterClass, setFilterClass] = useState("");
 	const [filterAClass, setFilterAClass] = useState("");
 	const [filterCondition, setFilterCondition] = useState("NONE");
-	const [filterDateFrom, setFilterDateFrom] = useState<Date | null | any>(
-		new Date("2010-09-01")
-	);
-	const [filterDateTo, setFilterDateTo] = useState<Date | null | any>(
-		new Date()
-	);
-
 	const filterF = async (filterData: any, condition: string) => {
 		if (condition === "OR") {
 			const ORfiltered: any[] = filterData?.filter(
@@ -68,15 +61,7 @@ const AStudentsFilter = ({
 			setSortedData(paginated[0]);
 		}
 	};
-	useEffect(() => {
-		const sorted = queryData?.filter(
-			(sData: any) =>
-				new Date(sData?.date_of_admission) >= new Date(filterDateFrom) &&
-				new Date(sData?.date_of_admission) <= new Date(filterDateTo)
-		);
-		const paginated = chunk(sorted, 50);
-		setSortedData(paginated[0]);
-	}, [filterDateFrom, filterDateTo]);
+
 	return (
 		<section className='flex justify-between gap-2 w-full my-3'>
 			<Accordion variant='contained' className='w-3/5'>
@@ -159,29 +144,6 @@ const AStudentsFilter = ({
 					</Accordion.Panel>
 				</Accordion.Item>
 			</Accordion>
-			<div className='flex gap-4 items-center'>
-				<Text>Filter by date:</Text>
-				<div className='flex items-center gap-3'>
-					<DatePickerInput
-						label='From date'
-						placeholder='Filter from date'
-						className='w-44'
-						allowDeselect={false}
-						value={filterDateFrom}
-						onChange={setFilterDateFrom}
-						minDate={new Date("2010-09-1")}
-					/>
-					<DatePickerInput
-						label='To date'
-						placeholder='Filter to date'
-						className='w-44'
-						allowDeselect={false}
-						onChange={setFilterDateTo}
-						value={filterDateTo}
-						maxDate={new Date()}
-					/>
-				</div>
-			</div>
 		</section>
 	);
 };

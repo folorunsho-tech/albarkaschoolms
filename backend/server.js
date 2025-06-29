@@ -21,6 +21,8 @@ import exams from "./routes/exams.js";
 import statements from "./routes/statements.js";
 import disengagements from "./routes/disengagements.js";
 import { verifyToken } from "./middlewares/jwt.js";
+import cron from "node-cron";
+import { cronDump } from "./lib/dump.js";
 const app = express();
 const port = 5000;
 config();
@@ -45,9 +47,17 @@ app.use("/api/sca", verifyToken, sca);
 app.use("/api/exams", verifyToken, exams);
 app.use("/api/statements", verifyToken, statements);
 app.use("/api/disengagements", verifyToken, disengagements);
+
 app.get("/", (req, res) => {
 	res.send("<h2>Welcome</h2>");
 });
 app.listen(port, () => {
 	console.log(`Albarka server listening on port ${port}`);
+});
+cron.schedule("*/30 * * * *", async () => {
+	try {
+		await cronDump();
+	} catch (error) {
+		console.log(error);
+	}
 });

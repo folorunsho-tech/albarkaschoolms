@@ -3,14 +3,7 @@
 import { ReactElement, ReactNode, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 
-import {
-	ScrollArea,
-	Table,
-	Text,
-	LoadingOverlay,
-	Box,
-	Button,
-} from "@mantine/core";
+import { ScrollArea, Table, Text, Box, Button, Loader } from "@mantine/core";
 import { Printer } from "lucide-react";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -154,7 +147,9 @@ const ReportsTable = ({
 					</Table>
 				</ScrollArea>
 
-				<LoadingOverlay visible={tableLoading} />
+				<div className='flex items-center justify-center'>
+					{tableLoading && <Loader className='mx-auto' />}
+				</div>
 			</section>
 		</Box>
 	);

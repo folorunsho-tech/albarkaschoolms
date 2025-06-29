@@ -1,10 +1,16 @@
 import express from "express";
 const router = express.Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-// import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 router.get("/", async (req, res) => {
 	const debtors = await prisma.tnxItem.findMany({
+		where: {
+			balance: {
+				gt: 0,
+			},
+			active: true,
+		},
 		include: {
 			transaction: {
 				include: {
@@ -36,6 +42,9 @@ router.post("/bydate", async (req, res) => {
 							lte: new Date(new Date(to).setUTCHours(23, 59, 59, 999)),
 						},
 					},
+					{
+						active: true,
+					},
 				],
 			},
 			include: {
@@ -65,6 +74,7 @@ router.post("/bysession", async (req, res) => {
 				balance: {
 					gt: 0,
 				},
+				active: true,
 			},
 			include: {
 				transaction: {
@@ -93,6 +103,7 @@ router.post("/bysessionnterm", async (req, res) => {
 				balance: {
 					gt: 0,
 				},
+				active: true,
 			},
 			include: {
 				transaction: {

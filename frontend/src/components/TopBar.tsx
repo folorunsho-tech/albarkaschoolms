@@ -51,8 +51,8 @@ const TopBar = () => {
 				<button
 					className='flex gap-3 items-center transition duration-300 ease-in-out text-sm bg-red-500 text-white p-2 py-1 rounded-sm font-medium hover:bg-red-200 hover:text-red-700'
 					onClick={async () => {
-						logOut();
 						await axios.post("/auth/logout", { id: authId });
+						logOut();
 					}}
 				>
 					<IconLogout className='' stroke={1.5} />

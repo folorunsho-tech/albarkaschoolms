@@ -1,7 +1,7 @@
 "use client";
 import NavMenu from "@/components/NavMenu";
 import TopBar from "@/components/TopBar";
-import React, { useEffect } from "react";
+import React from "react";
 
 import {
 	IconUsers,
@@ -14,9 +14,8 @@ import {
 	IconFileInvoice,
 } from "@tabler/icons-react";
 import { userContext } from "@/context/User";
-export default function AppLayout({ params, children }: any) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
 	const { permissions } = React.useContext(userContext);
-	const { username }: any = React.use(params);
 	const data = [
 		{
 			link: "students",
@@ -54,12 +53,6 @@ export default function AppLayout({ params, children }: any) {
 			icon: IconBuilding,
 			shown: permissions?.classes?.view,
 		},
-		// {
-		// 	link: "staffspromotions",
-		// 	label: "Staffs Promotions",
-		// 	icon: IconArrowsTransferUpDown,
-		// 	shown: permissions?.staffPromotions,
-		// },
 		{
 			link: "studentspromotions",
 			label: "Students Promotions",

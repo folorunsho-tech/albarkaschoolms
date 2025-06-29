@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
-// import prisma from "../lib/prisma.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 import { nanoid } from "nanoid";
 
 router.get("/", async (req, res) => {
@@ -17,6 +17,10 @@ router.get("/", async (req, res) => {
 		// 	updatedAt: "desc",
 		// },
 	});
+	res.json(students);
+});
+router.get("/all", async (req, res) => {
+	const students = await prisma.students.findMany({});
 	res.json(students);
 });
 router.get("/fees", async (req, res) => {
@@ -297,6 +301,32 @@ router.post("/search", async (req, res) => {
 		}
 	} catch (error) {
 		res.status(500).json(error);
+	}
+});
+router.post("/outstanding", async (req, res) => {
+	const { session, term, className, studentId } = req.body;
+	try {
+		const outstandingFees = await prisma.tnxItem.findMany({
+			where: {
+				session,
+				term,
+				class: className,
+				transaction: {
+					studentId,
+				},
+				balance: {
+					gt: 0,
+				},
+				// active: true,
+			},
+			include: {
+				fee: true,
+			},
+		});
+		res.status(200).json(outstandingFees);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
 	}
 });
 export default router;

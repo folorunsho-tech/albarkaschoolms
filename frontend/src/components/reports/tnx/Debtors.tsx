@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Text, Table, Select, Button, NumberFormatter } from "@mantine/core";
+import {
+	Text,
+	Table,
+	Select,
+	Button,
+	NumberFormatter,
+	TextInput,
+} from "@mantine/core";
 import { usePostNormal, useFetch } from "@/hooks/useQueries";
 import { useEffect, useState } from "react";
 import DataLoader from "@/components/DataLoader";
@@ -83,10 +90,56 @@ const Debtors = () => {
 				/>
 			);
 		}
+		if (criteria == "Student name") {
+			return (
+				<TextInput
+					label='Student name'
+					placeholder='name'
+					className='w-64'
+					value={value}
+					onChange={(e) => {
+						setValue(e.currentTarget.value);
+						setDisableBtn(true);
+					}}
+				/>
+			);
+		}
+		if (criteria == "Admission No") {
+			return (
+				<TextInput
+					label='Admission No'
+					placeholder='adm no'
+					value={value}
+					onChange={(e) => {
+						setValue(e.currentTarget.value);
+						setDisableBtn(true);
+					}}
+				/>
+			);
+		}
 	};
 	const getFilter = () => {
 		if (criteria == "Fees") {
 			const found = queryData?.filter((d: any) => d?.feeId == value);
+			setSortedData(found);
+		}
+		if (criteria == "Student name") {
+			const found = queryData?.filter((d: any) =>
+				(
+					String(d?.transaction?.student?.last_name) +
+					` ` +
+					String(d?.transaction?.student?.first_name)
+				)
+					.toLowerCase()
+					.trim()
+					.includes(String(value).toLowerCase().trim())
+			);
+			setSortedData(found);
+		}
+		if (criteria == "Admission No") {
+			const found = queryData?.filter((d: any) =>
+				String(d?.transaction?.student?.admission_no).trim().includes(value)
+			);
 			setSortedData(found);
 		}
 	};
@@ -103,7 +156,7 @@ const Debtors = () => {
 				<Select
 					label='Criteria'
 					placeholder='select a criteria'
-					data={["Fees"]}
+					data={["Fees", "Student name", "Admission No"]}
 					className='w-[16rem]'
 					clearable
 					value={criteria}
@@ -140,9 +193,11 @@ const Debtors = () => {
 	);
 	const getReport = () => {
 		if (criteria && value) {
-			return `Debtors report for ${criteria} --> ${
-				fees.find((f) => f.value == value)?.label
-			}`;
+			const f = fees.find((f) => f.value == value)?.label;
+			if (f) {
+				return `Debtors report for ${criteria} --> ${f}`;
+			}
+			return `Debtors report for ${criteria} --> ${value}`;
 		}
 		return "Debtors report for";
 	};

@@ -67,6 +67,33 @@ const Payments = () => {
 		return Number(prev) + Number(curr.paid);
 	}, 0);
 	const getValuesUI = () => {
+		if (criteria == "Student name") {
+			return (
+				<TextInput
+					label='Student name'
+					placeholder='name'
+					value={value}
+					className='w-64'
+					onChange={(e) => {
+						setValue(e.currentTarget.value);
+						setDisableBtn(true);
+					}}
+				/>
+			);
+		}
+		if (criteria == "Admission No") {
+			return (
+				<TextInput
+					label='Admission No'
+					placeholder='adm no'
+					value={value}
+					onChange={(e) => {
+						setValue(e.currentTarget.value);
+						setDisableBtn(true);
+					}}
+				/>
+			);
+		}
 		if (criteria == "Cashier") {
 			return (
 				<TextInput
@@ -166,6 +193,25 @@ const Payments = () => {
 			);
 			setSortedData(found);
 		}
+		if (criteria == "Student name") {
+			const found = queryData?.filter((d: any) =>
+				(
+					String(d?.transaction?.student?.last_name) +
+					` ` +
+					String(d?.transaction?.student?.first_name)
+				)
+					.toLowerCase()
+					.trim()
+					.includes(String(value).toLowerCase().trim())
+			);
+			setSortedData(found);
+		}
+		if (criteria == "Admission No") {
+			const found = queryData?.filter((d: any) =>
+				String(d?.transaction?.student?.admission_no).trim().includes(value)
+			);
+			setSortedData(found);
+		}
 	};
 	const filters = (
 		<form
@@ -180,7 +226,15 @@ const Payments = () => {
 				<Select
 					label='Criteria'
 					placeholder='select a criteria'
-					data={["Payment Type", "Payment Method", "Fees", "Date", "Cashier"]}
+					data={[
+						"Payment Type",
+						"Payment Method",
+						"Fees",
+						"Date",
+						"Student name",
+						"Admission No",
+						"Cashier",
+					]}
 					className='w-[16rem]'
 					clearable
 					value={criteria}

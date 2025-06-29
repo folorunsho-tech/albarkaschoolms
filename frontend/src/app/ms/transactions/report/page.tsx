@@ -17,7 +17,7 @@ const page = () => {
 				</Link>
 				<Text size='xl'>Payments Reports</Text>
 			</header>
-			<Tabs defaultValue='debtors' keepMounted={false} color='teal'>
+			<Tabs defaultValue='payments' keepMounted={false} color='teal'>
 				<Tabs.List grow justify='space-between'>
 					<Tabs.Tab value='payments'>Payments</Tabs.Tab>
 					<Tabs.Tab value='debtors'>Debtors</Tabs.Tab>

@@ -6,11 +6,12 @@ import {
 	TextInput,
 	rem,
 	keys,
-	LoadingOverlay,
+	Loader,
 } from "@mantine/core";
 import chunk from "@/libs/chunk";
 import { IconSearch } from "@tabler/icons-react";
 import { Pagination } from "@mantine/core";
+
 function filterData(data: any[], search: string) {
 	const query = search.toLowerCase().trim();
 	return data.filter((item) =>
@@ -122,7 +123,9 @@ const PaginatedTable = ({
 					)}
 				</Table.Tbody>
 			</Table>
-			<LoadingOverlay visible={loading} />
+			<div className='flex items-center justify-center'>
+				{loading && <Loader className='mx-auto' />}
+			</div>
 			<div className='flex w-full justify-end'>
 				{showPagination && (
 					<Pagination

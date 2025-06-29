@@ -1,7 +1,8 @@
 import express from "express";
 const router = express.Router();
 import prisma from "../lib/prisma.js";
-
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.get("/staffs", async (req, res) => {
 	const dises = await prisma.disengagemnets.findMany({
 		include: {
@@ -80,6 +81,30 @@ router.post("/staffs", async (req, res) => {
 });
 router.get("/students", async (req, res) => {
 	const dises = await prisma.disengagedstudent.findMany({
+		include: {
+			student: {
+				select: {
+					id: true,
+					admission_no: true,
+
+					first_name: true,
+					last_name: true,
+					admission_class: true,
+					date_of_admission: true,
+					curr_class: true,
+					sex: true,
+				},
+			},
+		},
+	});
+	res.json(dises);
+});
+router.post("/students/bysessionnterm", async (req, res) => {
+	const dises = await prisma.disengagedstudent.findMany({
+		where: {
+			session: req.body.session,
+			term: req.body.term,
+		},
 		include: {
 			student: {
 				select: {
