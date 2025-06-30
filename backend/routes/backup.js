@@ -3,7 +3,7 @@ import express from "express";
 
 const router = express.Router();
 router.get("/download", (req, res) => {
-	const filePath = "/albarka_backup/school-backup.sql";
+	const filePath = "./backup/school-backup.sql";
 	res.download(
 		filePath,
 		"albarka_school-backup.sql", // Remember to include file extension
@@ -35,7 +35,7 @@ router.post("/generate", async (req, res) => {
 					},
 				},
 			},
-			dumpToFile: "/albarka_backup/school-backup.sql",
+			dumpToFile: "./backup/school-backup.sql",
 		});
 		res.status(200).json({
 			message: "Database succesfully backed-up",

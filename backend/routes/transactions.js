@@ -1,11 +1,11 @@
 import { Router } from "express";
-// import prisma from "../lib/prisma.js";
+import prisma from "../lib/prisma.js";
 import { nanoid } from "nanoid";
 import { curMonth, curYear } from "../lib/ynm.js";
 import { generator, Rgenerator } from "../lib/tnxIdGen.js";
 const router = Router();
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 router.get("/id", async (req, res) => {
 	try {
 		const id = await Rgenerator("2504001");

@@ -23,6 +23,7 @@ import disengagements from "./routes/disengagements.js";
 import { verifyToken } from "./middlewares/jwt.js";
 import cron from "node-cron";
 import { cronDump } from "./lib/dump.js";
+import { ftp } from "./lib/ftp.js";
 const app = express();
 const port = 5000;
 config();
@@ -57,6 +58,7 @@ app.listen(port, () => {
 cron.schedule("*/30 * * * *", async () => {
 	try {
 		await cronDump();
+		await ftp("./backup/school-backup.sql", "/school_backup/school-backup.sql");
 	} catch (error) {
 		console.log(error);
 	}

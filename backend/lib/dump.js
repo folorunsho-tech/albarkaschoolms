@@ -1,4 +1,4 @@
-// import mysqldump from "mysqldump";
+import mysqldump from "mysqldump";
 let count = 0;
 
 export const cronDump = async () => {
@@ -18,7 +18,7 @@ export const cronDump = async () => {
 				},
 			},
 		},
-		dumpToFile: "/albarka_backup/school-backup.sql",
+		dumpToFile: `./backup/school-backup.sql`,
 	});
 	count++;
 
@@ -35,7 +35,6 @@ export const cronDump = async () => {
 		)}`
 	);
 };
-import mysqldump from "mysqldump";
 
 export const returnedDump = async () => {
 	const db = await mysqldump({
@@ -54,7 +53,7 @@ export const returnedDump = async () => {
 				},
 			},
 		},
-		dumpToFile: "/albarka_backup/school-backup.sql",
+		dumpToFile: "./backup/school-backup.sql",
 	});
 	return db;
 };
