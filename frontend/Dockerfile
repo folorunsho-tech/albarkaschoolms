@@ -1,26 +1,29 @@
-# Use the official Node.js runtime as the base image
-FROM node:lts-alpine3.21
-
-# Set the working directory inside the container
+# Dependencies stage
+FROM node:lts-alpine3.21 AS deps
 WORKDIR /app
-
-# Copy package.json and package-lock.json
 COPY package*.json ./
+RUN npm ci --force && npm cache clean --force
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Builder stage
+FROM node:lts-alpine3.21 AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build the Next.js application
+# Accept build argument and set as environment variable
+ARG NEXT_PUBLIC_SERVER_API
+ENV NEXT_PUBLIC_SERVER_API=$NEXT_PUBLIC_SERVER_API
+ENV NEXT_PUBLIC_SERVER_API=http://localhost:5000/api
 RUN npm run build
 
-# Set environment variable
+# Runner stage
+FROM node:lts-alpine3.21 AS runner
+WORKDIR /app
+ENV NODE_ENV=production
 ENV NEXT_PUBLIC_SERVER_API=http://localhost:5000/api
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-# Expose the port the app runs on
 EXPOSE 3000
-
-# Start the application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

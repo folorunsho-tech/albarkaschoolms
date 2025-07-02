@@ -4,12 +4,17 @@ const router = express.Router();
 import prisma from "../lib/prisma.js";
 
 router.get("/", async (req, res) => {
-	const appointments = await prisma.appointments.findMany({
-		orderBy: {
-			name: "asc",
-		},
-	});
-	res.json(appointments);
+	try {
+		const appointments = await prisma.appointments.findMany({
+			orderBy: {
+				name: "asc",
+			},
+		});
+		res.json(appointments);
+	} catch (error) {
+		console.error("Error fetching appointments:", error);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
 });
 router.get("/:appointmentId", async (req, res) => {
 	const appointment = await prisma.appointments.findUnique({

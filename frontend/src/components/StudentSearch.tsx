@@ -14,23 +14,33 @@ function getAsyncData(
 		signal.addEventListener("abort", () => {
 			reject(new Error("Request aborted"));
 		});
-		axios
-			.post(
-				"/students/search",
-				{ value: searchQuery },
-				{
-					headers: {
-						Authorization: token,
-					},
-				}
-			)
-			.then((result: any) => {
-				resolve(result.data);
-			});
+		if (searchQuery !== "") {
+			axios
+				.post(
+					"/students/search",
+					{ value: searchQuery },
+					{
+						headers: {
+							Authorization: token,
+						},
+					}
+				)
+				.then((result: any) => {
+					resolve(result.data);
+				});
+		} else {
+			return resolve([]); // Return an empty array if searchQuery is empty
+		}
 	});
 }
 
-export default function StudentSearch({ setStudent }: { setStudent: any }) {
+export default function StudentSearch({
+	setStudent,
+	cleared = false,
+}: {
+	setStudent: any;
+	cleared?: boolean;
+}) {
 	const { token } = useContext(userContext);
 	const combobox = useCombobox({
 		onDropdownClose: () => combobox.resetSelectedOption(),
@@ -66,10 +76,15 @@ export default function StudentSearch({ setStudent }: { setStudent: any }) {
 		</Combobox.Option>
 	));
 	useEffect(() => {
-		if (value == "") {
+		if (value == "" || cleared) {
 			setStudent(null);
 		}
 	}, [value]);
+	useEffect(() => {
+		if (cleared) {
+			setValue("");
+		}
+	}, [cleared]);
 	return (
 		<Combobox
 			onOptionSubmit={(optionValue) => {

@@ -37,7 +37,7 @@ export const cronDump = async () => {
 };
 
 export const returnedDump = async () => {
-	const db = await mysqldump({
+	await mysqldump({
 		connection: {
 			host: process.env.DB_HOST,
 			port: process.env.DB_PORT,
@@ -55,5 +55,4 @@ export const returnedDump = async () => {
 		},
 		dumpToFile: "./backup/school-backup.sql",
 	});
-	return db;
 };

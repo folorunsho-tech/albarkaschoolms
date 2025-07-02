@@ -31,7 +31,7 @@ const ReportsTable = ({
 	printHeaders?: string[];
 	printRows?: ReactElement[];
 	data: any[];
-	setSortedData: any;
+	setSortedData?: any;
 	sortedData: any[];
 	placeholder?: string;
 	tableLoading?: boolean;
@@ -52,7 +52,9 @@ const ReportsTable = ({
 	});
 
 	useEffect(() => {
-		setSortedData(data);
+		if (tableLoading) {
+			setSortedData(data);
+		}
 	}, [tableLoading]);
 	return (
 		<Box pos='relative'>

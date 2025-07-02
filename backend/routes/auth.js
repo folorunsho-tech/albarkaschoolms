@@ -6,6 +6,7 @@ import prisma from "../lib/prisma.js";
 import mysqldump from "mysqldump";
 const router = Router();
 import jwt from "jsonwebtoken";
+import { returnedDump } from "../lib/dump.js";
 
 const hashpass = (password) => {
 	return createHash("sha256").update(password).digest("hex");
@@ -21,24 +22,9 @@ router.post("/login", async (req, res) => {
 				passHash: hashedPass,
 			},
 		});
-		await mysqldump({
-			connection: {
-				host: process.env.DB_HOST,
-				port: process.env.DB_PORT,
-				user: process.env.DB_USER,
-				password: process.env.DB_PASS,
-				database: process.env.DB_NAME,
-				charset: "utf8",
-			},
-			dump: {
-				schema: {
-					table: {
-						dropIfExist: true,
-					},
-				},
-			},
-			dumpToFile: "/albarka_backup/school-backup.sql",
-		});
+
+		await returnedDump();
+
 		if (user?.active === true) {
 			const token = jwt.sign({ userId: user.id }, process.env.SECRET);
 			const authUserHis = await prisma.authHistory.create({
@@ -70,6 +56,7 @@ router.post("/login", async (req, res) => {
 				error: "Server Error",
 			},
 		});
+		console.error(error);
 	}
 });
 router.post("/revoke/:accId", async (req, res) => {
@@ -106,24 +93,7 @@ router.post("/logout", async (req, res) => {
 			auth_status: "Logged-out",
 		},
 	});
-	await mysqldump({
-		connection: {
-			host: process.env.DB_HOST,
-			port: process.env.DB_PORT,
-			user: process.env.DB_USER,
-			password: process.env.DB_PASS,
-			database: process.env.DB_NAME,
-			charset: "utf8",
-		},
-		dump: {
-			schema: {
-				table: {
-					dropIfExist: true,
-				},
-			},
-		},
-		dumpToFile: "/albarka_backup/school-backup.sql",
-	});
+	await returnedDump();
 	res.json({
 		message: "Logged out",
 	});

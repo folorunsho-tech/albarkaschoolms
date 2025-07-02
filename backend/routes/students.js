@@ -295,12 +295,35 @@ router.post("/search", async (req, res) => {
 					},
 				},
 			});
+
 			res.status(200).json(found);
 		} else {
 			res.status(200).json([]);
 		}
 	} catch (error) {
 		res.status(500).json(error);
+	}
+});
+router.get("/outstanding/:studentId", async (req, res) => {
+	try {
+		const outstandingFees = await prisma.tnxItem.findMany({
+			where: {
+				transaction: {
+					studentId: req.params.studentId,
+				},
+				balance: {
+					gt: 0,
+				},
+				active: true,
+			},
+			include: {
+				fee: true,
+			},
+		});
+		res.status(200).json(outstandingFees);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
 	}
 });
 router.post("/outstanding", async (req, res) => {

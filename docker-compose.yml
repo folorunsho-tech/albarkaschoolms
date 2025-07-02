@@ -1,0 +1,36 @@
+services:
+  # Express API Server
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - app-network
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_SERVER_API=http://backend:5000/api
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge

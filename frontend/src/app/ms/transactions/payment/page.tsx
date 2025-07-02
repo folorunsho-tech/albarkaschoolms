@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
 	ActionIcon,
 	Button,
+	Drawer,
 	LoadingOverlay,
 	NumberFormatter,
 	NumberInput,
@@ -15,15 +16,19 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useReactToPrint } from "react-to-print";
-import { usePost } from "@/hooks/useQueries";
-import { IconReceipt, IconX } from "@tabler/icons-react";
+import { usePost, useFetch } from "@/hooks/useQueries";
+import { IconExternalLink, IconReceipt, IconX } from "@tabler/icons-react";
 import { format } from "date-fns";
 import Image from "next/image";
 import StudentSearch from "@/components/StudentSearch";
 import { sessions } from "@/libs/sessions";
 import convert from "@/libs/numberConvert";
+import { useDisclosure } from "@mantine/hooks";
+import ReportsTable from "@/components/ReportsTable";
 const page = () => {
+	const [opened, { open, close }] = useDisclosure(false);
 	const { post, loading } = usePost();
+	const { fetch } = useFetch();
 	const [fee, setFee] = useState<
 		{ id: string; name: string; amount: number } | null | undefined
 	>(null);
@@ -42,7 +47,8 @@ const page = () => {
 	const [paid, setPaid] = useState<string | number>("");
 	const [fees, setFees] = useState<{ value: string; label: string }[]>([]);
 	const [studentData, setStudentData] = useState<any>(null);
-
+	const [outstanding, setOutstanding] = useState<any[]>([]);
+	const [cleared, setCleared] = useState<boolean>(false);
 	const [items, setItems] = useState<
 		{
 			name: string | undefined;
@@ -103,18 +109,23 @@ const page = () => {
 		setPaid("");
 		setMethod(null);
 	}, [feeId]);
+	const setData = async () => {
+		const { data } = await fetch(`/students/outstanding/${studentData?.id}`);
+		setOutstanding(data);
+		const sorted = studentData?.curr_class?.fees?.map(
+			(fee: { id: string; name: string }) => {
+				return {
+					value: fee?.id,
+					label: fee?.name,
+				};
+			}
+		);
+		setFees(sorted);
+		setClassFees(studentData?.curr_class?.fees);
+	};
 	useEffect(() => {
 		if (studentData) {
-			const sorted = studentData?.curr_class?.fees?.map(
-				(fee: { id: string; name: string }) => {
-					return {
-						value: fee?.id,
-						label: fee?.name,
-					};
-				}
-			);
-			setFees(sorted);
-			setClassFees(studentData?.curr_class?.fees);
+			setData();
 		}
 	}, [studentData]);
 	return (
@@ -260,14 +271,17 @@ const page = () => {
 					Go back
 				</Link>
 				<Text size='xl'>Initiate a transaction</Text>
-				{studentData && (
+				<div className='flex gap-3 items-end'>
+					<Button color={outstanding.length ? "red" : "green"} onClick={open}>
+						{outstanding.length} Outstanding tnx
+					</Button>
 					<div className='flex flex-col gap-1 w-max pointer-events-none'>
 						<label htmlFor='status'>Transaction status</label>
 						<Button id='status' color={status?.color}>
 							{status?.label}
 						</Button>
 					</div>
-				)}
+				</div>
 			</header>
 			<form
 				onSubmit={async (e) => {
@@ -290,7 +304,7 @@ const page = () => {
 				className='flex flex-col gap-3  w-full'
 			>
 				<div className='flex justify-between'>
-					<StudentSearch setStudent={setStudentData} />
+					<StudentSearch setStudent={setStudentData} cleared={cleared} />
 					<div className='flex gap-2 self-end'>
 						<TextInput
 							disabled
@@ -510,6 +524,74 @@ const page = () => {
 
 				<LoadingOverlay visible={loading} />
 			</form>
+			<Drawer
+				opened={opened}
+				onClose={close}
+				offset={8}
+				position='right'
+				title={
+					<div className='flex items-center gap-2'>
+						<Text className='text-lg'>
+							Outstanding tnx for {studentData?.admission_no} -{" "}
+							{studentData?.last_name} {studentData?.first_name}
+						</Text>
+					</div>
+				}
+				size='xl'
+			>
+				<ReportsTable
+					headers={["Date", "Tnx Id", "Fee", "Amount", "Paid", "Balance"]}
+					sortedData={outstanding}
+					data={outstanding}
+					disableBtn={true}
+					rows={outstanding?.map((row, i) => (
+						<Table.Tr key={row?.id}>
+							<Table.Td>
+								{new Date(row?.updatedAt).toLocaleDateString()}
+							</Table.Td>
+							<Table.Td>{row?.transactionId}</Table.Td>
+							<Table.Td>{row?.fee?.name}</Table.Td>
+							<Table.Td>
+								<NumberFormatter
+									prefix='NGN '
+									value={row?.price}
+									thousandSeparator
+								/>
+							</Table.Td>
+							<Table.Td>
+								<NumberFormatter
+									prefix='NGN '
+									value={row?.paid}
+									thousandSeparator
+								/>
+							</Table.Td>
+							<Table.Td>
+								<NumberFormatter
+									prefix='NGN '
+									value={row?.balance}
+									thousandSeparator
+								/>
+							</Table.Td>
+							<Table.Td>
+								<Button
+									color='green'
+									component={Link}
+									target='_blank'
+									rightSection={<IconExternalLink />}
+									onClick={() => {
+										setCleared(true);
+										close();
+										setOutstanding([]);
+									}}
+									href={`/ms/transactions/balance?tnxId=${row?.transactionId}`}
+								>
+									Pay Balance
+								</Button>
+							</Table.Td>
+						</Table.Tr>
+					))}
+				/>
+			</Drawer>
 		</main>
 	);
 };

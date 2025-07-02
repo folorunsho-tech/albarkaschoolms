@@ -19,7 +19,9 @@ import { IconPencil, IconReceipt, IconX } from "@tabler/icons-react";
 import { format } from "date-fns";
 import Image from "next/image";
 import convert from "@/libs/numberConvert";
+import { useSearchParams } from "next/navigation";
 const page = () => {
+	const tnxId = useSearchParams().get("tnxId");
 	const { fetch, loading: Floading } = useFetch();
 	const { post: edit, loading } = useEdit();
 	const [reciept, setReciept] = useState<any | null>(null);
@@ -29,7 +31,7 @@ const page = () => {
 	} | null>(null);
 	const [method, setMethod] = useState<string | null>(null);
 	const [paid, setPaid] = useState<string | number>("");
-	const [id, setId] = useState("");
+	const [id, setId] = useState(tnxId || "");
 	const [tnx, setTnx] = useState<any | null>(null);
 	const [item, setItem] = useState<any | null>(null);
 	const [items, setItems] = useState<
@@ -100,9 +102,21 @@ const page = () => {
 			});
 		}
 	};
+	const loadTnx = async () => {
+		setItem(null);
+		setReciept(null);
+		setItems([]);
+		const { data } = await fetch(`/transactions/${id}`);
+		setTnx(data);
+	};
 	useEffect(() => {
 		getStatus(tnx?.status);
 	}, [tnx]);
+	useEffect(() => {
+		if (tnxId) {
+			loadTnx();
+		}
+	}, [tnxId]);
 	useEffect(() => {
 		if (totalPrice > 0 && totalPay < totalPrice) {
 			setStatus({
@@ -118,6 +132,7 @@ const page = () => {
 			});
 		}
 	}, [items.length, totalBalance]);
+
 	return (
 		<main className='space-y-4 p-3 bg-white'>
 			{reciept && (
@@ -281,16 +296,7 @@ const page = () => {
 							setId(e.currentTarget.value);
 						}}
 					/>
-					<Button
-						disabled={!id}
-						onClick={async () => {
-							setItem(null);
-							setReciept(null);
-							setItems([]);
-							const { data } = await fetch(`/transactions/${id}`);
-							setTnx(data);
-						}}
-					>
+					<Button disabled={!id} onClick={loadTnx}>
 						load transaction
 					</Button>
 				</div>
