@@ -1,39 +1,36 @@
-const { createHash } = await import("node:crypto");
 import { Router } from "express";
+import bcrypt from "bcryptjs";
 import prisma from "../lib/prisma.js";
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
-import mysqldump from "mysqldump";
+import { decodeToken, signToken } from "../middlewares/jwt.js";
+import { nanoid } from "nanoid";
 const router = Router();
-import jwt from "jsonwebtoken";
-import { returnedDump } from "../lib/dump.js";
-
-const hashpass = (password) => {
-	return createHash("sha256").update(password).digest("hex");
-};
-
 router.post("/login", async (req, res) => {
 	const { username, password } = req.body;
-	const hashedPass = hashpass(password);
 	try {
 		const user = await prisma.accounts.findFirst({
 			where: {
 				username,
-				passHash: hashedPass,
 			},
 		});
-
-		await returnedDump();
-
-		if (user?.active === true) {
-			const token = jwt.sign({ userId: user.id }, process.env.SECRET);
-			const authUserHis = await prisma.authHistory.create({
-				data: {
-					account_id: user.id,
-					logged_in_at: new Date(),
-				},
+		const compared = await bcrypt.compare(password, user?.passHash ?? "");
+		if (user?.active && compared) {
+			const token = signToken({
+				userId: user.id,
+				menu: user.permissions,
+				role: user.role,
+				active: user.active,
+				username: user.username,
 			});
-			res.status(200).json({ token, authId: authUserHis?.id, userId: user.id });
+			// Set cookie
+			res.cookie("token", token);
+			res.status(200).json({
+				token,
+				userId: user.id,
+				menu: user.permissions,
+				role: user.role,
+				active: user.active,
+				username: user.username,
+			});
 		} else if (!user) {
 			res.status(404).json({
 				message: {
@@ -41,7 +38,7 @@ router.post("/login", async (req, res) => {
 					error: "Invalid credentials",
 				},
 			});
-		} else if (user?.active === false) {
+		} else if (!user?.active) {
 			res.status(401).json({
 				message: {
 					success: "",
@@ -60,45 +57,39 @@ router.post("/login", async (req, res) => {
 	}
 });
 router.post("/revoke/:accId", async (req, res) => {
-	const updated = await prisma.accounts.update({
-		where: {
-			id: req.params.accId,
-		},
-		data: {
-			active: false,
-		},
-	});
-	res.json(updated);
+	try {
+		const updated = await prisma.accounts.update({
+			where: {
+				id: req.params.accId,
+			},
+			data: {
+				active: false,
+			},
+		});
+		res.json(updated);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
-
 router.post("/allow/:accId", async (req, res) => {
-	const updated = await prisma.accounts.update({
-		where: {
-			id: req.params.accId,
-		},
-		data: {
-			active: true,
-		},
-	});
-	res.json(updated);
+	try {
+		const updated = await prisma.accounts.update({
+			where: {
+				id: req.params.accId,
+			},
+			data: {
+				active: true,
+			},
+		});
+		res.json(updated);
+	} catch (error) {
+		res.status(500).json(error);
+	}
 });
-
-router.post("/logout", async (req, res) => {
-	const { id } = req.body;
-
-	await prisma.authHistory.update({
-		where: { id },
-		data: {
-			logged_out_at: new Date(),
-			auth_status: "Logged-out",
-		},
-	});
-	await returnedDump();
-	res.json({
-		message: "Logged out",
-	});
+router.post("/logout", (req, res) => {
+	res.clearCookie("token");
+	res.json({ message: "Logged out" });
 });
-
 router.get("/:account_id/basic", async (req, res) => {
 	try {
 		const found = await prisma.accounts.findUnique({
@@ -109,20 +100,9 @@ router.get("/:account_id/basic", async (req, res) => {
 				permissions: true,
 				id: true,
 				active: true,
-				empid: true,
 				name: true,
 				username: true,
 				role: true,
-				staff: {
-					select: {
-						curr_appointment: {
-							select: {
-								name: true,
-							},
-						},
-						school_section: true,
-					},
-				},
 			},
 		});
 		res.status(200).json(found);
@@ -130,5 +110,37 @@ router.get("/:account_id/basic", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
+router.get("/me", async (req, res) => {
+	const token = req.cookies.token;
+	try {
+		const returned = decodeToken(token);
+		if (!returned) {
+			res.status(404).json({ message: "Invalid Token" });
+		} else {
+			res.json(returned);
+		}
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
+});
+router.post("/register", async (req, res) => {
+	try {
+		const { username, password, permissions, role } = req.body;
+		const passHash = await bcrypt.hash(password, 10);
+		const created = await prisma.accounts.create({
+			data: {
+				id: nanoid(),
+				username,
+				permissions,
+				passHash,
+				role,
+			},
+		});
+		res.status(200).json(created);
+	} catch (error) {
+		res.status(500).json(error);
+		console.log(error);
+	}
+});
 export default router;

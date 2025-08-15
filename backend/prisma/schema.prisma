@@ -14,94 +14,30 @@ datasource db {
 }
 
 model Accounts {
-  id           String        @id
-  name         String?
-  username     String?
-  passHash     String?
-  empid        String?       @unique
-  role         String        @default("user")
-  permissions  Json?
-  active       Boolean?      @default(true)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  updatedById  String?
-  staff        Staffs?       @relation(fields: [empid], references: [empid])
-  auth_history AuthHistory[]
-  Students     Students[]
-  FCAResults   FCAResults[]
-  SCAResults   SCAResults[]
-  ExamResults  ExamResults[]
-
-  Promotions Promotions[]
-
-  Demotions Demotions[]
+  id          String        @id
+  name        String?
+  username    String?
+  passHash    String?
+  role        String        @default("user")
+  permissions Json?
+  active      Boolean?      @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  updatedById String?
+  Students    Students[]
+  FCAResults  FCAResults[]
+  SCAResults  SCAResults[]
+  ExamResults ExamResults[]
 
   StudentsDemotions StudentsDemotions[]
 
   StudentsPromotions StudentsPromotions[]
 
   Disengagedstudent Disengagedstudent[]
-
-  Disengagemnets Disengagemnets[]
-  Transactions   Transaction[]
+  Transactions      Transaction[]
 
   Reciepts Reciept[]
   Payments Payment[]
-}
-
-model AuthHistory {
-  id            String    @id @default(cuid())
-  account_id    String?
-  account       Accounts? @relation(fields: [account_id], references: [id])
-  auth_status   String?   @default("Logged-in")
-  logged_in_at  DateTime?
-  logged_out_at DateTime?
-}
-
-model Staffs {
-  empid               String        @id
-  address             String?
-  telephone           String?
-  state_of_origin     String?
-  lga                 String?
-  qualification       String?
-  grade_level         Int?
-  salary              String?
-  school_section      String?
-  first_name          String?
-  last_name           String?
-  date_of_birth       DateTime?
-  sex                 String?
-  religion            String?
-  marital_status      String?
-  appointed_as        String?
-  curr_appointment_id String?
-  curr_appointment    Appointments? @relation(fields: [curr_appointment_id], references: [id])
-  date_of_emp         DateTime?
-  active              Boolean       @default(true)
-  subjects            Subjects[]
-  class_assigned      Classes?
-  createdById         String?
-  updatedById         String?
-  updatedAt           DateTime      @updatedAt
-  account             Accounts?
-  Promotions          Promotions[]
-
-  Demotions Demotions[]
-
-  Disengagemnets Disengagemnets[]
-}
-
-model Disengagemnets {
-  id                      String    @id @default(cuid())
-  staff_id                String?
-  staff                   Staffs?   @relation(fields: [staff_id], references: [empid])
-  date_of_disengagement   DateTime? @default(now())
-  method_of_disengagement String?
-  reason                  String?
-  employer_comment        String?
-  createdById             String?
-  createdBy               Accounts? @relation(fields: [createdById], references: [id])
 }
 
 model Students {
@@ -298,36 +234,6 @@ model Reciept {
   updatedAt   DateTime    @updatedAt
 }
 
-model Promotions {
-  id           String        @id
-  staff_id     String?
-  staff        Staffs?       @relation(fields: [staff_id], references: [empid])
-  from         String?
-  from_section String?
-  prev_salary  String?
-  to_id        String?
-  to           Appointments? @relation(fields: [to_id], references: [id])
-  curr_salary  String?
-  createdById  String?
-  createdBy    Accounts?     @relation(fields: [createdById], references: [id])
-  promotedOn   DateTime?     @default(now())
-}
-
-model Demotions {
-  id           String        @id
-  staff_id     String?
-  staff        Staffs?       @relation(fields: [staff_id], references: [empid])
-  from         String?
-  from_section String?
-  prev_salary  String?
-  to_id        String?
-  to           Appointments? @relation(fields: [to_id], references: [id])
-  curr_salary  String?
-  createdById  String?
-  createdBy    Accounts?     @relation(fields: [createdById], references: [id])
-  demotedOn    DateTime?     @default(now())
-}
-
 model StudentsPromotions {
   id          String    @id
   student_id  String
@@ -359,8 +265,6 @@ model StudentsDemotions {
 model Classes {
   id                 String               @id
   name               String?
-  teacher_id         String?              @unique
-  teacher            Staffs?              @relation(fields: [teacher_id], references: [empid])
   school_section     String?
   subjects           Subjects[]
   Students           Students[]
@@ -379,22 +283,10 @@ model Subjects {
   id      String    @id
   name    String?
   Classes Classes[]
-  Staffs  Staffs[]
 
   FCAResults  FCAResults[]
   SCAResults  SCAResults[]
   ExamResults ExamResults[]
-}
-
-model Appointments {
-  id             String   @id
-  name           String?
-  school_section String?
-  staffs         Staffs[]
-
-  Promotions Promotions[]
-
-  Demotions Demotions[]
 }
 
 model FeesGroup {

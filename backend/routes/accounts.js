@@ -1,37 +1,16 @@
 import { nanoid } from "nanoid";
 import express from "express";
 import prisma from "../lib/prisma.js";
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
-const { createHash } = await import("node:crypto");
+import bcrypt from "bcryptjs";
+// import { authMiddleware } from "../middlewares/authMiddleware.js";
 const router = express.Router();
-const hashpass = (password) => {
-	return createHash("sha256").update(password).digest("hex");
-};
 router.get("/", async (req, res) => {
 	try {
 		const accounts = await prisma.accounts.findMany({
-			where: {
-				NOT: [{ empid: "EMP0000" }, { empid: "EMP0001" }],
-			},
-			include: {
-				staff: {
-					select: {
-						curr_appointment: {
-							select: {
-								name: true,
-							},
-						},
-						empid: true,
-					},
-				},
-			},
-
 			orderBy: {
-				empid: "asc",
+				name: "asc",
 			},
 		});
-
 		res.status(200).json(accounts);
 	} catch (error) {
 		res.status(500).json(error);
@@ -51,24 +30,21 @@ router.get("/:accountId", async (req, res) => {
 });
 router.post("/create", async (req, res) => {
 	try {
-		const { name, username, password, permissions, empid, role } = req.body;
-		const passHash = hashpass(password);
+		const { username, password, permissions, role } = req.body;
+		const passHash = await bcrypt.hash(password, 10);
 		const created = await prisma.accounts.create({
 			data: {
-				id: nanoid(7),
-				name,
+				id: nanoid(),
 				username,
 				permissions,
 				passHash,
-				empid,
 				role,
 			},
 		});
-
 		res.status(200).json(created);
 	} catch (error) {
 		res.status(500).json(error);
-		// console.log(error);
+		console.log(error);
 	}
 });
 router.get("/:account_id/basic", async (req, res) => {
@@ -81,30 +57,44 @@ router.get("/:account_id/basic", async (req, res) => {
 		res.status(200).json(found);
 	} catch (error) {
 		res.status(500).json(error);
+		console.log(error);
 	}
 });
 router.post("/edit/:accountId", async (req, res) => {
+	const { username, password, permissions, updatedById, role } = req.body;
 	try {
-		const { name, username, password, permissions, empid, updatedById, role } =
-			req.body;
-		const passHash = hashpass(password);
-		const edited = await prisma.accounts.update({
-			where: {
-				id: req.params.accountId,
-			},
-			data: {
-				name,
-				username,
-				permissions,
-				passHash,
-				empid,
-				updatedById,
-				role,
-			},
-		});
-		res.json(edited);
+		if (password) {
+			const passHash = await bcrypt.hash(password, 10);
+			const edited = await prisma.accounts.update({
+				where: {
+					id: req.params.accountId,
+				},
+				data: {
+					username,
+					permissions,
+					passHash,
+					updatedById,
+					role,
+				},
+			});
+			res.json(edited);
+		} else {
+			const edited = await prisma.accounts.update({
+				where: {
+					id: req.params.accountId,
+				},
+				data: {
+					username,
+					permissions,
+					updatedById,
+					role,
+				},
+			});
+			res.json(edited);
+		}
 	} catch (error) {
 		res.status(500).json(error);
+		console.log(error);
 	}
 });
 router.post("/many", async (req, res) => {
