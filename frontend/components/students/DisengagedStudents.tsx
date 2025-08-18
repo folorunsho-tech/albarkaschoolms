@@ -53,16 +53,13 @@ const DisengagedStudents = () => {
 	const headers = [
 		"admission no",
 		"name",
-		"sex",
-		"admission date",
-		"admission class",
 		"class",
 		"session",
 		"term",
 		"method",
 		"reason",
 		"comment",
-		"disengagement date",
+		"dis date",
 	];
 	const [checked, setChecked] = useState(false);
 	const [queryData, setQueryData] = useState([]);
@@ -76,11 +73,6 @@ const DisengagedStudents = () => {
 			<Table.Td>
 				{row?.student?.first_name} {row?.student?.last_name}
 			</Table.Td>
-			<Table.Td>{row?.student?.sex}</Table.Td>
-			<Table.Td>
-				{moment(row?.student?.date_of_admission).format("MMMM Do YYYY")}
-			</Table.Td>
-			<Table.Td>{row?.student?.admission_class}</Table.Td>
 			<Table.Td>{row?.student?.curr_class?.name}</Table.Td>
 			<Table.Td>{row?.session}</Table.Td>
 			<Table.Td>{row?.term}</Table.Td>
@@ -412,16 +404,13 @@ const DisengagedStudents = () => {
 										"S/N",
 										"admission no",
 										"name",
-										"sex",
-										"admission date",
-										"admission class",
 										"class",
 										"session",
 										"term",
 										"method",
 										"reason",
 										"comment",
-										"disengagement date",
+										"dis date",
 									].map((head) => (
 										<th key={head}>{head}</th>
 									))}
@@ -435,13 +424,6 @@ const DisengagedStudents = () => {
 										<td>
 											{row?.student?.first_name} {row?.student?.last_name}
 										</td>
-										<td>{row?.student?.sex}</td>
-										<td>
-											{moment(row?.student?.date_of_admission).calendar(
-												"MMMM Do YYYY"
-											)}
-										</td>
-										<td>{row?.student?.admission_class}</td>
 
 										<td>{row?.student?.curr_class?.name}</td>
 

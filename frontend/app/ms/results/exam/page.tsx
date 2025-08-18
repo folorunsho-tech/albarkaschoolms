@@ -41,24 +41,8 @@ const Exam = () => {
 	React.useEffect(() => {
 		async function getAll() {
 			const { data: classes } = await fetch("/classes");
-			const filterdClass = classes?.filter((cl: any) => {
-				if (user?.staff?.school_section == "Nursery and Primary") {
-					return (
-						cl?.school_section?.includes("Nursery") ||
-						cl?.school_section?.includes("Primary")
-					);
-				} else if (
-					(user?.staff?.school_section == "Secondary" ||
-						user?.staff?.school_section?.includes("SS")) &&
-					user?.staff?.curr_appointment?.name !== "Principal" &&
-					user?.staff?.curr_appointment?.name !== "VP Academy"
-				) {
-					return cl?.school_section?.includes("SS");
-				} else {
-					return classes;
-				}
-			});
-			const sortedClass = filterdClass.map((cl: any) => {
+
+			const sortedClass = classes.map((cl: any) => {
 				return {
 					value: cl?.id,
 					label: cl?.name,
@@ -69,19 +53,13 @@ const Exam = () => {
 		getAll();
 	}, []);
 	React.useEffect(() => {
-		if (selectedClass !== null && user?.id) {
+		if (selectedClass) {
 			const getSubjectsList = async () => {
 				const { data: classSubs } = await fetch(
 					`/classes/subjects/${selectedClass}`
 				);
-				const { data: staffSubs } = await fetch(
-					`/staffs/${user?.empid}/subjects`
-				);
-				if (staffSubs?.subjects?.length !== 0) {
-					setSubjectsList(staffSubs?.subjects);
-				} else {
-					setSubjectsList(classSubs?.subjects);
-				}
+
+				setSubjectsList(classSubs?.subjects);
 			};
 			getSubjectsList();
 		}

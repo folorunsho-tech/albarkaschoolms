@@ -16,17 +16,15 @@ const ActiveStudents = () => {
 	const { permissions } = React.useContext(userContext);
 
 	const headers = [
+		"S/N",
 		"admission no",
 		"admission date",
 		"admission session",
 		"admission term",
-		"admission class",
 		"name",
-		"sex",
-		"religion",
+		"class",
 		"guardian name",
 		"guardian telephone",
-		"class",
 	];
 
 	const permission = permissions?.students;
@@ -46,16 +44,12 @@ const ActiveStudents = () => {
 			</Table.Td>
 			<Table.Td>{row?.admission_session}</Table.Td>
 			<Table.Td>{row?.admission_term}</Table.Td>
-			<Table.Td>{row?.admission_class}</Table.Td>
 			<Table.Td>
 				{row?.first_name} {row?.last_name}
 			</Table.Td>
-			<Table.Td>{row?.sex}</Table.Td>
-
-			<Table.Td>{row?.religion}</Table.Td>
+			<Table.Td>{row?.curr_class?.name}</Table.Td>
 			<Table.Td>{row?.guardian_name}</Table.Td>
 			<Table.Td>{row?.guardian_telephone}</Table.Td>
-			<Table.Td>{row?.curr_class?.name}</Table.Td>
 
 			<Table.Td className='flex items-center gap-3 '>
 				<ActionIcon variant='outline' aria-label='action menu'>
@@ -157,16 +151,14 @@ const ActiveStudents = () => {
 								<tr>
 									{[
 										"S/N",
-										"admission no",
-										"admission date",
-										"admission session",
-										"admission term",
+										"adm no",
+										"adm date",
+										"adm session",
+										"adm term",
 										"name",
 										"class",
-										"sex",
-										"religion",
-										"guardian name",
-										"guardian telephone",
+										"guard name",
+										"guard tel",
 									].map((head) => (
 										<th key={head}>{head}</th>
 									))}
@@ -187,8 +179,7 @@ const ActiveStudents = () => {
 											{row?.first_name} {row?.last_name}
 										</td>
 										<td>{row?.curr_class?.name}</td>
-										<td>{row?.sex}</td>
-										<td>{row?.religion}</td>
+
 										<td>{row?.guardian_name}</td>
 										<td>{row?.guardian_telephone}</td>
 									</tr>

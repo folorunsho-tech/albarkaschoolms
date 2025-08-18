@@ -31,8 +31,8 @@ router.post("/login", async (req, res) => {
 				active: user.active,
 				username: user.username,
 			});
-		} else if (!user) {
-			res.status(404).json({
+		} else if (!compared) {
+			res.status(401).json({
 				message: {
 					success: "",
 					error: "Invalid credentials",
@@ -47,13 +47,13 @@ router.post("/login", async (req, res) => {
 			});
 		}
 	} catch (error) {
+		console.error(error);
 		res.status(500).json({
 			message: {
 				success: "",
 				error: "Server Error",
 			},
 		});
-		console.error(error);
 	}
 });
 router.post("/revoke/:accId", async (req, res) => {

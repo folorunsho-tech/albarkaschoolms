@@ -60,12 +60,12 @@ const Result = ({
 			generated.push({
 				id: sub?.id,
 				name: sub?.name,
-				fca: `${fca?.score}`,
-				sca: `${sca?.score}`,
-				exam: `${exam?.score}`,
-				total: `${fca?.score + sca?.score + exam?.score}`,
+				fca: fca?.score,
+				sca: sca?.score,
+				exam: exam?.score,
+				total: Number(fca?.score) + Number(sca?.score) + Number(exam?.score),
 				grade: getGrade(
-					fca?.score + sca?.score + exam?.score,
+					Number(fca?.score) + Number(sca?.score) + Number(exam?.score),
 					selectedClass?.name
 				),
 			});
@@ -80,10 +80,9 @@ const Result = ({
 			),
 		});
 		const total = generated?.reduce((prev: number, curr: { total: number }) => {
-			return prev + curr.total;
+			return Number(prev) + Number(curr.total);
 		}, 0);
 		const calculated = ((total / (subs.length * 100)) * 100).toFixed(2);
-
 		setPerc(calculated !== "NaN" ? parseFloat(calculated) : 0);
 		setDocName(data?.admission_no);
 		setLoading(false);
@@ -105,7 +104,7 @@ const Result = ({
 			</Button>
 			<ScrollAreaAutosize>
 				<section className='px-4 pb-2 prints' ref={contentRef}>
-					<header className='space-y-2 mb-2'>
+					<header className='space-y-2 mb-2 w-full'>
 						<PrintHeader />
 						<div className='flex gap-4 justify-between text-sm w-4/5'>
 							<p>

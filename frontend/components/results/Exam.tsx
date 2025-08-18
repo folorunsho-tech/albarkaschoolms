@@ -44,7 +44,7 @@ const Fca = () => {
 			<Table.Td>{row?.score}</Table.Td>
 			<Table.Td>{moment(row?.updatedAt).format("MMMM Do YYYY")}</Table.Td>
 			<Table.Td className='flex items-center gap-3 '>
-				<Link href={`results/exam/edit?id=${row?.id}`}>
+				<Link href={`results/exam/edit/${row?.id}`}>
 					<ActionIcon variant='outline' color='green' aria-label='action menu'>
 						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
 					</ActionIcon>
@@ -71,7 +71,7 @@ const Fca = () => {
 						</span>
 					</button>
 					<DataLoader
-						link={`/exams/byId/${user?.id}`}
+						link={`/exams/byId`}
 						post={post}
 						setQueryData={setQueryData}
 					/>

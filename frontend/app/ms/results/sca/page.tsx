@@ -47,20 +47,13 @@ const Sca = () => {
 		getAll();
 	}, []);
 	React.useEffect(() => {
-		if (selectedClass !== null && user?.id) {
+		if (selectedClass) {
 			const getSubjectsList = async () => {
 				const { data: classSubs } = await fetch(
 					`/classes/subjects/${selectedClass}`
 				);
-				const { data: staffSubs } = await fetch(
-					`/staffs/${user?.empid}/subjects`
-				);
 
-				if (staffSubs?.subjects?.length !== 0) {
-					setSubjectsList(staffSubs?.subjects);
-				} else {
-					setSubjectsList(classSubs?.subjects);
-				}
+				setSubjectsList(classSubs?.subjects);
 			};
 			getSubjectsList();
 		}

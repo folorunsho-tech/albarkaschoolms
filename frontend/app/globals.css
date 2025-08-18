@@ -3,10 +3,10 @@
 	@apply m-2
 }
 .printable {
-	@apply border-collapse ;
+	@apply border-collapse w-full text-sm text-left contain-layout;
 }
 .printable th {
-	@apply  border border-black bg-gray-200;
+	@apply  border border-black bg-gray-200 capitalize;
 }
 .printable tbody tr {
 	@apply  border border-black;

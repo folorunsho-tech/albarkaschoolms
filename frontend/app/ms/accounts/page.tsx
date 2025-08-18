@@ -26,15 +26,7 @@ import chunk from "@/libs/chunk";
 const Accounts = () => {
 	const { loading, data, fetch } = useFetch();
 	const { loading: pLoading, post } = usePost();
-	const headers = [
-		"empid",
-		"name",
-		"username",
-		"appointment",
-		"login access",
-		"createdAt",
-		"updatedAt",
-	];
+	const headers = ["username", "login access", "createdAt", "updatedAt"];
 	const openAModal = (row: any) =>
 		modals.openConfirmModal({
 			title: "Revoke login access for account",
