@@ -1,3 +1,3 @@
 @echo off
 cd ./backend
-node index.js
+node server.js
