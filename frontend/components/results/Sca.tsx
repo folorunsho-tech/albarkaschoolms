@@ -58,7 +58,7 @@ const Fca = () => {
 		<section className='p-3 bg-white space-y-6'>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>2nd C.A Results</h2>
-				<div className='flex justify-between gap-6 items-end'>
+				<div className='flex flex-wrap justify-between gap-6 items-end'>
 					<button
 						onClick={() => {
 							toggle();
@@ -79,7 +79,7 @@ const Fca = () => {
 						href={`results/sca`}
 						className='bg-teal-500 text-white hover:bg-teal-700 px-4 py-2 rounded-sm transition duration-200 ease-linear'
 					>
-						Add a new 2nd C.A result
+						New 2nd C.A result
 					</Link>
 				</div>
 			</div>

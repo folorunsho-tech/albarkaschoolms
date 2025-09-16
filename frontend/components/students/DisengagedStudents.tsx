@@ -85,7 +85,7 @@ const DisengagedStudents = () => {
 			<Table.Td className='flex items-center gap-3 '>
 				<ActionIcon variant='outline' aria-label='action menu'>
 					<Link
-						href={`students/view?id=${row?.student?.id}`}
+						href={`students/view/${row?.student?.id}`}
 						className='flex justify-center'
 					>
 						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
@@ -145,7 +145,7 @@ const DisengagedStudents = () => {
 		<section className='flex flex-col gap-4 p-4 bg-white'>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Disengaged Students</h2>
-				<div className='flex gap-3 items-center'>
+				<div className='flex flex-wrap gap-3 items-center'>
 					<DataLoader
 						link='/disengagements/students'
 						setQueryData={setQueryData}

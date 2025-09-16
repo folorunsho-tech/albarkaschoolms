@@ -29,7 +29,7 @@ const EditFca = () => {
 			}}
 			className='flex flex-col gap-6 px-6 py-4'
 		>
-			<div className='flex gap-10 items-center '>
+			<div className='flex flex-wrap gap-10 items-center '>
 				<Button
 					leftSection={
 						<IconArrowNarrowLeft

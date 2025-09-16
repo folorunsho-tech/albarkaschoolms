@@ -136,12 +136,12 @@ const ResultsFilter = ({
 		<ScrollArea h={100}>
 			<section className='flex flex-col gap-2 '>
 				<form
-					className='self-end flex items-center gap-4 '
+					className='self-end flex  items-center gap-4 '
 					onSubmit={(e) => {
 						e.preventDefault();
 					}}
 				>
-					<div className='flex items-center gap-3'>
+					<div className='flex flex-wrap items-center gap-3'>
 						<Button disabled className='self-end'>
 							Where:{" "}
 						</Button>

@@ -115,7 +115,7 @@ router.get("/me", async (req, res) => {
 	try {
 		const returned = decodeToken(token);
 		if (!returned) {
-			res.status(404).json({ message: "Invalid Token" });
+			res.status(404).json(returned);
 		} else {
 			res.json(returned);
 		}

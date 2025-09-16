@@ -1,5 +1,5 @@
 import axios from "@/config/axios";
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function verifyToken(req: NextRequest) {
 	const token = req.cookies.get("token")?.value;
@@ -10,11 +10,15 @@ export async function verifyToken(req: NextRequest) {
 		});
 	try {
 		const { data } = await axios.get("/auth/me");
+
+		if (!data) {
+			return NextResponse.redirect(new URL("/login", req.url));
+		}
 		return data;
 	} catch (error) {
-		return new Response(JSON.stringify({ error: "Invalid token" }), {
-			status: 401,
-			headers: { "Content-Type": "application/json" },
-		});
+		return NextResponse.json(
+			{ error: "Invalid token" },
+			{ status: 401, headers: { "Content-Type": "application/json" } }
+		);
 	}
 }

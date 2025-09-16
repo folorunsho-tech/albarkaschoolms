@@ -126,7 +126,7 @@ const EditStudent = () => {
 				</Button>
 				<Select
 					checkIconPosition='right'
-					className='w-70'
+					className='w-48'
 					data={["Pre-nursery", "Nursery", "Primary", "JSS", "SSS"]}
 					searchable
 					allowDeselect={false}

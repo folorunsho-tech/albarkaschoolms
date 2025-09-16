@@ -4,7 +4,7 @@ import { IconLogout } from "@tabler/icons-react";
 import { Avatar } from "@mantine/core";
 import { userContext } from "@/context/User";
 import axios from "@/config/axios";
-import { IconSettings, IconDatabaseExport } from "@tabler/icons-react";
+import { IconSettings } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -41,7 +41,7 @@ const TopBar = () => {
 				</Group>
 
 				<button
-					className='flex cursor-pointer gap-3 items-center transition duration-300 ease-in-out text-sm bg-red-500 text-white p-2 py-1 rounded-sm font-medium hover:bg-red-200 hover:text-red-700'
+					className='hidden md:flex cursor-pointer gap-3 items-center transition duration-300 ease-in-out text-sm bg-red-500 text-white p-2 py-1 rounded-sm font-medium hover:bg-red-200 hover:text-red-700'
 					onClick={async () => {
 						await axios.post("/auth/logout");
 						router.push("/login");

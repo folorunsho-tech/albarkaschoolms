@@ -104,9 +104,7 @@ const Create = () => {
 				>
 					Go back
 				</Button>
-				<h2 className='font-bold text-xl text-blue-700'>
-					Create account for staff
-				</h2>
+				<h2 className='font-bold text-xl text-blue-700'>Create account</h2>
 			</div>
 
 			<form onSubmit={handleSubmit(onSubmit)} className='relative'>

@@ -120,9 +120,9 @@ const Student = () => {
 	};
 	return (
 		<section className='flex flex-col gap-4 p-3 bg-white'>
-			<div className='flex justify-between mt-2'>
+			<div className='flex flex-wrap justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Students Promotions</h2>
-				<div className='flex gap-3 items-end '>
+				<div className='flex flex-wrap gap-3 items-end '>
 					<DataLoader
 						link='/promotions/students'
 						setQueryData={setQueryData}

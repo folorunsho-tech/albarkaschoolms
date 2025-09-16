@@ -146,8 +146,8 @@ const Statement = () => {
 		setClassHistory(sortedHistory);
 	};
 	return (
-		<section className='space-y-2 p-2 px-4 bg-white h-screen'>
-			<header className='flex justify-between w-full'>
+		<section className='space-y-2 p-2 px-4 pb-3 bg-white h-screen'>
+			<header className='flex  justify-between w-full'>
 				<Button
 					leftSection={
 						<IconArrowNarrowLeft
@@ -166,7 +166,7 @@ const Statement = () => {
 				<h2>Statement of result</h2>
 			</header>
 
-			<form className='flex gap-4 items-end' onSubmit={handleSubmit}>
+			<form className='flex flex-wrap gap-4 items-end' onSubmit={handleSubmit}>
 				<Select
 					checkIconPosition='right'
 					label='Session'

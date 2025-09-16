@@ -1,29 +1,41 @@
-# Dependencies stage
-FROM node:lts-alpine3.21 AS deps
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --force && npm cache clean --force
+FROM node:24-alpine AS base
 
-# Builder stage
-FROM node:lts-alpine3.21 AS builder
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./
+RUN \
+    if [ -f package-lock.json ]; then npm ci; \
+    elif [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install; \
+    elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
+    else npm install; fi
+# Rebuild the source code only when needed
+FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Accept build argument and set as environment variable
-ARG NEXT_PUBLIC_SERVER_API
-ENV NEXT_PUBLIC_SERVER_API=$NEXT_PUBLIC_SERVER_API
-ENV NEXT_PUBLIC_SERVER_API=http://localhost:5000/api
+RUN npx prisma generate
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# Runner stage
-FROM node:lts-alpine3.21 AS runner
+# Production image, copy only necessary files
+FROM base AS runner
 WORKDIR /app
+
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_SERVER_API=http://localhost:5000/api
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Create user
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 nextjs
+
+# Copy build artifacts
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+USER nextjs
 
 EXPOSE 3000
 CMD ["node", "server.js"]

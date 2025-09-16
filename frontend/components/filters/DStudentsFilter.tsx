@@ -75,7 +75,7 @@ const DStudentsFilter = ({
 								filterF(queryData, filterCondition);
 							}}
 						>
-							<div className='flex items-end gap-3 divide-x-2'>
+							<div className='flex flex-wrap items-end gap-3 divide-x-2'>
 								<Select
 									required
 									checkIconPosition='right'

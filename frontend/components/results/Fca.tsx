@@ -6,15 +6,14 @@ import PaginatedTable from "@/components/PaginatedTable";
 import { usePostNormal } from "@/hooks/useQueries";
 import { Table, ActionIcon } from "@mantine/core";
 import { IconPencil } from "@tabler/icons-react";
+import { userContext } from "@/context/User";
 import moment from "moment";
 import Link from "next/link";
 import ResultsFilter from "../filters/ResultsFilter";
-import { userContext } from "@/context/User";
 import { useDisclosure } from "@mantine/hooks";
 import DataLoader from "../DataLoader";
 const Fca = () => {
 	const { user } = React.useContext(userContext);
-
 	const headers = [
 		"Admission no",
 		"Student name",
@@ -55,9 +54,9 @@ const Fca = () => {
 
 	return (
 		<section className='p-3 bg-white space-y-3'>
-			<div className='flex justify-between mt-2'>
+			<div className='flex flex-wrap justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>1st C.A Results</h2>
-				<div className='flex gap-6 justify-between items-center'>
+				<div className='flex flex-wrap gap-6 justify-between items-center'>
 					<button
 						onClick={() => {
 							toggle();
@@ -78,7 +77,7 @@ const Fca = () => {
 						href={`results/fca`}
 						className='bg-teal-500 text-white hover:bg-teal-700 px-2 py-2 rounded-sm transition duration-200 ease-linear'
 					>
-						Add a new 1st C.A result
+						New 1st C.A result
 					</Link>
 				</div>
 			</div>

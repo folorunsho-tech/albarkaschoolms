@@ -54,7 +54,7 @@ const ActiveStudents = () => {
 			<Table.Td className='flex items-center gap-3 '>
 				<ActionIcon variant='outline' aria-label='action menu'>
 					<Link
-						href={`students/view?id=${row?.id}`}
+						href={`students/view/${row?.id}`}
 						className='flex justify-center'
 					>
 						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
@@ -67,7 +67,7 @@ const ActiveStudents = () => {
 					aria-label='action menu'
 				>
 					<Link
-						href={`students/edit?id=${row?.id}`}
+						href={`students/edit/${row?.id}`}
 						className='flex justify-center'
 					>
 						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
@@ -81,7 +81,7 @@ const ActiveStudents = () => {
 		<section className='flex flex-col gap-1 bg-white p-4 '>
 			<div className='flex justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>Students</h2>
-				<div className='flex gap-3 items-center'>
+				<div className='flex flex-wrap gap-3 items-center'>
 					<DataLoader
 						link='/students'
 						setQueryData={setQueryData}

@@ -54,11 +54,11 @@ const Fca = () => {
 	));
 	return (
 		<section className='p-3 bg-white space-y-6'>
-			<div className='flex items-end justify-between mt-2'>
+			<div className='flex gap-1 justify-between mt-2'>
 				<h2 className='font-bold text-xl text-blue-700'>
 					Terminal exams Results
 				</h2>
-				<div className='flex gap-6 justify-between items-end'>
+				<div className='flex flex-wrap gap-6 justify-between items-end'>
 					<button
 						onClick={() => {
 							toggle();
@@ -79,7 +79,7 @@ const Fca = () => {
 						href={`results/exam`}
 						className='bg-teal-500 text-white hover:bg-teal-700 px-4 py-2 rounded-sm transition duration-200 ease-linear'
 					>
-						Add a new exam result
+						New exam result
 					</Link>
 				</div>
 			</div>

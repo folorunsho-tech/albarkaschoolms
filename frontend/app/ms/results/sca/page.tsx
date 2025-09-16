@@ -107,7 +107,7 @@ const Sca = () => {
 						Go back
 					</Button>
 				</div>
-				<section className='flex gap-6'>
+				<section className='flex flex-wrap gap-6'>
 					<div className='flex gap-6'>
 						<Select
 							checkIconPosition='right'
@@ -158,8 +158,8 @@ const Sca = () => {
 				</section>
 
 				{selectedClass && session && term ? (
-					<section className='w-4/5'>
-						<div className='flex items-center gap-3'>
+					<section className='w-full'>
+						<div className='flex flex-wrap items-center gap-3'>
 							<Select
 								checkIconPosition='right'
 								label='Add result for student'

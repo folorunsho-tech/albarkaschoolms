@@ -47,8 +47,8 @@ const DataLoader = ({
 		}
 	}, [Asession, term, session, criteria]);
 	return (
-		<section className='flex gap-6 items-end'>
-			<div className='flex items-center gap-2'>
+		<section className='flex gap-6 flex-wrap items-end'>
+			<div className='flex flex-wrap items-center gap-2'>
 				<Text className='font-semibold'>Load data by:</Text>
 				<Select
 					checkIconPosition='right'

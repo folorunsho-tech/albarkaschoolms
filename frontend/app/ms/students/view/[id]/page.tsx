@@ -51,13 +51,13 @@ const ViewStudent = () => {
 			>
 				Go back
 			</Button>
-			<section className='relative flex gap-3 w-full'>
+			<section className='relative flex flex-wrap gap-4 w-full'>
 				<Card
 					shadow='sm'
 					padding='lg'
 					radius='md'
 					withBorder
-					className='w-1/4 h-[20rem] bg-white relative space-y-6'
+					className='w-full lg:w-1/4 h-[20rem] bg-white relative space-y-6'
 				>
 					<Card.Section className='bg-indigo-700 h-20 '>
 						<Avatar

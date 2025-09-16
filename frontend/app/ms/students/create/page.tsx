@@ -73,7 +73,7 @@ const CreateStudent = () => {
 
 	return (
 		<section className='space-y-6 bg-white p-4'>
-			<div className='flex justify-between items-center'>
+			<div className='flex flex-wrap gap-2 justify-between items-center'>
 				<Button
 					leftSection={
 						<IconArrowNarrowLeft
@@ -89,10 +89,10 @@ const CreateStudent = () => {
 				>
 					Go back
 				</Button>
-				<div className='flex items-end gap-5'>
+				<div className='flex flex-wrap items-end gap-5'>
 					<Select
 						checkIconPosition='right'
-						className='w-74'
+						className='w-36'
 						data={sessions}
 						searchable
 						required
@@ -108,7 +108,7 @@ const CreateStudent = () => {
 					/>
 					<Select
 						checkIconPosition='right'
-						className='w-70'
+						className='w-48'
 						data={["Pre-nursery", "Nursery", "Primary", "JSS", "SSS"]}
 						searchable
 						required
