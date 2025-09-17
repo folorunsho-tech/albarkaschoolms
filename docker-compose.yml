@@ -1,28 +1,16 @@
 services:
-  # Express API Server
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
     environment:
       - NODE_ENV=production
-    networks:
-      - albarkaschool
-  # Next.js Frontend
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
     environment:
-      - NEXT_PUBLIC_SERVER_API=http://backend:5000/api
+      - NEXT_PUBLIC_SERVER_API=https://schoolbackend.tacheyon.com/api
     depends_on:
       - backend
-    networks:
-      - albarkaschool
-networks:
-  albarkaschool:
-    name: albarkaschool

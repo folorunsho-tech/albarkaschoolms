@@ -21,7 +21,6 @@ import cookieParser from "cookie-parser";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
 const app = express();
-const port = 5000;
 dotenv.config();
 app.use(express.json());
 app.use(errorHandler);
@@ -49,9 +48,11 @@ app.use("/api/sca", authMiddleware, sca);
 app.use("/api/exams", authMiddleware, exams);
 app.use("/api/statements", authMiddleware, statements);
 app.use("/api/disengagements", authMiddleware, disengagements);
-app.get("/", (req, res) => {
-	res.send("<h2>Welcome</h2>");
-});
-app.listen(port, () => {
-	console.log(`Albarka server listening on port ${port}`);
+
+const PORT = process.env.PORT || 5000;
+
+app.get("/", (req, res) => res.send("Backend running"));
+
+app.listen(PORT, "0.0.0.0", () => {
+	console.log(`🚀 Server running on port ${PORT}`);
 });

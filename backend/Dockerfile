@@ -1,31 +1,22 @@
 # Use the official Node.js runtime as the base image
 FROM node:24-alpine
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available)
+# Install dependencies separately for better caching
 COPY package*.json ./
+RUN npm install --production
 
-# Install dependencies
-RUN npm ci && npm cache clean --force
-
-# Copy the rest of the application code
+# Copy the rest of the code
 COPY . .
 
-# Generate Prisma client
+# Generate Prisma client (must happen after code is copied)
 RUN npx prisma generate
 
-# Create a non-root user to run the application
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S expressuser -u 1001
-
-# Change ownership of the app directory to the non-root user
-RUN chown -R expressuser:nodejs /app
-USER expressuser
-
-# Expose the port the app runs on
+# Coolify sets PORT, so use it in your app
+ENV PORT=5000
 EXPOSE 5000
 
-# Define the command to run the application
-CMD ["node", "server.js"]
+# Start app
+CMD ["npm", "run", "start"]
