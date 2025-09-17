@@ -10,7 +10,5 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:
-       NEXT_PUBLIC_SERVER_API: "https://schoolbackend.tacheyon.com/api"
     depends_on:
       - backend
