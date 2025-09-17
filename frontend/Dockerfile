@@ -12,7 +12,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 # ✅ Pass env at build time
-ENV NEXT_PUBLIC_SERVER_API=https://schoolbackend.tacheyon.com/api
+ENV NEXT_PUBLIC_SERVER=https://schoolbackend.tacheyon.com/api
 RUN npm run build
 
 # Production image, copy only necessary files
