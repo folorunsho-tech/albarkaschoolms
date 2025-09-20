@@ -35,19 +35,16 @@ const Classes = () => {
 						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
 					</Link>
 				</ActionIcon>
-				<ActionIcon
-					disabled={!(user?.role == "admin")}
-					variant='outline'
-					color='teal'
-					aria-label='action menu'
-				>
-					<Link
-						href={`classes/edit/${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
+				{user?.role === "admin" && (
+					<ActionIcon variant='outline' color='teal' aria-label='action menu'>
+						<Link
+							href={`classes/edit/${row?.id}`}
+							className='flex justify-center'
+						>
+							<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
+						</Link>
+					</ActionIcon>
+				)}
 			</Table.Td>
 		</Table.Tr>
 	));

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { sessions, currTerm, currSession } from "@/libs/sessions";
+import { sessions } from "@/libs/sessions";
 import { useFetch, usePostMany } from "@/hooks/useQueries";
 import { useRouter } from "next/navigation";
 import {
@@ -47,17 +47,12 @@ const Sca = () => {
 		getAll();
 	}, []);
 	React.useEffect(() => {
-		if (selectedClass) {
-			const getSubjectsList = async () => {
-				const { data: classSubs } = await fetch(
-					`/classes/subjects/${selectedClass}`
-				);
-
-				setSubjectsList(classSubs?.subjects);
-			};
-			getSubjectsList();
-		}
-	}, [selectedClass]);
+		const getSubjectsList = async () => {
+			const { data } = await fetch(`/accounts/${user?.userId}/subjects`);
+			setSubjectsList(data?.subjects);
+		};
+		getSubjectsList();
+	}, [user]);
 	React.useEffect(() => {
 		const getStudentsList = async () => {
 			const { data } = await axios.post("/students/byClassHistory", {

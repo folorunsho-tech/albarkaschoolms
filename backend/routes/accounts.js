@@ -2,7 +2,6 @@ import { nanoid } from "nanoid";
 import express from "express";
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcryptjs";
-// import { authMiddleware } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 router.get("/", async (req, res) => {
 	try {
@@ -22,6 +21,26 @@ router.get("/:accountId", async (req, res) => {
 			where: {
 				id: req.params.accountId,
 			},
+			include: {
+				subjects: true,
+			},
+		});
+
+		res.status(200).json(account);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json(error);
+	}
+});
+router.get("/:accountId/subjects", async (req, res) => {
+	try {
+		const account = await prisma.accounts.findUnique({
+			where: {
+				id: req.params.accountId,
+			},
+			select: {
+				subjects: true,
+			},
 		});
 		res.status(200).json(account);
 	} catch (error) {
@@ -30,7 +49,7 @@ router.get("/:accountId", async (req, res) => {
 });
 router.post("/create", async (req, res) => {
 	try {
-		const { username, password, permissions, role } = req.body;
+		const { username, password, permissions, role, subjects } = req.body;
 		const passHash = await bcrypt.hash(password, 10);
 		const created = await prisma.accounts.create({
 			data: {
@@ -39,6 +58,10 @@ router.post("/create", async (req, res) => {
 				permissions,
 				passHash,
 				role,
+				subjects: {
+					set: [],
+					connect: subjects,
+				},
 			},
 		});
 		res.status(200).json(created);
@@ -61,7 +84,8 @@ router.get("/:account_id/basic", async (req, res) => {
 	}
 });
 router.post("/edit/:accountId", async (req, res) => {
-	const { username, password, permissions, updatedById, role } = req.body;
+	const { username, password, permissions, updatedById, role, subjects } =
+		req.body;
 	try {
 		if (password) {
 			const passHash = await bcrypt.hash(password, 10);
@@ -75,6 +99,10 @@ router.post("/edit/:accountId", async (req, res) => {
 					passHash,
 					updatedById,
 					role,
+					subjects: {
+						set: [],
+						connect: subjects,
+					},
 				},
 			});
 			res.json(edited);
@@ -88,6 +116,10 @@ router.post("/edit/:accountId", async (req, res) => {
 					permissions,
 					updatedById,
 					role,
+					subjects: {
+						set: [],
+						connect: subjects,
+					},
 				},
 			});
 			res.json(edited);

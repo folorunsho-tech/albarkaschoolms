@@ -4,7 +4,7 @@ const router = express.Router();
 import prisma from "../lib/prisma.js";
 router.get("/", async (req, res) => {
 	try {
-		const fCAResults = await prisma.fCAResults.findMany({
+		const fCAResults = await prisma.fcaresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 router.post("/byId/bysessionnterm", async (req, res) => {
 	const { session, term } = req.body;
 	try {
-		const found = await prisma.fCAResults.findMany({
+		const found = await prisma.fcaresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -47,7 +47,7 @@ router.post("/byId/bysession", async (req, res) => {
 	const { session } = req.body;
 
 	try {
-		const found = await prisma.fCAResults.findMany({
+		const found = await prisma.fcaresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -74,7 +74,7 @@ router.get("/byId/:accId", async (req, res) => {
 	});
 	try {
 		if (account?.role == "admin" || account?.role == "editor") {
-			const found = await prisma.fCAResults.findMany({
+			const found = await prisma.fcaresults.findMany({
 				orderBy: {
 					updatedAt: "desc",
 				},
@@ -87,7 +87,7 @@ router.get("/byId/:accId", async (req, res) => {
 			});
 			res.status(200).json(found);
 		} else {
-			const found = await prisma.fCAResults.findMany({
+			const found = await prisma.fcaresults.findMany({
 				orderBy: {
 					updatedAt: "desc",
 				},
@@ -109,7 +109,7 @@ router.get("/byId/:accId", async (req, res) => {
 });
 router.get("/:caId", async (req, res) => {
 	try {
-		const ca = await prisma.fCAResults.findUnique({
+		const ca = await prisma.fcaresults.findUnique({
 			where: {
 				id: req.params.caId,
 			},
@@ -131,7 +131,7 @@ router.post("/create", async (req, res) => {
 	try {
 		uploads.forEach(async (upload) => {
 			const { student_id, class_id, subject_id, term, session, score } = upload;
-			const found = await prisma.fCAResults.findFirst({
+			const found = await prisma.fcaresults.findFirst({
 				where: {
 					student_id,
 					class_id,
@@ -141,7 +141,7 @@ router.post("/create", async (req, res) => {
 				},
 			});
 			if (found) {
-				await prisma.fCAResults.update({
+				await prisma.fcaresults.update({
 					where: {
 						id: found?.id,
 					},
@@ -150,7 +150,7 @@ router.post("/create", async (req, res) => {
 					},
 				});
 			} else {
-				await prisma.fCAResults.create({
+				await prisma.fcaresults.create({
 					data: {
 						id: nanoid(7),
 						...upload,
@@ -167,7 +167,7 @@ router.post("/create", async (req, res) => {
 });
 router.post("/edit/:caId", async (req, res) => {
 	try {
-		const edited = await prisma.fCAResults.update({
+		const edited = await prisma.fcaresults.update({
 			where: {
 				id: req.params.caId,
 			},

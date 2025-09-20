@@ -4,7 +4,7 @@ const router = express.Router();
 import prisma from "../lib/prisma.js";
 router.get("/", async (req, res) => {
 	try {
-		const exams = await prisma.examResults.findMany({
+		const exams = await prisma.examresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 router.post("/byId/bysessionnterm", async (req, res) => {
 	const { session, term } = req.body;
 	try {
-		const found = await prisma.examResults.findMany({
+		const found = await prisma.examresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -46,7 +46,7 @@ router.post("/byId/bysession", async (req, res) => {
 	const { session } = req.body;
 
 	try {
-		const found = await prisma.examResults.findMany({
+		const found = await prisma.examresults.findMany({
 			orderBy: {
 				updatedAt: "desc",
 			},
@@ -67,7 +67,7 @@ router.post("/byId/bysession", async (req, res) => {
 });
 router.get("/:examId", async (req, res) => {
 	try {
-		const exam = await prisma.examResults.findUnique({
+		const exam = await prisma.examresults.findUnique({
 			where: {
 				id: req.params.examId,
 			},
@@ -89,7 +89,7 @@ router.post("/create", async (req, res) => {
 	try {
 		uploads.forEach(async (upload) => {
 			const { student_id, class_id, subject_id, term, session, score } = upload;
-			const found = await prisma.examResults.findFirst({
+			const found = await prisma.examresults.findFirst({
 				where: {
 					student_id,
 					class_id,
@@ -99,7 +99,7 @@ router.post("/create", async (req, res) => {
 				},
 			});
 			if (found) {
-				await prisma.examResults.update({
+				await prisma.examresults.update({
 					where: {
 						id: found?.id,
 					},
@@ -108,7 +108,7 @@ router.post("/create", async (req, res) => {
 					},
 				});
 			} else {
-				await prisma.examResults.create({
+				await prisma.examresults.create({
 					data: {
 						id: nanoid(7),
 						...upload,
@@ -125,7 +125,7 @@ router.post("/create", async (req, res) => {
 });
 router.post("/edit/:examId", async (req, res) => {
 	try {
-		const edited = await prisma.examResults.update({
+		const edited = await prisma.examresults.update({
 			where: {
 				id: req.params.examId,
 			},

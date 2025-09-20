@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Accounts {
+model accounts {
   id          String        @id
   name        String?
   username    String?
@@ -24,23 +24,24 @@ model Accounts {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   updatedById String?
-  Students    Students[]
-  FCAResults  FCAResults[]
-  SCAResults  SCAResults[]
-  ExamResults ExamResults[]
+  subjects    subjects[]
+  Students    students[]
+  FCAResults  fcaresults[]
+  SCAResults  scaresults[]
+  ExamResults examresults[]
 
-  StudentsDemotions StudentsDemotions[]
+  StudentsDemotions studentsdemotions[]
 
-  StudentsPromotions StudentsPromotions[]
+  StudentsPromotions studentspromotions[]
 
-  Disengagedstudent Disengagedstudent[]
-  Transactions      Transaction[]
+  Disengagedstudent disengagedstudent[]
+  Transactions      transaction[]
 
-  Reciepts Reciept[]
-  Payments Payment[]
+  Reciepts reciept[]
+  Payments payment[]
 }
 
-model Students {
+model students {
   id                 String    @id
   admission_no       String?   @unique
   first_name         String?
@@ -60,30 +61,30 @@ model Students {
   guardian_name      String?
   guardian_telephone String?
   curr_class_id      String?
-  curr_class         Classes?  @relation(fields: [curr_class_id], references: [id])
+  curr_class         classes?  @relation(fields: [curr_class_id], references: [id])
   createdById        String?
-  createdBy          Accounts? @relation(fields: [createdById], references: [id])
+  createdBy          accounts? @relation(fields: [createdById], references: [id])
   updatedById        String?
   updatedAt          DateTime  @updatedAt
 
-  transactions Transaction[]
-  FCAResults   FCAResults[]
-  SCAResults   SCAResults[]
-  ExamResults  ExamResults[]
+  transactions transaction[]
+  FCAResults   fcaresults[]
+  SCAResults   scaresults[]
+  ExamResults  examresults[]
 
-  StudentsPromotions StudentsPromotions[]
+  StudentsPromotions studentspromotions[]
 
-  StudentsDemotions StudentsDemotions[]
+  StudentsDemotions studentsdemotions[]
 
-  Disengagedstudent Disengagedstudent[]
+  Disengagedstudent disengagedstudent[]
 
-  ClassHistory ClassHistory[]
+  ClassHistory classhistory[]
 }
 
-model Disengagedstudent {
+model disengagedstudent {
   id                      String    @id @default(cuid())
   student_id              String?
-  student                 Students? @relation(fields: [student_id], references: [id])
+  student                 students? @relation(fields: [student_id], references: [id])
   session                 String?
   term                    String?
   date_of_disengagement   DateTime? @default(now())
@@ -91,75 +92,75 @@ model Disengagedstudent {
   reason                  String?
   comment                 String?
   createdById             String?
-  createdBy               Accounts? @relation(fields: [createdById], references: [id])
+  createdBy               accounts? @relation(fields: [createdById], references: [id])
 }
 
-model ClassHistory {
+model classhistory {
   id         String    @id @default(uuid())
   student_id String?
   session    String?
-  student    Students? @relation(fields: [student_id], references: [id])
+  student    students? @relation(fields: [student_id], references: [id])
   class_id   String?
-  class      Classes?  @relation(fields: [class_id], references: [id])
+  class      classes?  @relation(fields: [class_id], references: [id])
 }
 
-model FCAResults {
+model fcaresults {
   id          String    @id
   student_id  String?
-  student     Students? @relation(fields: [student_id], references: [id])
+  student     students? @relation(fields: [student_id], references: [id])
   class_id    String?
-  class       Classes?  @relation(fields: [class_id], references: [id])
+  class       classes?  @relation(fields: [class_id], references: [id])
   subject_id  String?
-  subject     Subjects? @relation(fields: [subject_id], references: [id])
+  subject     subjects? @relation(fields: [subject_id], references: [id])
   score       Int?
   session     String?
   term        String?
   createdById String?
-  createdBy   Accounts? @relation(fields: [createdById], references: [id])
+  createdBy   accounts? @relation(fields: [createdById], references: [id])
   updatedById String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-model SCAResults {
+model scaresults {
   id          String    @id
   student_id  String?
-  student     Students? @relation(fields: [student_id], references: [id])
+  student     students? @relation(fields: [student_id], references: [id])
   class_id    String?
-  class       Classes?  @relation(fields: [class_id], references: [id])
+  class       classes?  @relation(fields: [class_id], references: [id])
   subject_id  String?
-  subject     Subjects? @relation(fields: [subject_id], references: [id])
+  subject     subjects? @relation(fields: [subject_id], references: [id])
   score       Int?
   session     String?
   term        String?
   createdById String?
-  createdBy   Accounts? @relation(fields: [createdById], references: [id])
+  createdBy   accounts? @relation(fields: [createdById], references: [id])
   updatedById String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-model ExamResults {
+model examresults {
   id          String    @id
   student_id  String?
-  student     Students? @relation(fields: [student_id], references: [id])
+  student     students? @relation(fields: [student_id], references: [id])
   class_id    String?
-  class       Classes?  @relation(fields: [class_id], references: [id])
+  class       classes?  @relation(fields: [class_id], references: [id])
   subject_id  String?
-  subject     Subjects? @relation(fields: [subject_id], references: [id])
+  subject     subjects? @relation(fields: [subject_id], references: [id])
   score       Int?
   session     String?
   term        String?
   createdById String?
-  createdBy   Accounts? @relation(fields: [createdById], references: [id])
+  createdBy   accounts? @relation(fields: [createdById], references: [id])
   updatedById String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
-model Transaction {
+model transaction {
   id          String    @id
-  items       TnxItem[]
+  items       tnxitem[]
   total       Int
   balance     Int
   year        Int
@@ -170,21 +171,21 @@ model Transaction {
   status      String
   createdById String?
   updatedById String?
-  updatedBy   Accounts? @relation(fields: [updatedById], references: [id])
+  updatedBy   accounts? @relation(fields: [updatedById], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   studentId   String?
-  student     Students? @relation(fields: [studentId], references: [id])
-  reciepts    Reciept[]
-  payments    Payment[]
+  student     students? @relation(fields: [studentId], references: [id])
+  reciepts    reciept[]
+  payments    payment[]
 }
 
-model TnxItem {
+model tnxitem {
   id            String      @id @default(uuid())
   transactionId String
-  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  transaction   transaction @relation(fields: [transactionId], references: [id])
   feeId         String
-  fee           FeesGroup   @relation(fields: [feeId], references: [id])
+  fee           feesgroup   @relation(fields: [feeId], references: [id])
   price         Int
   paid          Int
   balance       Int
@@ -196,15 +197,15 @@ model TnxItem {
   month         String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-  payments      Payment[]
+  payments      payment[]
 }
 
-model Payment {
+model payment {
   id          String       @id @default(uuid())
   tnxId       String?
-  transaction Transaction? @relation(fields: [tnxId], references: [id])
+  transaction transaction? @relation(fields: [tnxId], references: [id])
   itemId      String
-  tnxItem     TnxItem      @relation(fields: [itemId], references: [id])
+  tnxItem     tnxitem      @relation(fields: [itemId], references: [id])
   name        String
   paid        Int
   method      String?
@@ -212,7 +213,7 @@ model Payment {
   session     String?
   term        String?
   createdById String?
-  createdBy   Accounts?    @relation(fields: [createdById], references: [id])
+  createdBy   accounts?    @relation(fields: [createdById], references: [id])
   type        String       @default("payment")
   year        Int?
   month       String?
@@ -220,79 +221,80 @@ model Payment {
   updatedAt   DateTime     @updatedAt
 }
 
-model Reciept {
+model reciept {
   id          String      @id
   items       Json
   tnxId       String
-  transaction Transaction @relation(fields: [tnxId], references: [id])
+  transaction transaction @relation(fields: [tnxId], references: [id])
   year        Int
   month       String
   status      String
   createdById String?
-  createdBy   Accounts?   @relation(fields: [createdById], references: [id])
+  createdBy   accounts?   @relation(fields: [createdById], references: [id])
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
 
-model StudentsPromotions {
+model studentspromotions {
   id          String    @id
   student_id  String
-  student     Students  @relation(fields: [student_id], references: [id])
+  student     students  @relation(fields: [student_id], references: [id])
   from        String?
   term        String?
   session     String?
   to_id       String
-  to          Classes   @relation(fields: [to_id], references: [id])
+  to          classes   @relation(fields: [to_id], references: [id])
   createdById String?
-  createdBy   Accounts? @relation(fields: [createdById], references: [id])
+  createdBy   accounts? @relation(fields: [createdById], references: [id])
   promotedOn  DateTime? @default(now())
 }
 
-model StudentsDemotions {
+model studentsdemotions {
   id          String    @id
   student_id  String
-  student     Students  @relation(fields: [student_id], references: [id])
+  student     students  @relation(fields: [student_id], references: [id])
   from        String?
   term        String?
   session     String?
   to_id       String
-  to          Classes   @relation(fields: [to_id], references: [id])
+  to          classes   @relation(fields: [to_id], references: [id])
   createdById String?
-  createdBy   Accounts? @relation(fields: [createdById], references: [id])
+  createdBy   accounts? @relation(fields: [createdById], references: [id])
   demotedOn   DateTime? @default(now())
 }
 
-model Classes {
+model classes {
   id                 String               @id
   name               String?
   school_section     String?
-  subjects           Subjects[]
-  Students           Students[]
-  FCAResults         FCAResults[]
-  SCAResults         SCAResults[]
-  ExamResults        ExamResults[]
-  fees               FeesGroup[]
-  StudentsPromotions StudentsPromotions[]
+  subjects           subjects[]
+  Students           students[]
+  FCAResults         fcaresults[]
+  SCAResults         scaresults[]
+  ExamResults        examresults[]
+  fees               feesgroup[]
+  StudentsPromotions studentspromotions[]
 
-  StudentsDemotions StudentsDemotions[]
+  StudentsDemotions studentsdemotions[]
 
-  ClassHistory ClassHistory[]
+  ClassHistory classhistory[]
 }
 
-model Subjects {
-  id      String    @id
-  name    String?
-  Classes Classes[]
+model subjects {
+  id       String     @id
+  name     String?
+  accounts accounts[]
+  Classes  classes[]
 
-  FCAResults  FCAResults[]
-  SCAResults  SCAResults[]
-  ExamResults ExamResults[]
+  FCAResults  fcaresults[]
+  SCAResults  scaresults[]
+  ExamResults examresults[]
 }
 
-model FeesGroup {
+model feesgroup {
   id      String    @id
   name    String?
   amount  String?
-  classes Classes[]
-  tnxItem TnxItem[]
+  classes classes[]
+  tnxItem tnxitem[]
 }

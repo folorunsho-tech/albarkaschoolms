@@ -25,7 +25,7 @@ import { userContext } from "@/context/User";
 import DataLoader from "../DataLoader";
 
 const Student = () => {
-	const { user } = React.useContext(userContext);
+	const { permissions } = React.useContext(userContext);
 
 	const { handleSubmit } = useForm();
 	const { fetch } = useFetch();
@@ -130,7 +130,7 @@ const Student = () => {
 						post={dPost}
 					/>
 					<Button
-						disabled={!(user?.role == "admin" || user?.role == "editor")}
+						disabled={!permissions?.studentPromotions}
 						onClick={() => {
 							open();
 						}}

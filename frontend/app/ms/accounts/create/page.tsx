@@ -1,19 +1,21 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
 	TextInput,
 	PasswordInput,
 	Button,
 	Checkbox,
 	Select,
+	MultiSelect,
 } from "@mantine/core";
 import { LoadingOverlay } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { IconArrowNarrowLeft } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
-import { usePost } from "@/hooks/useQueries";
+import { useFetch, usePost } from "@/hooks/useQueries";
 import { userContext } from "@/context/User";
 const Create = () => {
+	const { fetch } = useFetch();
 	const { user } = useContext(userContext);
 	const { post, loading } = usePost();
 	const [students, setStudents] = useState({
@@ -41,6 +43,10 @@ const Create = () => {
 	const [role, setRole] = useState<"user" | "admin" | "editor">("user");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [subjects, setSubjects] = useState<string[]>([]);
+	const [allSubjects, setAllSubjects] = useState<
+		{ value: string; label: string }[]
+	>([]);
 	const { handleSubmit } = useForm();
 	const router = useRouter();
 	const onSubmit = async () => {
@@ -57,6 +63,11 @@ const Create = () => {
 				results,
 				payments,
 			},
+			subjects: subjects.map((sub) => {
+				return {
+					id: sub,
+				};
+			}),
 		});
 
 		setAccounts(false);
@@ -86,6 +97,20 @@ const Create = () => {
 		setPassword("");
 		setRole("user");
 	};
+	useEffect(() => {
+		const fetchSubjects = async () => {
+			try {
+				const { data } = await fetch("/subjects");
+				const sorted = data.map((subject: { id: string; name: string }) => {
+					return { value: subject.id, label: subject.name };
+				});
+				setAllSubjects(sorted);
+			} catch (error) {
+				console.error("Error fetching subjects:", error);
+			}
+		};
+		fetchSubjects();
+	}, []);
 	return (
 		<section className='flex flex-col gap-4 relative p-3 bg-white'>
 			<div className='flex gap-10 items-center'>
@@ -142,6 +167,30 @@ const Create = () => {
 							setPassword(e.currentTarget.value);
 						}}
 					/>
+					<section>
+						<h2 className='text-md font-semibold mb-3'>Select subjects:</h2>
+						<Checkbox
+							label='Select All Subjects'
+							className='mb-4 cursor-pointer'
+							checked={subjects.length === allSubjects.length}
+							onChange={(e) => {
+								e.currentTarget.checked
+									? setSubjects(allSubjects.map((subject) => subject.value))
+									: setSubjects([]);
+							}}
+						/>
+						<MultiSelect
+							data={allSubjects}
+							placeholder='Select subjects'
+							value={subjects}
+							onChange={setSubjects}
+							className='w-1/2'
+							clearable
+							searchable
+							nothingFoundMessage='No subject found'
+							maxDropdownHeight={160}
+						/>
+					</section>
 					<section className='space-y-2 mb-3'>
 						<h2 className='text-md font-semibold'>Permissions:</h2>
 						<div className='flex flex-wrap gap-4'>

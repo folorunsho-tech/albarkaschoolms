@@ -11,87 +11,25 @@ const Result = ({
 	term,
 	selectedClass,
 	selectedStudent,
-	student,
-	fetchResult,
+	statement,
 	resumption,
+	perc,
+	docName,
 }: {
-	session: string;
-	term: string;
+	session: string | number;
+	term: string | number;
 	selectedClass: any;
 	selectedStudent: any | null;
-	student: any | null;
-	fetchResult: boolean;
+	statement: any;
 	resumption: string | null;
+	docName: string;
+	perc: string | number;
 }) => {
-	const { post } = usePostNormal();
-	const [loading, setLoading] = React.useState<boolean>(false);
-	const [perc, setPerc] = React.useState<number>(0);
-	const [statement, setStatement] = React.useState<any>("");
-	const [docName, setDocName] = React.useState<any>("");
 	const contentRef = React.useRef(null);
 	const reactToPrintFn: any = useReactToPrint({
 		contentRef,
 		documentTitle: docName,
 	});
-	const getStudent = async () => {
-		setLoading(true);
-
-		const { data } = await post(
-			`/statements/byStudent/${selectedStudent?.split("-")[0]}`,
-			{
-				session,
-				term,
-				classId: selectedClass?.id,
-			}
-		);
-		const subs: any[] = data?.subjects;
-		const results = data?.results;
-		const generated: any[] = [];
-		subs?.forEach((sub: any) => {
-			const fca = results?.FCAResults?.find(
-				(result: any) => result?.subject?.name == sub?.name
-			);
-			const sca = results?.SCAResults?.find(
-				(result: any) => result?.subject?.name == sub?.name
-			);
-			const exam = results?.ExamResults?.find(
-				(result: any) => result?.subject?.name == sub?.name
-			);
-			generated.push({
-				id: sub?.id,
-				name: sub?.name,
-				fca: fca?.score,
-				sca: sca?.score,
-				exam: exam?.score,
-				total: Number(fca?.score) + Number(sca?.score) + Number(exam?.score),
-				grade: getGrade(
-					Number(fca?.score) + Number(sca?.score) + Number(exam?.score),
-					selectedClass?.name
-				),
-			});
-		});
-
-		setStatement({
-			name: `${student?.last_name} ${student?.first_name}`,
-
-			admission_no: student?.admission_no,
-			generated: generated.sort((a, b) =>
-				a?.name?.toLowerCase() < b?.name?.toLowerCase() ? -1 : 1
-			),
-		});
-		const total = generated?.reduce((prev: number, curr: { total: number }) => {
-			return Number(prev) + Number(curr.total);
-		}, 0);
-		const calculated = ((total / (subs.length * 100)) * 100).toFixed(2);
-		setPerc(calculated !== "NaN" ? parseFloat(calculated) : 0);
-		setDocName(data?.admission_no);
-		setLoading(false);
-	};
-	React.useEffect(() => {
-		if (fetchResult && selectedStudent) {
-			getStudent();
-		}
-	}, [fetchResult]);
 	return (
 		<div className='relative flex flex-col gap-3'>
 			<Button
@@ -208,7 +146,6 @@ const Result = ({
 					</footer>
 				</section>
 			</ScrollAreaAutosize>
-			<LoadingOverlay visible={loading} />
 		</div>
 	);
 };

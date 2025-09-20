@@ -6,6 +6,7 @@ import {
 	Button,
 	Checkbox,
 	Select,
+	MultiSelect,
 } from "@mantine/core";
 import { LoadingOverlay } from "@mantine/core";
 import { useRouter, useParams } from "next/navigation";
@@ -46,6 +47,10 @@ const Edit = () => {
 	const [role, setRole] = useState("");
 	const { handleSubmit } = useForm();
 	const router = useRouter();
+	const [subjects, setSubjects] = useState<string[]>([]);
+	const [allSubjects, setAllSubjects] = useState<
+		{ value: string; label: string }[]
+	>([]);
 	const onSubmit = async () => {
 		await edit(`/accounts/edit/${id}`, {
 			username,
@@ -62,6 +67,11 @@ const Edit = () => {
 				payments,
 				statement,
 			},
+			subjects: subjects.map((sub) => {
+				return {
+					id: sub,
+				};
+			}),
 		});
 
 		router.back();
@@ -69,6 +79,7 @@ const Edit = () => {
 	useEffect(() => {
 		const getAll = async () => {
 			const { data } = await fetch(`/accounts/${id}`);
+			console.log(data);
 			setUsername(data?.username);
 			setPassword(data?.password);
 			setRole(data?.role);
@@ -80,11 +91,27 @@ const Edit = () => {
 			setResults(permissions?.results);
 			setPayments(permissions?.payments);
 			setStatement(permissions?.statement);
+			setSubjects(
+				data?.subjects?.map((subject: { id: string }) => subject.id) || []
+			);
 		};
 
 		getAll();
+	}, [id]);
+	useEffect(() => {
+		const fetchSubjects = async () => {
+			try {
+				const { data } = await fetch("/subjects");
+				const sorted = data.map((subject: { id: string; name: string }) => {
+					return { value: subject.id, label: subject.name };
+				});
+				setAllSubjects(sorted);
+			} catch (error) {
+				console.error("Error fetching subjects:", error);
+			}
+		};
+		fetchSubjects();
 	}, []);
-
 	return (
 		<section className='flex flex-col gap-4 relative p-3 bg-white'>
 			<div className='flex gap-10 items-center'>
@@ -144,6 +171,30 @@ const Edit = () => {
 								setPassword(e.currentTarget.value);
 							}}
 						/>
+						<section>
+							<h2 className='text-md font-semibold mb-3'>Select subjects:</h2>
+							<Checkbox
+								label='Select All Subjects'
+								className='mb-4 cursor-pointer'
+								checked={subjects.length === allSubjects.length}
+								onChange={(e) => {
+									e.currentTarget.checked
+										? setSubjects(allSubjects.map((subject) => subject.value))
+										: setSubjects([]);
+								}}
+							/>
+							<MultiSelect
+								data={allSubjects}
+								placeholder='Select subjects'
+								value={subjects}
+								onChange={setSubjects}
+								className='w-1/2'
+								clearable
+								searchable
+								nothingFoundMessage='No subject found'
+								maxDropdownHeight={160}
+							/>
+						</section>
 						<section className='space-y-2 mb-3'>
 							<h2 className='text-md font-semibold'>Permissions:</h2>
 							<div className='flex flex-wrap gap-4'>
@@ -182,12 +233,12 @@ const Edit = () => {
 								<div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
-											checked={classes.view && classes.edit}
+											checked={classes?.view && classes?.edit}
 											onChange={() => {
 												setClasses({
-													view: !classes.view,
+													view: !classes?.view,
 
-													edit: !classes.edit,
+													edit: !classes?.edit,
 												});
 											}}
 										/>
@@ -196,9 +247,9 @@ const Edit = () => {
 
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
-											checked={classes.edit}
+											checked={classes?.edit}
 											onChange={() =>
-												setClasses((prev) => ({ ...prev, edit: !prev.edit }))
+												setClasses((prev) => ({ ...prev, edit: !prev?.edit }))
 											}
 										/>
 										<h3 className='text-sm font-semibold'>Edit</h3>
@@ -208,13 +259,13 @@ const Edit = () => {
 									<span className='flex gap-2'>
 										<Checkbox
 											checked={
-												students.view && students.create && students.edit
+												students?.view && students?.create && students?.edit
 											}
 											onChange={() => {
 												setStudents({
-													view: !students.view,
-													create: !students.create,
-													edit: !students.edit,
+													view: !students?.view,
+													create: !students?.create,
+													edit: !students?.edit,
 												});
 											}}
 										/>
@@ -223,11 +274,11 @@ const Edit = () => {
 
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
-											checked={students.create}
+											checked={students?.create}
 											onChange={() =>
 												setStudents((prev) => ({
 													...prev,
-													create: !prev.create,
+													create: !prev?.create,
 												}))
 											}
 										/>
@@ -235,9 +286,9 @@ const Edit = () => {
 									</span>
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
-											checked={students.edit}
+											checked={students?.edit}
 											onChange={() =>
-												setStudents((prev) => ({ ...prev, edit: !prev.edit }))
+												setStudents((prev) => ({ ...prev, edit: !prev?.edit }))
 											}
 										/>
 										<h3 className='text-sm font-semibold'>Edit</h3>
@@ -246,12 +297,14 @@ const Edit = () => {
 								<div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
-											checked={results.view && results.create && results.edit}
+											checked={
+												results?.view && results?.create && results?.edit
+											}
 											onChange={() => {
 												setResults({
-													view: !results.view,
-													create: !results.create,
-													edit: !results.edit,
+													view: !results?.view,
+													create: !results?.create,
+													edit: !results?.edit,
 												});
 											}}
 										/>
@@ -260,11 +313,11 @@ const Edit = () => {
 
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
-											checked={results.create}
+											checked={results?.create}
 											onChange={() =>
 												setResults((prev) => ({
 													...prev,
-													create: !prev.create,
+													create: !prev?.create,
 												}))
 											}
 										/>
@@ -272,16 +325,16 @@ const Edit = () => {
 									</span>
 									<span className='flex gap-2 ml-4'>
 										<Checkbox
-											checked={results.edit}
+											checked={results?.edit}
 											onChange={() =>
-												setResults((prev) => ({ ...prev, edit: !prev.edit }))
+												setResults((prev) => ({ ...prev, edit: !prev?.edit }))
 											}
 										/>
 										<h3 className='text-sm font-semibold'>Edit</h3>
 									</span>
 								</div>
 
-								<div className='space-y-2'>
+								{/* <div className='space-y-2'>
 									<span className='flex gap-2'>
 										<Checkbox
 											checked={
@@ -319,7 +372,7 @@ const Edit = () => {
 										/>
 										<h3 className='text-sm font-semibold'>Edit</h3>
 									</span>
-								</div>
+								</div> */}
 							</div>
 						</section>
 					</section>

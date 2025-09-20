@@ -10,10 +10,6 @@ export async function verifyToken(req: NextRequest) {
 		});
 	try {
 		const { data } = await axios.get("/auth/me");
-
-		if (!data) {
-			return NextResponse.redirect(new URL("/login", req.url));
-		}
 		return data;
 	} catch (error) {
 		return NextResponse.json(

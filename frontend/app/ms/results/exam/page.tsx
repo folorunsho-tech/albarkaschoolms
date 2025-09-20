@@ -53,17 +53,12 @@ const Exam = () => {
 		getAll();
 	}, []);
 	React.useEffect(() => {
-		if (selectedClass) {
-			const getSubjectsList = async () => {
-				const { data: classSubs } = await fetch(
-					`/classes/subjects/${selectedClass}`
-				);
-
-				setSubjectsList(classSubs?.subjects);
-			};
-			getSubjectsList();
-		}
-	}, [selectedClass]);
+		const getSubjectsList = async () => {
+			const { data } = await fetch(`/accounts/${user?.userId}/subjects`);
+			setSubjectsList(data?.subjects);
+		};
+		getSubjectsList();
+	}, [user]);
 	React.useEffect(() => {
 		const getStudentsList = async () => {
 			const { data } = await axios.post("/students/byClassHistory", {

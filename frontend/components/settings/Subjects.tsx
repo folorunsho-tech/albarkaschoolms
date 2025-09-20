@@ -10,7 +10,7 @@ const Subjects = () => {
 	const { loading, data, fetch } = useFetch();
 
 	const { post } = usePost();
-	const headers = ["ID", "Subject name", "No of classes", "No of staffs"];
+	const headers = ["ID", "Subject name", "No of classes"];
 	const [queryData, setQueryData] = useState(data);
 	const [sortedData, setSortedData] = useState([]);
 	const [opened, { open, close }] = useDisclosure(false);
@@ -21,7 +21,6 @@ const Subjects = () => {
 			<Table.Td>{row?.id}</Table.Td>
 			<Table.Td className='capitalize'>{row?.name}</Table.Td>
 			<Table.Td>{row?._count.Classes}</Table.Td>
-			<Table.Td>{row?._count.Staffs}</Table.Td>
 		</Table.Tr>
 	));
 	useEffect(() => {

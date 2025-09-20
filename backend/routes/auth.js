@@ -12,7 +12,7 @@ router.post("/login", async (req, res) => {
 				username,
 			},
 		});
-		const compared = await bcrypt.compare(password, user?.passHash ?? "");
+		const compared = await bcrypt.compare(password, user?.passHash);
 		if (user?.active && compared) {
 			const token = signToken({
 				userId: user.id,

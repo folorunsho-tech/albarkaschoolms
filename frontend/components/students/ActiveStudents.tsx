@@ -60,19 +60,16 @@ const ActiveStudents = () => {
 						<IconEye style={{ width: "70%", height: "70%" }} stroke={2} />
 					</Link>
 				</ActionIcon>
-				<ActionIcon
-					disabled={!permission?.edit}
-					variant='outline'
-					color='teal'
-					aria-label='action menu'
-				>
-					<Link
-						href={`students/edit/${row?.id}`}
-						className='flex justify-center'
-					>
-						<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
-					</Link>
-				</ActionIcon>
+				{permission?.edit && (
+					<ActionIcon variant='outline' color='teal' aria-label='action menu'>
+						<Link
+							href={`students/edit/${row?.id}`}
+							className='flex justify-center'
+						>
+							<IconPencil style={{ width: "70%", height: "70%" }} stroke={2} />
+						</Link>
+					</ActionIcon>
+				)}
 			</Table.Td>
 		</Table.Tr>
 	));
