@@ -32,28 +32,13 @@ router.post("/login", async (req, res) => {
 				username: user.username,
 			});
 		} else if (!compared) {
-			res.status(401).json({
-				message: {
-					success: "",
-					error: "Invalid credentials",
-				},
-			});
+			res.status(401).json({ message: "Invalid Credentials" });
 		} else if (!user?.active) {
-			res.status(401).json({
-				message: {
-					success: "",
-					error: "Unauthorized",
-				},
-			});
+			res.status(401).json({ message: "Account is inactive" });
 		}
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({
-			message: {
-				success: "",
-				error: "Server Error",
-			},
-		});
+		res.status(500).json(error);
 	}
 });
 router.post("/revoke/:accId", async (req, res) => {
@@ -115,7 +100,7 @@ router.get("/me", async (req, res) => {
 	try {
 		const returned = decodeToken(token);
 		if (!returned) {
-			res.status(404).json(returned);
+			res.status(401).json({ message: "Invalid Token" });
 		} else {
 			res.json(returned);
 		}

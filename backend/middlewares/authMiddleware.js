@@ -5,6 +5,6 @@ export const authMiddleware = (req, res, next) => {
 		verifyToken(token, res, next);
 	} catch (err) {
 		console.log(err);
-		res.status(401).json(err);
+		res.status(401).json({ message: "Invalid Token" });
 	}
 };
