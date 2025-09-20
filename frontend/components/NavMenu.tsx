@@ -1,3 +1,4 @@
+import { userContext } from "@/context/User";
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -5,11 +6,70 @@ import { IconHome, IconLogout } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import axios from "@/config/axios";
 import FlyOutMenu from "./FlyOutMenu";
+import {
+	IconUsers,
+	IconReportAnalytics,
+	IconBuilding,
+	IconSchool,
+	IconArrowsTransferUpDown,
+	IconUserCheck,
+	IconFileInvoice,
+} from "@tabler/icons-react";
 
-const NavMenu = ({ menu = [] }: any) => {
+const NavMenu = () => {
 	const url = usePathname();
 	const currPath = url.split("/");
-
+	const { permissions } = React.useContext(userContext);
+	const menu = [
+		{
+			link: "students",
+			label: "Students",
+			icon: IconSchool,
+			shown: permissions?.students?.view,
+		},
+		{
+			link: "staffs",
+			label: "Staffs",
+			icon: IconUsers,
+			shown: permissions?.staffs?.view,
+		},
+		{
+			link: "results",
+			label: "Results",
+			icon: IconReportAnalytics,
+			shown: permissions?.results?.view,
+		},
+		{
+			link: "statement",
+			label: "Statement of results",
+			icon: IconFileInvoice,
+			shown: permissions?.statement,
+		},
+		// {
+		// 	link: "transactions",
+		// 	label: "Payments",
+		// 	icon: IconCashRegister,
+		// 	shown: permissions?.payments?.view,
+		// },
+		{
+			link: "classes",
+			label: "Classes",
+			icon: IconBuilding,
+			shown: permissions?.classes?.view,
+		},
+		{
+			link: "studentspromotions",
+			label: "Students Promotions",
+			icon: IconArrowsTransferUpDown,
+			shown: permissions?.studentPromotions,
+		},
+		{
+			link: "accounts",
+			label: "Accounts",
+			icon: IconUserCheck,
+			shown: permissions?.accounts,
+		},
+	];
 	const router = useRouter();
 	return (
 		<nav className='flex flex-wrap border-b bg-white '>

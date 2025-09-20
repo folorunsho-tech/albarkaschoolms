@@ -3,6 +3,7 @@
 import { useFetchSingle } from "@/hooks/useQueries";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import getCookie from "./getCookie";
+import { useRouter } from "next/navigation";
 
 const userContext = createContext<{
 	user: any;
@@ -16,13 +17,17 @@ const userContext = createContext<{
 	setPerm: () => {},
 });
 const UserProvider = ({ children }: { children: ReactNode }) => {
+	const router = useRouter();
 	const { fetch } = useFetchSingle();
 	const [user, setUser] = useState<any>(null);
 	const [permissions, setPerm] = useState<any[]>([]);
 	const getData = async () => {
 		const cookie = await getCookie("token");
 		if (cookie?.value) {
-			const { data } = await fetch(`/auth/me`);
+			const { data, status } = await fetch(`/auth/me`);
+			if (status === 404) {
+				router.push("/login");
+			}
 			setUser(data);
 			setPerm(data?.menu);
 		}

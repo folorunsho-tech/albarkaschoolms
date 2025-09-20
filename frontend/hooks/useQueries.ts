@@ -3,13 +3,14 @@ import axios from "@/config/axios";
 import { userContext } from "@/context/User";
 import showNotification from "@/config/showNoification";
 import { format } from "date-fns";
-
+import { useRouter } from "next/navigation";
 // Core reusable hook with notification toggle
 function useApi<T = any>(
 	method: "GET" | "POST",
 	transformPayload?: (payload?: any, user?: any) => any,
 	enableNotification: boolean = true
 ) {
+	const router = useRouter();
 	const { user } = useContext(userContext);
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<T | any>(null);
@@ -24,6 +25,11 @@ function useApi<T = any>(
 					: payload;
 			}
 			const res = await axios(config);
+			// If unauthorized, redirect to login
+			if (res.status === 401) {
+				router.push("/login");
+				return { data: null, headers: {}, status: 401 };
+			}
 			setData(res.data);
 			if (enableNotification) showNotification(res.status);
 			return { data: res.data, headers: res.headers, status: res.status };
@@ -34,7 +40,6 @@ function useApi<T = any>(
 			setLoading(false);
 		}
 	};
-
 	return { loading, data, request };
 }
 

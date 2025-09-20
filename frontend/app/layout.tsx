@@ -7,7 +7,6 @@ import { DatesProvider } from "@mantine/dates";
 import "./globals.css";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { UserProvider } from "@/context/User";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function RootLayout({
 					<Notifications autoClose={3000} className='absolute top-0 left-1' />
 					<ModalsProvider>
 						<DatesProvider settings={{ consistentWeeks: true }}>
-							<UserProvider>{children}</UserProvider>
+							{children}
 						</DatesProvider>
 					</ModalsProvider>
 				</MantineProvider>

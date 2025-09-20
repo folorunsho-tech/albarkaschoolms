@@ -32,7 +32,7 @@ export default function Login() {
 				withCloseButton: false,
 				// position: "top-left",
 				onClose: () => {
-					router.push(`/ms/`);
+					router.push(`/ms`);
 				},
 				autoClose: 500,
 				withBorder: true,
