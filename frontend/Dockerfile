@@ -24,11 +24,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 
 # Copy build artifacts
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY package.json ./
 
 # Coolify provides PORT
 ENV PORT=3000
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["npm", "run", "start"]
